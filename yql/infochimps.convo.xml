@@ -38,7 +38,7 @@
 				
 					data = strong_links_query(sn);
 					var obj = y.xmlToJson(data);
-					var ids = obj
+					var ids = obj.strong_links
 					var items = <peeps></peeps>;
 					for each (var p in ids){
 							item = <peep></peep>;
