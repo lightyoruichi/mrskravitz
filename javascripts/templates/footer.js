@@ -1,0 +1,1 @@
+var footerResultTemplate = '<strong>Hey, want to beta test my new app?</strong> <span class="tagline">It\'s called <a href="http://twnty.com">Twnty.</a> Tell us 20 likes & dislikes, we\'ll show you 20 people you\'ll like.</span> <a href="http://twnty.com" class="btn twnty">reserve your spot</a>';

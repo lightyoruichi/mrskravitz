@@ -1,0 +1,5 @@
+var shareTwitterResultTemplate = '<blockquote>${msg} <a href="${url}">${url}</a></blockquote> <a href="http://twitter.com/share" class="twitter-share-button"' +
+'    data-url="${url}"' +
+'    data-text="${msg}"' +
+'    data-related="steveodom:founder of Twnty.com & Plum.ly"' +
+'    data-count="none">Tweet</a>'

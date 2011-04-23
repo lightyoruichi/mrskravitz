@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd" https="true">
+    <meta>
+        <author>Steve Odom</author>
+        <documentationURL></documentationURL>
+				<sampleQuery>select * from infochimps.convo where user_a_sn="steveodom" and user_b_sn="damon"</sampleQuery>
+    </meta>
+      <bindings>
+        <select itemPath="" produces="JSON">
+					<urls>
+					   <url>http://api.infochimps.com/social/network/tw/graph/strong_links</url>
+					</urls>
+          <inputs>
+						<key id="apikey" type="xs:string" paramType="query" required="true"/>
+						<key id="sn" type="xs:string" paramType="query" required="true"/>
+						<key id="v" type="xs:string" paramType="query" required="false"/>
+          </inputs>
+					<execute><![CDATA[
+				
+					function strong_links_query(sn) {
+						var url = "http://api.infochimps.com/social/network/tw/graph/strong_links";
+						var req = y.rest(url)
+											 .accept('application/json')
+											 .query("apikey", apikey)
+											 .query("screen_name", sn)
+											 .get().response;
+					 return req
+					}
+					
+					function twitter_query(tid) {
+						var url = "http://api.twitter.com/1/users/show.json";
+						var tw = y.rest(url)
+											.query("id", tid)
+											.accept('application/json')
+											.get().response;
+						return tw;
+					};
+				
+					data = strong_links_query(sn);
+					
+					var ids = data.strong_links;
+					var items = <peeps></peeps>;
+					
+					for each (var p in ids){
+							item = <peep></peep>;
+							tw = twitter_query(p[0]);
+							item.@["id"] = tw.id;
+							item.@["name"] = tw.name;
+							item.@["location"] = tw.location;
+							items.node += item;
+					}
+		
+					response.object = items;
+				      ]]></execute>
+        </select>
+      </bindings>
+</table>
