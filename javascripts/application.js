@@ -46,23 +46,23 @@ var kravitz = {
 		},
 		strong_links : function(sn) {
 			params    = kravitz.infochimps.params();
-			params.sn  = sn;
+			params.q  = "select * from infochimps.convo where sn='" + sn + "'";
 			callbacks = {};
 			callbacks.success = kravitz.infochimps.sl_callback;
 			callbacks.errors = kravitz.infochimps.sl_error;
 		  kravitz.utility.query(kravitz.utility.yql, params, callbacks);
 		},
 		sl_callback : function(data) {
-			if(typeof(data) == null){	
+			if(data.query.results == null || data.query.results.peeps == null){
 				kravitz.infochimps.sl_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
 				$('#results_loading').html(kravitz.default_text.linkedin_start);
-				y.log(data);
-				var peeps = data.peeps;
+				var peeps = data.query.results.peeps;
+				console.info(peeps);
 				// $('#results_sorted_note').html("what every");
 				$.template("slTmpl", friendResultTemplate);
-			  $.tmpl("slTmpl", peeps).appendTo($('ul.results'));
+			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.results'));
 			}
 		},
 		sl_error : function() {
