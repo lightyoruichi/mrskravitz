@@ -39,19 +39,19 @@
 					data = strong_links_query(sn);
 					
 					var ids = data.strong_links;
-					var items = <peeps></peeps>;
-					
-					for each (var p in ids){
-							item = <peep></peep>;
-							y.log(p)
-							tw = twitter_query(p[0]);
-							item.@["id"] = tw.id;
-							item.@["name"] = tw.name;
-							item.@["location"] = tw.location;
-							items.node += item;
-					}
+					// var items = <peeps></peeps>;
+					// 				
+					// 				for each (var p in ids){
+					// 						item = <peep></peep>;
+					// 						y.log(p.strong_links)
+					// 						tw = twitter_query(p[0]);
+					// 						item.@["id"] = tw.id;
+					// 						item.@["name"] = tw.name;
+					// 						item.@["location"] = tw.location;
+					// 						items.node += item;
+					// 				}
 		
-					response.object = items;
+					response.object = data;
 				      ]]></execute>
         </select>
       </bindings>
