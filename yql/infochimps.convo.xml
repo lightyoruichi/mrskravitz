@@ -51,7 +51,7 @@
 					// 						items.node += item;
 					// 				}
 		
-					response.object = data.strong_links;
+					response.object = data;
 				      ]]></execute>
         </select>
       </bindings>
