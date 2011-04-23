@@ -37,8 +37,9 @@
 					};
 				
 					data = strong_links_query(sn);
-					
-					var ids = data.strong_links;
+					var obj = y.xmlToJson(data.results);
+					y.log(obj)
+					// var ids = data.strong_links;
 					// var items = <peeps></peeps>;
 					// 				
 					// 				for each (var p in ids){
@@ -51,7 +52,7 @@
 					// 						items.node += item;
 					// 				}
 		
-					response.object = data;
+					response.object = items;
 				      ]]></execute>
         </select>
       </bindings>
