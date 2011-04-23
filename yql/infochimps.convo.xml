@@ -38,17 +38,17 @@
 				
 					data = strong_links_query(sn);
 					var obj = y.xmlToJson(data);
-					y.log(obj.json.strong_links)
+					// y.log(obj.json.strong_links)
 					var ids = obj.json.strong_links;
 					var items = <peeps></peeps>;
 					for each (var p in ids){
 							item = <peep></peep>;
-							y.log(p)
-							tw = twitter_query(p[0]);
-							item.@["id"] = tw.id;
-							item.@["name"] = tw.name;
-							item.@["location"] = tw.location;
-							items.node += item;
+							y.log(p.json[0])
+							// tw = twitter_query(p[0]);
+							// 							item.@["id"] = tw.id;
+							// 							item.@["name"] = tw.name;
+							// 							item.@["location"] = tw.location;
+							// 							items.node += item;
 					}
 		
 					response.object = items;
