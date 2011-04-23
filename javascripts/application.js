@@ -37,28 +37,32 @@ $(document).ready(function(){
 
 var kravitz = {
 	infochimps : {
-		api_key : "steveodom-NQ9ITHYiLQg48FM6JEi6qLkbm69",
+		// api_key : "steveodom-NQ9ITHYiLQg48FM6JEi6qLkbm69",
+		params : function() {
+			params          = {};
+			params.env      = "https://github.com/steveodom/mrskravitz/raw/gh-pages/yql/infochimps.env";
+			params.format   = "json";
+			return params;
+		},
 		strong_links : function(sn) {
-			params    = "screen_name=" + sn + "&apikey=" + kravitz.infochimps.api_key;
-			uri = "http://api.infochimps.com/social/network/tw/graph/strong_links"
+			params    = kravitz.infochimps.params();
+			params.sn  = sn;
 			callbacks = {};
 			callbacks.success = kravitz.infochimps.sl_callback;
-			callbacks.errors = kravitz.infochimps.sl_error;	
-		  kravitz.utility.query(uri, params, callbacks);
+			callbacks.errors = kravitz.infochimps.sl_error;
+		  kravitz.utility.query(kravitz.utility.yql, params, callbacks);
 		},
 		sl_callback : function(data) {
-			// if (data.status == 401) {
-			// 				alert("what")
-			// 			}
 			if(typeof(data) == null){	
 				kravitz.infochimps.sl_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
 				$('#results_loading').html(kravitz.default_text.linkedin_start);
-				var ids = data.strong_links.slice(0,30);
-				$('#results_sorted_note').html("what every");
+				y.log(data);
+				var peeps = data.peeps;
+				// $('#results_sorted_note').html("what every");
 				$.template("slTmpl", friendResultTemplate);
-			  $.tmpl("slTmpl", ids).appendTo($('ul.results'));
+			  $.tmpl("slTmpl", peeps).appendTo($('ul.results'));
 			}
 		},
 		sl_error : function() {
@@ -88,9 +92,10 @@ var kravitz = {
 		}
 	},
 	utility : {
+		yql : "https://query.yahooapis.com/v1/public/yql",
 		query : function(uri, params, callbacks, cache) {
 			params        = params        || {};
-			var callbacks     = callbacks     || {};
+			callbacks 		= callbacks     || {};
 			cache         = cache         || false;
 			uri           = uri;
 			var req = $.ajax({ cache: cache, 
