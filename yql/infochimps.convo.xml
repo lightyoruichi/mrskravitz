@@ -51,7 +51,7 @@
 					// 						items.node += item;
 					// 				}
 		
-					response.object = data;
+					response.object = data.json;
 				      ]]></execute>
         </select>
       </bindings>
