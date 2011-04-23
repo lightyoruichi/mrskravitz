@@ -3,7 +3,7 @@
     <meta>
         <author>Steve Odom</author>
         <documentationURL></documentationURL>
-				<sampleQuery>select * from infochimps.convo where user_a_sn="steveodom" and user_b_sn="damon"</sampleQuery>
+				<sampleQuery>select * from infochimps.convo where sn="steveodom"</sampleQuery>
     </meta>
       <bindings>
         <select itemPath="" produces="JSON">
@@ -43,6 +43,7 @@
 					
 					for each (var p in ids){
 							item = <peep></peep>;
+							y.log(p)
 							tw = twitter_query(p[0]);
 							item.@["id"] = tw.id;
 							item.@["name"] = tw.name;
