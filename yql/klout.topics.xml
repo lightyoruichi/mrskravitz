@@ -39,8 +39,10 @@
 						function klout_score(sn) {
 							var url = "http://api.klout.com/1/klout.json?key="+ apikey +"&users=" + sn;
 							var req = y.rest(url);
-							var score = req.accept('application/json').get().response;	
-							return score;
+							var raw = req.accept('application/json').get().response;
+							var all = y.xmlToJson(raw);
+							y.log(all.json.users[0].kscore);
+							return all.json.users[0].kscore;
 						}
 						
 						var url = "http://api.klout.com/1/users/topics.json?key="+ apikey + "&users=" + screen_name;
