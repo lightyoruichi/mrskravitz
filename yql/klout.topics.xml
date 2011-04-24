@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd" https="true">
+    <meta>
+        <author>Steve Odom</author>
+        <documentationURL></documentationURL>
+				<sampleQuery>SELECT * FROM klout.topics WHERE screen_name='steveodom'</sampleQuery>
+    </meta>
+      <bindings>
+        <select itemPath="" produces="XML" >
+          <inputs>
+						<key id="screen_name" type="xs:string" paramType="path" required="true"/>
+						<key id="apikey" type="xs:string" paramType="query" required="true"/>
+          </inputs>
+          <execute><![CDATA[
+
+						function search_facebook(name) {
+							var q   = name
+							var url = "https://graph.facebook.com/search?q='" + encodeURIComponent(q) + "'&type=page";
+							var req = y.rest(url);
+							var fb = req.accept('application/json').get().response;
+							var target = {};
+							// for (i = 0; fb.data.length() > i; i += 1) {  
+					        // if (fb.data[i].category == "Musician/band") { 
+											target = facebook_info(fb.data[0].id)
+					 						// break;
+					        // }  
+							// };
+							return target;
+						}
+						
+						function facebook_info(id) {
+							var q   = id
+							var url = "https://graph.facebook.com/" + id;
+							var req = y.rest(url);
+							var fb = req.accept('application/json').get().response;	
+							return fb;
+						}
+						
+						var url = "http://api.klout.com/1/users/topics.json?key=jmc33s79qvvnj3qx84e8fnxk&users=" + screen_name;
+						var q = "select * from json where url='" + url + "'";
+						var req = y.query(q);
+						var topics = req.results.json.users.topics
+						
+					  var items = <items></items>;
+						for each (var topic in topics){
+								item = <item></item>;
+								fb = search_facebook(topic);
+								// y.log(fb.picture);							
+								item.@["name"] = topic;
+								// 								item.@["asin"] = fb.id;
+								item.@["image"] = fb.picture;
+								// 								item.@["description"] = fb.description;
+								// 								item.@["rating"] = 4; 
+								items.node += item;
+						}
+						
+						
+						response.object = items;
+					      ]]></execute>
+        </select>
+      </bindings>
+</table>

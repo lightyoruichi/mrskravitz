@@ -3,13 +3,13 @@ $(document).ready(function(){
 	//render partials
 	$.template("headerTmpl", headerResultTemplate);
   $.tmpl("headerTmpl", "").appendTo($('#header'));
-	$.template("footerTmpl", footerResultTemplate);
-  $.tmpl("footerTmpl", "").appendTo($('#footer'));
+	// $.template("footerTmpl", footerResultTemplate);
+  // $.tmpl("footerTmpl", "").appendTo($('#footer'));
 
 	$('#infochimps').submit(function(){
 		var sn  = $('#search_box').attr('value'); 
 		// $('#main ul.results').html("");
-		kravitz.twitter.profile(sn);
+		// kravitz.details.show(sn);
 		kravitz.hash.add("search/" + sn);
 		kravitz.utility.leftSearch();
 		return false;
@@ -59,7 +59,6 @@ var kravitz = {
 			else if(typeof(callbacks.success) != 'undefined'){
 				$('#results_loading').html(kravitz.default_text.linkedin_start);
 				var peeps = data.query.results.peeps;
-				console.info(peeps);
 				// $('#results_sorted_note').html("what every");
 				$.template("slTmpl", friendResultTemplate);
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.results'));
@@ -83,16 +82,92 @@ var kravitz = {
 				kravitz.twitter.profile_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
-				$('#results_loading').html(kravitz.default_text.qwerly_start);
-				kravitz.infochimps.strong_links(data.screen_name);
+				$('div.details_container h2').html(kravitz.default_text.qwerly_start);
+				target = $('#background div.bio');
+				var followers = $('h5.followers span');
+				var following = $('h5.following span');
+
+				followers.html(kravitz.utility.spinner);
+				following.html(kravitz.utility.spinner);
+				target.html("");
+				$.template("twTmpl", twitterResultTemplate);
+			  $.tmpl("twTmpl", data).appendTo(target);
+				followers.html(data.followers_count);
+				following.html(data.friends_count);		
+				//kravitz.infochimps.strong_links(data.screen_name);
 			}
 		},
 		profile_error : function() {
 			$('#results_loading').html(kravitz.default_text.twitter_404);
 		}
 	},
+	details : {
+		screen_name : "",
+		tid : "",
+		show : function(screen_name) {
+			kravitz.details.clear();
+			kravitz.twitter.profile(screen_name);
+			// kravitz.infochimps.social_networks(screen_name);
+			// 			// kravitz.infochimps.trustrank(id);
+			kravitz.klout.topics(screen_name);
+			kravitz.details.screen_name = screen_name;
+			// kravitz.details.tid = id;
+			return false;
+		},
+		clear : function() {
+			//clear old things
+			topics = $('ul.topics');
+			topics.html('');
+			friends = $('ul.friends');
+			friends.html('');
+			target = $('ul.social_icons');
+			target.html("");
+			$('h6').hide();			
+			$('#share iframe, #share blockquote').remove();
+		}
+	},
+	klout : {
+		params : function() {
+			params          = {};
+			params.env      = "https://github.com/steveodom/mrskravitz/raw/gh-pages/yql/klout.env";
+			params.format   = "json";
+			return params;
+		},
+		topics : function(screen_name) {
+			params    = kravitz.klout.params();
+			params.q  = "select * from klout.topics where screen_name='" + screen_name + "'";
+			callbacks = {};
+			callbacks.success = kravitz.klout.topics_callback;			
+		  callbacks.errors = kravitz.klout.topics_error;	
+			kravitz.utility.query(kravitz.utility.yql, params, callbacks);
+			return false;
+		},
+		topics_callback : function(data) {
+			target = $('ul.topics');
+			target.parent().show();
+			if(data.query.results == null || data.query.results.items == null){	
+				// target.html("<li class='empty'>we got nothing</li>")
+				target.parent().hide();
+			}
+			else if(typeof(callbacks.success) != 'undefined'){
+				var qty = data.query.count;
+				if (qty == 0) {
+					kravitz.infochimps.empty_results(target, "empty");
+				} else {
+					target.html("");
+					target.siblings('h6').show();
+					$.template("topicsTmpl", topicsResultTemplate);
+				  $.tmpl("topicsTmpl", data.query.results.items.item).appendTo(target);
+				}
+			}
+		},
+		topics_error : function() {
+				
+		}
+	},
 	utility : {
 		yql : "https://query.yahooapis.com/v1/public/yql",
+		spinner : "<img src='images/spinner-small.gif' alt='loading...' width='14' height='14'/>",
 		query : function(uri, params, callbacks, cache) {
 			params        = params        || {};
 			callbacks 		= callbacks     || {};
@@ -115,9 +190,11 @@ var kravitz = {
 		},	
 		leftSearch : function() {
 			$('h1.headline').hide();
-			$('#search_share').hide();
-			$('#results_loading').html(kravitz.default_text.initial_search).show();
-			$('#main').animate({top:"10%", left:"25%"}, "fast");
+			// $('#search_share').hide();
+			
+			// $('#results_loading').html(kravitz.default_text.initial_search).show();
+			$('#left').animate({marginTop:"0", marginLeft: "0", width:"460px"}, "fast");
+			$('#middle').show();
 		},
 	},
 	default_text : {
@@ -137,7 +214,7 @@ var kravitz = {
 				case "search":
 					$('#search_box').val(unescape(ary[1]));
 					kravitz.utility.leftSearch();
-					kravitz.twitter.profile(unescape(ary[1]));
+					kravitz.details.show(unescape(ary[1]));
 					break;
 			};
 		}
