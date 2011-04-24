@@ -101,9 +101,7 @@ var kravitz = {
 	},
 	li : {
 		friends : function() {
-			alert("what");
-			var txt = "<script type='in/Login'>Hello, <?js= firstName ?> <?js= lastName ?>.</script>"
-			$('#industry_note').append(txt);
+			$('#salary_chart').show();
 		}
 	},
 	twitter : {
