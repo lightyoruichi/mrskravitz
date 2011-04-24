@@ -36,11 +36,20 @@
 							return fb;
 						}
 						
-						var url = "http://api.klout.com/1/users/topics.json?key=jmc33s79qvvnj3qx84e8fnxk&users=" + screen_name;
+						function klout_score(sn) {
+							var url = "http://api.klout.com/1/klout.json?key="+ apikey +"&users=" + sn;
+							var req = y.rest(url);
+							var score = req.accept('application/json').get().response;	
+							return score;
+						}
+						
+						var url = "http://api.klout.com/1/users/topics.json?key="+ apikey + "&users=" + screen_name;
 						var q = "select * from json where url='" + url + "'";
 						var req = y.query(q);
-						var topics = req.results.json.users.topics
+						var topics = req.results.json.users.topics;
 						
+						var score = klout_score(screen_name);
+						y.log(score)
 					  var items = <items></items>;
 						for each (var topic in topics){
 								item = <item></item>;
