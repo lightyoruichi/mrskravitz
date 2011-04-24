@@ -26,32 +26,32 @@
 					q = "twitter.screen_name:" + screen_name;
 					data = infochimps_query(q);
 					
-					var obj = y.xmlToJson(data.results);
-					var services = obj.results;
-					var items = <services></services>;
-					var names = [];
-					var safe_names = ["foursquare", "github", "klout", "facebook", "twitter", "plancast", "flickr", "lastfm", "delicious", "youtube", "linkedin", "pandora", "tumblr", "myspace", "reddit"]
-				
-					// get the names.
-					for (var st in services) {
-						names.push(st);
-					}
-					
-
-					var i = 0;
-					for each (var s in services){
-						var name = names[i]
-						if (safe_names.indexOf(name) > -1) {
-							item = <service></service>;
-							item.@["service"] = names[i];
-							item.@["screen_name"] = s.screen_name;
-							item.@["url"] = s.url;
-							items.node += item;
-						}
-						i ++;
-					}
+					// var obj = y.xmlToJson(data.results);
+					// 					var services = obj.results;
+					// 					var items = <services></services>;
+					// 					var names = [];
+					// 					var safe_names = ["foursquare", "github", "klout", "facebook", "twitter", "plancast", "flickr", "lastfm", "delicious", "youtube", "linkedin", "pandora", "tumblr", "myspace", "reddit"]
+					// 				
+					// 					// get the names.
+					// 					for (var st in services) {
+					// 						names.push(st);
+					// 					}
+					// 					
+					// 
+					// 					var i = 0;
+					// 					for each (var s in services){
+					// 						var name = names[i]
+					// 						if (safe_names.indexOf(name) > -1) {
+					// 							item = <service></service>;
+					// 							item.@["service"] = names[i];
+					// 							item.@["screen_name"] = s.screen_name;
+					// 							item.@["url"] = s.url;
+					// 							items.node += item;
+					// 						}
+					// 						i ++;
+					// 					}
 		
-					response.object = items;
+					response.object = data //items;
 				      ]]></execute>
         </select>
       </bindings>

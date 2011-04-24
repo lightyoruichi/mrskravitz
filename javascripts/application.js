@@ -81,7 +81,7 @@ var kravitz = {
 		social_networks_callback : function(data) {
 			target = $('ul.social_icons');
 			if(data.query.results == null || data.query.results.services == null){
-			
+				kravitz.infochimps.social_networks_error(target, "empty");
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
 				var qty = data.query.count;
@@ -94,7 +94,7 @@ var kravitz = {
 			}
 		},
 		social_networks_error : function(target, data) {
-
+			// console.error(data)
 		}
 	},
 	twitter : {
@@ -183,14 +183,33 @@ var kravitz = {
 	},
 	lastfm : {
 		details : function(sn) {
-			params = {}  
-			params.q  = "SELECT * FROM xml WHERE url='http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&api_key=8357e388286af7ca84200d9c80f016eb&user="+ sn +"'";
+			params = {}
+			params.format   = "json";
+			params.q  = "SELECT topartists.artist FROM xml WHERE url='http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&api_key=8357e388286af7ca84200d9c80f016eb&user="+ sn +"'";
 			callbacks.success = kravitz.lastfm.details_callback;
 			callbacks.errors = kravitz.lastfm.details_error;	
 			kravitz.utility.query(kravitz.utility.yql, params, callbacks);
 		},
-		details_callback : function() {
-			
+		details_callback : function(data) {
+			console.info(data);
+			if(data.query.results == null || data.query.results.services == null){
+				return false;
+			}
+			else if(typeof(callbacks.success) != 'undefined'){
+				var qty = data.query.count;
+				if (qty == 0) {
+					kravitz.infochimps.social_networks_error(target, "empty");
+				} else {
+					$('div.details_container').append("<div id='lastfm_content'></div>");
+					var target = $('#lastfm_content');
+					target.append("<h6>Listens to:</h6")
+					
+					var artists = data.query.results.lfm;
+					
+					$.template("lastfmTmpl", lastfmResultTemplate);
+				  $.tmpl("lastfmTmpl", artists).appendTo(target);
+				}
+			}
 		},
 		details_error : function(target, data) {
 

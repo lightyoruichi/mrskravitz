@@ -110,7 +110,7 @@ ul.friends li:hover {}
 ul.topics div.photo {float:left;width:87px !important;height:87px !important;border:1px solid #ccc;padding:2px;position:relative;}
 ul.friends div.photo {width:50px !important;height:50px !important;}
 ul.friends div.photo img, ul.topics div.photo img {height:100%;width:100%;}
-ul.topics h2 {width:100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;line-height:12px !important;margin-top:0;}
+ul.topics h2 {width:100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;line-height:14px !important;margin-top:0;}
 ul.topics div.description {width:100% !important;min-height:40px !important;}
 ul.topics div.description {min-height:20px !important;}
 ul.topics div.description h2 {margin:0;}
