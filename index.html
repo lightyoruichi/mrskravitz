@@ -22,6 +22,7 @@
 	
 	<script type="text/javascript" src="http://platform.linkedin.com/in.js">
 	  api_key: 1yW9JUdXPrqSR2NA-DSTqahyZUhWEFJXsFp7syXVad743YdLGajEpjThbds3QuTa
+		onLoad: kravitz.li.loggedin
 		authorize: true
 	</script>
 	
@@ -59,7 +60,11 @@
 				<ul class="friends"></ul>
 				<h3 id="industry_note" style="margin-top:25px;"></h3>
 				<div id="salary_chart">
-					<script type='in/Login'>Hello, <?js= firstName ?> <?js= lastName ?>.</script>
+				</div>
+				<div id="salary_chart_login">
+					<h4>Hey, Mrs. Kravitz would like to dig up some data at Linkedin, but she needs your approval.</h4>
+					<p>Authorize her to access job titles, industries, and cities at Linkedin.<p>
+						<script type="in/Login"></script>
 				</div>
 			</div>
 	 </div>

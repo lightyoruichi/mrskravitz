@@ -100,8 +100,17 @@ var kravitz = {
 		}
 	},
 	li : {
+		loggedin : function() {
+			$('#salary_chart_login').addClass("loggedin").hide();
+			kravitz.li.friends();
+		},
 		friends : function() {
-			$('#salary_chart').show();
+			if ($('#salary_chart_login').hasClass("loggedin")) {
+				//do some logged in stuff.
+				alert("logged in")
+			} else {
+				$('#salary_chart_login').show();
+			}
 		}
 	},
 	twitter : {
@@ -301,8 +310,8 @@ var kravitz = {
 			return "Mrs. Kravitz is seeing who "+ name + " interacts with: <em>She thinks one can tell a lot about a person by the company they keep.</em>" + kravitz.utility.spinner;
 		},
 		friend_description : function() {
-			rand = Math.floor(Math.random()*3)
-			ary = ["n'er do wells", "malcontents", "extremely good looking people"]
+			rand = Math.floor(Math.random()*4)
+			ary = ["n'er do wells", "malcontents", "simple folk", "extremely good looking people"]
 			return "Interacts mostly with these " + ary[rand] + "...";
 		},
 		friend_jobs : "...who have fancy job titles like:"

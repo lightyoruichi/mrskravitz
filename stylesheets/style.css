@@ -115,7 +115,7 @@ ul.topics div.description {width:100% !important;min-height:40px !important;}
 ul.topics div.description h2 {margin:0;}
 #background ul.friends div.description h2 a:hover {text-decoration:underline !important;color:#000;}
 
-#salary_chart {display:none;}
+#salary_chart {display:none;float:left;width:100%;}
 
 
 .btn { 
