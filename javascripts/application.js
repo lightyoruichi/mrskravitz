@@ -62,6 +62,8 @@ var kravitz = {
 				// $('#middle').show()
 				$('h3.friends').html(kravitz.default_text.friend_description());
 				$('#industry_note').html(kravitz.default_text.friend_jobs);
+				kravitz.li.friends();
+				
 				var peeps = data.query.results.peeps;
 				$.template("slTmpl", friendResultTemplate);
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
@@ -95,6 +97,13 @@ var kravitz = {
 		},
 		social_networks_error : function(target, data) {
 			// console.error(data)
+		}
+	},
+	li : {
+		friends : function() {
+			alert("what");
+			var txt = "<script type='in/Login'>Hello, <?js= firstName ?> <?js= lastName ?>.</script>"
+			$('#industry_note').append(txt);
 		}
 	},
 	twitter : {
