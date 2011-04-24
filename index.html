@@ -22,28 +22,30 @@
 </head>
 <body>
 	<div id="header" class=""></div>
-	<div id="container" class="row">
-		<div id="left" class="column grid_6 va">
-			<form id="infochimps">
-				<h1 class="headline">She'll tell you what she knows about a Twitter user</h1>
-				<input type="text" value="" id="search_box"/>
-				<input type="submit" value="Search" class="btn" />
-			</form>
-			<div class="details_container">
-				<div class="content">
-					<h2>Here's her dossier</h2> 
+	<div id="container">
+		<div class="row" style="margin-bottom:35px;">
+			<div id="title" class="column grid_12">
+				<form id="infochimps">
+					<h1 class="headline">She'll tell you what she knows about a Twitter user</h1>
+					<input type="text" value="" id="search_box"/>
+					<input type="submit" value="Search" class="btn" />
+				</form>
+				<h2 style="display:none;" class="result">Mrs. Kravitz is building her dossier.</h2> 
+			</div>
+		</div>
+		<div class="row" id="results">
+			<div class="details_container column grid_6">	
 					<div class="box" id="background">
 						<div class="bio"></div>
 						<h5 class="followers" style="margin-left:0;"><span class="number">1234</span><em>followers</em></h5>
 						<h5 class="following"><span class="number">5678</span><em>following</em></h5>
 						<h5 class="klout" data-tr=""><span class="number" id="klout_score">0</span><em>klout</em></h5>
-						
 						<h5 class="qwerly"><ul class="social_icons"></ul><em>Social Networks</em></h5>
 					</div>
 		
 		
 					<div class="box" id="topics">
-						<h6>Heard talking mostly about:</h6>
+						<h6>Talks mostly about:</h6>
 						<ul class="topics"></ul>
 					</div>
 					
@@ -51,12 +53,12 @@
 						<h6>Photos:</h6>
 						<ul class="photos"></ul>
 					</div>
-		
-				</div>
-		</div>
-		<div id="middle" class="column grid_6">
-				<h1 class="headline">She'll tell you what she knows about a Twitter user</h1>
-		</div>
+			</div>
+			<div id="middle" class="column grid_6">
+				<h3 class="friends"></h3>
+				<ul class="friends"></ul>
+			</div>
+	 </div>
 	</div>
 	<script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
 	<script src="http://platform.twitter.com/anywhere.js?id=HZQ6xPAoqLV9fx1jlzSnw&v=1" type="text/javascript"></script>

@@ -9,7 +9,8 @@ $(document).ready(function(){
 	$('#infochimps').submit(function(){
 		var sn  = $('#search_box').attr('value'); 
 		// $('#main ul.results').html("");
-		// kravitz.details.show(sn);
+		sn.replace("@", "");
+		kravitz.details.show(sn);
 		kravitz.hash.add("search/" + sn);
 		kravitz.utility.leftSearch();
 		return false;
@@ -57,11 +58,12 @@ var kravitz = {
 				kravitz.infochimps.sl_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
-				$('#results_loading').html(kravitz.default_text.linkedin_start);
+				$('#middle').show()
+				$('h3.friends').html(kravitz.default_text.friend_description());
 				var peeps = data.query.results.peeps;
 				// $('#results_sorted_note').html("what every");
 				$.template("slTmpl", friendResultTemplate);
-			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.results'));
+			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			}
 		},
 		sl_error : function() {
@@ -77,7 +79,6 @@ var kravitz = {
 		},
 		social_networks_callback : function(data) {
 			target = $('ul.social_icons');
-			console.info(data);
 			if(data.query.results == null || data.query.results.services == null){
 			
 			}
@@ -109,7 +110,7 @@ var kravitz = {
 				kravitz.twitter.profile_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
-				$('div.details_container h2').html(kravitz.default_text.qwerly_start);
+				$('h2.result').html(kravitz.default_text.initial_search(data.name));
 				target = $('#background div.bio');
 				var followers = $('h5.followers span');
 				var following = $('h5.following span');
@@ -135,7 +136,7 @@ var kravitz = {
 			kravitz.details.clear();
 			kravitz.twitter.profile(screen_name);
 			kravitz.infochimps.social_networks(screen_name);
-			// 			// kravitz.infochimps.trustrank(id);
+			kravitz.infochimps.strong_links(screen_name);
 			kravitz.klout.topics(screen_name);
 			kravitz.details.screen_name = screen_name;
 			// kravitz.details.tid = id;
@@ -218,18 +219,24 @@ var kravitz = {
 		},	
 		leftSearch : function() {
 			$('h1.headline').hide();
-			// $('#search_share').hide();
-			
-			// $('#results_loading').html(kravitz.default_text.initial_search).show();
-			$('#left').animate({marginTop:"0", marginLeft: "0", width:"460px"}, "fast");
-			$('#middle').show();
+			$('#title').animate({marginTop:"0", marginLeft: "0"}, "fast");
+			$('h2.result').show();
+			$('#results').show();
 		},
 	},
 	default_text : {
-		initial_search : "Mrs. Kravitz is walking towards her window....",
+		initial_search : function(name) {
+			return "This is what Mrs. Kravitz find out about " + name + ":"
+		},
 		twitter_404    : "You've stumped Mrs. Kravitz. She didn't know anything.",
 		qwerly_start   : "She's now seeing with whom he/she has the most Twitter interactions....",
-		linkedin_start : "She's finding out where these friends work now..."
+		linkedin_start : "She's finding out where these friends work now...",
+		friend_description : function() {
+			rand = Math.floor(Math.random()*2)
+			console.info(rand);
+			ary = ["n'er do wells", "suck-ups", "extremely good looking people"]
+			return "Interacts mostly with these " + ary[rand] + ":";
+		}
 	},
 	hash : {
 		add : function(params) {
@@ -240,9 +247,10 @@ var kravitz = {
 			ary = cleaned.split("/");
 			switch (ary[0]) {
 				case "search":
-					$('#search_box').val(unescape(ary[1]));
+					sn = unescape(ary[1]).replace("@", "");
+					$('#search_box').val(sn);
 					kravitz.utility.leftSearch();
-					kravitz.details.show(unescape(ary[1]));
+					kravitz.details.show(sn);
 					break;
 			};
 		}

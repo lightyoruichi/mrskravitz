@@ -5,6 +5,9 @@ em {display:block;font-style:normal;}
 img {border:none;}
 input[type=text] {padding:5px;font-size:22px;color:#ccc;}
 
+h2 {font-size:18px;margin:10px 0;color:#fff;}
+h3 {font-size:14px;}
+
 .grid_1 { width:60px; }
 .grid_2 { width:140px; }
 .grid_3 { width:220px; }
@@ -39,17 +42,12 @@ h1.person_search {position:relative;margin:0 2px 9px;font-size:16px;}
 #header ul.right_menu li {color:#bbb;display:inline;float:left;margin:0 5px;font-size:11px;}
 #header ul.right_menu li a {color:#efefef;text-decoration:none;font-size:15px;}
 
-#left {width:620px;}
-#left.va {margin-top:25%;margin-left:20%;}
-#middle {display:none;}
+#title {margin-top:25%;margin-left:20%;}
+#results {display:none;}
+#middle {padding-left:10px;display:none;}
 
-#main {position:absolute;width:480px;top:48%;left:50%;margin-left:-240px;}
 #infochimps input[type=text] {width:260px;margin-right:5px;}
 #infochimps input[type=submit] {}
-#main ul.results {height:auto;margin:15px 0 0 -15px;}
-#main ul.results li {float:left;margin:3px;width:75px;padding:0;height:75px;}
-#main ul.results div.photo {float:left;width:75px;height:75px;border:1px solid #aaa;padding:0;position:relative;}
-div.pointer-empty {position:absolute;top:-15px;left:45%;}
 
 #results_loading, #conversations_loading {width:450px;height:25px;margin-top:41px;display:none;font-size:15px;}
 #results_sorted_note {margin:31px 0 -17px 0;font-size:12px;display:none;}
@@ -101,15 +99,17 @@ h6 {width:100%;font-size:12px;float:left;margin:10px 0 5px 0;}
 #background div.description p {margin-top:3px;}
 
 #background ul.social_icons {height:35px;}
-#background ul.social_icons li {display:inline;float:left;margin:0 4px !important;width:auto !important;padding:0 !important;}
+#background ul.social_icons li {display:inline;float:left;margin:8px 4px !important;width:auto !important;padding:0 !important;}
 ul.social_icons li img {border:none;}
 ul.friends, ul.topics {height:auto;margin:0px 0 0 -6px;}
-ul.friends li, ul.topics li {float:left;margin:1px 0;width:90px;padding:0 6px;}
+ul.topics li {float:left;margin:1px 0;width:90px;padding:0 6px;}
+ul.friends li {float:left;margin:2px;padding:0;width:50px;}
 ul.friends li:hover {}
-ul.friends div.photo, ul.topics div.photo {float:left;width:87px !important;height:87px !important;border:1px solid #ccc;padding:2px;position:relative;}
+ul.topics div.photo {float:left;width:87px !important;height:87px !important;border:1px solid #ccc;padding:2px;position:relative;}
+ul.friends div.photo {width:50px !important;height:50px !important;}
 ul.friends div.photo img, ul.topics div.photo img {height:100%;width:100%;}
-ul.friends h2, ul.topics h2 {width:100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;line-height:12px !important;margin-top:0;}
-ul.friends div.description, ul.topics div.description {width:100% !important;min-height:40px !important;}
+ul.topics h2 {width:100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;line-height:12px !important;margin-top:0;}
+ul.topics div.description {width:100% !important;min-height:40px !important;}
 ul.topics div.description {min-height:20px !important;}
 ul.topics div.description h2 {margin:0;}
 #background ul.friends div.description h2 a:hover {text-decoration:underline !important;color:#000;}
