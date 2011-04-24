@@ -54,14 +54,15 @@ var kravitz = {
 		  kravitz.utility.query(kravitz.utility.yql, params, callbacks);
 		},
 		sl_callback : function(data) {
+			kravitz.details.qwerly_lookups();
 			if(data.query.results == null || data.query.results.peeps == null){
 				kravitz.infochimps.sl_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
-				$('#middle').show()
+				// $('#middle').show()
 				$('h3.friends').html(kravitz.default_text.friend_description());
+				$('#industry_note').html(kravitz.default_text.friend_jobs);
 				var peeps = data.query.results.peeps;
-				// $('#results_sorted_note').html("what every");
 				$.template("slTmpl", friendResultTemplate);
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			}
@@ -93,7 +94,7 @@ var kravitz = {
 			}
 		},
 		social_networks_error : function(target, data) {
-			
+
 		}
 	},
 	twitter : {
@@ -111,6 +112,9 @@ var kravitz = {
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
 				$('h2.result').html(kravitz.default_text.initial_search(data.name));
+				$('#middle').show();
+				$('h3.friends').html(kravitz.default_text.friend_waiting(data.name));
+				
 				target = $('#background div.bio');
 				var followers = $('h5.followers span');
 				var following = $('h5.following span');
@@ -121,8 +125,7 @@ var kravitz = {
 				$.template("twTmpl", twitterResultTemplate);
 			  $.tmpl("twTmpl", data).appendTo(target);
 				followers.html(data.followers_count);
-				following.html(data.friends_count);		
-				//kravitz.infochimps.strong_links(data.screen_name);
+				following.html(data.friends_count);	
 			}
 		},
 		profile_error : function() {
@@ -139,6 +142,7 @@ var kravitz = {
 			kravitz.infochimps.strong_links(screen_name);
 			kravitz.klout.topics(screen_name);
 			kravitz.details.screen_name = screen_name;
+			
 			// kravitz.details.tid = id;
 			return false;
 		},
@@ -152,6 +156,44 @@ var kravitz = {
 			target.html("");
 			$('h6').hide();			
 			$('#share iframe, #share blockquote').remove();
+		},
+		qwerly_lookups : function() {
+			valid = ["flickr", "lastfm"]
+			$('ul.social_icons li').each(function(){ 
+				var service = $(this).attr("data-service");
+				var name 		= $(this).attr("data-sn");
+				
+				if (valid.indexOf(service) > -1) {
+					switch (service) {
+						case "flickr":
+							kravitz.flickr.details(name);
+							break;
+						case "lastfm":
+							kravitz.lastfm.details(name);
+							break;
+					};
+				}
+			});
+		}
+	},
+	flickr : {
+		details : function(sn) {
+			console.info(sn)
+		}
+	},
+	lastfm : {
+		details : function(sn) {
+			params = {}  
+			params.q  = "SELECT * FROM xml WHERE url='http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&api_key=8357e388286af7ca84200d9c80f016eb&user="+ sn +"'";
+			callbacks.success = kravitz.lastfm.details_callback;
+			callbacks.errors = kravitz.lastfm.details_error;	
+			kravitz.utility.query(kravitz.utility.yql, params, callbacks);
+		},
+		details_callback : function() {
+			
+		},
+		details_error : function(target, data) {
+
 		}
 	},
 	klout : {
@@ -231,12 +273,15 @@ var kravitz = {
 		twitter_404    : "You've stumped Mrs. Kravitz. She didn't know anything.",
 		qwerly_start   : "She's now seeing with whom he/she has the most Twitter interactions....",
 		linkedin_start : "She's finding out where these friends work now...",
+		friend_waiting : function(name) {
+			return "Mrs. Kravitz is seeing who "+ name + " interacts with: <em>She thinks one can tell a lot about a person by the company they keep.</em>" + kravitz.utility.spinner;
+		},
 		friend_description : function() {
-			rand = Math.floor(Math.random()*2)
-			console.info(rand);
+			rand = Math.floor(Math.random()*3)
 			ary = ["n'er do wells", "suck-ups", "extremely good looking people"]
-			return "Interacts mostly with these " + ary[rand] + ":";
-		}
+			return "Interacts mostly with these " + ary[rand] + "...";
+		},
+		friend_jobs : "...who have fancy job titles like:"
 	},
 	hash : {
 		add : function(params) {
