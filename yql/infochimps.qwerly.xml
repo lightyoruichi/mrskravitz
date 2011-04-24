@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd" https="true">
+    <meta>
+        <author>Steve Odom</author>
+        <documentationURL></documentationURL>
+				<sampleQuery>select * from infochimps.qwerly where screen_name="steveodom" and apikey="kskdkd"</sampleQuery>
+    </meta>
+      <bindings>
+        <select itemPath="" produces="XML">
+          <inputs>
+						<key id="apikey" type="xs:string" paramType="query" required="true"/>
+						<key id="screen_name" type="xs:string" paramType="query" required="true"/>
+          </inputs>
+					<execute><![CDATA[
+				
+					function infochimps_query(q) {
+						var url = "http://api.infochimps.com/social/network/qwerly/qwerly_profiles/profile_search";
+						var req = y.rest(url)
+											 .accept('application/json')
+											 .query("apikey", apikey)
+											 .query("q", q)
+											 .get().response;
+					 return req
+					}
+					
+					q = "twitter.screen_name:" + screen_name;
+					data = infochimps_query(q);
+					
+					var obj = y.xmlToJson(data.results);
+					var services = obj.results;
+					var items = <services></services>;
+					var names = [];
+					var safe_names = ["foursquare", "github", "klout", "facebook", "twitter", "plancast", "flickr", "lastfm", "delicious", "youtube", "linkedin", "pandora", "tumblr", "myspace", "reddit"]
+				
+					// get the names.
+					for (var st in services) {
+						names.push(st);
+					}
+					
+
+					var i = 0;
+					for each (var s in services){
+						var name = names[i]
+						if (safe_names.indexOf(name) > -1) {
+							item = <service></service>;
+							item.@["service"] = names[i];
+							item.@["screen_name"] = s.screen_name;
+							item.@["url"] = s.url;
+							items.node += item;
+						}
+						i ++;
+					}
+		
+					response.object = items;
+				      ]]></execute>
+        </select>
+      </bindings>
+</table>
