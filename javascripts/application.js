@@ -66,6 +66,33 @@ var kravitz = {
 		},
 		sl_error : function() {
 			$('#results_loading').html(kravitz.default_text.twitter_404);
+		},
+		social_networks : function(screen_name) {
+			params    = kravitz.infochimps.params();
+			params.q  = "select * from infochimps.qwerly where screen_name='" + screen_name + "'";
+			callbacks = {};
+			callbacks.success = kravitz.infochimps.social_networks_callback;
+			callbacks.errors = kravitz.infochimps.social_networks_error;	
+			kravitz.utility.query(kravitz.utility.yql, params, callbacks);
+		},
+		social_networks_callback : function(data) {
+			target = $('ul.social_icons');
+			console.info(data);
+			if(data.query.results == null || data.query.results.services == null){
+			
+			}
+			else if(typeof(callbacks.success) != 'undefined'){
+				var qty = data.query.count;
+				if (qty == 0) {
+					kravitz.infochimps.social_networks_error(target, "empty");
+				} else {
+					$.template("qwerlyTmpl", qwerlyResultTemplate);
+				  $.tmpl("qwerlyTmpl", data.query.results.services.service).appendTo(target);
+				}
+			}
+		},
+		social_networks_error : function(target, data) {
+			
 		}
 	},
 	twitter : {
@@ -107,7 +134,7 @@ var kravitz = {
 		show : function(screen_name) {
 			kravitz.details.clear();
 			kravitz.twitter.profile(screen_name);
-			// kravitz.infochimps.social_networks(screen_name);
+			kravitz.infochimps.social_networks(screen_name);
 			// 			// kravitz.infochimps.trustrank(id);
 			kravitz.klout.topics(screen_name);
 			kravitz.details.screen_name = screen_name;
@@ -146,18 +173,19 @@ var kravitz = {
 			target = $('ul.topics');
 			target.parent().show();
 			if(data.query.results == null || data.query.results.items == null){	
-				// target.html("<li class='empty'>we got nothing</li>")
 				target.parent().hide();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
 				var qty = data.query.count;
 				if (qty == 0) {
-					kravitz.infochimps.empty_results(target, "empty");
+					kravitz.klout.topics_error(target, "empty");
 				} else {
+					yql = data.query.results.items;
+					$('#klout_score').html(yql.score);
 					target.html("");
 					target.siblings('h6').show();
 					$.template("topicsTmpl", topicsResultTemplate);
-				  $.tmpl("topicsTmpl", data.query.results.items.item).appendTo(target);
+				  $.tmpl("topicsTmpl", yql.item).appendTo(target);
 				}
 			}
 		},
