@@ -41,7 +41,7 @@
 							var req = y.rest(url);
 							var raw = req.accept('application/json').get().response;
 							var all = y.xmlToJson(raw);
-							y.log(all.json.users[0]);
+							y.log(all.json);
 							return 0
 							// return all.json.users[0].kscore;
 						}
