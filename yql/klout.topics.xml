@@ -41,9 +41,7 @@
 							var req = y.rest(url);
 							var raw = req.accept('application/json').get().response;
 							var all = y.xmlToJson(raw);
-							y.log(all.json.users.kscore);
-							return 0
-							// return all.json.users[0].kscore;
+							return all.json.users.kscore
 						}
 						
 						var url = "http://api.klout.com/1/users/topics.json?key="+ apikey + "&users=" + screen_name;
@@ -51,9 +49,8 @@
 						var req = y.query(q);
 						var topics = req.results.json.users.topics;
 						
-						var score = klout_score(screen_name);
-						y.log(score)
 					  var items = <items></items>;
+						items.@["score"] = klout_score(screen_name);
 						for each (var topic in topics){
 								item = <item></item>;
 								fb = search_facebook(topic);
