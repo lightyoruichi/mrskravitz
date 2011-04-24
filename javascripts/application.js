@@ -138,7 +138,7 @@ var kravitz = {
 		show : function(screen_name) {
 			kravitz.details.clear();
 			kravitz.twitter.profile(screen_name);
-			kravitz.infochimps.social_networks(screen_name);
+			// kravitz.infochimps.social_networks(screen_name);
 			kravitz.infochimps.strong_links(screen_name);
 			kravitz.klout.topics(screen_name);
 			kravitz.details.screen_name = screen_name;
@@ -178,21 +178,20 @@ var kravitz = {
 	},
 	flickr : {
 		details : function(sn) {
-			console.info(sn)
+			// console.info(sn)
 		}
 	},
 	lastfm : {
 		details : function(sn) {
 			params = {}
 			params.format   = "json";
-			params.q  = "SELECT topartists.artist FROM xml WHERE url='http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&api_key=8357e388286af7ca84200d9c80f016eb&user="+ sn +"'";
+			params.q  = "SELECT topartists.artist FROM xml WHERE url='http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&api_key=8357e388286af7ca84200d9c80f016eb&user="+ sn +"' LIMIT 3";
 			callbacks.success = kravitz.lastfm.details_callback;
 			callbacks.errors = kravitz.lastfm.details_error;	
 			kravitz.utility.query(kravitz.utility.yql, params, callbacks);
 		},
 		details_callback : function(data) {
-			console.info(data);
-			if(data.query.results == null || data.query.results.services == null){
+			if(data.query.results == null || data.query.results.lfm == null){
 				return false;
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
@@ -201,11 +200,10 @@ var kravitz = {
 					kravitz.infochimps.social_networks_error(target, "empty");
 				} else {
 					$('div.details_container').append("<div id='lastfm_content'></div>");
-					var target = $('#lastfm_content');
-					target.append("<h6>Listens to:</h6")
+					$('#lastfm_content').append("<h6>Listens to:</h6><ul class='bands'></ul>");
+					var target = $('ul.bands');
 					
 					var artists = data.query.results.lfm;
-					
 					$.template("lastfmTmpl", lastfmResultTemplate);
 				  $.tmpl("lastfmTmpl", artists).appendTo(target);
 				}
@@ -287,7 +285,7 @@ var kravitz = {
 	},
 	default_text : {
 		initial_search : function(name) {
-			return "This is what Mrs. Kravitz find out about " + name + ":"
+			return "This is what Mrs. Kravitz found out about " + name + ":"
 		},
 		twitter_404    : "You've stumped Mrs. Kravitz. She didn't know anything.",
 		qwerly_start   : "She's now seeing with whom he/she has the most Twitter interactions....",
@@ -297,7 +295,7 @@ var kravitz = {
 		},
 		friend_description : function() {
 			rand = Math.floor(Math.random()*3)
-			ary = ["n'er do wells", "suck-ups", "extremely good looking people"]
+			ary = ["n'er do wells", "malcontents", "extremely good looking people"]
 			return "Interacts mostly with these " + ary[rand] + "...";
 		},
 		friend_jobs : "...who have fancy job titles like:"
