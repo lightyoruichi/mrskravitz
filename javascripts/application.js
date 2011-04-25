@@ -130,7 +130,7 @@ var kravitz = {
 
 			IN.API.PeopleSearch()
 					.fields("id","first-name","last-name","industry","positions:(title)")
-			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
+			    .params({"first-name": name[0], "last-name": name[1], "count": 1})
 			    .result(function(result) { 
 			        // $("#search").html(JSON.stringify(result));
 			console.info("what")
