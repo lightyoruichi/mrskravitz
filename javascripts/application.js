@@ -102,7 +102,7 @@ var kravitz = {
 	li : {
 		locations : {},
 		industries : {},
-		job_titles : {},
+		jobs : {},
 		loggedin : function() {
 			$('#salary_chart_login').hide();
 			// kravitz.li.friends();
@@ -125,18 +125,29 @@ var kravitz = {
 			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
 			    .result(function(result) { 
 			        // $("#search").html(JSON.stringify(result));
-							var person = result.people.values[0];
-							kravitz.li.process(person);
+							if (result.people != null) {
+								var person = result.people.values[0];
+								kravitz.li.process(person);
+							}
 			    });
 		},
 		process : function(person) {
-			// var location = person.
-			// if (hsh["maybe"]) {
-			// 				document.write('true');
-			// 			} else {
-			// 				document.write('false');
-			// 			}
-				console.info(person);
+			var industries = kravitz.li.industries; 
+			if (industries[person.industry]) {
+				industries[person.industry] ++;
+			} else {
+				industries[person.industry] = 1;
+			}
+			console.info(industries);
+			
+			var jobs = kravitz.li.jobs; 
+			var job = person.positions.values[0].title;
+			if (jobs[job]) {
+				jobs[job] ++;
+			} else {
+				jobs[job] = 1;
+			}
+			console.info(jobs);
 		}
 	},
 	twitter : {
