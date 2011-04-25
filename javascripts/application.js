@@ -156,6 +156,7 @@ var kravitz = {
 		},
 		renderer : function() {
 			var target = $('#industry_chart');
+			target.show();
 			$.each(kravitz.li.industries, function(k, v) {
 				target.append("<li>" + k + " (" + v + ")" +"</li>");
 			});
