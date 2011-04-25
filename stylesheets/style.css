@@ -6,6 +6,7 @@ img {border:none;}
 input[type=text] {padding:5px;font-size:22px;color:#ccc;}
 
 h2 {font-size:18px;margin:10px 0;color:#fff;}
+h2 em {font-size:14px;color:#ddd;}
 h3 {font-size:14px;margin-bottom:10px;float:left;}
 h3 em {font-size:11px; color:#ddd;}
 
