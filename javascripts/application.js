@@ -70,7 +70,7 @@ var kravitz = {
 			}
 		},
 		sl_error : function() {
-			$('h3.friends').html("There was an error retrieving results from Infochimps.");
+			$('h3.friends').html("Rats, there was an error retrieving results from Infochimps.<em>Please try again</em>");
 		},
 		social_networks : function(screen_name) {
 			params    = kravitz.infochimps.params();
@@ -105,6 +105,7 @@ var kravitz = {
 		jobs : {},
 		total : 0,
 		processed_total : 0,
+		error_total : 0,
 		loggedin : function() {
 			$('#salary_chart_login').hide();
 			// kravitz.li.friends();
@@ -142,7 +143,13 @@ var kravitz = {
 					.error(kravitz.li.query_error);
 		},
 		query_error : function(error) {
-			console.log(error);
+			kravitz.li.error_total ++;
+			if (kravitz.li.error_total == 1) {
+				var target = $('#industry_chart');
+				target.show();
+				target.append("<li class='error'>"+ error.message + "</li>")
+			}
+			return false;
 		},
 		process : function(person) {
 			console.info("process")
