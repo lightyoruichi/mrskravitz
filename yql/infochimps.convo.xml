@@ -57,7 +57,7 @@
 							item.@["location"] = tw.location;
 							
 							pl = place_query(tw.location);
-							item.@["postal"] = pl.postal;
+							item.@["postal"] = pl.uzip;
 							item.@["countrycode"] = pl.countrycode;
 							items.node += item;
 					}
