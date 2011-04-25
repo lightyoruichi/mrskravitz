@@ -116,8 +116,9 @@ var kravitz = {
 					$(this).each(function(){ 
 						kravitz.li.query($(this)); 
 						console.info("length: " + length + " vs " + i);
-						if (i == $(this).length) { kravitz.li.renderer(); }
+						if (i == length) { kravitz.li.renderer(); }
 						i ++;
+						console.info(i);
 					});
 				});
 			} else {
