@@ -110,7 +110,10 @@ var kravitz = {
 		processed_total : 0,
 		error_total : 0,
 		loggedin : function() {
-			$('#salary_chart_login').hide();
+			alert("loggedin")
+			$('#salary_chart_login').livequery(function() {
+				$(this).hide();
+			});
 			// kravitz.li.friends();
 		},
 		friends : function() {
@@ -130,8 +133,6 @@ var kravitz = {
 			var name = li.attr("data-name").split(" ");
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
-			kravitz.li.processed_total ++;
-
 			IN.API.PeopleSearch()
 					.fields("id","first-name","last-name","industry","positions:(title)")
 			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
@@ -159,6 +160,7 @@ var kravitz = {
 			return false;
 		},
 		process : function(person) {
+			kravitz.li.processed_total ++;
 			var industries = kravitz.li.industries; 
 			if (industries[person.industry]) {
 				industries[person.industry] ++;
