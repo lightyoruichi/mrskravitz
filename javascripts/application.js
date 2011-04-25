@@ -100,9 +100,9 @@ var kravitz = {
 		}
 	},
 	li : {
-		locations = {},
-		industries = {},
-		job_titles = {},
+		locations : {},
+		industries : {},
+		job_titles : {},
 		loggedin : function() {
 			$('#salary_chart_login').hide();
 			// kravitz.li.friends();
@@ -130,12 +130,12 @@ var kravitz = {
 			    });
 		},
 		process : function(person) {
-			var location = person.
-			if (hsh["maybe"]) {
-				document.write('true');
-			} else {
-				document.write('false');
-			}
+			// var location = person.
+			// if (hsh["maybe"]) {
+			// 				document.write('true');
+			// 			} else {
+			// 				document.write('false');
+			// 			}
 				console.info(person);
 		}
 	},
