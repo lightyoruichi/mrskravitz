@@ -107,21 +107,24 @@ var kravitz = {
 		friends : function() {
 			if (IN.User.isAuthorized()) {
 																alert("authorized")
-				$('ul.friends li').each(function(){
-					var name = $(this).attr("data-name").split(" ");
-					var location = $(this).attr("data-location");
-
-					IN.API.PeopleSearch()
-							.fields("id","first-name","last-name","industry","positions:(title)")
-					    .params({"first-name": name[0], "last-name": name[1], "count": 1, "location": location})
-					    .result(function(result) { 
-					        // $("#search").html(JSON.stringify(result));
-									// console.info(result)
-					    })
+				$('ul.friends li').livequery(function(){
+					$(this).each(function(){ kravitz.li.query($(this)); });
 				});
 			} else {
 				$('#salary_chart_login').show();
 			}
+		},
+		query : function(li) {
+			var name = li.attr("data-name").split(" ");
+			var location = li.attr("data-location");
+alert(name);
+			IN.API.PeopleSearch()
+					.fields("id","first-name","last-name","industry","positions:(title)")
+			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "location": location})
+			    .result(function(result) { 
+			        // $("#search").html(JSON.stringify(result));
+							console.info(result)
+			    });
 		}
 	},
 	twitter : {
