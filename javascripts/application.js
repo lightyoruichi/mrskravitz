@@ -101,13 +101,22 @@ var kravitz = {
 	},
 	li : {
 		loggedin : function() {
-			$('#salary_chart_login').addClass("loggedin").hide();
+			$('#salary_chart_login').hide();
 			kravitz.li.friends();
 		},
 		friends : function() {
-			if ($('#salary_chart_login').hasClass("loggedin")) {
-				//do some logged in stuff.
-				alert("logged in")
+			if (IN.User.isAuthorized()) {
+				$('#ul.friends li').each(function(){
+					var name = $(this).attr("data-name").split(" ");
+					var location = $(this).attr("data-location");
+					IN.API.PeopleSearch()
+							.fields("id","first-name","last-name","industry","positions:(title)")
+					    .params({"first-name": name[0], "last-name": name[1], "count": 1, "location": location})
+					    .result(function(result) { 
+					        // $("#search").html(JSON.stringify(result));
+									console.info(result)
+					    })
+				});
 			} else {
 				$('#salary_chart_login').show();
 			}
