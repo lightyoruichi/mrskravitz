@@ -168,7 +168,7 @@ var kravitz = {
 				ind_li.attr("data-cnt", ind_cnt);
 				ind_li.html(ind-name + " (" + ind_cnt + ")");
 			} else {
-				ind_li.append("<li class='tag_1' id='"+ ind_li + " data-cnt='1'>" + ind_name + " (1)</li>");
+				$('#industry_chart').append("<li class='tag_1' id='"+ ind_li + " data-cnt='1'>" + ind_name + " (1)</li>");
 			}
 			// kravitz.li.processed_total ++;
 			// 			
