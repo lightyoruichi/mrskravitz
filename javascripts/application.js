@@ -141,7 +141,7 @@ var kravitz = {
 			    })
 					.error(kravitz.li.query_error);
 		},
-		query_error : function(errors) {
+		query_error : function(error) {
 			console.log(error);
 		},
 		process : function(person) {
