@@ -35,6 +35,12 @@
 											.get().response;
 						return tw;
 					};
+					
+					function place_query(location) {
+						var q = "select * from geo.placefinder where text=" + location
+						var req = y.query(q)
+						return req.results.Result;
+					}
 				
 					data = strong_links_query(sn);
 					var obj = y.xmlToJson(data);
@@ -48,6 +54,10 @@
 							item.@["name"] = tw.name;
 							item.@["sn"] = tw.screen_name;
 							item.@["location"] = tw.location;
+							
+							pl = place_query(tw.location);
+							item.@["postal"] = pl.postal;
+							item.@["countrycode"] = pl.countrycode;
 							items.node += item;
 					}
 		
