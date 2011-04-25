@@ -139,7 +139,7 @@ var kravitz = {
 								kravitz.li.process(person);
 							}
 			    })
-					.error(kravitz.linkedin.query_error);
+					.error(kravitz.li.query_error);
 		},
 		query_error : function(errors) {
 			console.log(error);
