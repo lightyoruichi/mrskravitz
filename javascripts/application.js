@@ -110,7 +110,6 @@ var kravitz = {
 		processed_total : 0,
 		error_total : 0,
 		loggedin : function() {
-			alert("loggedin")
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
 			});
@@ -119,8 +118,6 @@ var kravitz = {
 		friends : function() {
 			if (IN.User.isAuthorized()) {
 				$('ul.friends li').livequery(function(){
-					
-					kravitz.li.total = $(this).parent().children().length;
 					$(this).each(function(){ 
 						kravitz.li.query($(this));
 					});
@@ -139,7 +136,7 @@ var kravitz = {
 			    .result(function(result) { 
 			        // $("#search").html(JSON.stringify(result));
 							if (result.people.values != null) {
-											
+								kravitz.li.total ++;
 								var person = result.people.values[0];
 								kravitz.li.process(person);
 							}
@@ -161,6 +158,7 @@ var kravitz = {
 		},
 		process : function(person) {
 			kravitz.li.processed_total ++;
+			
 			var industries = kravitz.li.industries; 
 			if (industries[person.industry]) {
 				industries[person.industry] ++;
