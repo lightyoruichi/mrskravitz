@@ -113,6 +113,7 @@ var kravitz = {
 				var i = 0;
 				target.livequery(function(){
 					$(this).each(function(){ 
+												console.info("what")
 						kravitz.li.query($(this)); 
 						// if (i == target.length) { kravitz.li.renderer(); }
 						i ++;
@@ -125,7 +126,6 @@ var kravitz = {
 		query : function(li) {
 			var name = li.attr("data-name").split(" ");
 			var postal = li.attr("data-postal");
-						console.info(postal)
 			var country = li.attr("data-country").toLowerCase();
 			IN.API.PeopleSearch()
 					.fields("id","first-name","last-name","industry","positions:(title)")
