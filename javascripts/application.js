@@ -315,8 +315,9 @@ var kravitz = {
 		topics_callback : function(data) {
 			target = $('ul.topics');
 			target.parent().show();
-			if(data.query.results == null || data.query.results.items == null){	
-				target.parent().hide();
+			if(data == null || data.query.results == null || data.query.results.items == null){	
+				// target.parent().hide();
+				kravitz.klout.topics_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
 				var qty = data.query.count;
@@ -333,7 +334,7 @@ var kravitz = {
 			}
 		},
 		topics_error : function() {
-				
+			$('ul.topics').html("<li>There was an error getting results from Klout.</li>")
 		}
 	},
 	utility : {

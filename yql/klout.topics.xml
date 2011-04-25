@@ -41,7 +41,7 @@
 							var req = y.rest(url);
 							var raw = req.accept('application/json').get().response;
 							var all = y.xmlToJson(raw);
-							return all.json.users.kscore
+							return parseInt(all.json.users.kscore);
 						}
 						
 						var url = "http://api.klout.com/1/users/topics.json?key="+ apikey + "&users=" + screen_name;
