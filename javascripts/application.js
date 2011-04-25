@@ -112,6 +112,7 @@ var kravitz = {
 				var target = $('ul.friends').children();
 																									console.info("what")
 				var i = 0;
+																									console.info("now what")
 				target.livequery(function(){
 					$(this).each(function(){ 
 						kravitz.li.query($(this)); 
