@@ -196,6 +196,7 @@ var kravitz = {
 				kravitz.twitter.profile_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
+				$('#results').show();
 				$('h2.result').html(kravitz.default_text.initial_search(data.name)).attr("data-name", data.name);
 				
 				target = $('#background div.bio');
