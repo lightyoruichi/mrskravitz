@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	// plumly.sammy.early($);
+	
 	//render partials
 	$.template("headerTmpl", headerResultTemplate);
   $.tmpl("headerTmpl", "").appendTo($('#header'));
@@ -46,6 +46,8 @@ var kravitz = {
 			return params;
 		},
 		strong_links : function(sn) {
+			$('#middle').show();
+			$('h3.friends').html(kravitz.default_text.friend_waiting(data.name));
 			params    = kravitz.infochimps.params();
 			params.q  = "select * from infochimps.convo where sn='" + sn + "'";
 			callbacks = {};
@@ -195,8 +197,6 @@ var kravitz = {
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
 				$('h2.result').html(kravitz.default_text.initial_search(data.name));
-				$('#middle').show();
-				$('h3.friends').html(kravitz.default_text.friend_waiting(data.name));
 				
 				target = $('#background div.bio');
 				var followers = $('h5.followers span');
@@ -212,7 +212,7 @@ var kravitz = {
 			}
 		},
 		profile_error : function() {
-			$('#results_loading').html(kravitz.default_text.twitter_404);
+			$('h2.result').addClass("twitter-error").html("Fail whale. Mrs. Kravitz had trouble getting that result from Twitter.<em>If the screen name is a good one, then it's likely a Fail Whale situation.</em>");
 		}
 	},
 	details : {
@@ -231,13 +231,19 @@ var kravitz = {
 		},
 		clear : function() {
 			//clear old things
-			topics = $('ul.topics');
-			topics.html('');
+			$('#results').hide();
+			
+			topics = ('#topics').hide();
+			topics.children('ul.topics').html('');
 			friends = $('ul.friends');
 			friends.html('');
 			target = $('ul.social_icons');
 			target.html("");
-			$('h6').hide();			
+			// $('h6').hide();
+			
+			$('h5.klout').html("0");
+			$('h5.followers').html("0");
+			$('h5.following').html("0");			
 			$('#share iframe, #share blockquote').remove();
 		},
 		qwerly_lookups : function() {
