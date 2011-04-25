@@ -183,8 +183,8 @@ var kravitz = {
 			});
 		},
 		logout : function() {
-			console.info("logged out")
-			return false;
+			IN.User.logout();
+			console.info("logged out");
 		}
 	},
 	twitter : {
