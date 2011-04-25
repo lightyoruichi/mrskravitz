@@ -106,7 +106,7 @@ var kravitz = {
 		},
 		friends : function() {
 			if (IN.User.isAuthorized()) {
-				$('#ul.friends li').each(function(){
+				$('ul.friends li').each(function(){
 					var name = $(this).attr("data-name").split(" ");
 					var location = $(this).attr("data-location");
 					IN.API.PeopleSearch()
@@ -114,7 +114,7 @@ var kravitz = {
 					    .params({"first-name": name[0], "last-name": name[1], "count": 1, "location": location})
 					    .result(function(result) { 
 					        // $("#search").html(JSON.stringify(result));
-									console.info(result)
+									// console.info(result)
 					    })
 				});
 			} else {
