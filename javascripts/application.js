@@ -126,7 +126,7 @@ var kravitz = {
 			var name = li.attr("data-name").split(" ");
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
-			kravitz.li.processd_total ++;
+			kravitz.li.processed_total ++;
 			IN.API.PeopleSearch()
 					.fields("id","first-name","last-name","industry","positions:(title)")
 			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
@@ -152,7 +152,7 @@ var kravitz = {
 			} else {
 				jobs[job] = 1;
 			}
-			console.info("total: " + kravitz.li.total + " vs " + kravitz.li.processed_total)
+			console.info("total: " + kravitz.li.total + " vs " + kravitz.li.processed_total);
 			if (kravitz.li.total == kravitz.li.processed_total) {kravitz.li.renderer()}
 		},
 		renderer : function() {
