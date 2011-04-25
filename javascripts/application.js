@@ -109,12 +109,12 @@ var kravitz = {
 		},
 		friends : function() {
 			if (IN.User.isAuthorized()) {
-				var target = $('ul.friends').children();
-				var i = 0;
 				$('ul.friends li').livequery(function(){
+					
+					var i = 0;
 					$(this).each(function(){ 
 						kravitz.li.query($(this)); 
-						// if (i == target.length) { kravitz.li.renderer(); }
+						if (i == $(this).length) { kravitz.li.renderer(); }
 						i ++;
 					});
 				});
@@ -131,13 +131,11 @@ var kravitz = {
 			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
 			    .result(function(result) { 
 			        // $("#search").html(JSON.stringify(result));
-			console.info(result.people.values)
 							if (result.people.values != null) {
 								var person = result.people.values[0];
 								kravitz.li.process(person);
 							}
 			    });
-			kravitz.li.renderer();
 		},
 		process : function(person) {
 			var industries = kravitz.li.industries; 
