@@ -111,9 +111,8 @@ var kravitz = {
 			if (IN.User.isAuthorized()) {
 				$('ul.friends li').livequery(function(){
 					
-					var i = 0;
 					var length = $(this).parent().children().length;
-					$(this).each(function(){ 
+					$(this).each(function(i, v){ 
 						kravitz.li.query($(this)); 
 						console.info("length: " + length + " vs " + i);
 						if (i == length) { kravitz.li.renderer(); }
