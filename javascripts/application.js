@@ -110,7 +110,7 @@ var kravitz = {
 		friends : function() {
 			if (IN.User.isAuthorized()) {
 				var target = $('ul.friends').children();
-				i = 0;
+				var i = 0;
 				target.livequery(function(){
 					$(this).each(function(){ 
 						kravitz.li.query($(this)); 
