@@ -85,7 +85,7 @@ var kravitz = {
 		},
 		social_networks_callback : function(data) {
 			target = $('ul.social_icons');
-			if(data.query.results == null || data.query.results.services == null){
+			if(data.query == null || data.query.results == null || data.query.results.services == null){
 				kravitz.infochimps.social_networks_error(target, "empty");
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
@@ -341,7 +341,7 @@ var kravitz = {
 			}
 		},
 		topics_error : function() {
-			$('ul.topics').html("<li>There was an error getting results from Klout.</li>")
+			$('ul.topics').html("<li style='width:100%;'>There was an error getting results from Klout.</li>")
 		}
 	},
 	utility : {
@@ -358,8 +358,7 @@ var kravitz = {
 							 data: params
 			      });
 			// hack for jquery not handling jsonp errors well.
-			console.info(req.statusText)
-			if (req.status == 200) {
+			if (req.success) {
 				req.success(function(data, textStatus){
 					return callbacks.success(data, callbacks.user_data);
 				});
@@ -388,11 +387,11 @@ var kravitz = {
 		qwerly_start   : "She's now seeing with whom he/she has the most Twitter interactions....",
 		linkedin_start : "She's finding out where these friends work now...",
 		friend_waiting : function() {
+			
 			$('#results').livequery(function(){
 				var name = $(this).attr("data-name");
-				// alert(name);
 			});
-			return "Mrs. Kravitz is seeing who "+ name + " interacts with: <em>She thinks one can tell a lot about a person by the company they keep.</em>" + kravitz.utility.spinner;
+			return "Mrs. Kravitz is looking at friends now.<em>She thinks one can tell a lot about a person by the company they keep.</em>" + kravitz.utility.spinner;
 		},
 		friend_description : function() {
 			rand = Math.floor(Math.random()*4)
