@@ -242,9 +242,9 @@ var kravitz = {
 			target.html("");
 			// $('h6').hide();
 			
-			$('h5.klout').html("0");
-			$('h5.followers').html("0");
-			$('h5.following').html("0");			
+			// $('h5.klout').html("0");
+			// $('h5.followers').html("0");
+			// $('h5.following').html("0");			
 			$('#share iframe, #share blockquote').remove();
 		},
 		qwerly_lookups : function() {
