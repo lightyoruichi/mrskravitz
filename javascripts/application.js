@@ -109,12 +109,15 @@ var kravitz = {
 	},
 	li : {
 		error_total : 0,
+		welcome : function() {
+			console.info("logged in via welcome")
+		},
 		loggedin : function() {
-			alert("what");
+			console.info("logged in via loggedin")
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
 			});
-			kravitz.li.friends();
+			// kravitz.li.friends();
 		},
 		friends : function() {
 			  $('ul.friends').removeClass("no-li");
