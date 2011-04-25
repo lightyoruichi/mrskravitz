@@ -109,9 +109,9 @@ var kravitz = {
 		},
 		friends : function() {
 			if (IN.User.isAuthorized()) {
-				alert($('ul.friends').children());
+				alert($('ul.friends').children().length);
 				var target = $('ul.friends').children();
-				// alert(target.attr("class"))
+				alert(target.attr("class"))
 				var i = 0;
 				target.livequery(function(){
 					$(this).each(function(){ 
