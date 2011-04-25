@@ -84,14 +84,14 @@ div.pointer-trustquotient {position:absolute;top:9px;left:-13px;}
 div.pointer-left-small-inner { border-color:transparent #bbb transparent transparent; border-style:solid; border-width:10px 20px 10px 0; height:0; width:0;}
 div.pointer-up-inner   { border-color:transparent transparent #E4E3C3; border-style:solid; border-width:0 15px 15px; float:left; height:0; margin:0; width:0; }
 
-div.box {width:100%;float:left;margin-bottom:18px;padding:0;}
+div.box {width:100%;float:left;margin-bottom:0;padding:0;}
 h4 {font-size:16px;font-weight:bold;margin:0 0 5px 0;color:#333;}
 h5 {width:auto;float:left;margin:18px 10px 4px 10px;}
 h5 span.number {font-size:25px;font-weight:bold;color:#999;}
 h5 em {font-size:12px;}
 h6 {width:100%;font-size:12px;float:left;margin:10px 0 5px 0;}
 
-#background {position:relative;}
+#background {position:relative;margin-bottom:18px;}
 #background div.photo {float:left;width:75px;height:75px;padding:2px;border:1px solid #aaa;}
 #background div.photo img {height:100%;width:100%;}
 #background div.description {margin:-5px 0 0 5px; width:315px;min-height:80px;}
