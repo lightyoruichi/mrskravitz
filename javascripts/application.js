@@ -105,7 +105,7 @@ var kravitz = {
 			kravitz.li.friends();
 		},
 		friends : function() {
-												alert("autho")
+												alert(IN.User.isAuthorized())
 			if (IN.User.isAuthorized()) {
 				$('ul.friends li').each(function(){
 					var name = $(this).attr("data-name").split(" ");
