@@ -109,10 +109,16 @@ var kravitz = {
 		},
 		friends : function() {
 			if (IN.User.isAuthorized()) {
-				var target = $('ul.friends');
-				alert(target.siblings().length);
-				$('ul.friends li').livequery(function(){
-					$(this).each(function(){ kravitz.li.query($(this)); });
+				var target = $('ul.friends').children();
+				i = 0;
+				target.livequery(function(){
+					$(this).each(function(){ 
+						kravitz.li.query($(this)); 
+						if (i == target.length) {
+							kravitz.li.renderer();
+						}
+						i ++;
+					});
 				});
 			} else {
 				$('#salary_chart_login').show();
@@ -147,6 +153,12 @@ var kravitz = {
 			} else {
 				jobs[job] = 1;
 			}
+		},
+		renderer : function() {
+			var target = $('#industry_chart');
+			$.each(kravitz.li.industries, function(k, v) {
+				target.append("<li>" + k + " (" + v + ")" +"</li>");
+			});
 		}
 	},
 	twitter : {
