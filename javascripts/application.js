@@ -102,7 +102,7 @@ var kravitz = {
 	li : {
 		loggedin : function() {
 			$('#salary_chart_login').hide();
-			kravitz.li.friends();
+			// kravitz.li.friends();
 		},
 		friends : function() {
 			if (IN.User.isAuthorized()) {
@@ -116,14 +116,17 @@ var kravitz = {
 		query : function(li) {
 			var name = li.attr("data-name").split(" ");
 			var location = li.attr("data-location");
-alert(name);
 			IN.API.PeopleSearch()
 					.fields("id","first-name","last-name","industry","positions:(title)")
 			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "location": location})
 			    .result(function(result) { 
 			        // $("#search").html(JSON.stringify(result));
-							console.info(result)
+							var person = result.people.values[0];
+							kravitz.li.process(person);
 			    });
+		},
+		process : function(person) {
+				console.info(person);
 		}
 	},
 	twitter : {
