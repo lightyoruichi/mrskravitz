@@ -127,13 +127,14 @@ var kravitz = {
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
 			kravitz.li.processed_total ++;
-			console.info(kravitz.li.processed_total)
+
 			IN.API.PeopleSearch()
 					.fields("id","first-name","last-name","industry","positions:(title)")
 			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
 			    .result(function(result) { 
 			        // $("#search").html(JSON.stringify(result));
 							if (result.people.values != null) {
+											console.info("processing: " + kravitz.li.processed_total)
 								var person = result.people.values[0];
 								kravitz.li.process(person);
 							}
