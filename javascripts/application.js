@@ -47,7 +47,7 @@ var kravitz = {
 		},
 		strong_links : function(sn) {
 			$('#middle').show();
-			$('h3.friends').html(kravitz.default_text.friend_waiting(data.name));
+			$('h3.friends').html(kravitz.default_text.friend_waiting());
 			params    = kravitz.infochimps.params();
 			params.q  = "select * from infochimps.convo where sn='" + sn + "'";
 			callbacks = {};
@@ -196,7 +196,7 @@ var kravitz = {
 				kravitz.twitter.profile_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
-				$('h2.result').html(kravitz.default_text.initial_search(data.name));
+				$('h2.result').html(kravitz.default_text.initial_search(data.name)).attr("data-name", data.name);
 				
 				target = $('#background div.bio');
 				var followers = $('h5.followers span');
@@ -380,7 +380,8 @@ var kravitz = {
 		twitter_404    : "You've stumped Mrs. Kravitz. She didn't know anything.",
 		qwerly_start   : "She's now seeing with whom he/she has the most Twitter interactions....",
 		linkedin_start : "She's finding out where these friends work now...",
-		friend_waiting : function(name) {
+		friend_waiting : function() {
+			var name = $('h2.result').attr("data-name");
 			return "Mrs. Kravitz is seeing who "+ name + " interacts with: <em>She thinks one can tell a lot about a person by the company they keep.</em>" + kravitz.utility.spinner;
 		},
 		friend_description : function() {
