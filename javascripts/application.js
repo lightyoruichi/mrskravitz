@@ -106,7 +106,6 @@ var kravitz = {
 		},
 		friends : function() {
 			if (IN.User.isAuthorized()) {
-																alert("authorized")
 				$('ul.friends li').livequery(function(){
 					$(this).each(function(){ kravitz.li.query($(this)); });
 				});
