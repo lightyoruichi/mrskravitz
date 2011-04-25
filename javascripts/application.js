@@ -103,6 +103,8 @@ var kravitz = {
 		locations : {},
 		industries : {},
 		jobs : {},
+		total : 0,
+		processed_total : 0,
 		loggedin : function() {
 			$('#salary_chart_login').hide();
 			// kravitz.li.friends();
@@ -111,12 +113,9 @@ var kravitz = {
 			if (IN.User.isAuthorized()) {
 				$('ul.friends li').livequery(function(){
 					
-					var length = $(this).parent().children().length;
-					$(this).each(function(i, v){ 
-						kravitz.li.query($(this)); 
-						console.info("length: " + length + " vs " + i);
-						if (i == length) { kravitz.li.renderer(); }
-						console.info(i);
+					kravitz.li.total = $(this).parent().children().length;
+					$(this).each(function(){ 
+						kravitz.li.query($(this));
 					});
 				});
 			} else {
@@ -127,6 +126,7 @@ var kravitz = {
 			var name = li.attr("data-name").split(" ");
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
+			kravitz.li.processd_total ++;
 			IN.API.PeopleSearch()
 					.fields("id","first-name","last-name","industry","positions:(title)")
 			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
@@ -152,6 +152,8 @@ var kravitz = {
 			} else {
 				jobs[job] = 1;
 			}
+			console.info("total: " + kravitz.li.total + " vs " + kravitz.li.processed_total)
+			if (kravitz.li.total == kravitz.li.processed_total) {kravitz.li.renderer()}
 		},
 		renderer : function() {
 			var target = $('#industry_chart');
