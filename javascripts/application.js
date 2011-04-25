@@ -136,7 +136,7 @@ var kravitz = {
 			    .result(function(result) { 
 			        // $("#search").html(JSON.stringify(result));
 							if (result.people.values != null) {
-								kravitz.li.total ++;
+								// kravitz.li.total ++;
 								var person = result.people.values[0];
 								kravitz.li.process(person);
 							}
@@ -157,23 +157,36 @@ var kravitz = {
 			return false;
 		},
 		process : function(person) {
-			kravitz.li.processed_total ++;
-			
-			var industries = kravitz.li.industries; 
-			if (industries[person.industry]) {
-				industries[person.industry] ++;
+			var ind_name = person.industry;
+			var ind_id = person.industry.split(" ").join("-");
+			var ind_li = $('#' + ind_id);
+			if (ind_li.length) {
+				var ind_cnt = ind_li.attr("data-cnt");
+				ind_li.removeClass("tag_" + ind_cnt);
+				ind_cnt ++;
+				ind_li.addClass("tag_" + ind_cnt);
+				ind_li.attr("data-cnt", ind_cnt);
+				ind_li.html(ind-name + " (" + ind_cnt + ")");
 			} else {
-				industries[person.industry] = 1;
-			}		
-			var jobs = kravitz.li.jobs; 
-			var job = person.positions.values[0].title;
-			if (jobs[job]) {
-				jobs[job] ++;
-			} else {
-				jobs[job] = 1;
+				ind_li.append("<li class='tag_1' id='"+ ind_li + " data-cnt='1'>" + ind_name + " (1)</li>");
 			}
-			console.info("total: " + kravitz.li.total + " vs " + kravitz.li.processed_total);
-			if (kravitz.li.total == kravitz.li.processed_total) {kravitz.li.renderer()}
+			// kravitz.li.processed_total ++;
+			// 			
+			// 			var industries = kravitz.li.industries; 
+			// 			if (industries[person.industry]) {
+			// 				industries[person.industry] ++;
+			// 			} else {
+			// 				industries[person.industry] = 1;
+			// 			}		
+			// 			var jobs = kravitz.li.jobs; 
+			// 			var job = person.positions.values[0].title;
+			// 			if (jobs[job]) {
+			// 				jobs[job] ++;
+			// 			} else {
+			// 				jobs[job] = 1;
+			// 			}
+			// 			console.info("total: " + kravitz.li.total + " vs " + kravitz.li.processed_total);
+			// 			if (kravitz.li.total == kravitz.li.processed_total) {kravitz.li.renderer()}
 		},
 		renderer : function() {
 			var target = $('#industry_chart');
