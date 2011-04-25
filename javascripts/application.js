@@ -48,6 +48,7 @@ var kravitz = {
 		strong_links : function(sn) {
 			$('#middle').show();
 			$('h3.friends').html(kravitz.default_text.friend_waiting());
+			
 			params    = kravitz.infochimps.params();
 			params.q  = "select * from infochimps.convo where sn='" + sn + "'";
 			callbacks = {};
@@ -196,9 +197,10 @@ var kravitz = {
 				kravitz.twitter.profile_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
-				$('#results').show();
-				$('h2.result').html(kravitz.default_text.initial_search(data.name)).attr("data-name", data.name);
+				$('#results').show().attr("data-name", data.name);
+				$('h2.result').hide()
 				
+		
 				target = $('#background div.bio');
 				var followers = $('h5.followers span');
 				var following = $('h5.following span');
@@ -226,8 +228,6 @@ var kravitz = {
 			kravitz.infochimps.strong_links(screen_name);
 			kravitz.klout.topics(screen_name);
 			kravitz.details.screen_name = screen_name;
-			
-			// kravitz.details.tid = id;
 			return false;
 		},
 		clear : function() {
@@ -357,11 +357,17 @@ var kravitz = {
 							 dataType: "jsonp",
 							 data: params
 			      });
-			req.success(function(data, textStatus){
-				return callbacks.success(data, callbacks.user_data);
-			});
 			// hack for jquery not handling jsonp errors well.
-			return callbacks.errors("", {});
+			console.info(req.statusText)
+			if (req.status == 200) {
+				req.success(function(data, textStatus){
+					return callbacks.success(data, callbacks.user_data);
+				});
+			} else {
+				return callbacks.errors("", {});
+			}
+
+			
 		},
 		errors : function(error) {
 			alert("error " + error.toString());
@@ -382,7 +388,10 @@ var kravitz = {
 		qwerly_start   : "She's now seeing with whom he/she has the most Twitter interactions....",
 		linkedin_start : "She's finding out where these friends work now...",
 		friend_waiting : function() {
-			var name = $('h2.result').attr("data-name");
+			$('#results').livequery(function(){
+				var name = $(this).attr("data-name");
+				// alert(name);
+			});
 			return "Mrs. Kravitz is seeing who "+ name + " interacts with: <em>She thinks one can tell a lot about a person by the company they keep.</em>" + kravitz.utility.spinner;
 		},
 		friend_description : function() {
