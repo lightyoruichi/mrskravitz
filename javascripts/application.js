@@ -65,7 +65,13 @@ var kravitz = {
 				// $('#middle').show()
 				$('h3.friends').html(kravitz.default_text.friend_description());
 				$('#industry_note').html(kravitz.default_text.friend_jobs);
-				kravitz.li.friends();
+				
+				if (IN.User.isAuthorized())
+					kravitz.li.friends();
+				else {
+					$('ul.friends').addClass("no-li");
+					$('#salary_chart_login').show();
+				}
 				
 				var peeps = data.query.results.peeps;
 				$.template("slTmpl", friendResultTemplate);
@@ -104,18 +110,15 @@ var kravitz = {
 	},
 	li : {
 		error_total : 0,
-		welcome : function() {
-			alert("hi")
-			kravitz.li.friends();
-		},
 		loggedin : function() {
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
 			});
-			// kravitz.li.friends();
+			kravitz.li.friends();
 		},
 		friends : function() {
-			if (IN.User.isAuthorized()) {
+			  $('ul.friends').removeClass("no-li");
+				//remove class on ul.friends.
 				$('ul.friends li').livequery(function(){
 					$('#industry_chart').show();
 					
@@ -123,9 +126,7 @@ var kravitz = {
 						kravitz.li.query($(this));
 					});
 				});
-			} else {
-				$('#salary_chart_login').show();
-			}
+			
 		},
 		query : function(li) {
 			var name = li.attr("data-name").split(" ");
