@@ -147,6 +147,7 @@ var kravitz = {
 			if (kravitz.li.error_total == 1) {
 				var target = $('#industry_chart');
 				target.show();
+				console.info(error)
 				if (error.code == 0) {
 					target.append("<li class='error'>Rats, Mrs. Kravitz has reached her daily allocation of calls to Linkedin. Try again tomorrow?</li>");
 				} else {
