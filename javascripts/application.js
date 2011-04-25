@@ -112,9 +112,10 @@ var kravitz = {
 				$('ul.friends li').livequery(function(){
 					
 					var i = 0;
+					var length = $(this).parent().children().length;
 					$(this).each(function(){ 
 						kravitz.li.query($(this)); 
-						console.info("length: " + $(this).length + " vs " + i);
+						console.info("length: " + length + " vs " + i);
 						if (i == $(this).length) { kravitz.li.renderer(); }
 						i ++;
 					});
