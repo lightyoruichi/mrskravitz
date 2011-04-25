@@ -181,6 +181,10 @@ var kravitz = {
 			$.each(kravitz.li.industries, function(k, v) {
 				target.append("<li>" + k + " (" + v + ")" +"</li>");
 			});
+		},
+		logout : function() {
+			console.info("logged out")
+			return false;
 		}
 	},
 	twitter : {
