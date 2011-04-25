@@ -145,10 +145,13 @@ var kravitz = {
 		query_error : function(error) {
 			kravitz.li.error_total ++;
 			if (kravitz.li.error_total == 1) {
-				console.info(error)
 				var target = $('#industry_chart');
 				target.show();
-				target.append("<li class='error'>"+ error.message + "</li>")
+				if (error.code == 0) {
+					target.append("<li class='error'>Rats, Mrs. Kravitz has reached her daily allocation of calls to Linkedin. Try again tomorrow?</li>");
+				} else {
+					target.append("<li class='error'>"+ error.message + "</li>")
+				}
 			}
 			return false;
 		},
