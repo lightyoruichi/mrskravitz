@@ -125,13 +125,13 @@ var kravitz = {
 		query : function(li) {
 			var name = li.attr("data-name").split(" ");
 			var postal = li.attr("data-postal");
+						console.info(postal)
 			var country = li.attr("data-country").toLowerCase();
 			IN.API.PeopleSearch()
 					.fields("id","first-name","last-name","industry","positions:(title)")
 			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
 			    .result(function(result) { 
 			        // $("#search").html(JSON.stringify(result));
-			console.info(result.people)
 							if (result.people != null) {
 								var person = result.people.values[0];
 								kravitz.li.process(person);
