@@ -145,6 +145,7 @@ var kravitz = {
 		query_error : function(error) {
 			kravitz.li.error_total ++;
 			if (kravitz.li.error_total == 1) {
+				console.info(error)
 				var target = $('#industry_chart');
 				target.show();
 				target.append("<li class='error'>"+ error.message + "</li>")
@@ -152,7 +153,6 @@ var kravitz = {
 			return false;
 		},
 		process : function(person) {
-			console.info("process")
 			var industries = kravitz.li.industries; 
 			if (industries[person.industry]) {
 				industries[person.industry] ++;
