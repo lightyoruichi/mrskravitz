@@ -109,6 +109,8 @@ var kravitz = {
 		},
 		friends : function() {
 			if (IN.User.isAuthorized()) {
+				var target = $('ul.friends');
+				alert(target.siblings().length);
 				$('ul.friends li').livequery(function(){
 					$(this).each(function(){ kravitz.li.query($(this)); });
 				});
@@ -137,9 +139,7 @@ var kravitz = {
 				industries[person.industry] ++;
 			} else {
 				industries[person.industry] = 1;
-			}
-			console.info(industries);
-			
+			}		
 			var jobs = kravitz.li.jobs; 
 			var job = person.positions.values[0].title;
 			if (jobs[job]) {
@@ -147,7 +147,6 @@ var kravitz = {
 			} else {
 				jobs[job] = 1;
 			}
-			console.info(jobs);
 		}
 	},
 	twitter : {
