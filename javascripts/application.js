@@ -118,6 +118,8 @@ var kravitz = {
 		friends : function() {
 			if (IN.User.isAuthorized()) {
 				$('ul.friends li').livequery(function(){
+					$('#industry_chart').show();
+					
 					$(this).each(function(){ 
 						kravitz.li.query($(this));
 					});
@@ -158,7 +160,9 @@ var kravitz = {
 		},
 		process : function(person) {
 			var ind_name = person.industry;
+			console.info(person.industry.split(" "))
 			var ind_id = person.industry.split(" ").join("-");
+			console.info(ind_id);
 			var ind_li = $('#' + ind_id);
 			if (ind_li.length) {
 				var ind_cnt = ind_li.attr("data-cnt");
