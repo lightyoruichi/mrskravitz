@@ -233,7 +233,7 @@ var kravitz = {
 			//clear old things
 			$('#results').hide();
 			
-			topics = ('#topics').hide();
+			topics = $('#topics').hide();
 			topics.children('ul.topics').html('');
 			friends = $('ul.friends');
 			friends.html('');
