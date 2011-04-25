@@ -109,6 +109,7 @@ var kravitz = {
 				$('ul.friends li').each(function(){
 					var name = $(this).attr("data-name").split(" ");
 					var location = $(this).attr("data-location");
+					alert(name[0])
 					IN.API.PeopleSearch()
 							.fields("id","first-name","last-name","industry","positions:(title)")
 					    .params({"first-name": name[0], "last-name": name[1], "count": 1, "location": location})
