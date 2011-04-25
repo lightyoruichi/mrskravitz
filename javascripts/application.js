@@ -114,6 +114,7 @@ var kravitz = {
 					var i = 0;
 					$(this).each(function(){ 
 						kravitz.li.query($(this)); 
+						console.info("length: " + $(this).length + " vs " + i);
 						if (i == $(this).length) { kravitz.li.renderer(); }
 						i ++;
 					});
