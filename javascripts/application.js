@@ -55,7 +55,7 @@ var kravitz = {
 		},
 		sl_callback : function(data) {
 			kravitz.details.qwerly_lookups();
-			if(data.query.results == null || data.query.results.peeps == null){
+			if(data.query == null || data.query.results == null || data.query.results.peeps == null){
 				kravitz.infochimps.sl_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
@@ -70,7 +70,7 @@ var kravitz = {
 			}
 		},
 		sl_error : function() {
-			$('#results_loading').html(kravitz.default_text.twitter_404);
+			$('h3.friends').html("There was an error retrieving results from Infochimps.");
 		},
 		social_networks : function(screen_name) {
 			params    = kravitz.infochimps.params();
