@@ -105,6 +105,7 @@ var kravitz = {
 	li : {
 		error_total : 0,
 		welcome : function() {
+			alert("hi")
 			kravitz.li.friends();
 		},
 		loggedin : function() {
