@@ -114,9 +114,9 @@ var kravitz = {
 				target.livequery(function(){
 					$(this).each(function(){ 
 						kravitz.li.query($(this)); 
-						if (i == target.length) {
-							kravitz.li.renderer();
-						}
+						// if (i == target.length) {
+						// 							kravitz.li.renderer();
+						// 						}
 						i ++;
 					});
 				});
@@ -157,9 +157,9 @@ var kravitz = {
 		renderer : function() {
 			var target = $('#industry_chart');
 			target.show();
-			// $.each(kravitz.li.industries, function(k, v) {
-			// 			target.append("<li>" + k + " (" + v + ")" +"</li>");
-			// 		});
+			$.each(kravitz.li.industries, function(k, v) {
+				target.append("<li>" + k + " (" + v + ")" +"</li>");
+			});
 		}
 	},
 	twitter : {
