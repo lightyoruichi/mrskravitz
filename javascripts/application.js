@@ -109,14 +109,12 @@ var kravitz = {
 		},
 		friends : function() {
 			if (IN.User.isAuthorized()) {
-				alert($('ul.friends').children().length);
 				var target = $('ul.friends').children();
-				alert(target.attr("class"))
 				var i = 0;
 				target.livequery(function(){
 					$(this).each(function(){ 
 						kravitz.li.query($(this)); 
-						if (i == target.length) { kravitz.li.renderer(); }
+						// if (i == target.length) { kravitz.li.renderer(); }
 						i ++;
 					});
 				});
