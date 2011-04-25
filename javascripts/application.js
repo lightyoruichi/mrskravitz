@@ -38,7 +38,6 @@ $(document).ready(function(){
 
 var kravitz = {
 	infochimps : {
-		// api_key : "steveodom-NQ9ITHYiLQg48FM6JEi6qLkbm69",
 		params : function() {
 			params          = {};
 			params.env      = "https://github.com/steveodom/mrskravitz/raw/gh-pages/yql/infochimps.env";
@@ -111,6 +110,7 @@ var kravitz = {
 	li : {
 		error_total : 0,
 		loggedin : function() {
+			alert("what");
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
 			});
