@@ -103,12 +103,10 @@ var kravitz = {
 		}
 	},
 	li : {
-		locations : {},
-		industries : {},
-		jobs : {},
-		total : 0,
-		processed_total : 0,
 		error_total : 0,
+		welcome : function() {
+			kravitz.li.friends();
+		},
 		loggedin : function() {
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
