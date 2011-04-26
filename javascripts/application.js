@@ -164,8 +164,8 @@ var kravitz = {
 		},
 		process : function(person) {
 			var ind_name = person.industry;
-			console.info(person.industry)
-			var ind_id = person.industry.split(" ").join("-");
+			var str = person.industry.split(" ").join("-");
+			var ind_id = str;
 			var ind_li = $('#' + ind_id);
 						alert(ind_id.toSource());
 			if (ind_li.length) {
@@ -196,13 +196,13 @@ var kravitz = {
 			// 			console.info("total: " + kravitz.li.total + " vs " + kravitz.li.processed_total);
 			// 			if (kravitz.li.total == kravitz.li.processed_total) {kravitz.li.renderer()}
 		},
-		renderer : function() {
-			var target = $('#industry_chart');
-			target.show();
-			$.each(kravitz.li.industries, function(k, v) {
-				target.append("<li>" + k + " (" + v + ")" +"</li>");
-			});
-		},
+		// renderer : function() {
+		// 			var target = $('#industry_chart');
+		// 			target.show();
+		// 			$.each(kravitz.li.industries, function(k, v) {
+		// 				target.append("<li>" + k + " (" + v + ")" +"</li>");
+		// 			});
+		// 		},
 		logout : function() {
 			IN.User.logout();
 		}
@@ -421,7 +421,7 @@ var kravitz = {
 			return "Mrs. Kravitz is looking at friends now.<em>She thinks one can tell a lot about a person by the company they keep.</em>" + kravitz.utility.spinner;
 		},
 		friend_description : function() {
-			rand = Math.floor(Math.random()*4)
+			rand = Math.floor(Math.random()*3)
 			ary = ["alrightniks", "bubbellahs", "extremely good looking people"]
 			return "Interacts mostly with these " + ary[rand] + "...";
 		},
