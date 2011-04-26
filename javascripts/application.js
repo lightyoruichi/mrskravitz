@@ -63,7 +63,8 @@ var kravitz = {
 			else if(typeof(callbacks.success) != 'undefined'){
 				// $('#middle').show()
 				$('h3.friends').html(kravitz.default_text.friend_description());
-				$('#industry_note').html(kravitz.default_text.friend_jobs);
+				$('#industry_note').html(kravitz.default_text.friend_industry);
+				$('#job_note').html(kravitz.default_text.friend_jobs);
 				
 				if (IN.User.isAuthorized())
 					kravitz.li.friends();
@@ -161,7 +162,7 @@ var kravitz = {
 				var target = $('#industry_chart');
 				target.show();
 				if (error.errorCode == 0) {
-					target.append("<li class='error'>Oy vey, Mrs. Kravitz has reached her daily allocation of calls to Linkedin. Try again tomorrow?</li>");
+					target.append("<li class='error'>Oy vey, The daily allocation of calls to Linkedin. Linkedin allows each person and site a very limited number of searches each day. Either you or the site has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</li>");
 				} else {
 					target.append("<li class='error'>"+ error.message + "</li>")
 				}
@@ -169,8 +170,11 @@ var kravitz = {
 			return false;
 		},
 		process : function(person) {
+			kravitz.li.render_industry(person);
+			kravitz.li.render_job(person);
+		},
+		render_industry : function(person) {
 			var ind_name = person.industry;
-		console.info(ind_name);
 			var ind_id = person.industry.split(" ").join("-");
 			var ind_li = $('#' + ind_id);
 			if (ind_li.length) {
@@ -183,6 +187,22 @@ var kravitz = {
 			} else {
 				$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
 			}
+		},
+		render_job : function(person) {
+			console.info(person);
+			// var ind_name = person.industry;
+			// 			var ind_id = person.industry.split(" ").join("-");
+			// 			var ind_li = $('#job_' + ind_id);
+			// 			if (ind_li.length) {
+			// 				var ind_cnt = parseInt(ind_li.attr("data-cnt"));
+			// 				ind_li.removeClass("tag_" + ind_cnt);
+			// 				ind_cnt ++;
+			// 				ind_li.addClass("tag_" + ind_cnt);
+			// 				ind_li.attr("data-cnt", ind_cnt);
+			// 				ind_li.html(ind_name + " (" + ind_cnt + ")");
+			// 			} else {
+			// 				$('#job_chart').append("<li class='tag_1' id='job_"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
+			// 			}
 		},
 		logout : function() {
 			IN.User.logout();
@@ -406,6 +426,7 @@ var kravitz = {
 			ary = ["alrightniks", "bubbellahs", "extremely good looking people"]
 			return "Interacts mostly with these " + ary[rand] + "...";
 		},
+		friend_industry : "...who have fancy job titles like:",
 		friend_jobs : "...who have fancy job titles like:"
 	},
 	hash : {
