@@ -126,8 +126,10 @@ var kravitz = {
 				$('ul.friends li').livequery(function(){
 					$('#industry_chart').show();
 					
-					$(this).each(function(){ 
-						kravitz.li.query($(this));
+					$(this).each(function(i, v){ 
+						if (i < 4) {
+							kravitz.li.query(v);
+						}
 					});
 				});
 			
@@ -137,6 +139,8 @@ var kravitz = {
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
 			var li = $.jStorage.get(name[0]+"-"+name[1]);
+			console.info(name[0]+"-"+name[1]);
+			console.info(li)
 			if(!li){
 				IN.API.PeopleSearch()
 						.fields("id","first-name","last-name","industry","positions:(title)")
@@ -144,7 +148,6 @@ var kravitz = {
 				    .result(function(result) { 
 				        // $("#search").html(JSON.stringify(result));
 								if (result.people.values != null) {
-									// kravitz.li.total ++;
 									var person = result.people.values[0];
 									$.jStorage.set(name[0]+"-"+name[1],person);
 									kravitz.li.process(person);
