@@ -33,6 +33,17 @@ $(document).ready(function(){
 		} 
 		return false;
 	});
+	
+	$('#job_chart li').live('mouseover mouseout', function(event) {
+	  var preKlass = $(this).attr("id");
+	  var klass = preKlass.replace("job_", "");
+		var targets = $('ul.friends li[data-job=' + klass + ']');
+		if (event.type == 'mouseover') {
+	    targets.hide();
+	  } else {
+	    targets.show();
+	  }
+	});
 		
 });
 
