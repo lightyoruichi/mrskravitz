@@ -67,13 +67,16 @@ var kravitz = {
 				if (IN.User.isAuthorized()) {
 					kravitz.li.friends();
 			 	}	else {
-					$('ul.friends').addClass("no-li");
 					$('#salary_chart_login').show();
 				}
 				
 				var peeps = data.query.results.peeps;
 				$.template("slTmpl", friendResultTemplate);
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
+			
+				$.each((peeps, function(peep, obj){
+					kravitz.li.render_location(peep.location);
+				}
 			}
 		},
 		sl_error : function() {
@@ -124,10 +127,12 @@ var kravitz = {
 			  // $('ul.friends').removeClass("no-li");
 				//remove class on ul.friends.
 				$('ul.friends li').livequery(function(){
-					$('#industry_chart').show();
-					$('#job_chart').show();
+					$('#industry_chart, #job_chart, #locations_chart').show();
+					
 					$('#industry_note').html(kravitz.default_text.friend_industry);
 					$('#job_note').html(kravitz.default_text.friend_jobs);
+					$('#locations_note').html(kravitz.default_text.friend_locations);
+					
 					var i = 0;
 					$(this).each(function(){ 
 							kravitz.li.query($(this));
@@ -205,6 +210,20 @@ var kravitz = {
 				$('#job_chart').append("<li class='tag_1' id='job_"+ job_id + "' data-cnt='1'>" + job_name + " (1)</li>");
 			}
 		},
+		render_location : function(location) {
+			var lid = location.split(" ").join("-");
+			var li = $('#location_' + lid);
+			if (li.length) {
+				var cnt = parseInt(li.attr("data-cnt"));
+				li.removeClass("tag_" + job_cnt);
+				cnt ++;
+				li.addClass("tag_" + cnt);
+				li.attr("data-cnt", cnt);
+				li.html(location + " (" + cnt + ")");
+			} else {
+				$('#locations_chart').append("<li class='tag_1' id='location_"+ lid + "' data-cnt='1'>" + location + " (1)</li>");
+			}
+		},
 		logout : function() {
 			IN.User.logout();
 		}
@@ -267,7 +286,7 @@ var kravitz = {
 			target = $('ul.social_icons');
 			target.html("");
 			
-			$('#industry_note, #job_note, #job_chart, #industry_chart').html('');
+			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note').html('');
 			$('#lastfm_content, #flickr_content, #delicious_content').remove();		
 			// $('#share iframe, #share blockquote').remove();
 			
@@ -424,7 +443,8 @@ var kravitz = {
 			return "Interacts mostly with these " + ary[rand] + "...";
 		},
 		friend_industry : "...and work in industries like:",
-		friend_jobs : "...who have fancy job titles like:"
+		friend_jobs : "...who have fancy job titles like:",
+		friend_locations : "...in these cities:"
 	},
 	hash : {
 		add : function(params) {

@@ -116,10 +116,10 @@ ul.topics div.description {width:100% !important;min-height:40px !important;}
 ul.topics div.description h2 {margin:0;}
 #background ul.friends div.description h2 a:hover {text-decoration:underline !important;color:#000;}
 
-#industry_chart, #salary_chart_login, #job_chart {display:none;float:left;width:94%;}
+#industry_chart, #salary_chart_login, #job_chart, #locations_chart {display:none;float:left;width:94%;}
 #salary_chart_login {border:1px solid blue;background:lightBlue;padding:10px;}
 #salary_chart_login p {color:#444;font-size:13px;margin:14px 0;}
-#industry_chart li, #job_chart li {float:left;width:auto;margin:5px;background:#777;padding:5px 10px;}
+#industry_chart li, #job_chart li, #locations_chart li {float:left;width:auto;margin:5px;background:#777;padding:5px 10px;}
 li.tag_1 {background:#555 !important;}
 li.tag_2 {background:#5f5f5f !important;}
 li.tag_3 {background:#666 !important;}
