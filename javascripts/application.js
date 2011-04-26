@@ -78,7 +78,7 @@ var kravitz = {
 			}
 		},
 		sl_error : function() {
-			$('h3.friends').html("Rats, there was an error retrieving results from Infochimps.<em>Please try again</em>");
+			$('h3.friends').html("Oy vey, there was an error retrieving results from Infochimps.<em>Please try again</em>");
 		},
 		social_networks : function(screen_name) {
 			params    = kravitz.infochimps.params();
@@ -110,10 +110,11 @@ var kravitz = {
 	li : {
 		error_total : 0,
 		welcome : function() {
-			console.info("logged in via welcome")
+			$('#salary_chart_login').livequery(function() {
+				$(this).hide();
+			});
 		},
 		loggedin : function() {
-			console.info("logged in via loggedin")
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
 			});
@@ -154,7 +155,7 @@ var kravitz = {
 				var target = $('#industry_chart');
 				target.show();
 				if (error.errorCode == 0) {
-					target.append("<li class='error'>Rats, Mrs. Kravitz has reached her daily allocation of calls to Linkedin. Try again tomorrow?</li>");
+					target.append("<li class='error'>Oy vey, Mrs. Kravitz has reached her daily allocation of calls to Linkedin. Try again tomorrow?</li>");
 				} else {
 					target.append("<li class='error'>"+ error.message + "</li>")
 				}
@@ -163,9 +164,7 @@ var kravitz = {
 		},
 		process : function(person) {
 			var ind_name = person.industry;
-			console.info(person.industry.split(" "))
 			var ind_id = person.industry.split(" ").join("-");
-			console.info(ind_id);
 			var ind_li = $('#' + ind_id);
 			if (ind_li.length) {
 				var ind_cnt = ind_li.attr("data-cnt");
@@ -175,7 +174,7 @@ var kravitz = {
 				ind_li.attr("data-cnt", ind_cnt);
 				ind_li.html(ind-name + " (" + ind_cnt + ")");
 			} else {
-				$('#industry_chart').append("<li class='tag_1' id='"+ ind_li + " data-cnt='1'>" + ind_name + " (1)</li>");
+				$('#industry_chart').append("<li class='tag_1' id='"+ ind_li + "' data-cnt='1'>" + ind_name + " (1)</li>");
 			}
 			// kravitz.li.processed_total ++;
 			// 			
@@ -204,7 +203,6 @@ var kravitz = {
 		},
 		logout : function() {
 			IN.User.logout();
-			console.info("logged out");
 		}
 	},
 	twitter : {
@@ -422,7 +420,7 @@ var kravitz = {
 		},
 		friend_description : function() {
 			rand = Math.floor(Math.random()*4)
-			ary = ["n'er do wells", "malcontents", "simple folk", "extremely good looking people"]
+			ary = ["alrightniks", "bubbellahs", "extremely good looking people"]
 			return "Interacts mostly with these " + ary[rand] + "...";
 		},
 		friend_jobs : "...who have fancy job titles like:"

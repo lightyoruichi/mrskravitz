@@ -48,7 +48,7 @@ h1.person_search {position:relative;margin:0 2px 9px;font-size:16px;}
 #results {display:none;}
 #middle {padding-left:10px;display:none;}
 
-#infochimps input[type=text] {width:260px;margin-right:5px;}
+#infochimps input[type=text] {width:286px;margin-right:5px;}
 #infochimps input[type=submit] {}
 
 #results_loading, #conversations_loading {width:450px;height:25px;margin-top:41px;display:none;font-size:15px;}
