@@ -39,13 +39,9 @@ $(document).ready(function(){
 	  var klass = preKlass.replace("job_", "");
 		var targets = $('ul.friends li[data-job!=' + klass + ']');
 		if (event.type == 'mouseover') {
-	    targets.each(function(){
-				$(this).animate({"opacity": .1}, "fast");
-			});
+	    targets.animate({"opacity": .1}, "fast");
 	  } else {
-			targets.each(function(){
-				$(this).animate({"opacity": 1}, "fast");
-			});
+	    targets.animate({"opacity": 1}, "fast");;
 	  }
 	});
 		
@@ -216,6 +212,7 @@ var kravitz = {
 		render_job : function(person, pid) {
 			var job_name = person.positions.values[0].title;
 			var job_id = kravitz.li.id_encoder(job_name.split(" ").join("-"));
+			console.info(job_id)
 			var job_li = $('#job_' + job_id);
 			if (job_li.length) {
 				var job_cnt = parseInt(job_li.attr("data-cnt"));
