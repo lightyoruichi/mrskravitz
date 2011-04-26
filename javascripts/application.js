@@ -125,10 +125,11 @@ var kravitz = {
 				//remove class on ul.friends.
 				$('ul.friends li').livequery(function(){
 					$('#industry_chart').show();
-					
-					$(this).each(function(i, v){ 
+					var i = 0;
+					$(this).each(function(){ 
 						if (i < 4) {
 							kravitz.li.query($(this));
+							i ++;
 						}
 					});
 				});
