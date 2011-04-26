@@ -127,11 +127,8 @@ var kravitz = {
 					$('#industry_chart').show();
 					var i = 0;
 					$(this).each(function(){ 
-						if (i < 4) {
 							kravitz.li.query($(this));
 							i ++;
-							console.info(i);
-						}
 					});
 				});
 			
@@ -143,7 +140,7 @@ var kravitz = {
 			var li = $.jStorage.get(name[0]+"-"+name[1]);
 			if (!li) {
 			// 				console.info(name[0]+"-"+name[1]);
-								console.info(li);
+								console.info("what");
 			// 				IN.API.PeopleSearch()
 			// 						.fields("id","first-name","last-name","industry","positions:(title)")
 			// 				    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
