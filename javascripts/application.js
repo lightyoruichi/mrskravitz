@@ -164,8 +164,10 @@ var kravitz = {
 		},
 		process : function(person) {
 			var ind_name = person.industry;
+			console.info(person.industry)
 			var ind_id = person.industry.split(" ").join("-");
 			var ind_li = $('#' + ind_id);
+						alert(ind_id.toSource());
 			if (ind_li.length) {
 				var ind_cnt = ind_li.attr("data-cnt");
 				ind_li.removeClass("tag_" + ind_cnt);
