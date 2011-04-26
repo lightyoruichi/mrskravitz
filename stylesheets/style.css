@@ -119,7 +119,7 @@ ul.topics div.description h2 {margin:0;}
 #industry_chart, #salary_chart_login {display:none;float:left;width:94%;}
 #salary_chart_login {border:1px solid blue;background:lightBlue;padding:10px;}
 #salary_chart_login p {color:#444;font-size:13px;margin:14px 0;}
-
+#industry_chart li {float:left;width:auto;margin:5px;background:#777;padding:5px 10px;}
 
 
 .btn { 
