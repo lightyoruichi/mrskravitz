@@ -74,7 +74,8 @@ var kravitz = {
 				$.template("slTmpl", friendResultTemplate);
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			
-				$.each(peeps, function(i, peep){
+				$.each(peeps.peep, function(i, peep){
+					console.info(peep)
 					kravitz.li.render_location(peep.location);
 				});
 			}
@@ -117,12 +118,12 @@ var kravitz = {
 			});
 			kravitz.li.friends();
 		},
-		loggedin : function() {
-			console.info("loggedin");
-			$('#salary_chart_login').livequery(function() {
-				$(this).hide();
-			});
-		},
+		// loggedin : function() {
+		// 			console.info("loggedin");
+		// 			$('#salary_chart_login').livequery(function() {
+		// 				$(this).hide();
+		// 			});
+		// 		},
 		friends : function() {
 			  // $('ul.friends').removeClass("no-li");
 				//remove class on ul.friends.
