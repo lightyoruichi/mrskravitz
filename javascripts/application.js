@@ -128,7 +128,7 @@ var kravitz = {
 					
 					$(this).each(function(i, v){ 
 						if (i < 4) {
-							kravitz.li.query(v);
+							kravitz.li.query($(this));
 						}
 					});
 				});
