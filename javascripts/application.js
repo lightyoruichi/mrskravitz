@@ -145,7 +145,8 @@ var kravitz = {
 			var name = li.attr("data-name").split(" ");
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
-			var li = $.jStorage.get(name[0]+"-"+name[1]);
+			var pid = li.attr("data-id");
+			var li = $.jStorage.get(pid);
 			if (!li) {
 				IN.API.PeopleSearch()
 							.fields("id","first-name","last-name","industry","positions:(title)")
@@ -155,7 +156,7 @@ var kravitz = {
 									if (result.people.values != null) {
 										var person = result.people.values[0];
 										$.jStorage.set(name[0]+"-"+name[1],person);
-										kravitz.li.process(person);
+										kravitz.li.process(person, pid);
 									}
 				 			})
 							.error(kravitz.li.query_error);
@@ -176,11 +177,11 @@ var kravitz = {
 			}
 			return false;
 		},
-		process : function(person) {
-			kravitz.li.render_industry(person);
-			kravitz.li.render_job(person);
+		process : function(person, pid) {
+			kravitz.li.render_industry(person, pid);
+			kravitz.li.render_job(person, pid);
 		},
-		render_industry : function(person) {
+		render_industry : function(person, pid) {
 			var ind_name = person.industry;
 			var ind_id = person.industry.split(" ").join("-");
 			var ind_li = $('#' + ind_id);
@@ -193,9 +194,11 @@ var kravitz = {
 				ind_li.html(ind_name + " (" + ind_cnt + ")");
 			} else {
 				$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
+				$('#tid_' + pid).attr("data-industry", ind_id);
+				
 			}
 		},
-		render_job : function(person) {
+		render_job : function(person, pid) {
 			var job_name = person.positions.values[0].title;
 			var job_id = job_name.split(" ").join("-");
 			var job_li = $('#job_' + job_id);
@@ -208,6 +211,7 @@ var kravitz = {
 				job_li.html(job_name + " (" + job_cnt + ")");
 			} else {
 				$('#job_chart').append("<li class='tag_1' id='job_"+ job_id + "' data-cnt='1'>" + job_name + " (1)</li>");
+				$('#tid_' + pid).attr("data-job", job_id);
 			}
 		},
 		render_location : function(location) {
