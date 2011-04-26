@@ -75,7 +75,6 @@ var kravitz = {
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			
 				$.each(peeps, function(i, peep){
-					console.info(peep);
 					kravitz.li.render_location(peep.location);
 				});
 			}
@@ -213,17 +212,19 @@ var kravitz = {
 		},
 		render_location : function(location) {
 			console.info(location)
-			var lid = location.split(" ").join("-");
-			var li = $('#location_' + lid);
-			if (li.length) {
-				var cnt = parseInt(li.attr("data-cnt"));
-				li.removeClass("tag_" + job_cnt);
-				cnt ++;
-				li.addClass("tag_" + cnt);
-				li.attr("data-cnt", cnt);
-				li.html(location + " (" + cnt + ")");
-			} else {
-				$('#locations_chart').append("<li class='tag_1' id='location_"+ lid + "' data-cnt='1'>" + location + " (1)</li>");
+			if (location.length) {
+				var lid = location.split(" ").join("-");
+				var li = $('#location_' + lid);
+				if (li.length) {
+					var cnt = parseInt(li.attr("data-cnt"));
+					li.removeClass("tag_" + job_cnt);
+					cnt ++;
+					li.addClass("tag_" + cnt);
+					li.attr("data-cnt", cnt);
+					li.html(location + " (" + cnt + ")");
+				} else {
+					$('#locations_chart').append("<li class='tag_1' id='location_"+ lid + "' data-cnt='1'>" + location + " (1)</li>");
+				}
 			}
 		},
 		logout : function() {
