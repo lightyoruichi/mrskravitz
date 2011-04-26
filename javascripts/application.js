@@ -146,7 +146,9 @@ var kravitz = {
 								if (result.people.values != null) {
 									// kravitz.li.total ++;
 									var person = result.people.values[0];
-									$.jStorage.set(name.join("-"),person);
+									var id = name.join("-");
+									$.jStorage.set(id,person);
+									kravitz.li.process(person);
 								}
 				    })
 						.error(kravitz.li.query_error);
