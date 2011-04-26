@@ -37,11 +37,11 @@ $(document).ready(function(){
 	$('#job_chart li').live('mouseover mouseout', function(event) {
 	  var preKlass = $(this).attr("id");
 	  var klass = preKlass.replace("job_", "");
-		var targets = $('ul.friends li[data-job=' + klass + ']');
+		var targets = $('ul.friends li[data-job!=' + klass + ']');
 		if (event.type == 'mouseover') {
-	    targets.hide();
+	    targets.fadeOut("slow");
 	  } else {
-	    targets.show();
+	    targets.fadeIn("show");
 	  }
 	});
 		
@@ -181,7 +181,7 @@ var kravitz = {
 				var target = $('#industry_chart');
 				target.show();
 				if (error.errorCode == 0) {
-					target.append("<li class='error'>Oy vey, The daily allocation of calls to Linkedin. Linkedin allows each person and site a very limited number of searches each day. Either you or the site has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</li>");
+					target.append("<li class='error'>Oy vey, Linkedin allows each person and site a very limited number of searches each day. Either you or Mrs. Kravitz has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</li>");
 				} else {
 					target.append("<li class='error'>"+ error.message + "</li>")
 				}
