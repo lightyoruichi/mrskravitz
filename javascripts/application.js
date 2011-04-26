@@ -189,7 +189,7 @@ var kravitz = {
 			}
 		},
 		render_job : function(person) {
-			console.info(person.positions.value[0].title);
+			console.info(person);
 			var job_name = person.positions.value[0].title;
 			var job_id = job_name.split(" ").join("-");
 			var job_li = $('#job_' + job_id);
