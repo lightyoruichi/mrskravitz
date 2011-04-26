@@ -214,7 +214,7 @@ var kravitz = {
 		render_location : function(location) {
 			console.info(location)
 			if (location.length > 2) {
-				var lid = location.split(" ").replace(",", "").join("-");
+				var lid = location.replace(",", "").split(" ").join("-");
 				var li = $('#location_' + lid);
 				if (li.length) {
 					var cnt = parseInt(li.attr("data-cnt"));
