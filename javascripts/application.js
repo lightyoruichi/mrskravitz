@@ -157,7 +157,7 @@ var kravitz = {
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
 			var pid = li.attr("data-id");
-			console.info(postal);
+			console.info(pid);
 			var li = $.jStorage.get(pid);
 			console.info(li);
 			if (!li) {
@@ -457,7 +457,7 @@ var kravitz = {
 			$('#results').livequery(function(){
 				var name = $(this).attr("data-name");
 			});
-			return "Mrs. Kravitz is looking at friends now.<em>She thinks one can tell a lot about a person by the company they keep.</em>" + kravitz.utility.spinner;
+			return "Mrs. Kravitz is looking at friends now.<em>One can tell a lot about a person by the company they keep.</em>" + kravitz.utility.spinner;
 		},
 		friend_description : function() {
 			rand = Math.floor(Math.random()*3)
