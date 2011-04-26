@@ -136,7 +136,7 @@ var kravitz = {
 			var name = li.attr("data-name").split(" ");
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
-			var li = $.jStorage.get(name);
+			var li = $.jStorage.get(name.join("-"));
 			if(!li){
 				IN.API.PeopleSearch()
 						.fields("id","first-name","last-name","industry","positions:(title)")
@@ -146,7 +146,7 @@ var kravitz = {
 								if (result.people.values != null) {
 									// kravitz.li.total ++;
 									var person = result.people.values[0];
-									$.jStorage.set(name,person);
+									$.jStorage.set(name.join("-"),person);
 								}
 				    })
 						.error(kravitz.li.query_error);
