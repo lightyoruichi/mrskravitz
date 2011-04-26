@@ -136,18 +136,23 @@ var kravitz = {
 			var name = li.attr("data-name").split(" ");
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
-			IN.API.PeopleSearch()
-					.fields("id","first-name","last-name","industry","positions:(title)")
-			    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
-			    .result(function(result) { 
-			        // $("#search").html(JSON.stringify(result));
-							if (result.people.values != null) {
-								// kravitz.li.total ++;
-								var person = result.people.values[0];
-								kravitz.li.process(person);
-							}
-			    })
-					.error(kravitz.li.query_error);
+			var li = $.jStorage.get(name);
+			if(!li){
+				IN.API.PeopleSearch()
+						.fields("id","first-name","last-name","industry","positions:(title)")
+				    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
+				    .result(function(result) { 
+				        // $("#search").html(JSON.stringify(result));
+								if (result.people.values != null) {
+									// kravitz.li.total ++;
+									var person = result.people.values[0];
+									$.jStorage.set(name,person);
+								}
+				    })
+						.error(kravitz.li.query_error);
+			} else {
+				kravitz.li.process(li);
+			}
 		},
 		query_error : function(error) {
 			kravitz.li.error_total ++;
@@ -164,7 +169,7 @@ var kravitz = {
 		},
 		process : function(person) {
 			var ind_name = person.industry;
-			var ind_id = valueOf(person.industry.split(" ").join("-"));
+			var ind_id = person.industry.split(" ").join("-")[0];
 			var ind_li = $('#' + ind_id);
 			if (ind_li.length) {
 				var ind_cnt = ind_li.attr("data-cnt");
