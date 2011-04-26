@@ -37,7 +37,7 @@ h1.headline em {font-size:15px;font-weight:normal;}
 h1.person_search {position:relative;margin:0 2px 9px;font-size:16px;}
 
 #header {position:fixed;top:0;left:0;width:100%;background:#555;border-bottom:5px solid #000;z-index:2;height:43px;}
-#header h1 {color:#fff;margin:3px 0 0 25px;font-size:25px;line-height:27px;font-weight:normal;float:left;font-family: 'Pacifico', arial, serif;}
+#header h1 {color:#F02475;margin:3px 0 0 25px;font-size:25px;line-height:27px;font-weight:normal;float:left;font-family: 'Pacifico', arial, serif;}
 #header h1 a {color:#fff;text-decoration:none;}
 #header h1 em {color:#fff;font-style:normal;font-size:13px;text-shadow:1px 1px 1px #333;font-family:"Helvetica Neue", Helvetica,Arial,sans-serif;display:inline;margin-left:10px;}
 #header ul.right_menu {float:right;font-size:13px;color:#ddd;margin:18px 15px 0 0;width:auto;}
@@ -134,8 +134,8 @@ li.tag_8 {background:#8f8f8f !important;}
 	  font-weight:bold !important;
 	  font-size:15px !important;
 	  line-height:1 !important;
-	  background: #AD98A9 url(/images/button-shadow.png) repeat-x !important;
-	  _background: #AD98A9 none !important;
+	  background: #F02475 url(/images/button-shadow.png) repeat-x !important;
+	  _background: #F02475 none !important;
 	  display: inline-block;
 	  color: #fff !important;
 	  text-decoration: none !important;

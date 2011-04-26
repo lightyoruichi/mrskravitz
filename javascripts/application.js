@@ -74,9 +74,9 @@ var kravitz = {
 				$.template("slTmpl", friendResultTemplate);
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			
-				// $.each(peeps.peep, function(i, peep){
-				// 					kravitz.li.render_location(peep.location);
-				// 				});
+				$.each(peeps.peep, function(i, peep){
+					kravitz.li.render_location(peep.location);
+				});
 			}
 		},
 		sl_error : function() {
@@ -211,7 +211,6 @@ var kravitz = {
 			}
 		},
 		render_location : function(location) {
-			// console.info(location)
 			if (location.length > 2) {
 				var lid = location.replace(",", "").split(" ").join("-");
 				var li = $('#location_' + lid);
