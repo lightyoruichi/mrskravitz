@@ -179,7 +179,7 @@ var kravitz = {
 				ind_cnt ++;
 				ind_li.addClass("tag_" + ind_cnt);
 				ind_li.attr("data-cnt", ind_cnt);
-				ind_li.html(ind-name + " (" + ind_cnt + ")");
+				ind_li.html(ind_name + " (" + ind_cnt + ")");
 			} else {
 				$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
 			}
