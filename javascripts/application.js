@@ -189,20 +189,20 @@ var kravitz = {
 			}
 		},
 		render_job : function(person) {
-			console.info(person);
-			// var ind_name = person.industry;
-			// 			var ind_id = person.industry.split(" ").join("-");
-			// 			var ind_li = $('#job_' + ind_id);
-			// 			if (ind_li.length) {
-			// 				var ind_cnt = parseInt(ind_li.attr("data-cnt"));
-			// 				ind_li.removeClass("tag_" + ind_cnt);
-			// 				ind_cnt ++;
-			// 				ind_li.addClass("tag_" + ind_cnt);
-			// 				ind_li.attr("data-cnt", ind_cnt);
-			// 				ind_li.html(ind_name + " (" + ind_cnt + ")");
-			// 			} else {
-			// 				$('#job_chart').append("<li class='tag_1' id='job_"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
-			// 			}
+			// console.info(person);
+			var job_name = person.positions.value[0].title;
+			var job_id = job_name.split(" ").join("-");
+			var job_li = $('#job_' + job_id);
+			if (job_li.length) {
+				var job_cnt = parseInt(job_li.attr("data-cnt"));
+				job_li.removeClass("tag_" + job_cnt);
+				job_cnt ++;
+				job_li.addClass("tag_" + job_cnt);
+				job_li.attr("data-cnt", job_cnt);
+				job_li.html(job_name + " (" + job_cnt + ")");
+			} else {
+				$('#job_chart').append("<li class='tag_1' id='job_"+ job_id + "' data-cnt='1'>" + job_name + " (1)</li>");
+			}
 		},
 		logout : function() {
 			IN.User.logout();
@@ -426,7 +426,7 @@ var kravitz = {
 			ary = ["alrightniks", "bubbellahs", "extremely good looking people"]
 			return "Interacts mostly with these " + ary[rand] + "...";
 		},
-		friend_industry : "...who have fancy job titles like:",
+		friend_industry : "...and work in industries like:",
 		friend_jobs : "...who have fancy job titles like:"
 	},
 	hash : {
