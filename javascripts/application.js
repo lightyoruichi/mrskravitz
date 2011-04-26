@@ -141,9 +141,9 @@ var kravitz = {
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
 			var li = $.jStorage.get(name[0]+"-"+name[1]);
-			// if (!li) {
+			if (!li) {
 			// 				console.info(name[0]+"-"+name[1]);
-			// 				console.info(li);
+								console.info(li);
 			// 				IN.API.PeopleSearch()
 			// 						.fields("id","first-name","last-name","industry","positions:(title)")
 			// 				    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
@@ -156,9 +156,9 @@ var kravitz = {
 			// 								}
 			// 				    })
 			// 						.error(kravitz.li.query_error);
-			// 			} else {
+			} else {
 				kravitz.li.process(li);
-			// }
+			}
 		},
 		query_error : function(error) {
 			kravitz.li.error_total ++;
@@ -175,7 +175,7 @@ var kravitz = {
 		},
 		process : function(person) {
 			var ind_name = person.industry;
-			var ind_id = person.industry.split(" ").join("-")[0];
+			var ind_id = person.industry.split(" ").join("-");
 			var ind_li = $('#' + ind_id);
 			if (ind_li.length) {
 				var ind_cnt = ind_li.attr("data-cnt");
