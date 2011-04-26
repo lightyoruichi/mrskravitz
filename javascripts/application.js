@@ -75,6 +75,7 @@ var kravitz = {
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			
 				$.each(peeps, function(peep, obj){
+					console.info(peep);
 					kravitz.li.render_location(peep.location);
 				});
 			}
