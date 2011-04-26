@@ -180,34 +180,9 @@ var kravitz = {
 				ind_li.attr("data-cnt", ind_cnt);
 				ind_li.html(ind-name + " (" + ind_cnt + ")");
 			} else {
-				$('#industry_chart').append("<li>"+ ind_id + "</li>");
-				// $('#industry_chart').append("<li class='tag_1' id='"+ ind_li + "' data-cnt='1'>" + ind_name + " (1)</li>");
+				$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
 			}
-			// kravitz.li.processed_total ++;
-			// 			
-			// 			var industries = kravitz.li.industries; 
-			// 			if (industries[person.industry]) {
-			// 				industries[person.industry] ++;
-			// 			} else {
-			// 				industries[person.industry] = 1;
-			// 			}		
-			// 			var jobs = kravitz.li.jobs; 
-			// 			var job = person.positions.values[0].title;
-			// 			if (jobs[job]) {
-			// 				jobs[job] ++;
-			// 			} else {
-			// 				jobs[job] = 1;
-			// 			}
-			// 			console.info("total: " + kravitz.li.total + " vs " + kravitz.li.processed_total);
-			// 			if (kravitz.li.total == kravitz.li.processed_total) {kravitz.li.renderer()}
 		},
-		// renderer : function() {
-		// 			var target = $('#industry_chart');
-		// 			target.show();
-		// 			$.each(kravitz.li.industries, function(k, v) {
-		// 				target.append("<li>" + k + " (" + v + ")" +"</li>");
-		// 			});
-		// 		},
 		logout : function() {
 			IN.User.logout();
 		}
