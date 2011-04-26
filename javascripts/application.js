@@ -211,7 +211,7 @@ var kravitz = {
 		},
 		render_job : function(person, pid) {
 			var job_name = person.positions.values[0].title;
-			var job_id = job_name.split(" ").join("-");
+			var job_id = kravitz.li.id_encoder(job_name.split(" ").join("-"));
 			var job_li = $('#job_' + job_id);
 			if (job_li.length) {
 				var job_cnt = parseInt(job_li.attr("data-cnt"));
