@@ -115,14 +115,13 @@ var kravitz = {
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
 			});
+			kravitz.li.friends();
 		},
 		loggedin : function() {
 			console.info("loggedin");
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
 			});
-			
-			kravitz.li.friends();
 		},
 		friends : function() {
 			  // $('ul.friends').removeClass("no-li");
