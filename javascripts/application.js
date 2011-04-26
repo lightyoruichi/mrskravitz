@@ -157,7 +157,7 @@ var kravitz = {
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
 			var pid = li.attr("data-id");
-			console.info("what");
+			console.info(postal);
 			var li = $.jStorage.get(pid);
 			console.info(li);
 			if (!li) {
