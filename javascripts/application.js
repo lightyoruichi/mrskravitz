@@ -65,8 +65,6 @@ var kravitz = {
 				$('h3.friends').html(kravitz.default_text.friend_description());
 				
 				if (IN.User.isAuthorized()) {
-					$('#industry_note').html(kravitz.default_text.friend_industry);
-					$('#job_note').html(kravitz.default_text.friend_jobs);
 					kravitz.li.friends();
 			 	}	else {
 					$('ul.friends').addClass("no-li");
@@ -128,6 +126,8 @@ var kravitz = {
 				$('ul.friends li').livequery(function(){
 					$('#industry_chart').show();
 					$('#job_chart').show();
+					$('#industry_note').html(kravitz.default_text.friend_industry);
+					$('#job_note').html(kravitz.default_text.friend_jobs);
 					var i = 0;
 					$(this).each(function(){ 
 							kravitz.li.query($(this));
