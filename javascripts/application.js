@@ -74,10 +74,9 @@ var kravitz = {
 				$.template("slTmpl", friendResultTemplate);
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			
-				$.each(peeps.peep, function(i, peep){
-					console.info(peep)
-					kravitz.li.render_location(peep.location);
-				});
+				// $.each(peeps.peep, function(i, peep){
+				// 					kravitz.li.render_location(peep.location);
+				// 				});
 			}
 		},
 		sl_error : function() {
@@ -212,21 +211,21 @@ var kravitz = {
 			}
 		},
 		render_location : function(location) {
-			console.info(location)
-			// if (location.length > 2) {
-			// 				var lid = location.replace(",", "").split(" ").join("-");
-			// 				var li = $('#location_' + lid);
-			// 				if (li.length) {
-			// 					var cnt = parseInt(li.attr("data-cnt"));
-			// 					li.removeClass("tag_" + cnt);
-			// 					cnt ++;
-			// 					li.addClass("tag_" + cnt);
-			// 					li.attr("data-cnt", cnt);
-			// 					li.html(location + " (" + cnt + ")");
-			// 				} else {
-			// 					$('#locations_chart').append("<li class='tag_1' id='location_"+ lid + "' data-cnt='1'>" + location + " (1)</li>");
-			// 				}
-			// 			}
+			// console.info(location)
+			if (location.length > 2) {
+				var lid = location.replace(",", "").split(" ").join("-");
+				var li = $('#location_' + lid);
+				if (li.length) {
+					var cnt = parseInt(li.attr("data-cnt"));
+					li.removeClass("tag_" + cnt);
+					cnt ++;
+					li.addClass("tag_" + cnt);
+					li.attr("data-cnt", cnt);
+					li.html(location + " (" + cnt + ")");
+				} else {
+					$('#locations_chart').append("<li class='tag_1' id='location_"+ lid + "' data-cnt='1'>" + location + " (1)</li>");
+				}
+			}
 		},
 		logout : function() {
 			IN.User.logout();
