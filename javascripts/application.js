@@ -39,9 +39,9 @@ $(document).ready(function(){
 	  var klass = preKlass.replace("job_", "");
 		var targets = $('ul.friends li[data-job!=' + klass + ']');
 		if (event.type == 'mouseover') {
-	    targets.animate({"opacity": .3});
+	    targets.animate({"opacity": .1}, "fast");
 	  } else {
-	    targets.animate({"opacity": 1});;
+	    targets.animate({"opacity": 1}, "fast");;
 	  }
 	});
 		
@@ -194,7 +194,7 @@ var kravitz = {
 		},
 		render_industry : function(person, pid) {
 			var ind_name = person.industry;
-			var ind_id = person.industry.split(" ").join("-");
+			var ind_id = encodeURIComponent(person.industry.split(" ").join("-"));
 			var ind_li = $('#' + ind_id);
 			if (ind_li.length) {
 				var ind_cnt = parseInt(ind_li.attr("data-cnt"));
