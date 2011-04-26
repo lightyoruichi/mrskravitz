@@ -157,7 +157,9 @@ var kravitz = {
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
 			var pid = li.attr("data-id");
+			console.info("what");
 			var li = $.jStorage.get(pid);
+			console.info(li);
 			if (!li) {
 				IN.API.PeopleSearch()
 							.fields("id","first-name","last-name","industry","positions:(title)")
@@ -212,7 +214,6 @@ var kravitz = {
 		render_job : function(person, pid) {
 			var job_name = person.positions.values[0].title;
 			var job_id = kravitz.li.id_encoder(job_name.split(" ").join("-"));
-			console.info(job_id)
 			var job_li = $('#job_' + job_id);
 			if (job_li.length) {
 				var job_cnt = parseInt(job_li.attr("data-cnt"));
