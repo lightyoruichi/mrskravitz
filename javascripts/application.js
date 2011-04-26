@@ -154,6 +154,7 @@ var kravitz = {
 			// 				    })
 			// 						.error(kravitz.li.query_error);
 			} else {
+												console.info("what2");
 				kravitz.li.process(li);
 			}
 		},
