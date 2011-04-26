@@ -139,8 +139,6 @@ var kravitz = {
 			var country = li.attr("data-country").toLowerCase();
 			var li = $.jStorage.get(name[0]+"-"+name[1]);
 			if (!li) {
-			// 				console.info(name[0]+"-"+name[1]);
-								console.info("what");
 			// 				IN.API.PeopleSearch()
 			// 						.fields("id","first-name","last-name","industry","positions:(title)")
 			// 				    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
@@ -154,7 +152,6 @@ var kravitz = {
 			// 				    })
 			// 						.error(kravitz.li.query_error);
 			} else {
-												console.info("what2");
 				kravitz.li.process(li);
 			}
 		},
@@ -183,7 +180,8 @@ var kravitz = {
 				ind_li.attr("data-cnt", ind_cnt);
 				ind_li.html(ind-name + " (" + ind_cnt + ")");
 			} else {
-				$('#industry_chart').append("<li class='tag_1' id='"+ ind_li + "' data-cnt='1'>" + ind_name + " (1)</li>");
+				$('#industry_chart').append("<li>"+ ind_id + "</li>");
+				// $('#industry_chart').append("<li class='tag_1' id='"+ ind_li + "' data-cnt='1'>" + ind_name + " (1)</li>");
 			}
 			// kravitz.li.processed_total ++;
 			// 			
