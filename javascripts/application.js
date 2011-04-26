@@ -63,12 +63,12 @@ var kravitz = {
 			else if(typeof(callbacks.success) != 'undefined'){
 				// $('#middle').show()
 				$('h3.friends').html(kravitz.default_text.friend_description());
-				$('#industry_note').html(kravitz.default_text.friend_industry);
-				$('#job_note').html(kravitz.default_text.friend_jobs);
 				
-				if (IN.User.isAuthorized())
+				if (IN.User.isAuthorized()) {
+					$('#industry_note').html(kravitz.default_text.friend_industry);
+					$('#job_note').html(kravitz.default_text.friend_jobs);
 					kravitz.li.friends();
-				else {
+			 	}	else {
 					$('ul.friends').addClass("no-li");
 					$('#salary_chart_login').show();
 				}
@@ -121,10 +121,11 @@ var kravitz = {
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
 			});
-			// kravitz.li.friends();
+			
+			kravitz.li.friends();
 		},
 		friends : function() {
-			  $('ul.friends').removeClass("no-li");
+			  // $('ul.friends').removeClass("no-li");
 				//remove class on ul.friends.
 				$('ul.friends li').livequery(function(){
 					$('#industry_chart').show();
