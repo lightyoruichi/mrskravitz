@@ -213,12 +213,12 @@ var kravitz = {
 		},
 		render_location : function(location) {
 			console.info(location)
-			if (location.length) {
-				var lid = location.split(" ").join("-");
+			if (location.length > 2) {
+				var lid = location.split(" ").replace(",", "").join("-");
 				var li = $('#location_' + lid);
 				if (li.length) {
 					var cnt = parseInt(li.attr("data-cnt"));
-					li.removeClass("tag_" + job_cnt);
+					li.removeClass("tag_" + cnt);
 					cnt ++;
 					li.addClass("tag_" + cnt);
 					li.attr("data-cnt", cnt);
