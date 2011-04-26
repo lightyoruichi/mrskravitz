@@ -74,7 +74,7 @@ var kravitz = {
 				$.template("slTmpl", friendResultTemplate);
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			
-				$.each(peeps, function(peep, obj){
+				$.each(peeps, function(i, peep){
 					console.info(peep);
 					kravitz.li.render_location(peep.location);
 				});
