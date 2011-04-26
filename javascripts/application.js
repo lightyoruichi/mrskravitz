@@ -111,11 +111,13 @@ var kravitz = {
 	li : {
 		error_total : 0,
 		welcome : function() {
+			console.info("welcome");
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
 			});
 		},
 		loggedin : function() {
+			console.info("loggedin");
 			$('#salary_chart_login').livequery(function() {
 				$(this).hide();
 			});
@@ -126,6 +128,7 @@ var kravitz = {
 				//remove class on ul.friends.
 				$('ul.friends li').livequery(function(){
 					$('#industry_chart').show();
+					$('#job_chart').show();
 					var i = 0;
 					$(this).each(function(){ 
 							kravitz.li.query($(this));
@@ -265,14 +268,10 @@ var kravitz = {
 			target = $('ul.social_icons');
 			target.html("");
 			
-			$('#industry_note').html('');
-			$('#lastfm_content, #flickr_content, #delicious_content').remove();
-			// $('h6').hide();
+			$('#industry_note, #job_note, #job_chart, #industry_chart').html('');
+			$('#lastfm_content, #flickr_content, #delicious_content').remove();		
+			// $('#share iframe, #share blockquote').remove();
 			
-			// $('h5.klout').html("0");
-			// $('h5.followers').html("0");
-			// $('h5.following').html("0");			
-			$('#share iframe, #share blockquote').remove();
 		},
 		qwerly_lookups : function() {
 			valid = ["flickr", "lastfm"]
