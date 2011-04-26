@@ -39,9 +39,9 @@ $(document).ready(function(){
 	  var klass = preKlass.replace("job_", "");
 		var targets = $('ul.friends li[data-job!=' + klass + ']');
 		if (event.type == 'mouseover') {
-	    targets.fadeOut("slow");
+	    targets.animate({"opacity": .3});
 	  } else {
-	    targets.fadeIn("show");
+	    targets.animate({"opacity": 1});;
 	  }
 	});
 		
