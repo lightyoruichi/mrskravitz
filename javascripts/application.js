@@ -207,6 +207,8 @@ var kravitz = {
 			var country = li.attr("data-country").toLowerCase();
 			var pid = li.attr("data-id")+'';
 			var li = $.jStorage.get(pid);
+			
+			
 			if (!li) {
 				IN.API.PeopleSearch()
 							.fields("id","first-name","last-name","industry","positions:(title)")
@@ -220,7 +222,11 @@ var kravitz = {
 									}
 				 			})
 							.error(kravitz.li.query_error);
+					console.info("lookedup");
+					console.info(person);
 			} else {
+				console.info("stored");
+				console.info(li);
 				kravitz.li.process(li);
 			}
 		},
@@ -482,8 +488,9 @@ var kravitz = {
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
 				var qty = data.query.count;
+				console.info(data)
 				if (qty == 0) {
-					kravitz.klout.topics_error(target, "empty");
+					kravitz.klout.topics_error();
 				} else {
 					yql = data.query.results.items;
 					$('#klout_score').html(yql.score);
