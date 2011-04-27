@@ -134,7 +134,7 @@ var kravitz = {
 				var tw = kravitz.twitter.model;	
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
-									console.info(tw);
+									console.info(tw.location);
 					params    = {};
 					params.format = "json"
 					params.q  = "select * from geo.placefinder where text='" + tw.location + "'";
