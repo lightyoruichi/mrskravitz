@@ -131,8 +131,8 @@ var kravitz = {
 		},
 		target : function() {
 			tw = kravitz.twitter.model;	
+			console.info(tw)
 			if (tw.length) {
-		
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
 					params    = {};
@@ -143,10 +143,9 @@ var kravitz = {
 					callbacks.errors = kravitz.li.query_target_error;	
 					kravitz.utility.query(kravitz.utility.yql, params, callbacks);
 				} else {
-					console.info("what?")
 					kravitz.li.render_target(instorage);
 				}
-			}
+			} 
 		},
 		query_target : function(data) {
 			if(data.query == null || data.query.results == null || data.query.results.Result == null){
