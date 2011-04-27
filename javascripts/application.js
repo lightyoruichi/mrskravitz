@@ -131,8 +131,8 @@ var kravitz = {
 		},
 		target : function() {
 			tw = kravitz.twitter.model;	
-			console.info(tw)
 			if (tw.length) {
+				console.info("here")
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
 					params    = {};
@@ -148,6 +148,7 @@ var kravitz = {
 			} 
 		},
 		query_target : function(data) {
+			console.info(data);
 			if(data.query == null || data.query.results == null || data.query.results.Result == null){
 				kravitz.li.query_target_error;
 			} else {
