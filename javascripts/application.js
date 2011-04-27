@@ -171,6 +171,7 @@ var kravitz = {
 		},
 		query_target_error : function() {
 			//nothing
+			console.info("nothing");
 		},
 		render_target : function(person) {
 			console.info(person.positions)
@@ -365,7 +366,7 @@ var kravitz = {
 			target.html("");
 			
 			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note').html('');
-			$('#lastfm_content, #flickr_content, #delicious_content').remove();		
+			$('#lastfm_content, #flickr_content, #delicious_content', "#linkedin_content").remove();		
 			// $('#share iframe, #share blockquote').remove();
 			
 		},
