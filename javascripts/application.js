@@ -130,8 +130,9 @@ var kravitz = {
 			kravitz.li.target();
 		},
 		target : function() {
-			$('#target').livequery(function(){
+			$('#target_person').livequery(function(){
 				var target = $(this);
+				target.addClass("DINGGGGGGGGGG")
 			});
 			if (target.length) {
 				var pid = target.attr("data-id")+'';
@@ -155,7 +156,7 @@ var kravitz = {
 			if(data.query == null || data.query.results == null || data.query.results.Result == null){
 				kravitz.li.query_target_error;
 			} else {
-				$('#target').livequery(function(){
+				$('#target_person').livequery(function(){
 					var target = $(this);
 				});
 				var name = target.attr("data-name").split(" ");
