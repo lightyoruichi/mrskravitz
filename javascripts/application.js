@@ -133,8 +133,8 @@ var kravitz = {
 			if (typeof kravitz.twitter.model != "undefined") {
 				var tw = kravitz.twitter.model;	
 				var instorage = $.jStorage.get(tw.id+'');
-				console.info("hre");
 				if (!instorage) {
+									console.info("hresd");
 					params    = {};
 					params.format = "json"
 					params.q  = "select * from geo.placefinder where text='" + tw.location + "'";
