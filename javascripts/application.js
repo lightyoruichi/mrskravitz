@@ -135,7 +135,7 @@ var kravitz = {
 				$('#target_person').livequery(function(){
 					var target = $(this).attr("data-id");
 				})
-				alert(target)
+				// alert(target)
 				console.info(tw)
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
@@ -180,6 +180,15 @@ var kravitz = {
 		},
 		render_target : function(person) {
 			console.info(person);
+			if (person.length) {
+				$('div.details_container').append("<div id='linkedin_content' class='box'></div>");
+				$('#linkedin_content').append("<h6>Has had jobs like:</h6><ul class='person_jobs'></ul>");
+				var target = $('ul.person_jobs');
+				
+				var jobs = person.positions.values;
+				$.template("liTmpl", liResultTemplate);
+			  $.tmpl("liTmpl", jobs).appendTo(target);
+			}
 		},
 		friends : function() {
 			  // $('ul.friends').removeClass("no-li");
