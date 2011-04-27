@@ -347,22 +347,19 @@ var kravitz = {
 			callbacks.errors = kravitz.flickr.details_error;
 		  // kravitz.utility.query(kravitz.flickr.api_url, params, callbacks);
 			// $.getJSON(kravitz.flickr.api_url, params, callbacks);
-			var req = $.ajax({
-			  url: kravitz.flickr.api_url,
-			  dataType: 'jsonp',
-			  data: params,
-			});
-			if (req.success) {
-				req.success(function(data, textStatus){
-					alert("what")
-					console.info("success");
-					// return callbacks.success(data, callbacks.user_data);
-				});
-			} else {
-				alert("yes")
-				console.info("error")
-				// return callbacks.errors("", {});
-			}
+			url =  kravitz.flickr.api_url + "?method=flickr.urls.lookupUser&format=json&api_key=" + kravitz.flickr.api_key + "&url=" + kravitz.flickr.user_url + sn + "&jsoncallback=?";
+			var req = $.getJSON(url, {}, kravitz.flickr.photos);
+			// if (req.success) {
+			// 				req.success(function(data, textStatus){
+			// 					alert("what")
+			// 					console.info("success");
+			// 					// return callbacks.success(data, callbacks.user_data);
+			// 				});
+			// 			} else {
+			// 				alert("yes")
+			// 				console.info("error")
+			// 				// return callbacks.errors("", {});
+			// 			}
 		},
 		details_error : function() {
 			//nothing
