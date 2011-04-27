@@ -171,7 +171,7 @@ var kravitz = {
 		},
 		query_target_error : function() {
 			//nothing
-			console.info("nothing");
+			console.info("nothings");
 		},
 		render_target : function(person) {
 			console.info(person.positions)
