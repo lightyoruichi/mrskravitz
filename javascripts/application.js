@@ -330,7 +330,6 @@ var kravitz = {
 				model.name = data.name;
 				model.location = data.location;
 				model.sn = data.screen_name;
-				if (IN.User.isAuthorized()) {kravitz.li.target();}
 				
 				target = $('#background div.bio');
 				var followers = $('h5.followers span');
@@ -343,6 +342,8 @@ var kravitz = {
 			  $.tmpl("twTmpl", data).appendTo(target);
 				followers.html(data.followers_count);
 				following.html(data.friends_count);	
+				
+				if (IN.User.isAuthorized()) {kravitz.li.target();}
 			}
 		},
 		profile_error : function() {
