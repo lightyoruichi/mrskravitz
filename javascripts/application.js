@@ -127,9 +127,15 @@ var kravitz = {
 				$(this).hide();
 			});
 			kravitz.li.friends();
-			kravitz.li.target();
+			// kravitz.li.target();
 		},
 		target : function() {
+			var x = {}
+			if (typeof x === "undefined") {
+				console.info("x undefined")
+			} else {
+				console.info("x is defined")
+			};
 			if (typeof kravitz.twitter.model != "undefined") {
 				var tw = kravitz.twitter.model;	
 				$('#target_person').livequery(function(){
@@ -137,7 +143,7 @@ var kravitz = {
 				})
 				console.info(tw)
 				alert(target)
-				console.info(tw)
+				// console.info(tw)
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
 					params    = {};
@@ -180,8 +186,8 @@ var kravitz = {
 		},
 		render_target : function(person) {
 			console.info(person);
-			console.info(person.length)
-			if (person.length) {
+			console.info(person.id)
+			if (person.id) {
 				$('div.details_container').append("<div id='linkedin_content' class='box'></div>");
 				$('#linkedin_content').append("<h6>Has had jobs like:</h6><ul class='person_jobs'></ul>");
 				var target = $('ul.person_jobs');
