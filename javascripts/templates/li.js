@@ -1,3 +1,3 @@
 var liResultTemplate =  '<li>' +
-'<h5>HI<em>more stuff here.</em></h5>' +
+'<h5>${title}<em>${company}</em></h5>' +
 '</li>';

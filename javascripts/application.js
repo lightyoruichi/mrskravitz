@@ -130,20 +130,8 @@ var kravitz = {
 			// kravitz.li.target();
 		},
 		target : function() {
-			var x = {}
-			if (typeof x === "undefined") {
-				console.info("x undefined")
-			} else {
-				console.info("x is defined")
-			};
-			if (typeof kravitz.twitter.model != "undefined") {
-				var tw = kravitz.twitter.model;	
-				$('#target_person').livequery(function(){
-					var target = $(this).attr("data-id");
-				})
-				console.info(tw)
-				alert(target)
-				// console.info(tw)
+			var tw = kravitz.twitter.model;	
+			if (tw.id) {
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
 					params    = {};
@@ -169,7 +157,7 @@ var kravitz = {
 				var country = res.countrycode.toLowerCase();
 				
 				IN.API.PeopleSearch()
-							.fields("id","first-name","last-name","industry","positions:(title)")
+							.fields("id","first-name","last-name","industry","positions:(title, company)")
 					    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
 					    .result(function(result) { 
 									if (result.people.values != null) {
@@ -185,8 +173,6 @@ var kravitz = {
 			//nothing
 		},
 		render_target : function(person) {
-			console.info(person);
-			console.info(person.id)
 			if (person.id) {
 				$('div.details_container').append("<div id='linkedin_content' class='box'></div>");
 				$('#linkedin_content').append("<h6>Has had jobs like:</h6><ul class='person_jobs'></ul>");
