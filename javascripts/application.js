@@ -131,7 +131,6 @@ var kravitz = {
 		},
 		target : function() {
 			tw = kravitz.twitter.model;	
-			console.info(tw)
 			if (tw.length) {
 		
 				var instorage = $.jStorage.get(tw.id+'');
@@ -149,17 +148,15 @@ var kravitz = {
 			}
 		},
 		query_target : function(data) {
+			console.info(data);
 			if(data.query == null || data.query.results == null || data.query.results.Result == null){
 				kravitz.li.query_target_error;
 			} else {
-				$('#target_person').livequery(function(){
-					var target = $(this);
-				});
-				var name = target.attr("data-name").split(" ");
+				tw = kravitz.twitter.model;
+				var name = tw.name.split(" ");
 				var res = data.query.results.Result;
 				var postal = res.uzip;
 				var country = res.countrycode.toLowerCase();
-				var pid = target.attr("data-id")+'';
 				
 				IN.API.PeopleSearch()
 							.fields("id","first-name","last-name","industry","positions:(title)")
@@ -167,12 +164,11 @@ var kravitz = {
 					    .result(function(result) { 
 									if (result.people.values != null) {
 										var person = result.people.values[0];
-										$.jStorage.set(pid, person);
+										$.jStorage.set(tw.id+'', person);
 										kravitz.li.render_target(person);
 									}
 				 			})
 							.error(kravitz.li.query_target_error);
-				
 			}
 		},
 		query_target_error : function() {
