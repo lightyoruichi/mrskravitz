@@ -133,7 +133,7 @@ var kravitz = {
 			if (typeof kravitz.twitter.model != "undefined") {
 				var tw = kravitz.twitter.model;	
 				var instorage = $.jStorage.get(tw.id+'');
-				console.info(instorage);
+				console.info("hre");
 				if (!instorage) {
 					params    = {};
 					params.format = "json"
