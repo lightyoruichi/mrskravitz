@@ -157,7 +157,7 @@ var kravitz = {
 				var country = res.countrycode.toLowerCase();
 				
 				IN.API.PeopleSearch()
-							.fields("id","first-name","last-name","industry","positions:(title, company)")
+							.fields("id","first-name","last-name","industry","positions")
 					    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
 					    .result(function(result) { 
 									if (result.people.values != null) {
@@ -171,7 +171,7 @@ var kravitz = {
 		},
 		query_target_error : function() {
 			//nothing
-			console.info("nothings");
+			console.info("nothing");
 		},
 		render_target : function(person) {
 			console.info(person.positions)
