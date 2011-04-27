@@ -76,7 +76,7 @@ var kravitz = {
 				$('h3.friends').html(kravitz.default_text.friend_description());
 				
 				if (IN.User.isAuthorized()) {
-					// kravitz.li.friends();
+					kravitz.li.friends();
 			 	}	else {
 					$('#salary_chart_login').show();
 				}
@@ -137,19 +137,19 @@ var kravitz = {
 		friends : function() {
 			  // $('ul.friends').removeClass("no-li");
 				//remove class on ul.friends.
-				$('ul.friends li').livequery(function(){
-					$('#industry_chart, #job_chart, #locations_chart').show();
-					
-					$('#industry_note').html(kravitz.default_text.friend_industry);
-					$('#job_note').html(kravitz.default_text.friend_jobs);
-					$('#locations_note').html(kravitz.default_text.friend_locations);
-					
-					var i = 0;
-					$(this).each(function(){ 
-							kravitz.li.query($(this));
-							i ++;
-					});
-				});
+				// $('ul.friends li').livequery(function(){
+				// 					$('#industry_chart, #job_chart, #locations_chart').show();
+				// 					
+				// 					$('#industry_note').html(kravitz.default_text.friend_industry);
+				// 					$('#job_note').html(kravitz.default_text.friend_jobs);
+				// 					$('#locations_note').html(kravitz.default_text.friend_locations);
+				// 					
+				// 					var i = 0;
+				// 					$(this).each(function(){ 
+				// 							kravitz.li.query($(this));
+				// 							i ++;
+				// 					});
+				// 				});
 			
 		},
 		query : function(li) {
@@ -194,20 +194,21 @@ var kravitz = {
 		},
 		render_industry : function(person, pid) {
 			console.info(person);
-			var ind_name = person.industry;
-			var ind_id = kravitz.li.id_encoder(person.industry.split(" ").join("-"));
-			var ind_li = $('#' + ind_id);
-			if (ind_li.length) {
-				var ind_cnt = parseInt(ind_li.attr("data-cnt"));
-				ind_li.removeClass("tag_" + ind_cnt);
-				ind_cnt ++;
-				ind_li.addClass("tag_" + ind_cnt);
-				ind_li.attr("data-cnt", ind_cnt);
-				ind_li.html(ind_name + " (" + ind_cnt + ")");
-			} else {
-				$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
-				$('#tid_' + pid).attr("data-industry", ind_id);
-				
+			if (person.length) {
+				var ind_name = person.industry;
+				var ind_id = kravitz.li.id_encoder(person.industry.split(" ").join("-"));
+				var ind_li = $('#' + ind_id);
+				if (ind_li.length) {
+					var ind_cnt = parseInt(ind_li.attr("data-cnt"));
+					ind_li.removeClass("tag_" + ind_cnt);
+					ind_cnt ++;
+					ind_li.addClass("tag_" + ind_cnt);
+					ind_li.attr("data-cnt", ind_cnt);
+					ind_li.html(ind_name + " (" + ind_cnt + ")");
+				} else {
+					$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
+					$('#tid_' + pid).attr("data-industry", ind_id);	
+				}
 			}
 		},
 		render_job : function(person, pid) {
@@ -321,6 +322,7 @@ var kravitz = {
 				if (valid.indexOf(service) > -1) {
 					switch (service) {
 						case "flickr":
+						console.info("flickr");
 							kravitz.flickr.details(name);
 							break;
 						case "lastfm":
