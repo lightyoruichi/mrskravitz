@@ -130,13 +130,11 @@ var kravitz = {
 			kravitz.li.target();
 		},
 		target : function() {
-			$('#target_person').livequery(function(){
-				var target = $(this);
-			});
-			console.info(target.attr("id"));
-			if (target.length) {
-				var pid = target.attr("data-id")+'';
-		console.info(pid);
+			tw = kravitz.twitter.model;
+			
+			if (tw.id.length) {
+				// var pid = target.attr("data-id")+'';
+		console.info(tw.id);
 				var instorage = $.jStorage.get(pid);
 				var location = target.attr("data-location");		
 				if (!instorage) {
@@ -302,6 +300,7 @@ var kravitz = {
 	},
 	twitter : {
 		base_uri : "http://api.twitter.com/1/users/show.json",
+		model : {},
 		profile : function(sn) {
 			params    = "screen_name=" + sn;
 			callbacks = {};
@@ -317,7 +316,12 @@ var kravitz = {
 				$('#results').show().attr("data-name", data.name);
 				$('h2.result').hide()
 				
-		
+				var model = kravitz.twitter.model;
+				model.id = data.id;
+				model.name = data.name;
+				model.location = data.location;
+				model.sn = data.screen_name;
+				
 				target = $('#background div.bio');
 				var followers = $('h5.followers span');
 				var following = $('h5.following span');
