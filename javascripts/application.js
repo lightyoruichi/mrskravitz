@@ -76,7 +76,7 @@ var kravitz = {
 				$('h3.friends').html(kravitz.default_text.friend_description());
 				
 				if (IN.User.isAuthorized()) {
-					kravitz.li.friends();
+					// kravitz.li.friends();
 			 	}	else {
 					$('#salary_chart_login').show();
 				}
