@@ -133,6 +133,7 @@ var kravitz = {
 			$('#target_person').livequery(function(){
 				var target = $(this);
 			});
+			console.info(target.attr("id"));
 			if (target.length) {
 				var pid = target.attr("data-id")+'';
 		console.info(pid);
