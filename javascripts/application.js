@@ -135,7 +135,7 @@ var kravitz = {
 				$('#target_person').livequery(function(){
 					var target = $(this).attr("data-id");
 				})
-				// alert(target)
+				alert(target)
 				console.info(tw)
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
