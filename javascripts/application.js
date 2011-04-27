@@ -173,6 +173,7 @@ var kravitz = {
 			//nothing
 		},
 		render_target : function(person) {
+			console.info(person.positions)
 			if (person.id) {
 				$('div.details_container').append("<div id='linkedin_content' class='box'></div>");
 				$('#linkedin_content').append("<h6>Has had jobs like:</h6><ul class='person_jobs'></ul>");
