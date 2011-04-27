@@ -147,9 +147,8 @@ var kravitz = {
 			} 
 		},
 		query_target : function(data) {
-			console.info(data);
 			if(data.query == null || data.query.results == null || data.query.results.Result == null){
-				kravitz.li.query_target_error;
+				kravitz.li.query_target_error();
 			} else {
 				tw = kravitz.twitter.model;
 				var name = tw.name.split(" ");
