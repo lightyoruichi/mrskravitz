@@ -117,7 +117,7 @@ ul.topics div.description h2 {margin:0;}
 #background ul.friends div.description h2 a:hover {text-decoration:underline !important;color:#000;}
 
 ul.person_jobs {margin:0;}
-ul.person_jobs li {float:left;width:100%;margin:0 0 10px -3px;color:#ccc;font-size:15px;}
+ul.person_jobs li {float:left;width:100%;margin:0 0 10px;color:#ccc;font-size:15px;}
 ul.person_jobs li em {display:inline;font-size:13px;color:#bbb;}
 
 #industry_chart, #salary_chart_login, #job_chart, #locations_chart {display:none;float:left;width:94%;}
