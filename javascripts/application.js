@@ -322,7 +322,6 @@ var kravitz = {
 				if (valid.indexOf(service) > -1) {
 					switch (service) {
 						case "flickr":
-						console.info("flickr");
 							kravitz.flickr.details(name);
 							break;
 						case "lastfm":
@@ -352,8 +351,8 @@ var kravitz = {
 				kravitz.flickr.details_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
-				var user_id =
-				console.info(data); 
+				var user_id = data.user.id;
+				console.info(data.user.id); 
 				// params    = "method=flickr.urls.lookupUser&api_key=" + kravitz.flickr.api_key + "&url=" + kravitz.flickr.user_url + sn;
 				// callbacks = {};
 				// callbacks.success = kravitz.flickr.photos_callback;
