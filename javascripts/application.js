@@ -132,11 +132,10 @@ var kravitz = {
 		target : function() {
 			$('#target_person').livequery(function(){
 				var target = $(this);
-				target.addClass("DINGGGGGGGGGG")
 			});
 			if (target.length) {
 				var pid = target.attr("data-id")+'';
-		console.info(target);
+		console.info(pid);
 				var instorage = $.jStorage.get(pid);
 				var location = target.attr("data-location");		
 				if (!instorage) {
