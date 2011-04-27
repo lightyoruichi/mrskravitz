@@ -130,12 +130,13 @@ var kravitz = {
 			kravitz.li.target();
 		},
 		target : function() {
-			var target = $('#target');
+			$('#target').livequery(function(){
+				var target = $(this);
+			});
 			if (target.length) {
 				var pid = target.attr("data-id");
 				var instorage = $.jStorage.get(pid);
-				var location = target.attr("data-location");
-				console.info(pid)		
+				var location = target.attr("data-location");		
 				if (!instorage) {
 					params    = {};
 					params.format = "json"
@@ -153,13 +154,15 @@ var kravitz = {
 			if(data.query == null || data.query.results == null || data.query.results.Result == null){
 				kravitz.li.query_target_error;
 			} else {
-				var target = $('#target');
+				$('#target').livequery(function(){
+					var target = $(this);
+				});
 				var name = target.attr("data-name").split(" ");
 				var res = data.query.results.Result;
 				var postal = res.uzip;
 				var country = res.countrycode.toLowerCase();
 				var pid = target.attr("data-id");
-				
+				console.info(pid);
 				IN.API.PeopleSearch()
 							.fields("id","first-name","last-name","industry","positions:(title)")
 					    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
