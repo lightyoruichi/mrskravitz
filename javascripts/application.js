@@ -133,6 +133,7 @@ var kravitz = {
 			if (typeof kravitz.twitter.model != "undefined") {
 				var tw = kravitz.twitter.model;	
 				console.info(tw)
+				console.info(tw.id)
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
 					params    = {};
