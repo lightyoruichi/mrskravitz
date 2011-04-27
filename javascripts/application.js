@@ -337,31 +337,54 @@ var kravitz = {
 		api_url  : "http://api.flickr.com/services/rest/",
 		user_url : "flickr.com/photos/",
 		details : function(sn) {
-			params    = "method=flickr.urls.lookupUser&api_key=" + kravitz.flickr.api_key + "&url=" + kravitz.flickr.user_url + sn;
+			params = {}
+			params.api_key = kravitz.flickr.api_key;
+			params.format = "json";
+			params.method = "flickr.urls.lookupUser";
+			params.url = kravitz.flickr.user_url + sn;
 			callbacks = {};
 			callbacks.success = kravitz.flickr.photos;
 			callbacks.errors = kravitz.flickr.details_error;
-		  kravitz.utility.query(kravitz.flickr.api_url, params, callbacks);
+		  // kravitz.utility.query(kravitz.flickr.api_url, params, callbacks);
+			// $.getJSON(kravitz.flickr.api_url, params, callbacks);
+			var req = $.ajax({
+			  url: kravitz.flickr.api_url,
+			  dataType: 'jsonp',
+			  data: params,
+			});
+			if (req.success) {
+				req.success(function(data, textStatus){
+					alert("what")
+					console.info("success");
+					// return callbacks.success(data, callbacks.user_data);
+				});
+			} else {
+				alert("yes")
+				console.info("error")
+				// return callbacks.errors("", {});
+			}
 		},
 		details_error : function() {
 			//nothing
 		},
 		photos : function(data) {
+				console.info(data);
 			if(typeof(data) == null){	
 				kravitz.flickr.details_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
 				var user_id = data.user.id;
-				console.info(data.user.id); 
+				
 				// params    = "method=flickr.urls.lookupUser&api_key=" + kravitz.flickr.api_key + "&url=" + kravitz.flickr.user_url + sn;
+				params = {}
+				params.api_key = kravitz.flickr.api_key;
+				params.format = "json";
+				params.method = "flickr.urls.lookupUser";
+				params.url = kravitz.flickr.user_url + sn;
 				// callbacks = {};
 				// callbacks.success = kravitz.flickr.photos_callback;
 				// callbacks.errors = kravitz.flickr.details_error;	
 				// 			  kravitz.utility.query(kravitz.flickr.api_url, params, callbacks);
-				
-				// var artists = data.query.results.lfm;
-				// 				$.template("lastfmTmpl", lastfmResultTemplate);
-				// 			  $.tmpl("lastfmTmpl", artists).appendTo(target);
 			}
 		},
 		photos_callback : function() {
