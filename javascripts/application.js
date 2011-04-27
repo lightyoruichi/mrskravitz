@@ -366,7 +366,7 @@ var kravitz = {
 			target.html("");
 			
 			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note').html('');
-			$('#lastfm_content, #flickr_content, #delicious_content', "#linkedin_content").remove();		
+			$('#lastfm_content, #flickr_content, #delicious_content, #linkedin_content').remove();		
 			// $('#share iframe, #share blockquote').remove();
 			
 		},
