@@ -131,7 +131,8 @@ var kravitz = {
 		},
 		target : function() {
 			var tw = kravitz.twitter.model;	
-			if (typeof tw  != "undefined") {
+			if (typeof tw != "undefined") {
+				console.info(kravitz.twitter.model);
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
 					params    = {};
