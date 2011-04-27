@@ -132,7 +132,7 @@ var kravitz = {
 		target : function() {
 			tw = kravitz.twitter.model;	
 			console.info(tw)
-			if (tw.length) {
+			if (typeof tw  == "undefined") {
 				console.info("here")
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
