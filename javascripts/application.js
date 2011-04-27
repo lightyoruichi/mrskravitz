@@ -130,9 +130,8 @@ var kravitz = {
 			kravitz.li.target();
 		},
 		target : function() {
-			var tw = kravitz.twitter.model;	
-			if (typeof tw != "undefined") {
-				console.info(kravitz.twitter.model);
+			if (typeof kravitz.twitter.model != "undefined") {
+				var tw = kravitz.twitter.model;	
 				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
 					params    = {};
