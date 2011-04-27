@@ -135,7 +135,7 @@ var kravitz = {
 			});
 			if (target.length) {
 				var pid = target.attr("data-id")+'';
-		console.info(pid);
+		console.info(target);
 				var instorage = $.jStorage.get(pid);
 				var location = target.attr("data-location");		
 				if (!instorage) {
