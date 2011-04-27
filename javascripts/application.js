@@ -193,6 +193,7 @@ var kravitz = {
 			kravitz.li.render_job(person, pid);
 		},
 		render_industry : function(person, pid) {
+			console.info(person);
 			var ind_name = person.industry;
 			var ind_id = kravitz.li.id_encoder(person.industry.split(" ").join("-"));
 			var ind_li = $('#' + ind_id);
