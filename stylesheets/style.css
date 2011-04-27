@@ -84,7 +84,7 @@ div.pointer-trustquotient {position:absolute;top:9px;left:-13px;}
 div.pointer-left-small-inner { border-color:transparent #bbb transparent transparent; border-style:solid; border-width:10px 20px 10px 0; height:0; width:0;}
 div.pointer-up-inner   { border-color:transparent transparent #E4E3C3; border-style:solid; border-width:0 15px 15px; float:left; height:0; margin:0; width:0; }
 
-div.box {width:100%;float:left;margin-bottom:0;padding:0;}
+div.box {width:100%;float:left;margin-bottom:15px;padding:0;}
 h4 {font-size:16px;font-weight:bold;margin:0 0 5px 0;color:#333;}
 h5 {width:auto;float:left;margin:18px 10px 4px 10px;}
 h5 span.number {font-size:25px;font-weight:bold;color:#999;}
@@ -103,16 +103,16 @@ h6 {width:100%;font-size:12px;float:left;margin:10px 0 5px 0;}
 #background ul.social_icons {height:35px;}
 #background ul.social_icons li {display:inline;float:left;margin:8px 4px !important;width:auto !important;padding:0 !important;}
 ul.social_icons li img {border:none;}
-ul.topics, ul.bands {height:auto;margin:0px 0 0 -6px;}
+ul.topics, ul.bands, ul.flickr {height:auto;margin:0px 0 0 -6px;}
 ul.friends {margin:0;height:auto;float:left;}
-ul.topics li, ul.bands li {float:left;margin:1px 0;width:90px;padding:0 6px;}
+ul.topics li, ul.bands li, ul.flickr li {float:left;margin:1px 0;width:90px;padding:0 6px;}
 ul.friends li {float:left;margin:2px;padding:0;width:50px;}
 ul.friends li:hover {}
-ul.topics div.photo, ul.bands div.photo {float:left;width:87px !important;height:87px !important;border:1px solid #ccc;padding:2px;position:relative;}
+ul.topics div.photo, ul.bands div.photo, ul.flickr div.photo {float:left;width:87px !important;height:87px !important;border:1px solid #ccc;padding:2px;position:relative;}
 ul.friends div.photo {width:50px !important;height:50px !important;}
 ul.friends div.photo img, ul.topics div.photo img {height:100%;width:100%;}
 ul.topics h2, ul.bands h2 {width:100px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;line-height:14px !important;margin-top:0;}
-ul.topics div.description {width:100% !important;min-height:40px !important;}
+ul.topics div.description {width:100% !important;min-height:16px !important;}
 ul.topics div.description h2 {margin:0;}
 #background ul.friends div.description h2 a:hover {text-decoration:underline !important;color:#000;}
 
