@@ -186,21 +186,19 @@ var kravitz = {
 			}
 		},
 		friends : function() {
-			  // $('ul.friends').removeClass("no-li");
-				//remove class on ul.friends.
-				// $('ul.friends li').livequery(function(){
-				// 					$('#industry_chart, #job_chart, #locations_chart').show();
-				// 					
-				// 					$('#industry_note').html(kravitz.default_text.friend_industry);
-				// 					$('#job_note').html(kravitz.default_text.friend_jobs);
-				// 					$('#locations_note').html(kravitz.default_text.friend_locations);
-				// 					
-				// 					var i = 0;
-				// 					$(this).each(function(){ 
-				// 							kravitz.li.query($(this));
-				// 							i ++;
-				// 					});
-				// 				});
+ 				$('ul.friends li').livequery(function(){
+					$('#industry_chart, #job_chart, #locations_chart').show();
+					
+					$('#industry_note').html(kravitz.default_text.friend_industry);
+					$('#job_note').html(kravitz.default_text.friend_jobs);
+					$('#locations_note').html(kravitz.default_text.friend_locations);
+					
+					var i = 0;
+					$(this).each(function(){ 
+							kravitz.li.query($(this));
+							i ++;
+					});
+				});
 			
 		},
 		query : function(li) {
