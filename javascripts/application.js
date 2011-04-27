@@ -131,10 +131,10 @@ var kravitz = {
 		},
 		target : function() {
 			tw = kravitz.twitter.model;
-			
+		console.info(tw.id);	
 			if (tw.length) {
 				// var pid = target.attr("data-id")+'';
-		console.info(tw.id);
+		
 				var instorage = $.jStorage.get(pid);
 				var location = target.attr("data-location");		
 				if (!instorage) {
