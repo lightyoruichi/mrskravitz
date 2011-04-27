@@ -135,6 +135,7 @@ var kravitz = {
 				$('#target_person').livequery(function(){
 					var target = $(this).attr("data-id");
 				})
+				console.info(tw)
 				alert(target)
 				console.info(tw)
 				var instorage = $.jStorage.get(tw.id+'');
@@ -152,7 +153,6 @@ var kravitz = {
 			} 
 		},
 		query_target : function(data) {
-			console.info(data);
 			if(data.query == null || data.query.results == null || data.query.results.Result == null){
 				kravitz.li.query_target_error;
 			} else {
@@ -180,6 +180,7 @@ var kravitz = {
 		},
 		render_target : function(person) {
 			console.info(person);
+			console.info(person.length)
 			if (person.length) {
 				$('div.details_container').append("<div id='linkedin_content' class='box'></div>");
 				$('#linkedin_content').append("<h6>Has had jobs like:</h6><ul class='person_jobs'></ul>");
@@ -328,6 +329,7 @@ var kravitz = {
 				model.name = data.name;
 				model.location = data.location;
 				model.sn = data.screen_name;
+				console.info("from twitter: " + model.location);
 				if (IN.User.isAuthorized()) {kravitz.li.target;}
 				
 				target = $('#background div.bio');
