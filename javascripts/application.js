@@ -157,9 +157,7 @@ var kravitz = {
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
 			var pid = li.attr("data-id");
-			console.info(pid);
 			var li = $.jStorage.get(pid);
-			console.info(li);
 			if (!li) {
 				IN.API.PeopleSearch()
 							.fields("id","first-name","last-name","industry","positions:(title)")
@@ -168,7 +166,7 @@ var kravitz = {
 					        // $("#search").html(JSON.stringify(result));
 									if (result.people.values != null) {
 										var person = result.people.values[0];
-										$.jStorage.set(name[0]+"-"+name[1],person);
+										$.jStorage.set(pid);
 										kravitz.li.process(person, pid);
 									}
 				 			})
@@ -333,8 +331,50 @@ var kravitz = {
 		}
 	},
 	flickr : {
+		api_key  : "c09177a47b0306ca54eeffd7374a8efd",
+		api_url  : "http://api.flickr.com/services/rest/",
+		user_url : "flickr.com/photos/",
 		details : function(sn) {
-			// console.info(sn)
+			params    = "method=flickr.urls.lookupUser&api_key=" + kravitz.flickr.api_key + "&url=" + kravitz.flickr.user_url + sn;
+			callbacks = {};
+			callbacks.success = kravitz.flickr.photos;
+			callbacks.errors = kravitz.flickr.details_error;
+		  kravitz.utility.query(kravitz.flickr.api_url, params, callbacks);
+		},
+		details_error : function() {
+			//nothing
+		},
+		photos : function(data) {
+			if(typeof(data) == null){	
+				kravitz.flickr.details_error();
+			}
+			else if(typeof(callbacks.success) != 'undefined'){
+				var user_id =
+				console.info(data); 
+				// params    = "method=flickr.urls.lookupUser&api_key=" + kravitz.flickr.api_key + "&url=" + kravitz.flickr.user_url + sn;
+				// callbacks = {};
+				// callbacks.success = kravitz.flickr.photos_callback;
+				// callbacks.errors = kravitz.flickr.details_error;	
+				// 			  kravitz.utility.query(kravitz.flickr.api_url, params, callbacks);
+				
+				// var artists = data.query.results.lfm;
+				// 				$.template("lastfmTmpl", lastfmResultTemplate);
+				// 			  $.tmpl("lastfmTmpl", artists).appendTo(target);
+			}
+		},
+		photos_callback : function() {
+			if(typeof(data) == null){	
+				kravitz.flickr.details_error();
+			}
+			else if(typeof(callbacks.success) != 'undefined'){
+				$('div.details_container').append("<div id='flickr_content'></div>");
+				$('#flickr_content').append("<h6>Takes pictures like:</h6><ul class='flickr'></ul>");
+				var target = $('ul.flickr');
+				
+				// var artists = data.query.results.lfm;
+				// 				$.template("lastfmTmpl", lastfmResultTemplate);
+				// 			  $.tmpl("lastfmTmpl", artists).appendTo(target);
+			}
 		}
 	},
 	lastfm : {
