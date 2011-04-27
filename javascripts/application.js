@@ -238,6 +238,7 @@ var kravitz = {
 			return false;
 		},
 		process : function(person, pid) {
+			console.info(person)
 			kravitz.li.render_industry(person, pid);
 			kravitz.li.render_job(person, pid);
 		},
@@ -246,6 +247,7 @@ var kravitz = {
 				var ind_name = person.industry;
 				var ind_id = kravitz.li.id_encoder(person.industry.split(" ").join("-"));
 				var ind_li = $('#' + ind_id);
+							console.info(ind_name + " " + ind_id);
 				if (ind_li.length) {
 					var ind_cnt = parseInt(ind_li.attr("data-cnt"));
 					ind_li.removeClass("tag_" + ind_cnt);
@@ -263,6 +265,7 @@ var kravitz = {
 			var job_name = person.positions.values[0].title;
 			var job_id = kravitz.li.id_encoder(job_name.split(" ").join("-"));
 			var job_li = $('#job_' + job_id);
+			console.info(job_name + " " + job_id);
 			if (job_li.length) {
 				var job_cnt = parseInt(job_li.attr("data-cnt"));
 				job_li.removeClass("tag_" + job_cnt);
