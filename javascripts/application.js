@@ -134,7 +134,8 @@ var kravitz = {
 			if (target.length) {
 				var pid = target.attr("data-id");
 				var instorage = $.jStorage.get(pid);
-				var location = target.attr("data-location");			
+				var location = target.attr("data-location");
+				console.info(pid)		
 				if (!instorage) {
 					params    = {};
 					params.format = "json"
