@@ -130,17 +130,15 @@ var kravitz = {
 			kravitz.li.target();
 		},
 		target : function() {
-			tw = kravitz.twitter.model;
-		console.info(tw.id);	
+			tw = kravitz.twitter.model;	
+			console.info(tw)
 			if (tw.length) {
-				// var pid = target.attr("data-id")+'';
 		
-				var instorage = $.jStorage.get(pid);
-				var location = target.attr("data-location");		
+				var instorage = $.jStorage.get(tw.id+'');
 				if (!instorage) {
 					params    = {};
 					params.format = "json"
-					params.q  = "select * from geo.placefinder where text='" + location + "'";
+					params.q  = "select * from geo.placefinder where text='" + tw.location + "'";
 					callbacks = {};
 					callbacks.success = kravitz.li.query_target;
 					callbacks.errors = kravitz.li.query_target_error;	
@@ -321,7 +319,7 @@ var kravitz = {
 				model.name = data.name;
 				model.location = data.location;
 				model.sn = data.screen_name;
-				console.info("twitter");
+				if (IN.User.isAuthorized()) {kravitz.li.target();}
 				
 				target = $('#background div.bio');
 				var followers = $('h5.followers span');
@@ -348,7 +346,6 @@ var kravitz = {
 			kravitz.twitter.profile(screen_name);
 			kravitz.infochimps.social_networks(screen_name);
 			kravitz.infochimps.strong_links(screen_name);
-			if (IN.User.isAuthorized()) {kravitz.li.target}
 			kravitz.klout.topics(screen_name);
 			kravitz.details.screen_name = screen_name;
 			return false;
