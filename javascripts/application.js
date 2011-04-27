@@ -134,7 +134,8 @@ var kravitz = {
 				var target = $(this);
 			});
 			if (target.length) {
-				var pid = target.attr("data-id");
+				var pid = target.attr("data-id")+'';
+		console.info(pid);
 				var instorage = $.jStorage.get(pid);
 				var location = target.attr("data-location");		
 				if (!instorage) {
@@ -161,8 +162,8 @@ var kravitz = {
 				var res = data.query.results.Result;
 				var postal = res.uzip;
 				var country = res.countrycode.toLowerCase();
-				var pid = target.attr("data-id");
-				console.info(pid);
+				var pid = target.attr("data-id")+'';
+				
 				IN.API.PeopleSearch()
 							.fields("id","first-name","last-name","industry","positions:(title)")
 					    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
@@ -205,7 +206,7 @@ var kravitz = {
 			var name = li.attr("data-name").split(" ");
 			var postal = li.attr("data-postal");
 			var country = li.attr("data-country").toLowerCase();
-			var pid = li.attr("data-id");
+			var pid = li.attr("data-id")+'';
 			var li = $.jStorage.get(pid);
 			if (!li) {
 				IN.API.PeopleSearch()
