@@ -132,7 +132,7 @@ var kravitz = {
 		target : function() {
 			tw = kravitz.twitter.model;
 			
-			if (tw.id.length) {
+			if (tw.length) {
 				// var pid = target.attr("data-id")+'';
 		console.info(tw.id);
 				var instorage = $.jStorage.get(pid);
@@ -321,6 +321,7 @@ var kravitz = {
 				model.name = data.name;
 				model.location = data.location;
 				model.sn = data.screen_name;
+				console.info("twitter");
 				
 				target = $('#background div.bio');
 				var followers = $('h5.followers span');
