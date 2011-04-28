@@ -44,6 +44,18 @@ $(document).ready(function(){
 	    targets.animate({"opacity": 1}, "fast");;
 	  }
 	});
+	
+	$('ul.right_menu b').livequery(function(){
+		$(this).click(function(){
+			var target = $(this).parent().siblings('div.dropdown');
+			if (target.is(':visible')) {
+				target.hide();
+			} else {
+				target.show();
+			}
+		return false;
+		});
+	});
 		
 });
 

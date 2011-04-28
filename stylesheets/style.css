@@ -44,9 +44,14 @@ h1.person_search {position:relative;margin:0 2px 9px;font-size:16px;}
 #header h1 {color:#FFD90F;margin:3px 0 0 25px;font-size:25px;line-height:27px;font-weight:normal;float:left;font-family: 'Pacifico', arial, serif;text-shadow:0.1em 0.1em 1em #000000;}
 #header h1 a {color:#bbb;text-decoration:none;}
 #header h1 em {color:#fff;font-style:normal;font-size:13px;text-shadow:1px 1px 1px #333;font-family:"Helvetica Neue", Helvetica,Arial,sans-serif;display:inline;margin-left:10px;}
-#header ul.right_menu {float:right;font-size:13px;color:#ddd;margin:13px 15px 0 0;width:auto;}
-#header ul.right_menu li {color:#bbb;display:inline;float:left;margin:0 5px;font-size:11px;}
+#header ul.right_menu {float:right;font-size:13px;color:#ddd;margin:13px 15px 0 0;width:auto;position:relative;}
+#header ul.right_menu li {color:#bbb;display:inline;float:left;margin:0 5px;font-size:11px;position:relative;width:175px;}
 #header ul.right_menu li a {color:#efefef;text-decoration:none;font-size:15px;}
+#steve {display:none;position:absolute;left:0;top:30px;font-size:12px;padding:10px;background:#777;color:#fff;text-align:left;}
+#steve ul {}
+#steve li {width:100%;float:left;margin:5px 0;color:#fff;}
+
+#header b {position:absolute;height:18px;right:3px;top:2px;width:15px;background: url("../images/arrows.png") no-repeat scroll .2em .3em transparent;border: 1px solid #666;}
 
 #title {margin-top:25%;margin-left:20%;}
 #results {display:none;background:transparent;padding:23px;position:relative;}
@@ -144,7 +149,7 @@ li.tag_8 {background:#8f8f8f !important;}
 	  font-weight:bold !important;
 	  font-size:15px !important;
 	  line-height:1 !important;
-	  background: #F02475 url(/images/button-shadow.png) repeat-x !important;
+	  background: #F02475 url("../images/button-shadow.png") repeat-x !important;
 	  _background: #F02475 none !important;
 	  display: inline-block;
 	  color: #fff !important;
