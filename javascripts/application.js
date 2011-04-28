@@ -500,13 +500,12 @@ var kravitz = {
 					$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
 					var target = $('ul.topics');
 					yql = data.query.results.items;
-					console.info(yql)
 					$('#klout_score').html(yql.score);
-					// target.html("");
 					
-					// target.siblings('h6').show();
-					$.template("topicsTmpl", topicsResultTemplate);
-				  $.tmpl("topicsTmpl", yql.item).appendTo(target);
+					if (yql.item) {
+						$.template("topicsTmpl", topicsResultTemplate);
+				  	$.tmpl("topicsTmpl", yql.item).appendTo(target);
+					}
 				}
 			}
 		},
