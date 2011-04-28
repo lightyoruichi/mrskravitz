@@ -329,6 +329,7 @@ var kravitz = {
 				target = $('#background div.bio');
 				var followers = $('h5.followers span');
 				var following = $('h5.following span');
+				console.info(data)
 
 				followers.html(kravitz.utility.spinner);
 				following.html(kravitz.utility.spinner);
