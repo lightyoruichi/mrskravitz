@@ -370,15 +370,13 @@ var kravitz = {
 		clear : function() {
 			//clear old things
 			$('#results').hide();
-			
-			topics = $('#topics').hide();
-			topics.children('ul.topics').html('');
+		
 			friends = $('ul.friends');
 			friends.html('');
 			target = $('ul.social_icons');
 			target.html("");
 			
-			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note').html('');
+			$('#topics, #industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note').html('');
 			$('#lastfm_content, #flickr_content, #delicious_content, #linkedin_content').remove();		
 			// $('#share iframe, #share blockquote').remove();
 			
@@ -488,9 +486,6 @@ var kravitz = {
 			return false;
 		},
 		topics_callback : function(data) {
-			$('div.details_container').append("<div id='topics' class='box'></div>");
-			$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
-			var target = $('ul.topics');
 			if(data == null || data.query.results == null || data.query.results.items == null){	
 				// target.parent().hide();
 				kravitz.klout.topics_error();
@@ -500,9 +495,12 @@ var kravitz = {
 				if (qty == 0) {
 					kravitz.klout.topics_error();
 				} else {
+					$('div.details_container').append("<div id='topics' class='box'></div>");
+					$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
+					var target = $('ul.topics');
 					yql = data.query.results.items;
 					$('#klout_score').html(yql.score);
-					target.html("");
+					// target.html("");
 					
 					// target.siblings('h6').show();
 					$.template("topicsTmpl", topicsResultTemplate);
@@ -511,7 +509,7 @@ var kravitz = {
 			}
 		},
 		topics_error : function() {
-			$('ul.topics').html("<li style='width:100%;'>There was an error getting results from Klout.</li>")
+			// $('ul.topics').html("<li style='width:100%;'>There was an error getting results from Klout.</li>")
 		}
 	},
 	utility : {
