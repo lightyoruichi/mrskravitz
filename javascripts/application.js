@@ -499,6 +499,7 @@ var kravitz = {
 					$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
 					var target = $('ul.topics');
 					yql = data.query.results.items;
+					console.info(yql)
 					$('#klout_score').html(yql.score);
 					// target.html("");
 					
