@@ -207,6 +207,7 @@ var kravitz = {
 			var country = li.attr("data-country").toLowerCase();
 			var pid = li.attr("data-id")+'';
 			var li = $.jStorage.get(pid);
+			console.info(name);
 			if (!li) {
 				IN.API.PeopleSearch()
 											.fields("id","first-name","last-name","industry","positions:(title)")
@@ -241,7 +242,6 @@ var kravitz = {
 		},
 		process : function(person, pid) {			
 			if (person != "empty"){	
-				console.info(person)
 				kravitz.li.render_industry(person, pid);
 				kravitz.li.render_job(person, pid);
 			}
@@ -258,6 +258,7 @@ var kravitz = {
 				ind_li.attr("data-cnt", ind_cnt);
 				ind_li.html(ind_name + " (" + ind_cnt + ")");
 			} else {
+				console.info(ind_id)
 				$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
 				$('#tid_' + pid).attr("data-industry", ind_id);	
 			}
@@ -266,6 +267,7 @@ var kravitz = {
 			var job_name = person.positions.values[0].title;
 			var job_id = kravitz.li.id_encoder(job_name.split(" ").join("-"));
 			var job_li = $('#job_' + job_id);
+			console.info(job_name);
 			if (job_li.length) {
 				var job_cnt = parseInt(job_li.attr("data-cnt"));
 				job_li.removeClass("tag_" + job_cnt);
