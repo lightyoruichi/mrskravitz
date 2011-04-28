@@ -217,6 +217,8 @@ var kravitz = {
 														var person = result.people.values[0];
 														$.jStorage.set(pid, person);
 														kravitz.li.process(person, pid);
+													} else {
+														$.jStorage.set(pid, "empty");
 													}
 								 			})
 							.error(kravitz.li.query_error);
