@@ -174,7 +174,7 @@ var kravitz = {
 			// console.info("nothing");
 		},
 		render_target : function(person) {
-			// console.info(person.positions)
+			console.info(person);
 			if (person.id) {
 				$('div.details_container').append("<div id='linkedin_content' class='box'></div>");
 				$('#linkedin_content').append("<h6>Has had jobs like:</h6><ul class='person_jobs'></ul>");
@@ -247,19 +247,21 @@ var kravitz = {
 			}
 		},
 		render_industry : function(person, pid) {	
-			var ind_name = person.industry;
-			var ind_id = kravitz.li.id_encoder(person.industry.split(" ").join("-"));
-			var ind_li = $('#' + ind_id);
-			if (ind_li.length) {
-				var ind_cnt = parseInt(ind_li.attr("data-cnt"));
-				ind_li.removeClass("tag_" + ind_cnt);
-				ind_cnt ++;
-				ind_li.addClass("tag_" + ind_cnt);
-				ind_li.attr("data-cnt", ind_cnt);
-				ind_li.html(ind_name + " (" + ind_cnt + ")");
-			} else {
-				$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
-				$('#tid_' + pid).attr("data-industry", ind_id);	
+			if (person.industry) {
+				var ind_name = person.industry;
+				var ind_id = kravitz.li.id_encoder(person.industry.split(" ").join("-"));
+				var ind_li = $('#' + ind_id);
+				if (ind_li.length) {
+					var ind_cnt = parseInt(ind_li.attr("data-cnt"));
+					ind_li.removeClass("tag_" + ind_cnt);
+					ind_cnt ++;
+					ind_li.addClass("tag_" + ind_cnt);
+					ind_li.attr("data-cnt", ind_cnt);
+					ind_li.html(ind_name + " (" + ind_cnt + ")");
+				} else {
+					$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
+					$('#tid_' + pid).attr("data-industry", ind_id);	
+				}
 			}
 		},
 		render_job : function(person, pid) {
