@@ -192,13 +192,13 @@ var kravitz = {
 					$('#locations_note').html(kravitz.default_text.friend_locations);
 					var i = 0;
 				console.info("friends1");
-				$('ul.friends li').livequery(function(){
-					console.info("friends2")
-					$(this).each(function(){ 
+				// $('ul.friends li').livequery(function(){
+					// console.info("friends2")
+					$('ul.friends li').each(function(){ 
 							kravitz.li.query($(this));
 							i ++;
 					});
-				});
+				// });
 			
 		},
 		query : function(li) {
