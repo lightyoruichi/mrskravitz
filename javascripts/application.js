@@ -8,7 +8,6 @@ $(document).ready(function(){
 
 	$('#center_search, #search').submit(function(){
 		var sn  = $(this).children('input.searcher').attr('value'); 
-		console.info(sn);
 		// $('#main ul.results').html("");
 		sn.replace("@", "");
 		kravitz.details.show(sn);
