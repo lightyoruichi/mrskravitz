@@ -239,11 +239,9 @@ var kravitz = {
 			}
 			return false;
 		},
-		process : function(person, pid) {
-			console.info(person)
-			console.info(person == "empty")
-			console.info("----")
+		process : function(person, pid) {			
 			if (typeof(person) != null || person != "empty"){	
+				console.info(person)
 				kravitz.li.render_industry(person, pid);
 				kravitz.li.render_job(person, pid);
 			}
@@ -268,7 +266,6 @@ var kravitz = {
 			var job_name = person.positions.values[0].title;
 			var job_id = kravitz.li.id_encoder(job_name.split(" ").join("-"));
 			var job_li = $('#job_' + job_id);
-			console.info(job_name + " " + job_id);
 			if (job_li.length) {
 				var job_cnt = parseInt(job_li.attr("data-cnt"));
 				job_li.removeClass("tag_" + job_cnt);
