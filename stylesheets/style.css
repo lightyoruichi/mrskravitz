@@ -15,7 +15,7 @@ h3 em {font-size:11px; color:#ddd;}
 .grid_3 { width:220px; }
 .grid_4 { width:300px; }
 .grid_5 { width:380px; }
-.grid_6 { width:460px; }
+.grid_6 { width:445px; }
 .grid_7 { width:540px; }
 .grid_8 { width:620px; }
 .grid_9 { width:700px; }
@@ -25,11 +25,12 @@ h3 em {font-size:11px; color:#ddd;}
 
 .page {width:100%;float:left;margin:0;}
 .column { margin: 0 0; overflow: hidden; float: left; display: inline;} 
-.row { width: 960px; margin: 0 auto; overflow: hidden; } 
+.row { width: 900px; margin: 0 auto; overflow: hidden; } 
 .row .row { margin: 0 -10px; width: auto; display: inline-block; }
 .hidden { display: none; }
 .rounded, .btn {-moz-border-radius:7px;-webkit-border-radius:7px;border-radius:7px;}
 .box_shadow {-moz-box-shadow:0px 2px 5px rgba(000, 000, 000, 0.3);-webkit-box-shadow:0px 2px 5px rgba(000, 000, 000, 0.3);box-shadow:0px 2px 5px rgba(000, 000, 000, 0.3);}
+.see_through {filter:alpha(opacity=85);-moz-opacity:.85;opacity:.85; }
 
 #container {display: block; width:100%;width: 960px; margin:50px auto 0 auto;text-align:left;padding:15px;}
 h1.headline {font-size: 22px; line-height: 100%;margin-bottom:10px;}
@@ -45,7 +46,7 @@ h1.person_search {position:relative;margin:0 2px 9px;font-size:16px;}
 #header ul.right_menu li a {color:#efefef;text-decoration:none;font-size:15px;}
 
 #title {margin-top:25%;margin-left:20%;}
-#results {display:none;}
+#results {display:none;background:#333;padding:23px;}
 #middle {padding-left:10px;display:none;}
 
 #infochimps input[type=text] {width:286px;margin-right:5px;}
