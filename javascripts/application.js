@@ -497,12 +497,13 @@ var kravitz = {
 					kravitz.klout.topics_error();
 				} else {
 					$('div.details_container').append("<div id='topics' class='box'></div>");
-					$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
+		
 					var target = $('ul.topics');
 					yql = data.query.results.items;
 					$('#klout_score').html(yql.score);
 					
 					if (yql.item) {
+						$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
 						$.template("topicsTmpl", topicsResultTemplate);
 				  	$.tmpl("topicsTmpl", yql.item).appendTo(target);
 					}
