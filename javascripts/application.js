@@ -192,7 +192,7 @@ var kravitz = {
 					$('#industry_note').html(kravitz.default_text.friend_industry);
 					$('#job_note').html(kravitz.default_text.friend_jobs);
 					$('#locations_note').html(kravitz.default_text.friend_locations);
-					
+			console.info("friends")		
 					var i = 0;
 					$(this).each(function(){ 
 							kravitz.li.query($(this));
@@ -207,7 +207,6 @@ var kravitz = {
 			var country = li.attr("data-country").toLowerCase();
 			var pid = li.attr("data-id")+'';
 			var li = $.jStorage.get(pid);
-			console.info(name);
 			if (!li) {
 				IN.API.PeopleSearch()
 											.fields("id","first-name","last-name","industry","positions:(title)")
@@ -258,7 +257,6 @@ var kravitz = {
 				ind_li.attr("data-cnt", ind_cnt);
 				ind_li.html(ind_name + " (" + ind_cnt + ")");
 			} else {
-				console.info(ind_id)
 				$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'>" + ind_name + " (1)</li>");
 				$('#tid_' + pid).attr("data-industry", ind_id);	
 			}
