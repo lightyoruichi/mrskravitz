@@ -248,7 +248,7 @@ var kravitz = {
 		render_industry : function(person, pid) {	
 			if (person.industry) {
 				var ind_name = person.industry;
-				var ind_id = kravitz.li.id_encoder(person.industry.split(" ").join("-"));
+				var ind_id = kravitz.li.id_encoder(person.industry.toLowerCase().split(" ").join("-"));
 				var ind_li = $('#' + ind_id);
 				if (ind_li.length) {
 					var ind_cnt = parseInt(ind_li.attr("data-cnt"));
@@ -266,7 +266,7 @@ var kravitz = {
 		render_job : function(person, pid) {
 			if (person.positions.values) {
 				var job_name = person.positions.values[0].title;
-				var job_id = kravitz.li.id_encoder(job_name.split(" ").join("-"));
+				var job_id = kravitz.li.id_encoder(job_name.toLowerCase().split(" ").join("-"));
 				var job_li = $('#job_' + job_id);
 				if (job_li.length) {
 					var job_cnt = parseInt(job_li.attr("data-cnt"));
