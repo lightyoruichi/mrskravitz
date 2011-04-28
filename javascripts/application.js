@@ -174,8 +174,7 @@ var kravitz = {
 			// console.info("nothing");
 		},
 		render_target : function(person) {
-			console.info(person);
-			if (person.id) {
+			if (person.id && person.positions._total > 0) {
 				$('div.details_container').append("<div id='linkedin_content' class='box'></div>");
 				$('#linkedin_content').append("<h6>Has had jobs like:</h6><ul class='person_jobs'></ul>");
 				var target = $('ul.person_jobs');
@@ -490,10 +489,8 @@ var kravitz = {
 		},
 		topics_callback : function(data) {
 			$('div.details_container').append("<div id='topics' class='box'></div>");
-			$('#lastfm_content').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
-			target = $('ul.topics');
-			// target.parent().show();
-			console.info(data)
+			$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
+			var target = $('ul.topics');
 			if(data == null || data.query.results == null || data.query.results.items == null){	
 				// target.parent().hide();
 				kravitz.klout.topics_error();
@@ -506,6 +503,7 @@ var kravitz = {
 					yql = data.query.results.items;
 					$('#klout_score').html(yql.score);
 					target.html("");
+					
 					// target.siblings('h6').show();
 					$.template("topicsTmpl", topicsResultTemplate);
 				  $.tmpl("topicsTmpl", yql.item).appendTo(target);
