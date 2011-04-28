@@ -186,14 +186,14 @@ var kravitz = {
 			}
 		},
 		friends : function() {
- 				$('ul.friends li').livequery(function(){
 					$('#industry_chart, #job_chart, #locations_chart').show();
-					
 					$('#industry_note').html(kravitz.default_text.friend_industry);
 					$('#job_note').html(kravitz.default_text.friend_jobs);
 					$('#locations_note').html(kravitz.default_text.friend_locations);
-			console.info("friends")		
 					var i = 0;
+				console.info("friends1");
+				$('ul.friends li').livequery(function(){
+					console.info("friends2")
 					$(this).each(function(){ 
 							kravitz.li.query($(this));
 							i ++;
