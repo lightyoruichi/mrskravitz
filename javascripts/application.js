@@ -91,7 +91,8 @@ var kravitz = {
 			}
 		},
 		sl_error : function() {
-			$('h3.friends').html("Oy vey, there was an error retrieving results from Infochimps.<em>Please try again</em>");
+			$('h3.friends').html("Oy vey, there was an error retrieving results from a data provider.<em>Please try again</em>");
+			$('#job_note, #industry_note, #locations_note').html('');
 		},
 		social_networks : function(screen_name) {
 			params    = kravitz.infochimps.params();
@@ -499,7 +500,7 @@ var kravitz = {
 					$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
 					var target = $('ul.topics');
 					yql = data.query.results.items;
-					console.info(yql)
+					// console.info(yql)
 					$('#klout_score').html(yql.score);
 					// target.html("");
 					
