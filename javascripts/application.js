@@ -133,7 +133,6 @@ var kravitz = {
 			var tw = kravitz.twitter.model;	
 			if (tw.id) {
 				var instorage = $.jStorage.get(tw.id+'');
-				console.info(instorage)
 				if (!instorage) {
 					params    = {};
 					params.format = "json"
@@ -172,7 +171,7 @@ var kravitz = {
 		},
 		query_target_error : function() {
 			//nothing
-			console.info("nothing");
+			// console.info("nothing");
 		},
 		render_target : function(person) {
 			// console.info(person.positions)
@@ -210,8 +209,8 @@ var kravitz = {
 			var li = $.jStorage.get(pid);
 			if (!li) {
 				IN.API.PeopleSearch()
-											.fields("id","first-name","last-name","industry","positions:(title)")
-									    .params({"first-name": name[0], "last-name": name[1], "count": 1, "country-code": country, "postal-code": postal})
+											.fields("id","first-name","last-name","industry","positions")
+									    .params({"first-name": name[0], "last-name": name[1], "count": 3, "country-code": country, "postal-code": postal})
 									    .result(function(result) { 
 									        // $("#search").html(JSON.stringify(result));
 													if (result.people.values != null) {
