@@ -133,6 +133,7 @@ var kravitz = {
 			var tw = kravitz.twitter.model;	
 			if (tw.id) {
 				var instorage = $.jStorage.get(tw.id+'');
+				console.info(instorage)
 				if (!instorage) {
 					params    = {};
 					params.format = "json"
@@ -194,7 +195,6 @@ var kravitz = {
 				$('ul.friends li').livequery(function(){
 					$(this).each(function(){
 						 if (!$(this).hasClass("processed")) {
-							console.info("no processed")
 								$(this).addClass("processed");
 								kravitz.li.query($(this));
 							}
@@ -263,20 +263,21 @@ var kravitz = {
 			}
 		},
 		render_job : function(person, pid) {
-			var job_name = person.positions.values[0].title;
-			var job_id = kravitz.li.id_encoder(job_name.split(" ").join("-"));
-			var job_li = $('#job_' + job_id);
-			console.info(job_name);
-			if (job_li.length) {
-				var job_cnt = parseInt(job_li.attr("data-cnt"));
-				job_li.removeClass("tag_" + job_cnt);
-				job_cnt ++;
-				job_li.addClass("tag_" + job_cnt);
-				job_li.attr("data-cnt", job_cnt);
-				job_li.html(job_name + " (" + job_cnt + ")");
-			} else {
-				$('#job_chart').append("<li class='tag_1' id='job_"+ job_id + "' data-cnt='1'>" + job_name + " (1)</li>");
-				$('#tid_' + pid).attr("data-job", job_id);
+			if (person.positions.values) {
+				var job_name = person.positions.values[0].title;
+				var job_id = kravitz.li.id_encoder(job_name.split(" ").join("-"));
+				var job_li = $('#job_' + job_id);
+				if (job_li.length) {
+					var job_cnt = parseInt(job_li.attr("data-cnt"));
+					job_li.removeClass("tag_" + job_cnt);
+					job_cnt ++;
+					job_li.addClass("tag_" + job_cnt);
+					job_li.attr("data-cnt", job_cnt);
+					job_li.html(job_name + " (" + job_cnt + ")");
+				} else {
+					$('#job_chart').append("<li class='tag_1' id='job_"+ job_id + "' data-cnt='1'>" + job_name + " (1)</li>");
+					$('#tid_' + pid).attr("data-job", job_id);
+				}
 			}
 		},
 		render_location : function(location) {
