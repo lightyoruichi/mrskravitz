@@ -46,7 +46,7 @@ h1.person_search {position:relative;margin:0 2px 9px;font-size:16px;}
 #header ul.right_menu li a {color:#efefef;text-decoration:none;font-size:15px;}
 
 #title {margin-top:25%;margin-left:20%;}
-#results {display:none;background:#333;padding:23px;}
+#results {display:none;background:#222;padding:23px;}
 #middle {padding-left:10px;display:none;}
 
 #infochimps input[type=text] {width:286px;margin-right:5px;}

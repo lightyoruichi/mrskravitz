@@ -348,10 +348,9 @@ var kravitz = {
 		},
 		adjust_background : function(data) {
 			console.info(data.profile_background_color);
-			console.info(data)
 			if (data.profile_use_background_image == true ) {
 				var repeat = (data.profile_background_tile == true) ? "repeat" : "no-repeat" 				
-				$('body').css({'background-image': 'url("' + data.profile_background_image_url + '"', 'background-color': data.profile_background_color, 'background-repeat': repeat});
+				$('body').css({'background-image': 'url("' + data.profile_background_image_url + '"', 'background-color': '#' + data.profile_background_color, 'background-repeat': repeat});
 			}
 		}
 	},
