@@ -240,7 +240,7 @@ var kravitz = {
 			return false;
 		},
 		process : function(person, pid) {			
-			if (typeof(person) != null || person != "empty"){	
+			if (person != "empty"){	
 				console.info(person)
 				kravitz.li.render_industry(person, pid);
 				kravitz.li.render_job(person, pid);
