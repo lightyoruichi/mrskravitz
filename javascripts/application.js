@@ -6,8 +6,9 @@ $(document).ready(function(){
 	// $.template("footerTmpl", footerResultTemplate);
   // $.tmpl("footerTmpl", "").appendTo($('#footer'));
 
-	$('#infochimps').submit(function(){
-		var sn  = $('#search_box').attr('value'); 
+	$('#center_search, #search').submit(function(){
+		var sn  = $(this).children('input.searcher').attr('value'); 
+		console.info(sn);
 		// $('#main ul.results').html("");
 		sn.replace("@", "");
 		kravitz.details.show(sn);
@@ -18,7 +19,7 @@ $(document).ready(function(){
 		
 	// screen_name search
 	var search_intro = "type a twitter username...";
-	var search_box = $('#search_box');
+	var search_box = $('input.searcher');
 	search_box.val(search_intro);
 	
 	var anchorName = document.location.hash.substring(1);
@@ -543,7 +544,7 @@ var kravitz = {
 		},	
 		leftSearch : function() {
 			$('h1.headline').hide();
-			$('#title').animate({marginTop:"0", marginLeft: "0"}, "fast");
+			$('#title').animate({marginTop:"0", marginLeft: "50px"}, "fast", function() { $(this).hide(); $('#search').show();});
 			$('h2.result').show();
 			$('#results').show();
 		},

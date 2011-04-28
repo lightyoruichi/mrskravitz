@@ -4,6 +4,9 @@ ul {width:100%;display:block;margin:0;padding:0;list-style:none;float:left;}
 em {display:block;font-style:normal;}
 img {border:none;}
 input[type=text] {padding:5px;font-size:22px;color:#ccc;}
+#search {margin:8px 0 0 49px;float:left;display:none;}
+#header_search_box {font-size:15px;padding:2px;}
+#search .btn {font-size: 12px !important;padding:0.3em .65em !important;height:30px;line-height:12px;margin-left:8px !important;}
 
 h2 {font-size:18px;margin:10px 0;color:#fff;}
 h2 em {font-size:14px;color:#ddd;}
@@ -38,10 +41,10 @@ h1.headline em {font-size:15px;font-weight:normal;}
 h1.person_search {position:relative;margin:0 2px 9px;font-size:16px;}
 
 #header {position:fixed;top:0;left:0;width:100%;background:#555;border-bottom:5px solid #000;z-index:2;height:43px;}
-#header h1 {color:#FFD90F;margin:3px 0 0 25px;font-size:25px;line-height:27px;font-weight:normal;float:left;font-family: 'Pacifico', arial, serif;text-shadow:1px 1px 1px #000;}
-#header h1 a {color:#FFD90F;text-decoration:none;}
+#header h1 {color:#FFD90F;margin:3px 0 0 25px;font-size:25px;line-height:27px;font-weight:normal;float:left;font-family: 'Pacifico', arial, serif;text-shadow:0.1em 0.1em 1em #000000;}
+#header h1 a {color:#bbb;text-decoration:none;}
 #header h1 em {color:#fff;font-style:normal;font-size:13px;text-shadow:1px 1px 1px #333;font-family:"Helvetica Neue", Helvetica,Arial,sans-serif;display:inline;margin-left:10px;}
-#header ul.right_menu {float:right;font-size:13px;color:#ddd;margin:18px 15px 0 0;width:auto;}
+#header ul.right_menu {float:right;font-size:13px;color:#ddd;margin:13px 15px 0 0;width:auto;}
 #header ul.right_menu li {color:#bbb;display:inline;float:left;margin:0 5px;font-size:11px;}
 #header ul.right_menu li a {color:#efefef;text-decoration:none;font-size:15px;}
 
