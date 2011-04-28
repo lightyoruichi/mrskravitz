@@ -45,13 +45,16 @@ $(document).ready(function(){
 	  }
 	});
 	
-	$('ul.right_menu b').livequery(function(){
+	$('ul.right_menu a').livequery(function(){
 		$(this).click(function(){
-			var target = $(this).parent().siblings('div.dropdown');
+			var target = $(this).siblings('div.dropdown');
+			var b = $(this).children('b');
 			if (target.is(':visible')) {
 				target.hide();
+				b.css({backgroundPosition:"0.2em 0.3em"})
 			} else {
 				target.show();
+				b.css({backgroundPosition:"-0.5em 0.3em"})
 			}
 		return false;
 		});
@@ -86,18 +89,19 @@ var kravitz = {
 			else if(typeof(callbacks.success) != 'undefined'){
 				// $('#middle').show()
 				$('h3.friends').html(kravitz.default_text.friend_description());
-				
+		
 				if (IN.User.isAuthorized()) {
 					kravitz.li.friends();
 			 	}	else {
 					$('#salary_chart_login').show();
 				}
-				
+		
 				var peeps = data.query.results.peeps;
 				$.template("slTmpl", friendResultTemplate);
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			
 				$.each(peeps.peep, function(i, peep){
+					console.info(data);
 					kravitz.li.render_location(peep.location);
 				});
 			}
@@ -513,9 +517,10 @@ var kravitz = {
 					var target = $('ul.topics');
 					yql = data.query.results.items;
 					$('#klout_score').html(yql.score);
-					
+
 					if (yql.item) {
 						$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
+			console.info(data)
 						$.template("topicsTmpl", topicsResultTemplate);
 				  	$.tmpl("topicsTmpl", yql.item).appendTo(target);
 					}
