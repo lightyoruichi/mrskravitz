@@ -190,15 +190,16 @@ var kravitz = {
 					$('#industry_note').html(kravitz.default_text.friend_industry);
 					$('#job_note').html(kravitz.default_text.friend_jobs);
 					$('#locations_note').html(kravitz.default_text.friend_locations);
-					var i = 0;
-				console.info("friends1");
-				// $('ul.friends li').livequery(function(){
-					// console.info("friends2")
-					$('ul.friends li').each(function(){ 
-							kravitz.li.query($(this));
-							i ++;
+					
+				$('ul.friends li').livequery(function(){
+					$(this).each(function(){
+						 if (!$(this).hasClass("processed")) {
+							console.info("no processed")
+								$(this).addClass("processed");
+								kravitz.li.query($(this));
+							}
 					});
-				// });
+				});
 			
 		},
 		query : function(li) {
