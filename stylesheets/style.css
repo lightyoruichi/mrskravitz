@@ -30,7 +30,7 @@ h3 em {font-size:11px; color:#ddd;}
 .hidden { display: none; }
 .rounded, .btn {-moz-border-radius:7px;-webkit-border-radius:7px;border-radius:7px;}
 .box_shadow {-moz-box-shadow:0px 2px 5px rgba(000, 000, 000, 0.3);-webkit-box-shadow:0px 2px 5px rgba(000, 000, 000, 0.3);box-shadow:0px 2px 5px rgba(000, 000, 000, 0.3);}
-.see_through {filter:alpha(opacity=85);-moz-opacity:.85;opacity:.85; }
+.see_through {filter:alpha(opacity=88);-moz-opacity:.88;opacity:.88; }
 
 #container {display: block; width:100%;width: 960px; margin:50px auto 0 auto;text-align:left;padding:15px;}
 h1.headline {font-size: 22px; line-height: 100%;margin-bottom:10px;}
@@ -46,8 +46,9 @@ h1.person_search {position:relative;margin:0 2px 9px;font-size:16px;}
 #header ul.right_menu li a {color:#efefef;text-decoration:none;font-size:15px;}
 
 #title {margin-top:25%;margin-left:20%;}
-#results {display:none;background:#222;padding:23px;}
+#results {display:none;background:transparent;padding:23px;position:relative;}
 #middle {padding-left:10px;display:none;}
+#overlay {background:#111;position:absolute;height:100%;width:100%;z-index:-1;margin:-22px 0px 0px -23px;}
 
 #infochimps input[type=text] {width:286px;margin-right:5px;}
 #infochimps input[type=submit] {margin-top:3px !important;}
@@ -119,7 +120,8 @@ ul.topics div.description h2 {margin:0;}
 
 ul.person_jobs {margin:0;}
 ul.person_jobs li {float:left;width:100%;margin:0 0 10px;color:#ccc;font-size:15px;}
-ul.person_jobs li em {display:inline;font-size:13px;color:#bbb;}
+ul.person_jobs li em {display:inline;color:#bbb;}
+ul.person_jobs a {text-decoration:underline;}
 
 #industry_chart, #salary_chart_login, #job_chart, #locations_chart {display:none;float:left;width:94%;}
 #salary_chart_login {border:1px solid blue;background:lightBlue;padding:10px;}

@@ -232,6 +232,7 @@ var kravitz = {
 				var target = $('#industry_chart');
 				target.show();
 				if (error.errorCode == 0) {
+					$('#job_note, #industry_note').hide();
 					target.append("<li class='error'>Oy vey, Linkedin allows each person and site a very limited number of searches each day. Either you or Mrs. Kravitz has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</li>");
 				} else {
 					target.append("<li class='error'>"+ error.message + "</li>")
@@ -380,6 +381,8 @@ var kravitz = {
 			$('#lastfm_content, #flickr_content, #delicious_content, #linkedin_content').remove();		
 			// $('#share iframe, #share blockquote').remove();
 			
+			$('body').css({'background-image': 'none', 'background-color': '#000'});
+			
 		},
 		qwerly_lookups : function() {
 			valid = ["flickr", "lastfm"]
@@ -484,8 +487,11 @@ var kravitz = {
 			return false;
 		},
 		topics_callback : function(data) {
+			$('div.details_container').append("<div id='topics' class='box'></div>");
+			$('#lastfm_content').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
 			target = $('ul.topics');
-			target.parent().show();
+			// target.parent().show();
+			console.info(data)
 			if(data == null || data.query.results == null || data.query.results.items == null){	
 				// target.parent().hide();
 				kravitz.klout.topics_error();
@@ -498,7 +504,7 @@ var kravitz = {
 					yql = data.query.results.items;
 					$('#klout_score').html(yql.score);
 					target.html("");
-					target.siblings('h6').show();
+					// target.siblings('h6').show();
 					$.template("topicsTmpl", topicsResultTemplate);
 				  $.tmpl("topicsTmpl", yql.item).appendTo(target);
 				}
