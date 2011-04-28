@@ -500,7 +500,7 @@ var kravitz = {
 					$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
 					var target = $('ul.topics');
 					yql = data.query.results.items;
-					// console.info(yql)
+					console.info(yql)
 					$('#klout_score').html(yql.score);
 					// target.html("");
 					
@@ -565,7 +565,7 @@ var kravitz = {
 		},
 		friend_description : function() {
 			rand = Math.floor(Math.random()*3)
-			ary = ["alrightniks", "bubbellahs", "extremely good looking people"]
+			ary = ["bubbellahs", "extremely good looking people"]
 			return "Interacts mostly with these " + ary[rand] + "...";
 		},
 		friend_industry : "...and work in industries like:",
