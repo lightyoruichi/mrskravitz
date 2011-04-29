@@ -7,7 +7,7 @@
 		<sampleQuery>select * from {table};</sampleQuery>
 		</meta>
 	<bindings>
-	<select itemPath="" produces="JSON">
+	<select itemPath="result" produces="JSON">
 	<urls>
 	<url>http://api.twitter.com/1/users/lookup.json?user_id={user_id}</url>
 	</urls>
@@ -31,9 +31,7 @@
 			accessor.token = oauth_token; 
 			accessor.tokenSecret = oauth_token_secret; 
 			var req = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
-			//response.object = req //sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
 		} else { 
-			y.log("way down here")
 			try { 
 				var req = request.get().response; 
 			} catch(err) { 
