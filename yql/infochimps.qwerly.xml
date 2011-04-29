@@ -13,6 +13,15 @@
           </inputs>
 					<execute><![CDATA[
 				
+					function qwerly_failover(sn) {
+						var url = "http://api.qwerly.com/v1/twitter/" + sn;
+						var req = y.rest(url)
+											 .accept('application/json')
+											 .query("apikey", qwerly_key)
+											 .get().response;
+					 return req;
+					}
+				
 					function infochimps_query(q) {
 						var url = "http://api.infochimps.com/social/network/qwerly/qwerly_profiles/profile_search";
 						var req = y.rest(url)
@@ -25,10 +34,16 @@
 					
 					q = "twitter.screen_name:" + screen_name;
 					data = infochimps_query(q);
-					y.log(q)
-					var obj = y.xmlToJson(data.results[0]);
+					
+					if (data.results) {
+						var obj = y.xmlToJson(data.results[0]);
+						var services = obj.results;
+					} else {
+						y.log("no")
+						var obj
+					}
 			
-					var services = obj.results;
+					
 					var items = <services></services>;
 					var names = [];
 					var safe_names = ["foursquare", "github", "klout", "facebook", "twitter", "plancast", "flickr", "lastfm", "delicious", "youtube", "linkedin", "pandora", "tumblr", "myspace", "reddit"]
