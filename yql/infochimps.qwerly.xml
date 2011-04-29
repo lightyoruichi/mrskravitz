@@ -13,14 +13,14 @@
           </inputs>
 					<execute><![CDATA[
 				
-					function qwerly_failover(sn) {
-						var url = "http://api.qwerly.com/v1/twitter/" + sn;
-						var req = y.rest(url)
-											 .accept('application/json')
-											 .query("apikey", qwerly_key)
-											 .get().response;
-					 return req;
-					}
+					// function qwerly_failover(sn) {
+					// 						var url = "http://api.qwerly.com/v1/twitter/" + sn;
+					// 						var req = y.rest(url)
+					// 											 .accept('application/json')
+					// 											 .query("apikey", qwerly_key)
+					// 											 .get().response;
+					// 					 return req;
+					// 					}
 				
 					function infochimps_query(q) {
 						var url = "http://api.infochimps.com/social/network/qwerly/qwerly_profiles/profile_search";
