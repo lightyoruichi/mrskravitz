@@ -42,12 +42,10 @@
 					function twitter_lookup(list) {
 						var q = "select * from infochimps.twitter where user_id='" + list + "'";
 						var req = y.query(q);
-						
-						// y.log(typeof req.results)
 						var obj = y.xmlToJson(req.results);
-						y.log(obj.results.users)
+						
 						for each (user in obj.results.users.user) {
-							y.log(user)
+							y.log(user.name)
 							if (!user.hasOwnProperty(user)) {
 							        //The current property is not a direct property of p
 							        continue;
