@@ -76,6 +76,7 @@ var kravitz = {
 			
 			params    = kravitz.infochimps.params();
 			params.q  = "select * from infochimps.convo where sn='" + sn + "'";
+			params.diagnostics = true;
 			callbacks = {};
 			callbacks.success = kravitz.infochimps.sl_callback;
 			callbacks.errors = kravitz.infochimps.sl_error;

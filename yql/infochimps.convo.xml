@@ -33,19 +33,20 @@
 											.query("id", tid)
 											.accept('application/json')
 											.get().response;
+						y.log(tw);
 						return tw;
 					};
 					
 					function place_query(location) {
 						var q = "select * from geo.placefinder where text='" + location + "'";
 						var req = y.query(q);
-						// y.log(req.results);
+						y.log(req.results);
 						return req.results.Result;
 					};
 				
 					data = strong_links_query(sn);
 					var obj = y.xmlToJson(data);
-
+					y.log(obj);
 					var ids = obj.json.strong_links.slice(0,24);
 					var items = <peeps></peeps>;
 					for each (var p in ids){
