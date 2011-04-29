@@ -30,7 +30,8 @@
 			accessor.realm = request.url; 
 			accessor.token = oauth_token; 
 			accessor.tokenSecret = oauth_token_secret; 
-			var req = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
+			var res = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null });
+			var req = y.jsonToXml(res) 
 		} else { 
 			try { 
 				var req = request.get().response; 
