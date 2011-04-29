@@ -36,11 +36,12 @@
 					data = infochimps_query(q);
 					
 					if (data.results) {
-						var obj = y.xmlToJson(data.results[0]);
-						var services = obj.results;
+						// var obj = y.xmlToJson(data.results[0]);
+						// var services = obj.results;
 					} else {
-						y.log("no")
-						var obj
+						// y.log("no")
+						// var services = qwerly_failover(screen_name);
+						// y.log(services)
 					}
 			
 					
