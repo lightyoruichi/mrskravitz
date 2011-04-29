@@ -7,9 +7,9 @@
 		<sampleQuery>select * from {table};</sampleQuery>
 		</meta>
 	<bindings>
-	<select itemPath="" produces="XML">
+	<select itemPath="users" produces="XML">
 	<urls>
-	<url>http://api.twitter.com/1/users/lookup.json</url>
+	<url>http://api.twitter.com/1/users/lookup.xml</url>
 	</urls>
 	<inputs>
 		<key id="user_id" type="xs:string" paramType="query" required="true"/>
