@@ -57,7 +57,7 @@
 							params.user_id = list;
 							
 							url = "http://api.twitter.com/1/users/lookup.json";
-							var tw = response.object = sendRequest({ action: url, method: 'GET', accessor: accessor, parameters: params }); 
+							var tw = sendRequest({ action: url, method: 'GET', accessor: accessor, parameters: params }); 
 															
 							y.log(tw)
 							for each (var user in tw.users) {
