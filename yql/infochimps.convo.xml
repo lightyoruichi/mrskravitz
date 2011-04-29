@@ -34,7 +34,7 @@
 						for each (var el in raw) {
 							ary.push(el.json[0]);
 						}
-						str = ary.join(",");
+						str = ary.join("\,");
 						twitter_lookup(str);
 						return true;
 					}
@@ -44,7 +44,7 @@
 						var esc = list.replace(/%2c/g, ",");
 						y.log(esc)
 						var tw = y.rest(url)
-											.query("user_id", esc)
+											.query("user_id", list)
 											.accept('application/json')
 											.get().response;
 						
