@@ -45,7 +45,7 @@
 						
 						// y.log(typeof req.results)
 						// var obj = y.xmlToJson(req.results);
-						// y.log(obj.results.result)
+						y.log(req.results)
 						for (user in req.results.users) {
 							y.log(user)
 							if (!user.hasOwnProperty(user)) {
