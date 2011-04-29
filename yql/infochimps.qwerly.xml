@@ -27,6 +27,8 @@
 					data = infochimps_query(q);
 					
 					var obj = y.xmlToJson(data.results);
+					
+			y.log(obj)
 					var services = obj.results;
 					var items = <services></services>;
 					var names = [];
