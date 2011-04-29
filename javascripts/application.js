@@ -372,15 +372,12 @@ var kravitz = {
 		}
 	},
 	details : {
-		screen_name : "",
-		tid : "",
 		show : function(screen_name) {
 			kravitz.details.clear();
 			kravitz.twitter.profile(screen_name);
 			kravitz.infochimps.social_networks(screen_name);
-			// kravitz.infochimps.strong_links(screen_name);
+			kravitz.infochimps.strong_links(screen_name);
 			kravitz.klout.topics(screen_name);
-			kravitz.details.screen_name = screen_name;
 			return false;
 		},
 		clear : function() {
