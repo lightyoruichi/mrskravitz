@@ -44,8 +44,8 @@
 						var req = y.query(q);
 						
 						// y.log(typeof req.results)
-						var obj = y.xmlToJson(req.results.result);
-						y.log(typeof(req.results.result))
+						// var obj = y.xmlToJson(req.results.result);
+						y.log(typeof(req.results))
 						for (user in obj.result) {
 							y.log(user)
 							if (!user.hasOwnProperty(user)) {
