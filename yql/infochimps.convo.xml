@@ -44,7 +44,7 @@
 						// var esc = list.replace(/%2c/g, ",");
 						// y.log(esc)
 						var tw = y.rest(url)
-											.query("user_id", list)
+											.query("user_id", escape(list))
 											.accept('application/json')
 											.get().response;
 						
