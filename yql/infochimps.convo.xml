@@ -14,6 +14,10 @@
 						<key id="apikey" type="xs:string" paramType="query" required="true"/>
 						<key id="sn" type="xs:string" paramType="query" required="true"/>
 						<key id="v" type="xs:string" paramType="query" required="false"/>
+						<key id="oauth_consumer_key" type="xs:string" paramType="variable" required="false"/>
+						<key id="oauth_consumer_secret" type="xs:string" paramType="variable" required="false"/>
+						<key id="oauth_token" type="xs:string" paramType="variable" required="false"/>
+						<key id="oauth_token_secret" type="xs:string" paramType="variable" required="false"/>
           </inputs>
 					<execute><![CDATA[
 				
@@ -29,37 +33,43 @@
 					
 					var twitter = {}
 					
-					// function twitter_list(raw) {
-					// 						ary = [];
-					// 						for each (var el in raw) {
-					// 							ary.push(el.json[0]);
-					// 						}
-					// 						str = ary.join(",");
-					// 						twitter_lookup(str);
-					// 						return true;
-					// 					}
-					// 					
-					// 					function twitter_lookup(list) {
-					// 						var url = "http://api.twitter.com/1/users/lookup.json?user_id="+list;
-					// 						var esc = escape(list.replace(/%2c/g, "\,"));
-					// 						
-					// 						// y.log(esc)
-					// 						var tw = y.rest(url)
-					// 											// .query("user_id", esc)
-					// 											.accept('application/json')
-					// 											.get().response;
-					// 						
-					// 						y.log(tw.users)
-					// 						for each (var user in tw.users) {
-					// 							u = {}
-					// 							u.id = user.id;
-					// 							u.name = user.name;
-					// 							u.location = u.location;
-					// 							u.screen_name = u.screen_name;
-					// 							eval("twitter._" + user.id + " = " + u);
-					// 						}
-					// 						return true;
-					// 					}
+					function twitter_list(raw) {
+							ary = [];
+							for each (var el in raw) {
+								ary.push(el.json[0]);
+							}
+							str = ary.join(",");
+							twitter_lookup(str);
+							return true;
+						}
+						
+						function twitter_lookup(list) {
+							// if(oauth_consumer_key && oauth_consumer_secret && oauth_token && oauth_token_secret) { 
+							y.include("http://www.datatables.org/oauth/oauth.utils.js"); 
+							var accessor = {}; 
+							accessor.consumerKey = oauth_consumer_key; 
+							accessor.consumerSecret = oauth_consumer_secret; 
+							accessor.realm = request.url; 
+							accessor.token = oauth_token; 
+							accessor.tokenSecret = oauth_token_secret; 
+							
+							params = {}
+							params.user_id = list;
+							
+							url = "http://api.twitter.com/1/users/lookup.json";
+							var tw = response.object = sendRequest({ action: url, method: 'GET', accessor: accessor, parameters: params }); 
+															
+							y.log(tw)
+							for each (var user in tw.users) {
+								u = {}
+								u.id = user.id;
+								u.name = user.name;
+								u.location = u.location;
+								u.screen_name = u.screen_name;
+								eval("twitter._" + user.id + " = " + u);
+							}
+							return true;
+						}
 					
 					function twitter_query(tid) {
 						var url = "http://api.twitter.com/1/users/show.json";
