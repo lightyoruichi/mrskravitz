@@ -43,7 +43,7 @@
 						var q = "select * from infochimps.twitter where user_id='" + list + "'";
 						var req = y.query(q);
 						
-						y.log(req.results.result.length)
+						y.log(req.results.result.length())
 						for each (var user in req.results.result) {
 							y.log(user);
 							u = {}
