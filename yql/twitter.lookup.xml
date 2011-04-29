@@ -21,7 +21,6 @@
 	</inputs>
 	<execute>
 	<![CDATA[
-	y.log(user_id)
 	
 		if(oauth_consumer_key && oauth_consumer_secret && oauth_token && oauth_token_secret) { 
 			y.include("http://www.datatables.org/oauth/oauth.utils.js"); 
@@ -31,7 +30,9 @@
 			accessor.realm = request.url; 
 			accessor.token = oauth_token; 
 			accessor.tokenSecret = oauth_token_secret; 
-			response.object = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
+			var req = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
+			y.log(req)
+			response.object = req //sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
 		} else { 
 			y.log("way down here")
 			try { 
