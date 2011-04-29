@@ -87,7 +87,8 @@
 					for each (var p in ids){
 							item = <peep></peep>;
 							// tw = twitter_query(p.json[0]);
-							y.log(p.json[0]);
+							tw = eval("twitter._" + .p.json[0]);
+							y.log(tw);
 							// 							item.@["id"] = tw.id;
 							// 							item.@["name"] = tw.name;
 							// 							item.@["sn"] = tw.screen_name;
