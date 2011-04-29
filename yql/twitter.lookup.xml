@@ -9,7 +9,7 @@
 	<bindings>
 	<select itemPath="" produces="XML">
 	<urls>
-	<url>http://api.twitter.com/1/users/lookup.xml?user_id={user_id}</url>
+	<url>http://api.twitter.com/1/users/lookup.json?user_id={user_id}</url>
 	</urls>
 	<inputs>
 		<key id="user_id" type="xs:string" paramType="path" required="false"/>
