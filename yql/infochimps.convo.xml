@@ -91,22 +91,22 @@
 					var obj = y.xmlToJson(data);
 
 					var ids = obj.json.strong_links.slice(0,24);
-					// var list = twitter_list(ids)
+					var list = twitter_list(ids)
 
 
 					var items = <peeps></peeps>;
 					for each (var p in ids){
 							item = <peep></peep>;
-							tw = twitter_query(p.json[0]);
-							item.@["id"] = tw.id;
-							item.@["name"] = tw.name;
-							item.@["sn"] = tw.screen_name;
-							item.@["location"] = tw.location;
-							
-							pl = place_query(tw.location);
-							item.@["postal"] = pl.uzip;
-							item.@["countrycode"] = pl.countrycode;
-							item.@["location"] = pl.city + ", " + pl.statecode;
+							// tw = twitter_query(p.json[0]);
+							// 					item.@["id"] = tw.id;
+							// 					item.@["name"] = tw.name;
+							// 					item.@["sn"] = tw.screen_name;
+							// 					item.@["location"] = tw.location;
+							// 					
+							// 					pl = place_query(tw.location);
+							// 					item.@["postal"] = pl.uzip;
+							// 					item.@["countrycode"] = pl.countrycode;
+							// 					item.@["location"] = pl.city + ", " + pl.statecode;
 							items.node += item;
 					}
 		
