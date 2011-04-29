@@ -47,7 +47,7 @@
 						// var obj = y.xmlToJson(req.results);
 						// y.log(obj.results.result)
 						for (user in req.results.result) {
-							y.log("ok")
+							y.log(user)
 							if (!user.hasOwnProperty(user)) {
 							        //The current property is not a direct property of p
 							        continue;
