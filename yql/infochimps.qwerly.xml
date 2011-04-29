@@ -9,6 +9,7 @@
         <select itemPath="" produces="XML">
           <inputs>
 						<key id="apikey" type="xs:string" paramType="query" required="true"/>
+						<key id="qwerly_key" type="xs:string" paramType="query" required="true"/>
 						<key id="screen_name" type="xs:string" paramType="query" required="true"/>
           </inputs>
 					<execute><![CDATA[
