@@ -32,15 +32,16 @@
 			accessor.tokenSecret = oauth_token_secret; 
 			var req = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
 
-			return response.object = req //sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
+			//response.object = req //sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
 		} else { 
 			y.log("way down here")
 			try { 
-				return response.object = request.get().response; 
+				var req = request.get().response; 
 			} catch(err) { 
 				y.log(err)
-				return response.object = {'result':'failure', 'error': err}; } 
+				var req = {'result':'failure', 'error': err}; } 
 			}
+			response.object = req;
 	]]>
 	</execute>
 	</select>
