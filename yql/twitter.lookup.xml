@@ -9,10 +9,10 @@
 	<bindings>
 	<select itemPath="" produces="XML">
 	<urls>
-	<url>http://api.twitter.com/1/users/lookup.json?user_id={user_id}</url>
+	<url>http://api.twitter.com/1/users/lookup.json</url>
 	</urls>
 	<inputs>
-		<key id="user_id" type="xs:string" paramType="path" required="false"/>
+		<key id="user_id" type="xs:string" paramType="query" required="true"/>
 		<key id="format" type="xs:string" paramType="path" default="xml"/>
 		<key id="oauth_consumer_key" type="xs:string" paramType="variable" required="false"/>
 		<key id="oauth_consumer_secret" type="xs:string" paramType="variable" required="false"/>
