@@ -45,7 +45,6 @@
 						
 						y.log(req)
 						for each (var user in tw) {
-							y.log(user);
 							u = {}
 							u.id = user.id;
 							u.name = user.name;
