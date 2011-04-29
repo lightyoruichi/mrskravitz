@@ -31,15 +31,15 @@
 			accessor.token = oauth_token; 
 			accessor.tokenSecret = oauth_token_secret; 
 			var req = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
-			y.log(req)
-			response.object = req //sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
+
+			return response.object = req //sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
 		} else { 
 			y.log("way down here")
 			try { 
-				response.object = request.get().response; 
+				return response.object = request.get().response; 
 			} catch(err) { 
 				y.log(err)
-				response.object = {'result':'failure', 'error': err}; } 
+				return response.object = {'result':'failure', 'error': err}; } 
 			}
 	]]>
 	</execute>
