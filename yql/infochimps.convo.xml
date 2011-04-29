@@ -42,7 +42,7 @@
 					function twitter_lookup(list) {
 						var url = "http://api.twitter.com/1/users/lookup.json";
 						var tw = y.rest(url)
-											.query("user_id", unescape(list))
+											.query("user_id", list.replace(/%2c/g, ","))
 											.accept('application/json')
 											.get().response;
 						
