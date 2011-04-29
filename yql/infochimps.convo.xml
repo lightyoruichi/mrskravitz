@@ -32,10 +32,11 @@
 					function twitter_list(raw) {
 						ary = [];
 						for each (var el in raw) {
+							y.log(el);
 							ary.push(el[0]);
 						}
 						str = ary.join(",");
-						y.log(str);
+						
 						twitter_lookup(str);
 						return true;
 					}
