@@ -47,7 +47,7 @@
 						var obj = y.xmlToJson(req.results);
 						// y.log(obj.results.result)
 						for each (var user in obj.results) {
-							y.log(user.length());
+							y.log(user.length);
 							u = {}
 							u.id = user.id;
 							u.name = user.name;
