@@ -32,7 +32,7 @@
 					function twitter_list(raw) {
 						ary = [];
 						for each (var el in raw) {
-							y.log(el);
+							y.log(el.json[0]);
 							ary.push(el[0]);
 						}
 						str = ary.join(",");
