@@ -27,19 +27,48 @@
 					 return req
 					}
 					
+					var twitter = {}
+					
+					function twitter_list(raw) {
+						y.log(raw)
+						ary = [];
+						for each (var el in raw) {
+							ary.push(el[0]);
+						}
+						str = ary.join(",");
+						twitter_lookup(str);
+						return true;
+					}
+					
+					function twitter_lookup(list) {
+						var url = "http://api.twitter.com/1/users/lookup.json";
+						var tw = y.rest(url)
+											.query("user_id", list)
+											.accept('application/json')
+											.get().response;
+						
+						y.log(tw.users)
+						for each (var user in tw.users) {
+							u = {}
+							u.id = user.id;
+							u.name = user.name;
+							u.location = u.location;
+							u.screen_name = u.screen_name;
+							eval("twitter._" + user.id + " = " + u);
+						}
+						return true;
+					}
+					
 					function twitter_query(tid) {
 						var url = "http://api.twitter.com/1/users/show.json";
 						var tw = y.rest(url)
 											.query("id", tid)
 											.accept('application/json')
 											.get().response;
-						// y.log(tw);
 						return tw;
 					};
 					
 					function place_query(location) {
-						// var cleaned = location.replace(/[^a-z]/g, "");
-				
 						var q = "select * from geo.placefinder where text='" + escape(location) + "'";
 						var req = y.query(q);
 						
@@ -48,21 +77,24 @@
 				
 					data = strong_links_query(sn);
 					var obj = y.xmlToJson(data);
-					// y.log(obj);
+
 					var ids = obj.json.strong_links.slice(0,24);
+					var list = twitter_list(ids)
+
+
 					var items = <peeps></peeps>;
 					for each (var p in ids){
 							item = <peep></peep>;
-							tw = twitter_query(p.json[0]);
-							item.@["id"] = tw.id;
-							item.@["name"] = tw.name;
-							item.@["sn"] = tw.screen_name;
-							item.@["location"] = tw.location;
-							
-							pl = place_query(tw.location);
-							item.@["postal"] = pl.uzip;
-							item.@["countrycode"] = pl.countrycode;
-							item.@["location"] = pl.city + ", " + pl.statecode;
+							// tw = twitter_query(p.json[0]);
+							// 							item.@["id"] = tw.id;
+							// 							item.@["name"] = tw.name;
+							// 							item.@["sn"] = tw.screen_name;
+							// 							item.@["location"] = tw.location;
+							// 							
+							// 							pl = place_query(tw.location);
+							// 							item.@["postal"] = pl.uzip;
+							// 							item.@["countrycode"] = pl.countrycode;
+							// 							item.@["location"] = pl.city + ", " + pl.statecode;
 							items.node += item;
 					}
 		
