@@ -41,8 +41,8 @@
 					
 					function twitter_lookup(list) {
 						var url = "http://api.twitter.com/1/users/lookup.json";
-						var esc = list.replace(/%2c/g, ",");
-						y.log(esc)
+						// var esc = list.replace(/%2c/g, ",");
+						// y.log(esc)
 						var tw = y.rest(url)
 											.query("user_id", list)
 											.accept('application/json')
