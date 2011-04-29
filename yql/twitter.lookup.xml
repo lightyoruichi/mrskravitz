@@ -7,7 +7,7 @@
 		<sampleQuery>select * from {table};</sampleQuery>
 		</meta>
 	<bindings>
-	<select itemPath="hash" produces="XML">
+	<select itemPath="" produces="JSON">
 	<urls>
 	<url>http://api.twitter.com/1/users/lookup.json?user_id={user_id}</url>
 	</urls>
