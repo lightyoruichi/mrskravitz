@@ -31,8 +31,8 @@
 			accessor.token = oauth_token; 
 			accessor.tokenSecret = oauth_token_secret; 
 			var res = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null });
-			y.log(res.split());
-			var req = res.split()[0][0]; 
+			y.log(res);
+			var req = res[0]; 
 		} else { 
 			try { 
 				var req = request.get().response; 
