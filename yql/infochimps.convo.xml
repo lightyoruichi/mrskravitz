@@ -35,16 +35,14 @@
 							ary.push(el.json[0]);
 						}
 						str = ary.join(",");
-						y.log(str);
 						twitter_lookup(str);
 						return true;
 					}
 					
 					function twitter_lookup(list) {
-						// y.log(list)
 						var url = "http://api.twitter.com/1/users/lookup.json";
 						var tw = y.rest(url)
-											.query("user_id", list)
+											.query("user_id", unescape(list))
 											.accept('application/json')
 											.get().response;
 						
