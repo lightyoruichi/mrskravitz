@@ -14,15 +14,14 @@
 	<inputs>
 		<key id="user_id" type="xs:string" paramType="query" required="true"/>
 		<key id="format" type="xs:string" paramType="path" default="xml"/>
-		<key id="oauth_consumer_key" type="xs:string" paramType="variable" required="false"/>
-		<key id="oauth_consumer_secret" type="xs:string" paramType="variable" required="false"/>
-		<key id="oauth_token" type="xs:string" paramType="variable" required="false"/>
-		<key id="oauth_token_secret" type="xs:string" paramType="variable" required="false"/>
+		<key id="oauth_consumer_key" type="xs:string" paramType="variable" required="true"/>
+		<key id="oauth_consumer_secret" type="xs:string" paramType="variable" required="true"/>
+		<key id="oauth_token" type="xs:string" paramType="variable" required="true"/>
+		<key id="oauth_token_secret" type="xs:string" paramType="variable" required="true"/>
 	</inputs>
 	<execute>
 	<![CDATA[
 	
-		if(oauth_consumer_key && oauth_consumer_secret && oauth_token && oauth_token_secret) { 
 			y.include("http://www.datatables.org/oauth/oauth.utils.js"); 
 			var accessor = {}; 
 			accessor.consumerKey = oauth_consumer_key; 
@@ -30,15 +29,8 @@
 			accessor.realm = request.url; 
 			accessor.token = oauth_token; 
 			accessor.tokenSecret = oauth_token_secret; 
-			var req = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null });
-		} else { 
-			try { 
-				var req = request.get().response; 
-			} catch(err) { 
-				y.log(err)
-				var req = {'result':'failure', 'error': err}; } 
-			}
-			response.object = req;
+			response.object = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null });
+		
 	]]>
 	</execute>
 	</select>
