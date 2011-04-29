@@ -38,7 +38,7 @@
 					};
 					
 					function place_query(location) {
-						var q = "select * from geo.placefinder where text='" + location + "'";
+						var q = "select * from geo.placefinder where text='" + encodeURI(location) + "'";
 						var req = y.query(q);
 						y.log(req.results);
 						return req.results.Result;
@@ -55,12 +55,12 @@
 							item.@["id"] = tw.id;
 							item.@["name"] = tw.name;
 							item.@["sn"] = tw.screen_name;
-							// item.@["location"] = tw.location;
+							item.@["location"] = tw.location;
 							
-							// pl = place_query(tw.location);
-							// item.@["postal"] = pl.uzip;
-							// item.@["countrycode"] = pl.countrycode;
-							// item.@["location"] = pl.city + ", " + pl.statecode;
+							pl = place_query(tw.location);
+							item.@["postal"] = pl.uzip;
+							item.@["countrycode"] = pl.countrycode;
+							item.@["location"] = pl.city + ", " + pl.statecode;
 							items.node += item;
 					}
 		
