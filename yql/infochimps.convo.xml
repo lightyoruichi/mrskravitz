@@ -38,7 +38,7 @@
 					};
 					
 					function place_query(location) {
-						var q = "select * from geo.placefinder where text='" + encodeURI(location) + "'";
+						var q = "select * from geo.placefinder where text='" + encodeURIComponent(location) + "'";
 						var req = y.query(q);
 						y.log(req.results);
 						return req.results.Result;
