@@ -21,6 +21,11 @@
 	</inputs>
 	<execute>
 	<![CDATA[
+	y.log(oauth_consumer_key)
+	y.log(oauth_consumer_secret)
+	y.log(oauth_token)
+	y.log(oauth_token_secret);
+	
 		if(oauth_consumer_key && oauth_consumer_secret && oauth_token && oauth_token_secret) { 
 			y.include("http://www.datatables.org/oauth/oauth.utils.js"); 
 			var accessor = {}; 
