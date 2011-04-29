@@ -44,7 +44,7 @@
 						var req = y.query(q);
 						
 						y.log(req)
-						for each (var user in tw) {
+						for each (var user in req) {
 							u = {}
 							u.id = user.id;
 							u.name = user.name;
