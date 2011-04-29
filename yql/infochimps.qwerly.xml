@@ -25,6 +25,7 @@
 					
 					q = "twitter.screen_name:" + screen_name;
 					data = infochimps_query(q);
+					y.log(q)
 					var obj = y.xmlToJson(data.results[0]);
 			
 					var services = obj.results;
