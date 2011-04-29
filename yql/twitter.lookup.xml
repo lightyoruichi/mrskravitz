@@ -7,7 +7,7 @@
 		<sampleQuery>select * from {table};</sampleQuery>
 		</meta>
 	<bindings>
-	<select itemPath="result" produces="JSON">
+	<select itemPath="" produces="JSON">
 	<urls>
 	<url>http://api.twitter.com/1/users/lookup.json?user_id={user_id}</url>
 	</urls>
@@ -39,7 +39,7 @@
 				var req = {'result':'failure', 'error': err}; } 
 			}
 			y.log(req)
-			response.object = req;
+			response.object = req.result;
 	]]>
 	</execute>
 	</select>
