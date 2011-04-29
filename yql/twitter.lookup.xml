@@ -38,8 +38,7 @@
 				y.log(err)
 				var req = {'result':'failure', 'error': err}; } 
 			}
-			y.log(req)
-			response.object = req.result;
+			response.object = req;
 	]]>
 	</execute>
 	</select>
