@@ -3,7 +3,7 @@
     <meta>
         <author>Steve Odom</author>
         <documentationURL></documentationURL>
-				<sampleQuery>select * from infochimps.qwerly where screen_name="steveodom" and apikey="kskdkd"</sampleQuery>
+				<sampleQuery>select * from infochimps.qwerly where screen_name="steveodom"</sampleQuery>
     </meta>
       <bindings>
         <select itemPath="" produces="XML">
@@ -25,10 +25,10 @@
 					
 					q = "twitter.screen_name:" + screen_name;
 					data = infochimps_query(q);
-					
+			y.log(obj);		
 					var obj = y.xmlToJson(data.results);
 					
-			y.log(obj)
+			
 					var services = obj.results;
 					var items = <services></services>;
 					var names = [];
