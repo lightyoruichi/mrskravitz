@@ -49,8 +49,8 @@ h1.person_search {position:relative;margin:0 2px 9px;font-size:16px;}
 #header ul.right_menu li a {color:#efefef;text-decoration:none;font-size:15px;}
 ul.right_menu li:hover {background:#777;}
 #steve, #data_sources {display:none;position:absolute;right:0;top:30px;font-size:12px;padding:10px;background:#777;color:#fff;text-align:left;width:400px;}
-#data_sources p {margin:16px 0;font-size:12px;line-height:140%;}
-#data_sources a {font-size:12px !important;text-decoration:underline !important;}
+#data_sources p {margin:16px 0;font-size:14px;line-height:140%;}
+#data_sources a {font-size:14px !important;text-decoration:underline !important;}
 #steve ul {}
 #steve li {width:100%;float:left;margin:5px 0;color:#fff;}
 

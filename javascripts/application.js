@@ -101,7 +101,6 @@ var kravitz = {
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			
 				$.each(peeps.peep, function(i, peep){
-					console.info(data);
 					kravitz.li.render_location(peep.location);
 				});
 			}
@@ -379,7 +378,7 @@ var kravitz = {
 			kravitz.details.clear();
 			kravitz.twitter.profile(screen_name);
 			kravitz.infochimps.social_networks(screen_name);
-			kravitz.infochimps.strong_links(screen_name);
+			// kravitz.infochimps.strong_links(screen_name);
 			kravitz.klout.topics(screen_name);
 			kravitz.details.screen_name = screen_name;
 			return false;
@@ -504,7 +503,6 @@ var kravitz = {
 		},
 		topics_callback : function(data) {
 			if(data == null || data.query.results == null || data.query.results.items == null){	
-				// target.parent().hide();
 				kravitz.klout.topics_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
@@ -513,14 +511,13 @@ var kravitz = {
 					kravitz.klout.topics_error();
 				} else {
 					$('div.details_container').append("<div id='topics' class='box'></div>");
-		
-					var target = $('ul.topics');
+				
 					yql = data.query.results.items;
 					$('#klout_score').html(yql.score);
 
 					if (yql.item) {
 						$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
-			console.info(data)
+							var target = $('ul.topics');
 						$.template("topicsTmpl", topicsResultTemplate);
 				  	$.tmpl("topicsTmpl", yql.item).appendTo(target);
 					}
@@ -581,7 +578,7 @@ var kravitz = {
 			return "Mrs. Kravitz is looking at friends now.<em>One can tell a lot about a person by the company they keep.</em>" + kravitz.utility.spinner;
 		},
 		friend_description : function() {
-			rand = Math.floor(Math.random()*3)
+			rand = Math.floor(Math.random()*2)
 			ary = ["bubbellahs", "extremely good looking people"]
 			return "Interacts mostly with these " + ary[rand] + "...";
 		},
