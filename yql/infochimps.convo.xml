@@ -47,7 +47,7 @@
 											.accept('application/json')
 											.get().response;
 						
-						y.log(tw.users)
+						// y.log(tw.users)
 						for each (var user in tw.users) {
 							u = {}
 							u.id = user.id;
