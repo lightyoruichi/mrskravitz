@@ -38,8 +38,8 @@
 					};
 					
 					function place_query(location) {
-						y.log(location);
-						var q = "select * from geo.placefinder where text='" + encodeURIComponent(location) + "'";
+						y.log(location.replace(/[^a-z]/g, ""));
+						var q = "select * from geo.placefinder where text='" + location.replace(/[^a-z]/g, "") + "'";
 						var req = y.query(q);
 						
 						return req.results.Result;
