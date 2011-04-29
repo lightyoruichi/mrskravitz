@@ -31,7 +31,6 @@
 			accessor.token = oauth_token; 
 			accessor.tokenSecret = oauth_token_secret; 
 			var req = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
-y.log(req)
 			//response.object = req //sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null }); 
 		} else { 
 			y.log("way down here")
@@ -41,6 +40,7 @@ y.log(req)
 				y.log(err)
 				var req = {'result':'failure', 'error': err}; } 
 			}
+			y.log(req)
 			response.object = req;
 	]]>
 	</execute>
