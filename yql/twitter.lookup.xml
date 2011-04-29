@@ -30,9 +30,7 @@
 			accessor.realm = request.url; 
 			accessor.token = oauth_token; 
 			accessor.tokenSecret = oauth_token_secret; 
-			var res = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null });
-			y.log(res);
-			var req = res; 
+			var req = sendRequest({ action: request.url, method: 'GET', accessor: accessor, parameters: null });
 		} else { 
 			try { 
 				var req = request.get().response; 
