@@ -490,6 +490,7 @@ var kravitz = {
 		details : function(sn) {
 			var url = "http://api.plancast.com/02/plans/user.json?username=" + sn + "&jsoncallback=?";
 			// $.getJSON(url, {}, kravitz.plancast.details_callback);
+			console.info(url);
 			// params = {}
 			// params.username   = sn;
 			// params.jsoncallback= "?";
