@@ -50,11 +50,10 @@
 					
 					var items = <services></services>;
 					var names = [];
-					var safe_names = ["foursquare", "github", "klout", "facebook", "twitter", "plancast", "flickr", "lastfm", "delicious", "youtube", "linkedin", "pandora", "tumblr", "myspace", "reddit"]
+					var safe_names = ["foursquare", "github", "facebook", "twitter", "plancast", "flickr", "lastfm", "delicious", "youtube", "linkedin", "tumblr", "yelp"]
 				
 					// get the names.
-					for each (var st in services) {
-						y.log(st);
+					for (var st in services) {
 						names.push(st);
 					}
 					
