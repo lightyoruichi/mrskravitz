@@ -71,7 +71,7 @@
 					};
 					
 					function place_query(location) {
-						y.log(location)
+						
 						var q = "select * from geo.placefinder where text='" + escape(location) + "'";
 						var req = y.query(q);
 						
@@ -92,11 +92,11 @@
 							item = <peep></peep>;
 							// tw = twitter_query(p.json[0]);
 							tw = eval("model.twitter._" + p.json[0]+"");
-				
+							if (!tw) { y.log(p.json[0]); continue; }
+							
 							item.@["id"] = tw.id;
 							item.@["name"] = tw.name;
 							item.@["sn"] = tw.screen_name;
-					y.log(tw.location);	
 							item.@["location"] = tw.location;
 							
 							pl = place_query(tw.location);
