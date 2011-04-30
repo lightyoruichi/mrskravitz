@@ -492,11 +492,12 @@ var kravitz = {
 			$.getJSON(url, {}, kravitz.plancast.details_callback);
 		},
 		details_callback : function(data) {
+			console.info(data);
 			if(typeof(data) == null){	
 				kravitz.plancast.details_error();
 			}
 			else {
-				console.info(data);
+				
 				// console.info(data.photos.photo[0])
 				$('div.details_container').append("<div id='plancast_content' class='box'></div>");
 				$('#plancast_content').append("<h6>Has made the following plans:</h6><ul class='plancast'></ul>");
