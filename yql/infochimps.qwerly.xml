@@ -22,7 +22,7 @@
 											 .get().response;
 					
 					var obj = y.xmlToJson(req)
-										y.log(obj.json); 
+										y.log(obj.json.profile.services); 
 					return obj;
 					}
 				
