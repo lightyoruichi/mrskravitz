@@ -6,7 +6,7 @@
 				<sampleQuery>select * from plancast.plans where sn="steveodom"</sampleQuery>
     </meta>
       <bindings>
-        <select itemPath="json" produces="XML">
+        <select itemPath="" produces="XML">
           <inputs>
 						<key id="sn" type="xs:string" paramType="query" required="true"/>
 						<key id="count" type="xs:string" paramType="query" required="false" default="3"/>
@@ -15,7 +15,7 @@
 					var url = "http://api.plancast.com/02/plans/user.json?count=3&username=" + sn;
 					var q = "select * from json where url='" + url + "'";
 					var req = y.query(q);
-					y.log(req);
+					// y.log(req);
 					// var data = req.results.json;
 					// var items = <items></items>;
 					// 					var obj = y.xmlToJson(data);
@@ -34,7 +34,7 @@
 					// 						}
 					// 					} 
 					// 					
-					response.object = req;
+					response.object = req.results.json;
 				      ]]></execute>
         </select>
       </bindings>
