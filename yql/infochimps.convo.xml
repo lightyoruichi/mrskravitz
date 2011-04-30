@@ -50,7 +50,7 @@
 							
 							var id = "_" + user.id;
 							u = eval("model.twitter._" + id + "= {}");
-							log(u)
+							y.log(u)
 							u.id = user.id;
 							u.name = user.name;
 							u.location = user.location;
