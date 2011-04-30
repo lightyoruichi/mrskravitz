@@ -506,7 +506,7 @@ var kravitz = {
 		details_error : function(target, data) {
 
 		}
-	}
+	},
 	klout : {
 		params : function() {
 			params          = {};
