@@ -488,17 +488,17 @@ var kravitz = {
 	},
 	plancast : {
 		details : function(sn) {
-			// var url = "http://api.plancast.com/02/plans/user.json?username=" + sn + "&jsoncallback=?";
+			var url = "http://api.plancast.com/02/plans/user.json?username=" + sn + "&jsoncallback=?";
 			// $.getJSON(url, {}, kravitz.plancast.details_callback);
-			params = {}
-			params.username   = sn;
-			params.jsoncallback= "?";
+			// params = {}
+			// params.username   = sn;
+			// params.jsoncallback= "?";
 			// callbacks = {};
 			// callbacks.success = kravitz.plancast.details_callback;
 			// callbacks.errors = kravitz.plancast.details_error;
 			// kravitz.utility.query("http://api.plancast.com/02/plans/user.json", params, callbacks);
 			
-			$.getJSON("http://api.plancast.com/02/plans/user.json", params, kravitz.plancast.details_callback);
+			$.getJSON(url, {}, kravitz.plancast.details_callback);
 		},
 		details_callback : function(data) {
 console.info(data)
