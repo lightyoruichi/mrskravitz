@@ -499,7 +499,7 @@ var kravitz = {
 		},
 		details_callback : function(data) {
 console.info(data)
-			if(typeof(data) == null || data.count == 0){	
+			if(typeof(data) == null || data.query.count == 0){	
 				kravitz.plancast.details_error();
 			}
 			else {
