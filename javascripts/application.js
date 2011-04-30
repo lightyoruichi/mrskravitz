@@ -493,10 +493,28 @@ var kravitz = {
 			params = {}
 			params.username   = sn;
 			params.count = 3;
-			callbacks = {};
-			callbacks.success = kravitz.plancast.details_callback;
-			callbacks.errors = kravitz.plancast.details_error;
-			kravitz.utility.query("http://api.plancast.com/02/plans/user.json", params, callbacks);
+			// callbacks = {};
+			// 			callbacks.success = kravitz.plancast.details_callback;
+			// 			callbacks.errors = kravitz.plancast.details_error;
+			// 			kravitz.utility.query("http://api.plancast.com/02/plans/user.json", params, callbacks);
+			
+			$.ajax({
+			    url: "http://api.plancast.com/02/plans/user.json",
+			    contentType: "application/json; charset=utf-8",
+			    dataType: "json",
+					data: params,
+			    beforeSend: function(x) {
+			        if(x && x.overrideMimeType) {
+			            x.overrideMimeType("application/j-son;charset=UTF-8");
+			        }
+			    },
+			    success: function(data){
+			        console.info(data)
+			    },//success
+			    error: function (XMLHttpRequest, textStatus, errorThrown) {
+			        console.error(textStatus)
+			    }
+			});
 			
 		},
 		details_callback : function(data) {
