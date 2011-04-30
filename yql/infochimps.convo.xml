@@ -45,8 +45,9 @@
 						var obj = y.xmlToJson(req.results);
 						
 						for each (user in obj.results.users.user) {
-							eval("twitter._" + user.id) = {};
 							y.log(user.id);
+							eval("twitter._" + user.id) = {};
+
 							u = eval("twitter._" + user.id)
 							u.id = user.id;
 							u.name = user.name;
