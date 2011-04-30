@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd" https="true">
+    <meta>
+        <author>Steve Odom</author>
+        <documentationURL></documentationURL>
+				<sampleQuery>select * from plancast.plans where sn="steveodom"</sampleQuery>
+    </meta>
+      <bindings>
+        <select itemPath="" produces="JSON">
+          <inputs>
+						<key id="sn" type="xs:string" paramType="query" required="true"/>
+						<key id="count" type="xs:string" paramType="query" required="false" default="3"/>
+          </inputs>
+					<execute><![CDATA[
+					var url = "http://api.plancast.com/02/plans/user.json?count=3&username=" + sn;
+					var q = "select * from json where url='" + url + "'";
+					var req = y.query(q);
+					var plans = req.results.json;
+y.log(plans);
+					var items = <items></items>;
+					for each (var p in plans){
+							item = <item></item>;
+							
+							item.@["id"] = tw.id;
+							item.@["name"] = tw.name;
+							item.@["sn"] = tw.screen_name;
+							item.@["location"] = tw.location;
+							
+							items.node += item;
+					}
+		
+					response.object = items;
+				      ]]></execute>
+        </select>
+      </bindings>
+</table>
