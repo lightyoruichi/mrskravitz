@@ -424,12 +424,12 @@ var kravitz = {
 		api_url  : "http://api.flickr.com/services/rest/",
 		user_url : "flickr.com/photos/",
 		details : function(sn) {
-			console.info(sn)
+
 			if (sn.indexOf('@') == -1) {
 				var url =  kravitz.flickr.api_url + "?method=flickr.urls.lookupUser&format=json&api_key=" + kravitz.flickr.api_key + "&url=" + kravitz.flickr.user_url + sn + "&jsoncallback=?";
 				$.getJSON(url, {}, kravitz.flickr.photos);
 			} else {
-				kravitz.flickr.photos_via_id(sn);
+				kravitz.flickr.photos_via_id(sn)
 			}
 			
 		},
@@ -437,6 +437,7 @@ var kravitz = {
 			//nothing
 		},
 		photos_via_id : function(id) {
+			console.info("id: " + id);
 			url =  kravitz.flickr.api_url + "?method=flickr.people.getPublicPhotos&format=json&per_page=3&api_key=" + kravitz.flickr.api_key + "&user_id=" + id + "&jsoncallback=?";
 			$.getJSON(url, {}, kravitz.flickr.photos_callback);
 		},
@@ -445,6 +446,7 @@ var kravitz = {
 				kravitz.flickr.details_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){				
+				console.info("data.id: " + data.user.id)
 				url =  kravitz.flickr.api_url + "?method=flickr.people.getPublicPhotos&format=json&per_page=3&api_key=" + kravitz.flickr.api_key + "&user_id=" + data.user.id + "&jsoncallback=?";
 				$.getJSON(url, {}, kravitz.flickr.photos_callback);
 			}
