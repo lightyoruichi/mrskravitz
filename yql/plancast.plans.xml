@@ -21,7 +21,7 @@
 					
 					if (obj.json.plans) {
 
-						for (var p in obj.json){
+						for (var p in obj.json.plans){
 								item = <item></item>;
 y.log(p);
 								// item.@["id"] = tw.id;
