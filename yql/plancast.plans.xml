@@ -6,7 +6,7 @@
 				<sampleQuery>select * from plancast.plans where sn="steveodom"</sampleQuery>
     </meta>
       <bindings>
-        <select itemPath="" produces="XML">
+        <select itemPath="plans" produces="XML">
           <inputs>
 						<key id="sn" type="xs:string" paramType="query" required="true"/>
 						<key id="count" type="xs:string" paramType="query" required="false" default="3"/>
