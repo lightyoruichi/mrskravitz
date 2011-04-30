@@ -17,8 +17,9 @@
 					var req = y.query(q);
 					var data = req.results.json;
 					var items = <items></items>;
-				y.log(data.plans);	
-					if (data.plans) {
+					var obj = y.xmlToJson(data);
+					y.log(obj)
+					if (obj.plans) {
 						for each (var p in data.plans){
 								item = <item></item>;
 y.log(p);
