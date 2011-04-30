@@ -492,6 +492,7 @@ var kravitz = {
 			// $.getJSON(url, {}, kravitz.plancast.details_callback);
 			params = {}
 			params.username   = sn;
+			params.jsoncallback= "?";
 			// callbacks = {};
 			// callbacks.success = kravitz.plancast.details_callback;
 			// callbacks.errors = kravitz.plancast.details_error;
@@ -576,8 +577,6 @@ console.info(data)
 			      });
 			// hack for jquery not handling jsonp errors well.
 			if (req.success) {
-			console.info(uri)
-			console.info(req)
 				req.success(function(data, textStatus){
 					return callbacks.success(data, callbacks.user_data);
 				});
