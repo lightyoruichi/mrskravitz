@@ -61,10 +61,9 @@
 					for each (var s in services){
 						var name = names[i]
 						if (safe_names.indexOf(name) > -1) {
-							y.log(s)
 							item = <service></service>;
 							item.@["service"] = names[i];
-							item.@["screen_name"] = s.screen_name;
+							item.@["screen_name"] = s.username;
 							item.@["url"] = s.url;
 							items.node += item;
 						}
