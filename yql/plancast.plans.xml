@@ -18,9 +18,10 @@
 					var data = req.results.json;
 					var items = <items></items>;
 					var obj = y.xmlToJson(data);
-					y.log(obj)
-					if (obj.plans) {
-						for each (var p in data.plans){
+					
+					if (obj.json.plans) {
+											y.log(obj.json.plans)
+						for each (var p in obj.json.plans){
 								item = <item></item>;
 y.log(p);
 								// item.@["id"] = tw.id;
