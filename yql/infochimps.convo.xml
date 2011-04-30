@@ -45,18 +45,15 @@
 						var obj = y.xmlToJson(req.results);
 						
 						for each (user in obj.results.users.user) {
-							if (!user.hasOwnProperty(user)) {
-							        //The current property is not a direct property of p
-							        continue;
-							}
 							u = {}
 							u.id = user.id;
 							u.name = user.name;
 							u.location = user.location;
 								
 							u.screen_name = u.screen_name;
-							eval("twitter._" + user.id + " = " + u);
-							y.log(eval("twitter._" + user.id ))
+							// eval("twitter._" + user.id + " = " + u);
+							eval("twitter._555 = 'yes'")
+							y.log(eval("twitter._" + "555" ))
 						}
 						return true;
 					}
@@ -89,7 +86,7 @@
 							item = <peep></peep>;
 							// tw = twitter_query(p.json[0]);
 							tw = eval("twitter._" + p.json[0]+"");
-							y.log(tw)
+							// y.log(tw)
 							// 							item.@["id"] = tw.id;
 							// 							item.@["name"] = tw.name;
 							// 							item.@["sn"] = tw.screen_name;
