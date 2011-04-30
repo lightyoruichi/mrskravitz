@@ -506,14 +506,14 @@ console.info(data)
 				$('div.details_container').append("<div id='plancast_content' class='box'></div>");
 				$('#plancast_content').append("<h6>Has made the following plans:</h6><ul class='plancast'></ul>");
 				var target = $('ul.plancast');
-				var plans = data.query.results.items.item.slice(0,3);
-				$.template("plancastTmpl", plancastResultTemplate);
-				$.tmpl("plancastTmpl", plans).appendTo(target);
+				// var plans = data.query.results.items.item.slice(0,3);
+				// 				$.template("plancastTmpl", plancastResultTemplate);
+				// 				$.tmpl("plancastTmpl", plans).appendTo(target);
 			}
 		},
 		details_error : function() {
 			// nothing
-			console.info("error")
+			// console.info("error")
 		}
 	},
 	klout : {
