@@ -495,6 +495,7 @@ var kravitz = {
 			callbacks = {};
 			callbacks.success = kravitz.plancast.details_callback;
 			callbacks.errors = kravitz.plancast.details_error;
+			console.info(callbacks)
 			kravitz.utility.query("http://api.plancast.com/02/plans/user.json", params, callbacks);
 		},
 		details_callback : function(data) {
@@ -532,7 +533,6 @@ var kravitz = {
 			return false;
 		},
 		topics_callback : function(data) {
-			console.info(data)
 			if(data == null || data.query.results == null || data.query.results.items == null){	
 				kravitz.klout.topics_error();
 			}
