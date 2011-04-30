@@ -56,16 +56,24 @@
 						names.push(st.type);
 					}
 
-					y.log(names);
+					var added = {
+						services : {}
+					}
+					
 					var i = 0;
 					for each (var s in services){
 						var name = names[i]
 						if (safe_names.indexOf(name) > -1) {
-							item = <service></service>;
-							item.@["service"] = names[i];
-							item.@["screen_name"] = s.username;
-							item.@["url"] = s.url;
-							items.node += item;
+							if (eval("added.services." + name + "=== true")) {
+								continue;
+							} else {
+								eval("added.services." + name + "= true")
+								item = <service></service>;
+								item.@["service"] = names[i];
+								item.@["screen_name"] = s.username;
+								item.@["url"] = s.url;
+								items.node += item;
+							}
 						}
 						i ++;
 					}
