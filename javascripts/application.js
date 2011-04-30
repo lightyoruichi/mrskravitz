@@ -411,6 +411,9 @@ var kravitz = {
 						case "lastfm":
 							kravitz.lastfm.details(name);
 							break;
+						case "plancast":
+							kravitz.plancast.details(name);
+							break;
 					};
 				}
 			});
