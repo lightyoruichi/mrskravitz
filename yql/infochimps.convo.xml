@@ -27,8 +27,6 @@
 					 return req
 					}
 					
-					var twitter = {}
-					
 					function twitter_list(raw) {
 						ary = [];
 						for each (var el in raw) {
@@ -43,6 +41,7 @@
 						var q = "select * from infochimps.twitter where user_id='" + list + "'";
 						var req = y.query(q);
 						var obj = y.xmlToJson(req.results);
+						y.log(twitter);
 						twitter.status = "good"
 						
 						for each (user in obj.results.users.user) {
@@ -82,6 +81,8 @@
 					var obj = y.xmlToJson(data);
 
 					var ids = obj.json.strong_links.slice(0,24);
+					
+					var twitter = {}
 					var list = twitter_list(ids, twitter)
 
 
