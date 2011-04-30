@@ -20,7 +20,9 @@
 											 .accept('application/json')
 											 .query("api_key", qwerly_key)
 											 .get().response;
-					 return req;
+					y.log(req.results[0]); 
+					var obj = y.xmlToJson(req.results[0])
+					return obj;
 					}
 				
 					function infochimps_query(q) {
@@ -41,7 +43,7 @@
 						var services = obj.results;
 					} else {
 						var services = qwerly_failover(screen_name);
-						y.log(services)
+						
 					}
 			
 					
