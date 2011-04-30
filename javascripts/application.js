@@ -495,10 +495,24 @@ var kravitz = {
 			callbacks.success = kravitz.plancast.details_callback;
 			callbacks.errors = kravitz.plancast.details_error;
 			
-			kravitz.utility.query(kravitz.utility.yql, params, callbacks);			
+			// kravitz.utility.query(kravitz.utility.yql, params, callbacks);			
+				var req = $.ajax({ cache: false, 
+								 url: kravitz.utility.yql,
+								 dataType: "jsonp",
+								 data: params
+				      });
+				// hack for jquery not handling jsonp errors well.
+				if (req.success) {
+					req.success(function(data, textStatus){
+						return callbacks.success(data, callbacks.user_data);
+					});
+				} else {
+					return callbacks.errors("", {});
+				}
+			
 		},
 		details_callback : function(data) {
-console.info(data)
+// console.info(data)
 			if(typeof(data) == null || data.query.count == 0){	
 				kravitz.plancast.details_error();
 			}
