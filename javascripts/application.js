@@ -398,11 +398,11 @@ var kravitz = {
 			
 		},
 		qwerly_lookups : function() {
-			valid = ["flickr", "lastfm"]
+			valid = ["flickr", "lastfm", "plancast"]
 			$('ul.social_icons li').each(function(){ 
 				var service = $(this).attr("data-service");
 				var name 		= $(this).attr("data-sn");
-				
+
 				if (valid.indexOf(service) > -1) {
 					switch (service) {
 						case "flickr":
