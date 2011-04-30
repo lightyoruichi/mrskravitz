@@ -41,17 +41,16 @@
 						twitter : {}
 					}
 					
-					function twitter_lookup(list, twitter) {
+					function twitter_lookup(list) {
 						var q = "select * from infochimps.twitter where user_id='" + list + "'";
 						var req = y.query(q);
 						var obj = y.xmlToJson(req.results);
-						y.log(twitter);
 						
 						for each (user in obj.results.users.user) {
 							y.log(user.id);
-							eval("twitter._" + user.id) = {};
+							eval("model.twitter._" + user.id) = {};
 
-							u = eval("twitter._" + user.id)
+							u = eval("model.twitter._" + user.id)
 							u.id = user.id;
 							u.name = user.name;
 							u.location = user.location;
@@ -59,7 +58,7 @@
 							u.screen_name = user.screen_name;
 							// y.log(u)
 							// eval("twitter._" + user.id) = u;
-							y.log(eval("twitter._" + user.id ))
+							y.log(eval("model.twitter._" + user.id ))
 						}
 						return true;
 					}
@@ -86,7 +85,6 @@
 					var ids = obj.json.strong_links.slice(0,24);
 					
 					model.twitter.status = "good";
-					y.log(model.twitter)
 					var list = twitter_list(ids, model.twitter)
 
 
