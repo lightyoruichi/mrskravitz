@@ -49,7 +49,7 @@
 						for each (user in obj.results.users.user) {
 
 							model.twitter._555 = "yes";
-							y.log(model.twitter);
+							y.log(eval("model.twitter"));
 							eval("model.twitter._" + user.id) = {};
 														y.log(model.twitter);
 							u = eval("model.twitter._" + user.id)
