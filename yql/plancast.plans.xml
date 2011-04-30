@@ -15,6 +15,7 @@
 					var url = "http://api.plancast.com/02/plans/user.json?count=3&username=" + sn;
 					var q = "select * from json where url='" + url + "'";
 					var req = y.query(q);
+					y.log(req);
 					// var data = req.results.json;
 					// var items = <items></items>;
 					// 					var obj = y.xmlToJson(data);
