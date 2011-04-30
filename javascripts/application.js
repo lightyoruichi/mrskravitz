@@ -512,8 +512,8 @@ var kravitz = {
 				$.tmpl("plancastTmpl", data.photos.photo).appendTo(target);
 			}
 		},
-		details_error : function(target, data) {
-
+		details_error : function() {
+				console.info("what")
 		}
 	},
 	klout : {
