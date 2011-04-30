@@ -53,7 +53,7 @@
 					y.log(services)
 					// get the names.
 					for (var st in services) {
-
+						y.log(st.type)
 						names.push(st);
 					}
 
