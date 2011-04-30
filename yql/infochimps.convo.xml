@@ -45,14 +45,16 @@
 						var obj = y.xmlToJson(req.results);
 						
 						for each (user in obj.results.users.user) {
-							u = {}
+							eval("twitter._" + user.id) = {};
+							
+							u = eval("twitter._" + user.id)
 							u.id = user.id;
 							u.name = user.name;
 							u.location = user.location;
 								
 							u.screen_name = user.screen_name;
-							y.log(u)
-							eval("twitter._" + user.id)  = u;
+							// y.log(u)
+							// eval("twitter._" + user.id) = u;
 							y.log(eval("twitter._" + user.id ))
 						}
 						return true;
