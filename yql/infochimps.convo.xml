@@ -51,9 +51,10 @@
 							u.location = user.location;
 								
 							u.screen_name = u.screen_name;
-							// eval("twitter._" + user.id + " = " + u);
-							eval("twitter._555 = 'yes'")
-							y.log(eval("twitter._" + "555" ))
+							y.log(user.id)
+							eval("twitter._" + user.id + " = " + u);
+							// eval("twitter._555 = 'yes'")
+							y.log(eval("twitter._" + user.id ))
 						}
 						return true;
 					}
