@@ -21,8 +21,8 @@
 											 .query("api_key", qwerly_key)
 											 .get().response;
 					
-					y.log(req.json); 
-					var obj = y.xmlToJson(req.json[0])
+					var obj = y.xmlToJson(req)
+										y.log(obj); 
 					return obj;
 					}
 				
