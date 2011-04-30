@@ -497,23 +497,21 @@ var kravitz = {
 			kravitz.utility.query("http://api.plancast.com/02/plans/user.json", params, callbacks);
 		},
 		details_callback : function(data) {
-			console.info(data);
 			if(typeof(data) == null){	
 				kravitz.plancast.details_error();
 			}
 			else {
-				
-				// console.info(data.photos.photo[0])
+				console.info(data.results.items.item)
 				$('div.details_container').append("<div id='plancast_content' class='box'></div>");
 				$('#plancast_content').append("<h6>Has made the following plans:</h6><ul class='plancast'></ul>");
 				var target = $('ul.plancast');
 			
 				$.template("plancastTmpl", plancastResultTemplate);
-				$.tmpl("plancastTmpl", data.photos.photo).appendTo(target);
+				$.tmpl("plancastTmpl", data.results.items.item.slice(0,3)).appendTo(target);
 			}
 		},
 		details_error : function() {
-				console.info("what")
+			// nothing
 		}
 	},
 	klout : {
