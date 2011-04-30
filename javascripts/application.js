@@ -574,6 +574,7 @@ console.info(data)
 			      });
 			// hack for jquery not handling jsonp errors well.
 			if (req.success) {
+			console.info(uri)
 			console.info(req)
 				req.success(function(data, textStatus){
 					return callbacks.success(data, callbacks.user_data);
