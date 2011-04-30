@@ -506,7 +506,7 @@ console.info(data)
 				$('div.details_container').append("<div id='plancast_content' class='box'></div>");
 				$('#plancast_content').append("<h6>Has made the following plans:</h6><ul class='plancast'></ul>");
 				var target = $('ul.plancast');
-				var plans = data.query.results.json.plans;
+				var plans = data.query.results.json;
 				$.template("plancastTmpl", plancastResultTemplate);
 				$.tmpl("plancastTmpl", plans).appendTo(target);
 			}
