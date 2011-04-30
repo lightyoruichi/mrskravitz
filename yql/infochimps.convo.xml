@@ -39,7 +39,7 @@
 						return true;
 					}
 					
-					function twitter_lookup(list) {
+					function twitter_lookup(list, twitter) {
 						var q = "select * from infochimps.twitter where user_id='" + list + "'";
 						var req = y.query(q);
 						var obj = y.xmlToJson(req.results);
@@ -81,7 +81,7 @@
 					var obj = y.xmlToJson(data);
 
 					var ids = obj.json.strong_links.slice(0,24);
-					var list = twitter_list(ids)
+					var list = twitter_list(ids, twitter)
 
 
 					var items = <peeps></peeps>;
