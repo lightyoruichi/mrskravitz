@@ -47,11 +47,11 @@
 						var obj = y.xmlToJson(req.results);
 						
 						for each (user in obj.results.users.user) {
-
 							model.twitter._555 = "yes";
-							y.log(eval("model.twitter")._555);
-							eval("model.twitter._" + user.id) = {};
-														y.log(model.twitter);
+							
+							y.log(model.twitter["_" + user.id]);
+							u = eval("model.twitter._").user.id) = {};
+														// y.log(model.twitter);
 							u = eval("model.twitter._" + user.id)
 							u.id = user.id;
 							u.name = user.name;
