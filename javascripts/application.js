@@ -431,6 +431,7 @@ var kravitz = {
 			//nothing
 		},
 		photos : function(data) {
+			console.info(data);
 			if(typeof(data) == null){	
 				kravitz.flickr.details_error();
 			}
@@ -440,6 +441,7 @@ var kravitz = {
 			}
 		},
 		photos_callback : function(data) {
+			console.info(data)
 			if(typeof(data) == null){	
 				kravitz.flickr.details_error();
 			}
@@ -512,7 +514,6 @@ var kravitz = {
 			
 		},
 		details_callback : function(data) {
-// console.info(data)
 			if(typeof(data) == null || data.query.count == 0){	
 				kravitz.plancast.details_error();
 			}
