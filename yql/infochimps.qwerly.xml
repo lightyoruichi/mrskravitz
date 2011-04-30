@@ -18,7 +18,7 @@
 						var url = "http://api.qwerly.com/v1/twitter/" + sn;
 						var req = y.rest(url)
 											 .accept('application/json')
-											 .query("apikey", qwerly_key)
+											 .query("api_key", qwerly_key)
 											 .get().response;
 					 return req;
 					}
@@ -40,7 +40,6 @@
 						var obj = y.xmlToJson(data.results[0]);
 						var services = obj.results;
 					} else {
-						// y.log("no")
 						var services = qwerly_failover(screen_name);
 						y.log(services)
 					}

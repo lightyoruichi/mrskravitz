@@ -92,7 +92,7 @@
 							item = <peep></peep>;
 							// tw = twitter_query(p.json[0]);
 							tw = eval("model.twitter._" + p.json[0]+"");
-							if (!tw) { y.log(p.json[0]); continue; }
+							if (!tw) { continue; }
 							
 							item.@["id"] = tw.id;
 							item.@["name"] = tw.name;
