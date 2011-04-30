@@ -453,7 +453,7 @@ var kravitz = {
 		},
 		photos_callback : function(data) {
 			console.info(data)
-			if(typeof(data) == null){	
+			if(typeof(data) == null || data.stat == "fail"){	
 				kravitz.flickr.details_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){
