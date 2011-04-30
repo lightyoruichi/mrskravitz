@@ -424,14 +424,23 @@ var kravitz = {
 		api_url  : "http://api.flickr.com/services/rest/",
 		user_url : "flickr.com/photos/",
 		details : function(sn) {
-			var url =  kravitz.flickr.api_url + "?method=flickr.urls.lookupUser&format=json&api_key=" + kravitz.flickr.api_key + "&url=" + kravitz.flickr.user_url + sn + "&jsoncallback=?";
-			$.getJSON(url, {}, kravitz.flickr.photos);
+			console.info(sn)
+			if (sn.indexOf('@') == -1) {
+				var url =  kravitz.flickr.api_url + "?method=flickr.urls.lookupUser&format=json&api_key=" + kravitz.flickr.api_key + "&url=" + kravitz.flickr.user_url + sn + "&jsoncallback=?";
+				$.getJSON(url, {}, kravitz.flickr.photos);
+			} else {
+				kravitz.flickr.photos_via_id(sn);
+			}
+			
 		},
 		details_error : function() {
 			//nothing
 		},
+		photos_via_id : function(id) {
+			url =  kravitz.flickr.api_url + "?method=flickr.people.getPublicPhotos&format=json&per_page=3&api_key=" + kravitz.flickr.api_key + "&user_id=" + id + "&jsoncallback=?";
+			$.getJSON(url, {}, kravitz.flickr.photos_callback);
+		},
 		photos : function(data) {
-			console.info(data);
 			if(typeof(data) == null){	
 				kravitz.flickr.details_error();
 			}
