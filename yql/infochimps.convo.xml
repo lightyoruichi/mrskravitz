@@ -46,7 +46,7 @@
 						
 						for each (user in obj.results.users.user) {
 							eval("twitter._" + user.id) = {};
-							
+							y.log(user.id);
 							u = eval("twitter._" + user.id)
 							u.id = user.id;
 							u.name = user.name;
