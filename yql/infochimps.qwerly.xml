@@ -22,7 +22,7 @@
 											 .get().response;
 					
 					var obj = y.xmlToJson(req)
-										// y.log(obj.json.profile.services); 
+					y.log(obj.json.profile.services); 
 					return obj.json.profile.services;
 					}
 				
@@ -54,10 +54,10 @@
 				
 					// get the names.
 					for (var st in services) {
+						y.log(st);
 						names.push(st);
 					}
 					
-					y.log(names);
 					var i = 0;
 					for each (var s in services){
 						var name = names[i]
