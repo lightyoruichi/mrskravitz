@@ -20,8 +20,8 @@
 					var obj = y.xmlToJson(data);
 					
 					if (obj.json.plans) {
-											y.log(obj.json)
-						for each (var p in obj.json){
+
+						for (var p in obj.json){
 								item = <item></item>;
 y.log(p);
 								// item.@["id"] = tw.id;
