@@ -50,18 +50,18 @@
 					var names = [];
 					var safe_names = ["foursquare", "github", "facebook", "twitter", "plancast", "flickr", "lastfm", "delicious", "youtube", "linkedin", "tumblr", "yelp"]
 
-					y.log(services)
+
 					// get the names.
 					for each (var st in services) {
-						y.log(st.type)
-						names.push(st);
+						names.push(st.type);
 					}
 
-					
+					y.log(names);
 					var i = 0;
 					for each (var s in services){
 						var name = names[i]
 						if (safe_names.indexOf(name) > -1) {
+							y.log(s);
 							item = <service></service>;
 							item.@["service"] = names[i];
 							item.@["screen_name"] = s.screen_name;
