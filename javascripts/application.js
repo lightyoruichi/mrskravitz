@@ -390,8 +390,8 @@ var kravitz = {
 			target = $('ul.social_icons');
 			target.html("");
 			
-			$('#topics, #industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note').html('');
-			$('#lastfm_content, #flickr_content, #delicious_content, #linkedin_content').remove();		
+			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note').html('');
+			$('#topics, #lastfm_content, #flickr_content, #delicious_content, #linkedin_content, #plancast_content').remove();		
 			// $('#share iframe, #share blockquote').remove();
 			
 			$('body').css({'background-image': 'none', 'background-color': '#000'});
