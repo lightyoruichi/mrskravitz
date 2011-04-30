@@ -67,7 +67,8 @@
 							if (eval("added.services." + name + "=== true")) {
 								continue;
 							} else {
-								eval("added.services." + name + "= true")
+								eval("added.services." + name + "= true");
+								y.log(added.services);
 								item = <service></service>;
 								item.@["service"] = names[i];
 								item.@["screen_name"] = s.username;
