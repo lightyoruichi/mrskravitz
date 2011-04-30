@@ -498,11 +498,11 @@ var kravitz = {
 			kravitz.utility.query("http://api.plancast.com/02/plans/user.json", params, callbacks);
 		},
 		details_callback : function(data) {
+							console.info(data)
 			if(typeof(data) == null){	
 				kravitz.plancast.details_error();
 			}
 			else {
-				console.info(data)
 				$('div.details_container').append("<div id='plancast_content' class='box'></div>");
 				$('#plancast_content').append("<h6>Has made the following plans:</h6><ul class='plancast'></ul>");
 				var target = $('ul.plancast');
@@ -532,6 +532,7 @@ var kravitz = {
 			return false;
 		},
 		topics_callback : function(data) {
+			console.info(data)
 			if(data == null || data.query.results == null || data.query.results.items == null){	
 				kravitz.klout.topics_error();
 			}
