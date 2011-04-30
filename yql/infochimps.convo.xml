@@ -47,12 +47,10 @@
 						var obj = y.xmlToJson(req.results);
 						
 						for each (user in obj.results.users.user) {
-							model.twitter._555 = "yes";
 							
-							y.log(model.twitter["_" + user.id]);
-							u = eval("model.twitter._").user.id) = {};
-														// y.log(model.twitter);
-							u = eval("model.twitter._" + user.id)
+							var id = "_" + user.id;
+							u = eval("model.twitter._" + id + "= {}");
+							log(u)
 							u.id = user.id;
 							u.name = user.name;
 							u.location = user.location;
@@ -60,7 +58,7 @@
 							u.screen_name = user.screen_name;
 							// y.log(u)
 							// eval("twitter._" + user.id) = u;
-							y.log(eval("model.twitter._" + user.id ))
+							y.log(eval("model.twitter." + id ))
 						}
 						return true;
 					}
