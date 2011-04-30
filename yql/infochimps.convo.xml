@@ -49,15 +49,14 @@
 						for each (user in obj.results.users.user) {
 							
 							var id = "_" + user.id;
-							u = eval("model.twitter._" + id + "= {}");
-							y.log(u)
+							
+							u = {};
 							u.id = user.id;
 							u.name = user.name;
 							u.location = user.location;
 								
 							u.screen_name = user.screen_name;
-							// y.log(u)
-							// eval("twitter._" + user.id) = u;
+							eval("twitter." + id + "= u");
 							y.log(eval("model.twitter." + id ))
 						}
 						return true;
