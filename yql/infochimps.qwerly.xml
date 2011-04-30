@@ -22,8 +22,8 @@
 											 .get().response;
 					
 					var obj = y.xmlToJson(req)
-										y.log(obj.json.profile.services); 
-					return obj;
+										// y.log(obj.json.profile.services); 
+					return obj.json.profile.services;
 					}
 				
 					function infochimps_query(q) {
