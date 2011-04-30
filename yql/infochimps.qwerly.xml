@@ -65,7 +65,7 @@
 						var name = names[i]
 						if (safe_names.indexOf(name) > -1) {
 							if (eval("added.services." + name + "=== true")) {
-								continue;
+								// continue;
 							} else {
 								eval("added.services." + name + "= true");
 								y.log(added.services);
