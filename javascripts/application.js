@@ -503,17 +503,11 @@ var kravitz = {
 			    contentType: "application/json; charset=utf-8",
 			    dataType: "json",
 					data: params,
-			    beforeSend: function(x) {
-				console.info("befresend")
-			        if(x && x.overrideMimeType) {
-			            x.overrideMimeType("application/j-son;charset=UTF-8");
-			        }
-			    },
 			    success: function(data){
 			        console.info(data)
 			    },//success
-			    error: function (XMLHttpRequest, textStatus, errorThrown) {
-			        console.error(textStatus)
+			    error: function (data, textStatus, errorThrown) {
+			        console.error(data)
 			    }
 			});
 			
