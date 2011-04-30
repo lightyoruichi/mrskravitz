@@ -48,7 +48,7 @@
 					
 					var items = <services></services>;
 					var names = [];
-					var safe_names = ["foursquare", "github", "facebook", "twitter", "plancast", "flickr", "lastfm", "delicious", "youtube", "linkedin", "tumblr", "yelp", "wordpress"]
+					var safe_names = ["foursquare", "github", "facebook", "plancast", "flickr", "lastfm", "delicious", "linkedin", "tumblr", "yelp", "wordpress"]
 
 
 					// get the names.
@@ -68,7 +68,6 @@
 								// continue;
 							} else {
 								eval("added.services." + name + "= true");
-								y.log(added.services);
 								item = <service></service>;
 								item.@["service"] = names[i];
 								item.@["screen_name"] = s.username;
