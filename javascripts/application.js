@@ -483,6 +483,30 @@ var kravitz = {
 
 		}
 	},
+	plancast : {
+		details : function(sn) {
+			var url = "http://api.plancast.com/02/plans/user.json?username=" + sn + "&jsoncallback=?";
+			$.getJSON(url, {}, kravitz.plancast.details_callback);
+		},
+		details_callback : function(data) {
+			if(typeof(data) == null){	
+				kravitz.plancast.details_error();
+			}
+			else {
+				console.info(data);
+				// console.info(data.photos.photo[0])
+				$('div.details_container').append("<div id='plancast_content' class='box'></div>");
+				$('#plancast_content').append("<h6>Has made the following plans:</h6><ul class='plancast'></ul>");
+				var target = $('ul.plancast');
+			
+				$.template("plancastTmpl", plancastResultTemplate);
+				$.tmpl("plancastTmpl", data.photos.photo).appendTo(target);
+			}
+		},
+		details_error : function(target, data) {
+
+		}
+	}
 	klout : {
 		params : function() {
 			params          = {};
@@ -580,8 +604,8 @@ var kravitz = {
 			ary = ["bubbellahs", "extremely good looking people"]
 			return "Interacts mostly with these " + ary[rand] + "...";
 		},
-		friend_industry : "...and work in industries like:",
-		friend_jobs : "...who have fancy job titles like:",
+		friend_industry : "...who work in industries like:",
+		friend_jobs : "...and have fancy job titles like:",
 		friend_locations : "...in these cities:"
 	},
 	hash : {
