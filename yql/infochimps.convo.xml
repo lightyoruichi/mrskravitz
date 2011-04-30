@@ -52,8 +52,7 @@
 								
 							u.screen_name = user.screen_name;
 							y.log(u)
-							eval("twitter._" + user.id + " = " + u);
-							// eval("twitter._555 = 'yes'")
+							eval("twitter._" + user.id)  = u;
 							y.log(eval("twitter._" + user.id ))
 						}
 						return true;
@@ -87,16 +86,16 @@
 							item = <peep></peep>;
 							// tw = twitter_query(p.json[0]);
 							tw = eval("twitter._" + p.json[0]+"");
-							// y.log(tw)
-							// 							item.@["id"] = tw.id;
-							// 							item.@["name"] = tw.name;
-							// 							item.@["sn"] = tw.screen_name;
-							// 							item.@["location"] = tw.location;
-							// 							
-							// 							pl = place_query(tw.location);
-							// 							item.@["postal"] = pl.uzip;
-							// 							item.@["countrycode"] = pl.countrycode;
-							// 							item.@["location"] = pl.city + ", " + pl.statecode;
+					
+							item.@["id"] = tw.id;
+							item.@["name"] = tw.name;
+							item.@["sn"] = tw.screen_name;
+							item.@["location"] = tw.location;
+							
+							pl = place_query(tw.location);
+							item.@["postal"] = pl.uzip;
+							item.@["countrycode"] = pl.countrycode;
+							item.@["location"] = pl.city + ", " + pl.statecode;
 							items.node += item;
 					}
 		
