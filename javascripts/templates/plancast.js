@@ -1,5 +1,4 @@
 var plancastResultTemplate =  '<li>' +
-'what' +
-' <em> for what</em>' +
-
+'${what} - ${when}' +
+' {{if external_url}}<em><a href="${external_url}">${external_url}</a></em>{{/if}}' +
 '</li>';
