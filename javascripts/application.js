@@ -504,6 +504,7 @@ var kravitz = {
 			    dataType: "json",
 					data: params,
 			    beforeSend: function(x) {
+				console.info("befresend")
 			        if(x && x.overrideMimeType) {
 			            x.overrideMimeType("application/j-son;charset=UTF-8");
 			        }
