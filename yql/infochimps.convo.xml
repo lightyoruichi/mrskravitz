@@ -81,7 +81,7 @@
 					data = strong_links_query(sn);
 					var obj = y.xmlToJson(data);
 
-					var ids = obj.json.strong_links.slice(0,24);
+					var ids = obj.json.strong_links.slice(0,16);
 					
 					model.twitter.status = "good";
 					var list = twitter_list(ids, model.twitter)
