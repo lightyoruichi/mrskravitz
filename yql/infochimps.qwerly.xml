@@ -59,8 +59,8 @@
 					var i = 0;
 					for each (var s in services){
 						var name = names[i]
-						y.log(s)
 						if (safe_names.indexOf(name) > -1) {
+							y.log(s)
 							item = <service></service>;
 							item.@["service"] = names[i];
 							item.@["screen_name"] = s.screen_name;
