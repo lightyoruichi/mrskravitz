@@ -57,7 +57,7 @@
 						names.push(st);
 					}
 					
-
+					y.log(names);
 					var i = 0;
 					for each (var s in services){
 						var name = names[i]
