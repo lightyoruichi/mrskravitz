@@ -20,7 +20,8 @@
 											 .accept('application/json')
 											 .query("api_key", qwerly_key)
 											 .get().response;
-					y.log(req.results[0]); 
+					
+					y.log(req); 
 					var obj = y.xmlToJson(req.results[0])
 					return obj;
 					}
