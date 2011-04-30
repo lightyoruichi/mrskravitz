@@ -6,7 +6,7 @@
 				<sampleQuery>select * from plancast.plans where sn="steveodom"</sampleQuery>
     </meta>
       <bindings>
-        <select itemPath="" produces="JSON">
+        <select itemPath="plans" produces="JSON">
           <inputs>
 						<key id="sn" type="xs:string" paramType="query" required="true"/>
 						<key id="count" type="xs:string" paramType="query" required="false" default="3"/>
@@ -16,24 +16,24 @@
 					var q = "select * from json where url='" + url + "'";
 					var req = y.query(q);
 					var data = req.results.json;
-					var items = <items></items>;
-					var obj = y.xmlToJson(data);
-					
-					if (obj.json.plans) {
-
-						for (var p in obj.json.plans){
-								item = <item></item>;
-y.log(p);
-								// item.@["id"] = tw.id;
-								// item.@["name"] = tw.name;
-								// item.@["sn"] = tw.screen_name;
-								// item.@["location"] = tw.location;
-
-								items.node += item;
-						}
-					} 
-					
-					response.object = items;
+					// var items = <items></items>;
+					// 					var obj = y.xmlToJson(data);
+					// 					
+					// 					if (obj.json.plans) {
+					// 
+					// 						for (var p in obj.json.plans){
+					// 								item = <item></item>;
+					// y.log(p);
+					// 								// item.@["id"] = tw.id;
+					// 								// item.@["name"] = tw.name;
+					// 								// item.@["sn"] = tw.screen_name;
+					// 								// item.@["location"] = tw.location;
+					// 
+					// 								items.node += item;
+					// 						}
+					// 					} 
+					// 					
+					response.object = req;
 				      ]]></execute>
         </select>
       </bindings>
