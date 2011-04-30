@@ -57,7 +57,6 @@
 								
 							u.screen_name = user.screen_name;
 							eval("model.twitter." + id + "= u");
-							y.log(eval("model.twitter." + id ))
 						}
 						return true;
 					}
@@ -91,8 +90,8 @@
 					for each (var p in ids){
 							item = <peep></peep>;
 							// tw = twitter_query(p.json[0]);
-							tw = eval("twitter._" + p.json[0]+"");
-					
+							tw = eval("model.twitter._" + p.json[0]+"");
+					y.log(tw);
 							item.@["id"] = tw.id;
 							item.@["name"] = tw.name;
 							item.@["sn"] = tw.screen_name;
