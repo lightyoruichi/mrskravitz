@@ -488,29 +488,14 @@ var kravitz = {
 	},
 	plancast : {
 		details : function(sn) {
-			// var url = "http://api.plancast.com/02/plans/user.json?username=" + sn + "&jsoncallback=?";
-			// $.getJSON(url, {}, kravitz.plancast.details_callback);
 			params = {}
-			params.username   = sn;
-			params.count = 3;
-			// callbacks = {};
-			// 			callbacks.success = kravitz.plancast.details_callback;
-			// 			callbacks.errors = kravitz.plancast.details_error;
-			// 			kravitz.utility.query("http://api.plancast.com/02/plans/user.json", params, callbacks);
+			params.format   = "json";
+			params.env      = "https://github.com/steveodom/mrskravitz/raw/gh-pages/yql/plancast.env";
+			params.q  = "SELECT plans.what, plans.when, plans.external_url from plancast.plans where sn='" + sn + "' LIMIT 3";
+			callbacks.success = kravitz.plancast.details_callback;
+			callbacks.errors = kravitz.plancast.details_error;
 			
-			$.ajax({
-			    url: "http://api.plancast.com/02/plans/user.json",
-			    contentType: "application/json; charset=utf-8",
-			    dataType: "json",
-					data: params,
-			    success: function(data){
-			        console.info(data)
-			    },//success
-			    error: function (data, textStatus, errorThrown) {
-			        console.error(data)
-			    }
-			});
-			
+			kravitz.utility.query(kravitz.utility.yql, params, callbacks);			
 		},
 		details_callback : function(data) {
 console.info(data)
@@ -521,9 +506,9 @@ console.info(data)
 				$('div.details_container').append("<div id='plancast_content' class='box'></div>");
 				$('#plancast_content').append("<h6>Has made the following plans:</h6><ul class='plancast'></ul>");
 				var target = $('ul.plancast');
-				// var plans = data.query.results.items.item.slice(0,3);
-				// 				$.template("plancastTmpl", plancastResultTemplate);
-				// 				$.tmpl("plancastTmpl", plans).appendTo(target);
+				var plans = data.query.results.json.plans;
+				$.template("plancastTmpl", plancastResultTemplate);
+				$.tmpl("plancastTmpl", plans).appendTo(target);
 			}
 		},
 		details_error : function() {
