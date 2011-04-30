@@ -502,7 +502,7 @@ var kravitz = {
 				kravitz.plancast.details_error();
 			}
 			else {
-				console.info(data.query.results.items.item)
+				console.info(data)
 				$('div.details_container').append("<div id='plancast_content' class='box'></div>");
 				$('#plancast_content').append("<h6>Has made the following plans:</h6><ul class='plancast'></ul>");
 				var target = $('ul.plancast');
