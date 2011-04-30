@@ -17,7 +17,7 @@
 					var req = y.query(q);
 					var data = req.results.json;
 					var items = <items></items>;
-					
+				y.log(data.plans);	
 					if (data.plans) {
 						for each (var p in data.plans){
 								item = <item></item>;
