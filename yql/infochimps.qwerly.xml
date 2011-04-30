@@ -53,7 +53,7 @@
 					var safe_names = ["foursquare", "github", "klout", "facebook", "twitter", "plancast", "flickr", "lastfm", "delicious", "youtube", "linkedin", "pandora", "tumblr", "myspace", "reddit"]
 				
 					// get the names.
-					for (var st in services) {
+					for each (var st in services) {
 						y.log(st);
 						names.push(st);
 					}
