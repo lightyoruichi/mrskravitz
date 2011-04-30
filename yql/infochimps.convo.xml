@@ -43,7 +43,7 @@
 						var q = "select * from infochimps.twitter where user_id='" + list + "'";
 						var req = y.query(q);
 						var obj = y.xmlToJson(req.results);
-						var twitter = twitter;
+						twitter.status = "good"
 						
 						for each (user in obj.results.users.user) {
 							y.log(user.id);
