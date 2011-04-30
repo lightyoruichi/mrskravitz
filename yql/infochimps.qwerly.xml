@@ -47,6 +47,7 @@
 						
 					}
 			
+					y.log(services);
 					
 					var items = <services></services>;
 					var names = [];
