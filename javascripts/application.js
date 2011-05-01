@@ -562,7 +562,7 @@ var kravitz = {
 		},
 		details_callback : function(data) {
 			if(typeof(data) == null || !data.repository){	
-				console.info(data.repository)
+				console.info(data)
 				kravitz.github.details_error();
 			}
 			else {
