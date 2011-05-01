@@ -598,7 +598,7 @@ var kravitz = {
 				$('#delicious_content').append("<h6>Has bookmarked pages like:</h6><ul class='delicious'></ul>");
 				var target = $('ul.delicious');
 				var posts = data.responseData.feed.entries;
-				$.template("deliciousTmpl", githubResultTemplate);
+				$.template("deliciousTmpl", deliciousResultTemplate);
 				$.tmpl("deliciousTmpl", posts).appendTo(target);
 			}
 		},
