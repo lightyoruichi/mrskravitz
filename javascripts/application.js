@@ -561,7 +561,6 @@ var kravitz = {
 							.error(function(data) {kravitz.github.details_error()});
 		},
 		details_callback : function(data) {
-			console.info(data);
 			if(typeof(data) == null || !data.repository){	
 				kravitz.github.details_error();
 			}
@@ -570,6 +569,7 @@ var kravitz = {
 				$('#github_content').append("<h6>Has code repositories like:</h6><ul class='github'></ul>");
 				var target = $('ul.github');
 				var repos = data.repositories.reverse().slice(0,3);
+		console.info(repos);
 				$.template("githubTmpl", githubResultTemplate);
 				$.tmpl("githubTmpl", repos).appendTo(target);
 			}
