@@ -416,7 +416,7 @@ var kravitz = {
 			
 		},
 		qwerly_lookups : function() {
-			valid = ["flickr", "lastfm", "plancast", "github"]
+			valid = ["flickr", "lastfm", "plancast", "github", "delicious"]
 			$('ul.social_icons li').each(function(){ 
 				var service = $(this).attr("data-service");
 				var name 		= $(this).attr("data-sn");
@@ -434,6 +434,9 @@ var kravitz = {
 							break;
 						case "github":
 							kravitz.github.details(name);
+							break;
+						case "delicious":
+							kravitz.delicious.details(name);
 							break;
 					};
 				}
@@ -588,6 +591,7 @@ var kravitz = {
 							.error(function(data) {kravitz.delicious.details_error()});
 		},
 		details_callback : function(data) {
+			console.info(data)
 			if(typeof(data) == null || !data.feed.entries){	
 				kravitz.delicious.details_error();
 			}
