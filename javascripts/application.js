@@ -502,6 +502,7 @@ var kravitz = {
 			params.format   = "json";
 			params.env      = "https://github.com/steveodom/mrskravitz/raw/gh-pages/yql/plancast.env";
 			params.q  = "SELECT plans.what, plans.when, plans.external_url, plans.attendance_url from plancast.plans where sn='" + sn + "' LIMIT 3";
+			callbacks = {};
 			callbacks.success = kravitz.plancast.details_callback;
 			callbacks.errors = kravitz.plancast.details_error;
 			
@@ -537,7 +538,7 @@ var kravitz = {
 			params.q  = "select * from klout.topics where screen_name='" + screen_name + "'";
 			callbacks = {};
 			callbacks.success = kravitz.klout.topics_callback;			
-		  callbacks.errors = kravitz.klout.topics_error;	
+		  callbacks.errors = kravitz.klout.topics_error;
 			kravitz.utility.query(kravitz.utility.yql, params, callbacks);
 		},
 		topics_callback : function(data) {
@@ -582,8 +583,6 @@ var kravitz = {
 			// hack for jquery not handling jsonp errors well.
 			if (req.success) {
 				req.success(function(data, textStatus){
-					console.info(uri)
-					console.info(callbacks.success)
 					return callbacks.success(data);
 				});
 			} else {
