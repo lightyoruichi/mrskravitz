@@ -568,8 +568,8 @@ var kravitz = {
 							 url: url,
 							 dataType: "jsonp",
 							 data: {}
-			      }).success(function(data) {console.info(data)})
-							.error(function(data) {console.error(data)});
+			      }).success(function(data) {kravitz.github.details_callback(data)})
+							.error(function(data) {kravitz.github.details_error()});
 		},
 		details_callback : function(data) {
 			console.info(data);
@@ -581,7 +581,7 @@ var kravitz = {
 				$('div.details_container').append("<div id='github_content' class='box'></div>");
 				$('#github_content').append("<h6>Has code repositories like:</h6><ul class='github'></ul>");
 				var target = $('ul.github');
-				var repos = data.query.results.json;
+				var repos = data.repositories;
 				$.template("githubTmpl", githubResultTemplate);
 				$.tmpl("githubTmpl", repos).appendTo(target);
 			}
