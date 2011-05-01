@@ -94,7 +94,7 @@ var kravitz = {
 				if (IN.User.isAuthorized()) {
 					kravitz.li.friends();
 			 	}	else {
-					$('#salary_chart_login').show();
+					$('#li_login').show();
 				}
 		
 				var peeps = data.query.results.peeps;
@@ -140,7 +140,7 @@ var kravitz = {
 	li : {
 		error_total : 0,
 		welcome : function() {
-			$('#salary_chart_login').livequery(function() {
+			$('#li_login').livequery(function() {
 				$(this).hide();
 			});
 			kravitz.li.friends();
@@ -202,10 +202,6 @@ var kravitz = {
 			}
 		},
 		friends : function() {
-					$('#industry_chart, #job_chart, #locations_chart').show();
-					$('#industry_note').html(kravitz.default_text.friend_industry);
-					$('#job_note').html(kravitz.default_text.friend_jobs);
-					$('#locations_note').html(kravitz.default_text.friend_locations);
 					
 				$('ul.friends li').livequery(function(){
 					$(this).each(function(){
@@ -215,6 +211,10 @@ var kravitz = {
 							}
 					});
 				});
+				$('#industry_chart, #job_chart, #locations_chart').show();
+				$('#industry_note').html(kravitz.default_text.friend_industry);
+				$('#job_note').html(kravitz.default_text.friend_jobs);
+				$('#locations_note').html(kravitz.default_text.friend_locations);
 			
 		},
 		query : function(li) {
@@ -243,16 +243,15 @@ var kravitz = {
 			}
 		},
 		query_error : function(error) {
-			console.info(error)
 			kravitz.li.error_total ++;
 			if (kravitz.li.error_total == 1) {
-				var target = $('#industry_chart');
+				var target = $('#linkedin_message');
 				target.show();
 				if (error.errorCode == 0) {
-					$('#job_note, #industry_note').hide();
-					target.append("<li class='error'>Oy vey, Linkedin allows each person and site a very limited number of searches each day. Either you or Mrs. Kravitz has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</li>");
+					// $('#job_note, #industry_note').hide();
+					target.append("<p class='error'>Oy vey, Linkedin allows each person and site a very limited number of searches each day. Either you or Mrs. Kravitz has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</p>");
 				} else {
-					target.append("<li class='error'>"+ error.message + "</li>")
+					target.append("<p class='error'>"+ error.message + "</p>")
 				}
 			}
 			return false;
