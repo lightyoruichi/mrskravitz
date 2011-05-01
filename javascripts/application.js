@@ -572,8 +572,6 @@ var kravitz = {
 							.error(function(data) {kravitz.github.details_error()});
 		},
 		details_callback : function(data) {
-			console.info(data);
-			
 			if(typeof(data) == null){	
 				kravitz.github.details_error();
 			}
@@ -581,7 +579,7 @@ var kravitz = {
 				$('div.details_container').append("<div id='github_content' class='box'></div>");
 				$('#github_content').append("<h6>Has code repositories like:</h6><ul class='github'></ul>");
 				var target = $('ul.github');
-				var repos = data.repositories;
+				var repos = data.repositories.slice(0,3);
 				$.template("githubTmpl", githubResultTemplate);
 				$.tmpl("githubTmpl", repos).appendTo(target);
 			}
