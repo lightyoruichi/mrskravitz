@@ -212,7 +212,7 @@ var kravitz = {
 					});
 				});
 				$('#industry_chart, #job_chart, #locations_chart').show();
-				$('#industry_note').html(kravitz.default_text.friend_industry);
+				// $('#industry_note').html(kravitz.default_text.friend_industry);
 				$('#job_note').html(kravitz.default_text.friend_jobs);
 				$('#locations_note').html(kravitz.default_text.friend_locations);
 			
@@ -264,6 +264,10 @@ var kravitz = {
 		},
 		render_industry : function(person, pid) {	
 			if (person.industry) {
+				var note = $('#industry_note');
+				console.note.length();
+				if (note.length == 0) {note.html(kravitz.default_text.friend_industry);}
+				
 				var ind_name = person.industry;
 				var ind_id = kravitz.li.id_encoder(person.industry.toLowerCase().split(" ").join("-"));
 				var ind_li = $('#' + ind_id);
