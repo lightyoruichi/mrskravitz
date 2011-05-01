@@ -592,14 +592,14 @@ var kravitz = {
 		},
 		details_callback : function(data) {
 			console.info(data)
-			if(typeof(data) == null || !data.feed.entries){	
+			if(typeof(data) == null || !data.responseData.feed.entries){	
 				kravitz.delicious.details_error();
 			}
 			else {
 				$('div.details_container').append("<div id='delicious_content' class='box'></div>");
 				$('#delicious_content').append("<h6>Has bookmarked pages like:</h6><ul class='delicious'></ul>");
 				var target = $('ul.delicious');
-				var posts = data.feed.entries;
+				var posts = data.responseData.feed.entries;
 				$.template("deliciousTmpl", githubResultTemplate);
 				$.tmpl("deliciousTmpl", posts).appendTo(target);
 			}
