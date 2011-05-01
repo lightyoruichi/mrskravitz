@@ -243,6 +243,7 @@ var kravitz = {
 			}
 		},
 		query_error : function(error) {
+			console.info(error)
 			kravitz.li.error_total ++;
 			if (kravitz.li.error_total == 1) {
 				var target = $('#industry_chart');
