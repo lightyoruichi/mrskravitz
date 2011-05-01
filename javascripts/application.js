@@ -550,15 +550,15 @@ var kravitz = {
 	github : {
 		details : function(sn) {
 			url = "https://github.com/api/v2/json/repos/show/" + sn;
-			params = {}
+			// params = {}
 			// params.format   = "json";
 			// params.env      = "https://github.com/steveodom/mrskravitz/raw/gh-pages/yql/plancast.env";
 			// params.q  = "SELECT plans.what, plans.when, plans.external_url, plans.attendance_url from plancast.plans where sn='" + sn + "' LIMIT 3";
-			callbacks = {};
-			callbacks.success = kravitz.github.details_callback;
-			callbacks.errors = kravitz.github.details_error;
-	console.info("github")		
-			kravitz.utility.query(url, params, callbacks);
+			// callbacks = {};
+			// callbacks.success = kravitz.github.details_callback;
+			// callbacks.errors = kravitz.github.details_error;		
+			// kravitz.utility.query(url, params, callbacks);
+			$.getJSON(url, {}, kravitz.github.details_callback);
 		},
 		details_callback : function(data) {
 			console.info(data);
