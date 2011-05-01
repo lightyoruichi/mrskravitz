@@ -259,7 +259,7 @@ var kravitz = {
 				target.show();
 				if (error.errorCode == 0) {
 					// $('#job_note, #industry_note').hide();
-					target.append("<p class='error'>Oy vey, Linkedin allows each person and site a very limited number of searches each day. Either you or Mrs. Kravitz has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</p>");
+					target.append("<p class='error'>Oy vey.</p> <p>Linkedin allows each person and site a very limited number of searches each day. Either you or Mrs. Kravitz has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</p>");
 				} else {
 					target.append("<p class='error'>"+ error.message + "</p>")
 				}
@@ -550,20 +550,6 @@ var kravitz = {
 	github : {
 		details : function(sn) {
 			url = "https://github.com/api/v2/json/repos/show/" + sn;
-			// params = {}
-			// params.format   = "json";
-			// params.env      = "https://github.com/steveodom/mrskravitz/raw/gh-pages/yql/plancast.env";
-			// params.q  = "SELECT plans.what, plans.when, plans.external_url, plans.attendance_url from plancast.plans where sn='" + sn + "' LIMIT 3";
-			// callbacks = {};
-			// callbacks.success = kravitz.github.details_callback;
-			// callbacks.errors = kravitz.github.details_error;		
-			// kravitz.utility.query(url, params, callbacks);
-			// $.getJSON(url).then(function(r){
-			// 				console.info(r);
-			// 			}, function(jxhr){
-			// 				console.info(jxhr);
-			// 			});
-
 			$.ajax({ cache: false, 
 							 url: url,
 							 dataType: "jsonp",

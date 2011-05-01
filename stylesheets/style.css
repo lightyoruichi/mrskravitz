@@ -137,7 +137,7 @@ ul.person_jobs a {text-decoration:underline;}
 ul.plancast {}
 ul.plancast li {float:left;width:100%;margin: 5px 0;color:#aaa;}
 
-#industry_chart, #linkedin_message, #job_chart, #locations_chart {display:none;float:left;width:94%;}
+#industry_chart, #job_chart, #locations_chart {display:none;float:left;width:94%;}
 #li_login {border:1px solid blue;background:lightBlue;padding:10px;}
 #li_login p {color:#444;font-size:13px;margin:14px 0;}
 #industry_chart li, #job_chart li, #locations_chart li {float:left;width:auto;margin:5px;background:#777;padding:5px 10px;}
@@ -150,7 +150,7 @@ li.tag_6 {background:#7f7f7f !important;}
 li.tag_7 {background:#888 !important;}
 li.tag_8 {background:#8f8f8f !important;}
 
-#linkedin_message {background:pink;border:1px solid red;padding:10px;}
+#linkedin_message {background:#999;border:1px solid pink;padding:10px;margin-top:15px;width:89%;color:#000;}
 
 .btn { 
 	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important;
