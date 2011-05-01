@@ -505,20 +505,20 @@ var kravitz = {
 			callbacks.success = kravitz.plancast.details_callback;
 			callbacks.errors = kravitz.plancast.details_error;
 			
-			// kravitz.utility.query(kravitz.utility.yql, params, callbacks);			
-				var req = $.ajax({ cache: false, 
-								 url: kravitz.utility.yql,
-								 dataType: "jsonp",
-								 data: params
-				      });
-				// hack for jquery not handling jsonp errors well.
-				if (req.success) {
-					req.success(function(data, textStatus){
-						return callbacks.success(data, callbacks.user_data);
-					});
-				} else {
-					return callbacks.errors("", {});
-				}
+			kravitz.utility.query(kravitz.utility.yql, params, callbacks);			
+				// var req = $.ajax({ cache: false, 
+				// 							 url: kravitz.utility.yql,
+				// 							 dataType: "jsonp",
+				// 							 data: params
+				// 			      });
+				// 			// hack for jquery not handling jsonp errors well.
+				// 			if (req.success) {
+				// 				req.success(function(data, textStatus){
+				// 					return callbacks.success(data, callbacks.user_data);
+				// 				});
+				// 			} else {
+				// 				return callbacks.errors("", {});
+				// 			}
 			
 		},
 		details_callback : function(data) {
@@ -553,21 +553,6 @@ var kravitz = {
 			callbacks.success = kravitz.klout.topics_callback;			
 		  callbacks.errors = kravitz.klout.topics_error;	
 			kravitz.utility.query(kravitz.utility.yql, params, callbacks);
-			// kravitz.utility.query(kravitz.utility.yql, params, callbacks);			
-				var req = $.ajax({ cache: false, 
-								 url: kravitz.utility.yql,
-								 dataType: "jsonp",
-								 data: params
-				      });
-				// hack for jquery not handling jsonp errors well.
-				if (req.success) {
-					req.success(function(data, textStatus){
-						return callbacks.success(data, callbacks.user_data);
-					});
-				} else {
-					return callbacks.errors("", {});
-				}
-			return false;
 		},
 		topics_callback : function(data) {
 			if(data == null || data.query.results == null || data.query.results.items == null){	
@@ -593,7 +578,7 @@ var kravitz = {
 			}
 		},
 		topics_error : function() {
-			// $('ul.topics').html("<li style='width:100%;'>There was an error getting results from Klout.</li>")
+			// nothing;
 		}
 	},
 	utility : {
