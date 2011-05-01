@@ -558,7 +558,11 @@ var kravitz = {
 			// callbacks.success = kravitz.github.details_callback;
 			// callbacks.errors = kravitz.github.details_error;		
 			// kravitz.utility.query(url, params, callbacks);
-			$.getJSON(url, {}, kravitz.github.details_callback);
+			$.getJSON(url).then(function(r){
+				console.info(r);
+			}, function(jxhr){
+				console.info(jxhr);
+			});
 		},
 		details_callback : function(data) {
 			console.info(data);
