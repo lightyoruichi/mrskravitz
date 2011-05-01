@@ -83,7 +83,7 @@ var kravitz = {
 		  kravitz.utility.query(kravitz.utility.yql, params, callbacks);
 		},
 		sl_callback : function(data) {
-			kravitz.details.qwerly_lookups();
+			
 			if(data.query == null || data.query.results == null || data.query.results.peeps == null){
 				kravitz.infochimps.sl_error();
 			}
@@ -104,6 +104,7 @@ var kravitz = {
 				$.each(peeps.peep, function(i, peep){
 					kravitz.li.render_location(peep.location);
 				});
+				kravitz.details.qwerly_lookups();
 			}
 		},
 		sl_error : function() {
@@ -412,7 +413,7 @@ var kravitz = {
 							kravitz.lastfm.details(name);
 							break;
 						case "plancast":
-							// kravitz.plancast.details(name);
+							kravitz.plancast.details(name);
 							break;
 					};
 				}
