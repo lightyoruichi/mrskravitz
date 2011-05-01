@@ -221,6 +221,9 @@ var kravitz = {
 			var country = li.attr("data-country").toLowerCase();
 			var pid = li.attr("data-id")+'';
 			var li = $.jStorage.get(pid);
+			var date = new Date();
+		  var now = date.getTime();
+			
 			if (!li) {
 				IN.API.PeopleSearch()
 											.fields("id","first-name","last-name","industry","positions")
@@ -229,15 +232,23 @@ var kravitz = {
 									        // $("#search").html(JSON.stringify(result));
 													if (result.people.values != null) {
 														var person = result.people.values[0];
+														person.created = date.getTime();
 														$.jStorage.set(pid, person);
 														kravitz.li.process(person, pid);
 													} else {
-														$.jStorage.set(pid, "empty");
+														console.info(name);
+														$.jStorage.set(pid, {status:"empty", created: now});
 													}
 								 			})
 							.error(kravitz.li.query_error);
 			} else {			
 				kravitz.li.process(li);
+				
+				//expire it?
+				var yesterday = date.getTime() - (60 * 60 * 25);
+				if (li.created < yesterday) {
+					$.jStorage.deleteKey(pid);
+				}
 			}
 		},
 		query_error : function(error) {
@@ -255,7 +266,7 @@ var kravitz = {
 			return false;
 		},
 		process : function(person, pid) {			
-			if (person != "empty"){	
+			if (person.status && person.status != "empty"){	
 				kravitz.li.render_industry(person, pid);
 				kravitz.li.render_job(person, pid);
 			}
