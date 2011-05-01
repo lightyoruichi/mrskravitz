@@ -408,7 +408,7 @@ var kravitz = {
 			target = $('ul.social_icons');
 			target.html("");
 			
-			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note').html('');
+			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note, #linkedin_message').html('');
 			$('#topics, #lastfm_content, #flickr_content, #delicious_content, #linkedin_content, #plancast_content, #github_content').remove();		
 			// $('#share iframe, #share blockquote').remove();
 			
