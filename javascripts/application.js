@@ -83,7 +83,7 @@ var kravitz = {
 		  kravitz.utility.query(kravitz.utility.yql, params, callbacks);
 		},
 		sl_callback : function(data) {
-			
+			kravitz.details.qwerly_lookups();
 			if(data.query == null || data.query.results == null || data.query.results.peeps == null){
 				kravitz.infochimps.sl_error();
 			}
@@ -104,7 +104,6 @@ var kravitz = {
 				$.each(peeps.peep, function(i, peep){
 					kravitz.li.render_location(peep.location);
 				});
-				kravitz.details.qwerly_lookups();
 			}
 		},
 		sl_error : function() {
@@ -506,21 +505,7 @@ var kravitz = {
 			callbacks.success = kravitz.plancast.details_callback;
 			callbacks.errors = kravitz.plancast.details_error;
 			
-			kravitz.utility.query(kravitz.utility.yql, params, callbacks);			
-				// var req = $.ajax({ cache: false, 
-				// 							 url: kravitz.utility.yql,
-				// 							 dataType: "jsonp",
-				// 							 data: params
-				// 			      });
-				// 			// hack for jquery not handling jsonp errors well.
-				// 			if (req.success) {
-				// 				req.success(function(data, textStatus){
-				// 					return callbacks.success(data, callbacks.user_data);
-				// 				});
-				// 			} else {
-				// 				return callbacks.errors("", {});
-				// 			}
-			
+			kravitz.utility.query(kravitz.utility.yql, params, callbacks);
 		},
 		details_callback : function(data) {
 			if(typeof(data) == null || data.query.count == 0){	
@@ -597,13 +582,13 @@ var kravitz = {
 			// hack for jquery not handling jsonp errors well.
 			if (req.success) {
 				req.success(function(data, textStatus){
-					return callbacks.success(data, callbacks.user_data);
+					console.info(uri)
+					console.info(callbacks.success)
+					return callbacks.success(data);
 				});
 			} else {
 				return callbacks.errors("", {});
-			}
-
-			
+			}	
 		},
 		errors : function(error) {
 			alert("error " + error.toString());
