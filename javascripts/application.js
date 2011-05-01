@@ -558,8 +558,8 @@ var kravitz = {
 							.error(function(data) {kravitz.github.details_error()});
 		},
 		details_callback : function(data) {
+			console.info(!data.repository);
 			if(typeof(data) == null || !data.repository){	
-							console.info("perfect")
 				kravitz.github.details_error();
 			}
 			else {
@@ -569,6 +569,35 @@ var kravitz = {
 				var repos = data.repositories.reverse().slice(0,3);
 				$.template("githubTmpl", githubResultTemplate);
 				$.tmpl("githubTmpl", repos).appendTo(target);
+			}
+		},
+		details_error : function() {
+			// nothing
+			// console.info("error")
+		}
+	},
+	delicious : {
+		details : function(sn) {
+			delicious = "http://feeds.delicious.com/v2/rss/" + sn + "?count=3"
+			url = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=" + delicious;
+			$.ajax({ cache: false, 
+							 url: url,
+							 dataType: "jsonp",
+							 data: {}
+			      }).success(function(data) {kravitz.delicious.details_callback(data)})
+							.error(function(data) {kravitz.delicious.details_error()});
+		},
+		details_callback : function(data) {
+			if(typeof(data) == null || !data.feed.entries){	
+				kravitz.delicious.details_error();
+			}
+			else {
+				$('div.details_container').append("<div id='delicious_content' class='box'></div>");
+				$('#delicious_content').append("<h6>Has bookmarked pages like:</h6><ul class='delicious'></ul>");
+				var target = $('ul.delicious');
+				var posts = data.feed.entries;
+				$.template("deliciousTmpl", githubResultTemplate);
+				$.tmpl("deliciousTmpl", posts).appendTo(target);
 			}
 		},
 		details_error : function() {
