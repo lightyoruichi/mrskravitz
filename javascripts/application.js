@@ -501,7 +501,7 @@ var kravitz = {
 			params = {}
 			params.format   = "json";
 			params.env      = "https://github.com/steveodom/mrskravitz/raw/gh-pages/yql/plancast.env";
-			params.q  = "SELECT plans.what, plans.when, plans.external_url from plancast.plans where sn='" + sn + "' LIMIT 3";
+			params.q  = "SELECT plans.what, plans.when, plans.external_url, plans.attendance_url from plancast.plans where sn='" + sn + "' LIMIT 3";
 			callbacks.success = kravitz.plancast.details_callback;
 			callbacks.errors = kravitz.plancast.details_error;
 			
@@ -526,6 +526,7 @@ var kravitz = {
 				kravitz.plancast.details_error();
 			}
 			else {
+				console.info(data);
 				$('div.details_container').append("<div id='plancast_content' class='box'></div>");
 				$('#plancast_content').append("<h6>Has made the following plans:</h6><ul class='plancast'></ul>");
 				var target = $('ul.plancast');
