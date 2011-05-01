@@ -561,8 +561,7 @@ var kravitz = {
 							.error(function(data) {kravitz.github.details_error()});
 		},
 		details_callback : function(data) {
-			if(typeof(data) == null || !data.repository){	
-				console.info(data)
+			if(typeof(data) == null || !data.repositories){	
 				kravitz.github.details_error();
 			}
 			else {
