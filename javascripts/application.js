@@ -438,7 +438,7 @@ var kravitz = {
 		},
 		photos_via_id : function(id) {
 			console.info("id: " + id);
-			url =  kravitz.flickr.api_url + "?method=flickr.people.getPublicPhotos&format=json&per_page=3&api_key=" + kravitz.flickr.api_key + "&user_id=" + id + "&jsoncallback=?";
+			url =  kravitz.flickr.api_url + "?method=flickr.people.getPublicPhotos&format=json&per_page=3&api_key=" + kravitz.flickr.api_key + "&user_id=" + encodeURIComponent(id) + "&jsoncallback=?";
 			$.getJSON(url, {}, kravitz.flickr.photos_callback);
 		},
 		photos : function(data) {
