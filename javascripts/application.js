@@ -563,7 +563,8 @@ var kravitz = {
 			// 			}, function(jxhr){
 			// 				console.info(jxhr);
 			// 			});
-			var req = $.ajax({ cache: false, 
+			console.info("github")
+			$.ajax({ cache: false, 
 							 url: url,
 							 dataType: "jsonp",
 							 data: {}
