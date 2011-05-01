@@ -526,7 +526,6 @@ var kravitz = {
 				kravitz.plancast.details_error();
 			}
 			else {
-				console.info(data);
 				$('div.details_container').append("<div id='plancast_content' class='box'></div>");
 				$('#plancast_content').append("<h6>Has made the following plans:</h6><ul class='plancast'></ul>");
 				var target = $('ul.plancast');
@@ -554,6 +553,20 @@ var kravitz = {
 			callbacks.success = kravitz.klout.topics_callback;			
 		  callbacks.errors = kravitz.klout.topics_error;	
 			kravitz.utility.query(kravitz.utility.yql, params, callbacks);
+			// kravitz.utility.query(kravitz.utility.yql, params, callbacks);			
+				var req = $.ajax({ cache: false, 
+								 url: kravitz.utility.yql,
+								 dataType: "jsonp",
+								 data: params
+				      });
+				// hack for jquery not handling jsonp errors well.
+				if (req.success) {
+					req.success(function(data, textStatus){
+						return callbacks.success(data, callbacks.user_data);
+					});
+				} else {
+					return callbacks.errors("", {});
+				}
 			return false;
 		},
 		topics_callback : function(data) {

@@ -134,6 +134,9 @@ ul.person_jobs li {float:left;width:100%;margin:0 0 10px;color:#ccc;font-size:15
 ul.person_jobs li em {display:inline;color:#bbb;}
 ul.person_jobs a {text-decoration:underline;}
 
+ul.plancast {}
+ul.plancast li {float:left;width:100%;margin: 5px 0;}
+
 #industry_chart, #salary_chart_login, #job_chart, #locations_chart {display:none;float:left;width:94%;}
 #salary_chart_login {border:1px solid blue;background:lightBlue;padding:10px;}
 #salary_chart_login p {color:#444;font-size:13px;margin:14px 0;}
