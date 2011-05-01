@@ -265,7 +265,7 @@ var kravitz = {
 		render_industry : function(person, pid) {	
 			if (person.industry) {
 				var note = $('#industry_note');
-				console.note.length();
+				console.info(note.length());
 				if (note.length == 0) {note.html(kravitz.default_text.friend_industry);}
 				
 				var ind_name = person.industry;
