@@ -558,11 +558,17 @@ var kravitz = {
 			// callbacks.success = kravitz.github.details_callback;
 			// callbacks.errors = kravitz.github.details_error;		
 			// kravitz.utility.query(url, params, callbacks);
-			$.getJSON(url).then(function(r){
-				console.info(r);
-			}, function(jxhr){
-				console.info(jxhr);
-			});
+			// $.getJSON(url).then(function(r){
+			// 				console.info(r);
+			// 			}, function(jxhr){
+			// 				console.info(jxhr);
+			// 			});
+			var req = $.ajax({ cache: false, 
+							 url: url,
+							 dataType: "jsonp",
+							 data: {}
+			      }).success(function(data) {console.info(data)})
+							.error(function(data) {console.error(data)});
 		},
 		details_callback : function(data) {
 			console.info(data);
