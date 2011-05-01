@@ -412,7 +412,7 @@ var kravitz = {
 							kravitz.lastfm.details(name);
 							break;
 						case "plancast":
-							kravitz.plancast.details(name);
+							// kravitz.plancast.details(name);
 							break;
 					};
 				}
@@ -567,7 +567,6 @@ var kravitz = {
 				
 					yql = data.query.results.items;
 					$('#klout_score').html(yql.score);
-console.info(yql.item);
 					if (yql.item) {
 						$('#topics').append("<h6>Talks mostly about:</h6><ul class='topics'></ul>");
 							var target = $('ul.topics');
