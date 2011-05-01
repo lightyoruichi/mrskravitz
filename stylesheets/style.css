@@ -150,6 +150,8 @@ li.tag_6 {background:#7f7f7f !important;}
 li.tag_7 {background:#888 !important;}
 li.tag_8 {background:#8f8f8f !important;}
 
+#linkedin_message {background:pink;border:1px solid red;padding:10px;}
+
 .btn { 
 	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important;
 	  font-weight:bold !important;
