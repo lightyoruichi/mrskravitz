@@ -258,7 +258,7 @@ var kravitz = {
 				var target = $('#linkedin_message');
 				target.show();
 				if (error.errorCode == 0) {
-					// $('#job_note, #industry_note').hide();
+					$('#job_note, #industry_note').hide();
 					target.append("<p class='error'>Oy vey.</p> <p>Linkedin allows each person and site a very limited number of searches each day. Either you or Mrs. Kravitz has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</p>");
 				} else {
 					target.append("<p class='error'>"+ error.message + "</p>")
@@ -558,8 +558,8 @@ var kravitz = {
 							.error(function(data) {kravitz.github.details_error()});
 		},
 		details_callback : function(data) {
-			console.info(data.repository.length)
-			if(typeof(data) == null || data.repository.length < 1){	
+			if(typeof(data) == null || !data.repository){	
+							console.info("perfect")
 				kravitz.github.details_error();
 			}
 			else {

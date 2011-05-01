@@ -150,7 +150,7 @@ li.tag_6 {background:#7f7f7f !important;}
 li.tag_7 {background:#888 !important;}
 li.tag_8 {background:#8f8f8f !important;}
 
-#linkedin_message {background:#999;border:5px solid pink;padding:10px;margin-top:15px;width:89%;color:#000;float:left;display:none;}
+#linkedin_message {background:pink;border:5px solid #F02475;padding:10px;margin-top:15px;width:89%;color:#000;float:left;display:none;}
 
 .btn { 
 	font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important;
