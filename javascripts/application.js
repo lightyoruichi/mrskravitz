@@ -233,10 +233,11 @@ var kravitz = {
 													if (result.people.values != null) {
 														var person = result.people.values[0];
 														person.created = date.getTime();
+														person.status = "stored";
+														
 														$.jStorage.set(pid, person);
 														kravitz.li.process(person, pid);
 													} else {
-														console.info(name);
 														$.jStorage.set(pid, {status:"empty", created: now});
 													}
 								 			})
@@ -265,7 +266,8 @@ var kravitz = {
 			}
 			return false;
 		},
-		process : function(person, pid) {			
+		process : function(person, pid) {	
+			console.info(person)		
 			if (person.status && person.status != "empty"){	
 				kravitz.li.render_industry(person, pid);
 				kravitz.li.render_job(person, pid);
