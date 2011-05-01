@@ -212,7 +212,7 @@ var kravitz = {
 					});
 				});
 				$('#industry_chart, #job_chart, #locations_chart').show();
-				$('#locations_note').html(kravitz.default_text.friend_locations);
+				// $('#locations_note').html(kravitz.default_text.friend_locations);
 			
 		},
 		query : function(li) {
@@ -283,8 +283,6 @@ var kravitz = {
 		},
 		render_job : function(person, pid) {
 			if (person.positions.values) {
-				var note = $('#job_note');
-				if (note.html().length == 0) {note.html(kravitz.default_text.friend_jobs);}
 				
 				var job_name = person.positions.values[0].title;
 				var job_id = kravitz.li.id_encoder(job_name.toLowerCase().split(" ").join("-"));
@@ -304,6 +302,8 @@ var kravitz = {
 		},
 		render_location : function(location) {
 			if (location.length > 2) {
+				var note = $('#locations_note');
+				if (note.html().length == 0) {note.html(kravitz.default_text.friend_locations);}
 				var lid = location.replace(",", "").split(" ").join("-");
 				var li = $('#location_' + lid);
 				if (li.length) {
