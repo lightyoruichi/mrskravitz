@@ -549,7 +549,7 @@ var kravitz = {
 	},
 	github : {
 		details : function(sn) {
-			url = "https://github.com/api/v2/json/repos/show/" + sn + "&jsoncallback=?" ;
+			url = "https://github.com/api/v2/json/repos/show/" + sn;
 			// params = {}
 			// params.format   = "json";
 			// params.env      = "https://github.com/steveodom/mrskravitz/raw/gh-pages/yql/plancast.env";
