@@ -665,7 +665,7 @@ var kravitz = {
 		},
 		friend_description : function() {
 			rand = Math.floor(Math.random()*2)
-			ary = ["good looking", "talented", "intelligent"]
+			ary = ["good looking", "talented", "intelligient"]
 			return "Interacts mostly with these extremely " + ary[rand] + " people ...";
 		},
 		friend_industry : "...who work in industries like:",
