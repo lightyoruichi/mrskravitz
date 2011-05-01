@@ -409,7 +409,7 @@ var kravitz = {
 			target.html("");
 			
 			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note').html('');
-			$('#topics, #lastfm_content, #flickr_content, #delicious_content, #linkedin_content, #plancast_content').remove();		
+			$('#topics, #lastfm_content, #flickr_content, #delicious_content, #linkedin_content, #plancast_content, #github_content').remove();		
 			// $('#share iframe, #share blockquote').remove();
 			
 			$('body').css({'background-image': 'none', 'background-color': '#000'});
@@ -431,6 +431,9 @@ var kravitz = {
 							break;
 						case "plancast":
 							kravitz.plancast.details(name);
+							break;
+						case "github":
+							kravitz.github.details(name);
 							break;
 					};
 				}
@@ -537,6 +540,39 @@ var kravitz = {
 				var plans = data.query.results.json;
 				$.template("plancastTmpl", plancastResultTemplate);
 				$.tmpl("plancastTmpl", plans).appendTo(target);
+			}
+		},
+		details_error : function() {
+			// nothing
+			// console.info("error")
+		}
+	},
+	github : {
+		details : function(sn) {
+			url = "https://github.com/api/v2/json/repos/show/" + sn;
+			params = {}
+			// params.format   = "json";
+			// params.env      = "https://github.com/steveodom/mrskravitz/raw/gh-pages/yql/plancast.env";
+			// params.q  = "SELECT plans.what, plans.when, plans.external_url, plans.attendance_url from plancast.plans where sn='" + sn + "' LIMIT 3";
+			callbacks = {};
+			callbacks.success = kravitz.github.details_callback;
+			callbacks.errors = kravitz.github.details_error;
+			
+			kravitz.utility.query(url, params, callbacks);
+		},
+		details_callback : function(data) {
+			console.info(data);
+			
+			if(typeof(data) == null){	
+				kravitz.github.details_error();
+			}
+			else {
+				$('div.details_container').append("<div id='github_content' class='box'></div>");
+				$('#github_content').append("<h6>Has code repositories like:</h6><ul class='github'></ul>");
+				var target = $('ul.github');
+				var repos = data.query.results.json;
+				$.template("githubTmpl", githubResultTemplate);
+				$.tmpl("githubTmpl", repos).appendTo(target);
 			}
 		},
 		details_error : function() {
