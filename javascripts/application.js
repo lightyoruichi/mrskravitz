@@ -266,8 +266,7 @@ var kravitz = {
 			}
 			return false;
 		},
-		process : function(person, pid) {	
-			console.info(person)		
+		process : function(person, pid) {		
 			if (person.status && person.status != "empty"){	
 				kravitz.li.render_industry(person, pid);
 				kravitz.li.render_job(person, pid);
