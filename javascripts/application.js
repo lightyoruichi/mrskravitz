@@ -259,7 +259,7 @@ var kravitz = {
 				target.show();
 				if (error.errorCode == 0) {
 					$('#job_note, #industry_note').hide();
-					target.append("<p class='error'>Oy vey.</p> <p>Linkedin allows each person and site a very limited number of searches each day. Either you or Mrs. Kravitz has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</p>");
+					target.append("<p class='error'>Oy vey.</p> <p>Linkedin allows each person and site <a href='http://developer.linkedin.com/docs/DOC-1112'>a very limited number of searches each day</a>. Either you or Mrs. Kravitz has hit their limit. We've requested an increase in these limits from Linkedin. Try again tomorrow?</p>");
 				} else {
 					target.append("<p class='error'>"+ error.message + "</p>")
 				}
