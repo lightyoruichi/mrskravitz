@@ -563,7 +563,7 @@ var kravitz = {
 			// 			}, function(jxhr){
 			// 				console.info(jxhr);
 			// 			});
-			console.info("github")
+
 			$.ajax({ cache: false, 
 							 url: url,
 							 dataType: "jsonp",
@@ -579,7 +579,7 @@ var kravitz = {
 				$('div.details_container').append("<div id='github_content' class='box'></div>");
 				$('#github_content').append("<h6>Has code repositories like:</h6><ul class='github'></ul>");
 				var target = $('ul.github');
-				var repos = data.repositories.slice(0,3);
+				var repos = data.repositories.reverse().slice(0,3);
 				$.template("githubTmpl", githubResultTemplate);
 				$.tmpl("githubTmpl", repos).appendTo(target);
 			}
