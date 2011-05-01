@@ -561,7 +561,6 @@ var kravitz = {
 							.error(function(data) {kravitz.github.details_error()});
 		},
 		details_callback : function(data) {
-			console.info(!data.repository);
 			if(typeof(data) == null || !data.repository){	
 				kravitz.github.details_error();
 			}
@@ -591,7 +590,6 @@ var kravitz = {
 							.error(function(data) {kravitz.delicious.details_error()});
 		},
 		details_callback : function(data) {
-			console.info(data)
 			if(typeof(data) == null || !data.responseData.feed.entries){	
 				kravitz.delicious.details_error();
 			}
