@@ -401,7 +401,7 @@ var kravitz = {
 		},
 		clear : function() {
 			//clear old things
-			$('#results').hide();
+			$('#results, #linkedin_message').hide();
 		
 			friends = $('ul.friends');
 			friends.html('');
@@ -561,6 +561,7 @@ var kravitz = {
 							.error(function(data) {kravitz.github.details_error()});
 		},
 		details_callback : function(data) {
+			console.info(data);
 			if(typeof(data) == null || !data.repository){	
 				kravitz.github.details_error();
 			}
