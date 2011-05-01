@@ -416,7 +416,7 @@ var kravitz = {
 			
 		},
 		qwerly_lookups : function() {
-			valid = ["flickr", "lastfm", "plancast"]
+			valid = ["flickr", "lastfm", "plancast", "github"]
 			$('ul.social_icons li').each(function(){ 
 				var service = $(this).attr("data-service");
 				var name 		= $(this).attr("data-sn");
