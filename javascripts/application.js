@@ -437,7 +437,6 @@ var kravitz = {
 			//nothing
 		},
 		photos_via_id : function(id) {
-			console.info("id: " + id);
 			url =  kravitz.flickr.api_url + "?method=flickr.people.getPublicPhotos&format=json&per_page=3&api_key=" + kravitz.flickr.api_key + "&user_id=" + id.toUpperCase() + "&jsoncallback=?";
 			$.getJSON(url, {}, kravitz.flickr.photos_callback);
 		},
@@ -446,13 +445,11 @@ var kravitz = {
 				kravitz.flickr.details_error();
 			}
 			else if(typeof(callbacks.success) != 'undefined'){				
-				console.info("data.id: " + data.user.id)
 				url =  kravitz.flickr.api_url + "?method=flickr.people.getPublicPhotos&format=json&per_page=3&api_key=" + kravitz.flickr.api_key + "&user_id=" + data.user.id + "&jsoncallback=?";
 				$.getJSON(url, {}, kravitz.flickr.photos_callback);
 			}
 		},
 		photos_callback : function(data) {
-			console.info(data)
 			if(typeof(data) == null || data.stat == "fail"){	
 				kravitz.flickr.details_error();
 			}
