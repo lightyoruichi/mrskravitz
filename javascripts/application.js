@@ -336,13 +336,12 @@ var kravitz = {
 				// var lid = location.replace(",", "").split(" ").join("-");
 				
 				var model = kravitz.li.locations;
-				var loc = eval("model._" + location);
-				console.info(loc)
+				var loc = eval("model." + location);
 				if (loc) {
 					loc ++;
 				} else {
-					eval("model._" + location + "= 1");
-					loc = eval("model._" + location);
+					eval("model." + location + "= 1");
+					loc = eval("model." + location);
 				};
 					
 				if (loc > kravitz.li.top_city_cnt) {
@@ -358,10 +357,12 @@ var kravitz = {
 			}
 		},
 		render_map : function() {
+			console.info("here")
 			markers = [];
 			var top = $("li[data-woeid = " + kravitz.li.top_city + "]");
 		
 			for (var k in kravitz.li.locations) {
+				console.info(k)
 				var target = $("li[data-woeid = " + k + "]");
 				mark = {}
 				mark.latitude  = target.attr('data-lat');
