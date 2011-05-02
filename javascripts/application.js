@@ -580,7 +580,7 @@ var kravitz = {
 	},
 	wordpress : {
 		details : function(sn) {
-			url = "http://" + sn + "wordpress.com/?feed=rss";
+			url = "http://" + sn + ".wordpress.com/?feed=rss";
 			$.ajax({ cache: false, 
 							 url: url,
 							 dataType: "jsonp",
