@@ -71,7 +71,7 @@
 					};
 					
 					function place_query(location) {
-						
+						y.log(location)
 						var q = "select * from geo.placefinder where text='" + escape(location) + "'";
 						var req = y.query(q);
 						
