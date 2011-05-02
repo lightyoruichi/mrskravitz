@@ -272,6 +272,7 @@ var kravitz = {
 				kravitz.li.render_job(person, pid);
 			}
 		},
+		industry_count : 0,
 		render_industry : function(person, pid) {	
 			if (person.industry) {
 				var note = $('#industry_note');
@@ -280,17 +281,23 @@ var kravitz = {
 				var ind_name = person.industry;
 				var ind_id = kravitz.li.id_encoder(person.industry.toLowerCase().split(" ").join("-"));
 				var ind_li = $('#' + ind_id);
+				kravitz.li.industry_count ++;
+				
 				if (ind_li.length) {
 					var ind_cnt = parseInt(ind_li.attr("data-cnt"));
-					ind_li.removeClass("tag_" + ind_cnt);
+					// ind_li.removeClass("tag_" + ind_cnt);
 					ind_cnt ++;
-					ind_li.addClass("tag_" + ind_cnt);
+					// ind_li.addClass("tag_" + ind_cnt);
 					ind_li.attr("data-cnt", ind_cnt);
 					ind_li.html(ind_name + " (" + ind_cnt + ")");
 				} else {
-					$('#industry_chart').append("<li class='tag_1' id='"+ ind_id + "' data-cnt='1'><span>" + ind_name + "</span></li>");
+					$('#industry_chart').append("<li id='"+ ind_id + "' data-cnt='1'><span>" + ind_name + "</span></li>");
 					$('#tid_' + pid).attr("data-industry", ind_id);	
 				}
+				$('#industry_chart li').each(function(){
+					pct = $(this).attr('data-cnt') / kravitz.li.industry_count * 100;
+					$(this).children('span').css({width:pct + "%"});
+				});
 			}
 		},
 		render_job : function(person, pid) {
