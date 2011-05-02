@@ -373,8 +373,7 @@ var kravitz = {
 				zoom: 3,
 				markers: markers,
 				latitude: top.attr('data-lat'),
-				longitude: top.attr('data-lng'),
-				maptype: "G_HYBRID_MAP"
+				longitude: top.attr('data-lng')
 			}
 			// console.info(options);
 			$("#locations_chart").gMap(options);
