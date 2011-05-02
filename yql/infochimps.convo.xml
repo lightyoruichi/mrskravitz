@@ -100,6 +100,7 @@
 							item.@["location"] = tw.location;
 							
 							pl = place_query(tw.location);
+							y.log(pl);
 							item.@["postal"] = pl.uzip;
 							item.@["countrycode"] = pl.countrycode;
 							item.@["location"] = pl.city + ", " + pl.statecode;
