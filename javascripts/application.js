@@ -416,7 +416,7 @@ var kravitz = {
 			
 		},
 		qwerly_lookups : function() {
-			valid = ["flickr", "lastfm", "plancast", "github", "delicious"]
+			valid = ["flickr", "lastfm", "plancast", "github", "delicious", "wordpress"]
 			$('ul.social_icons li').each(function(){ 
 				var service = $(this).attr("data-service");
 				var name 		= $(this).attr("data-sn");
@@ -569,6 +569,36 @@ var kravitz = {
 				$('#github_content').append("<h6>Has code repositories like:</h6><ul class='github'></ul>");
 				var target = $('ul.github');
 				var repos = data.repositories.reverse().slice(0,3);
+				$.template("githubTmpl", githubResultTemplate);
+				$.tmpl("githubTmpl", repos).appendTo(target);
+			}
+		},
+		details_error : function() {
+			// nothing
+			// console.info("error")
+		}
+	},
+	wordpress : {
+		details : function(sn) {
+			url = "http://" + sn + "wordpress.com/?feed=rss";
+			$.ajax({ cache: false, 
+							 url: url,
+							 dataType: "jsonp",
+							 data: {}
+			      }).success(function(data) {kravitz.wordpress.details_callback(data)})
+							.error(function(data) {kravitz.wordpress.details_error()});
+		},
+		details_callback : function(data) {
+			console.info(data);
+			
+			if(typeof(data) == null || !data){	
+				kravitz.wordpress.details_error();
+			}
+			else {
+				$('div.details_container').append("<div id='wordpress_content' class='box'></div>");
+				$('#wordpress_content').append("<h6>Has written a post like:</h6>");
+				var target = $('#wordpress_content');
+				// var repos = data.repositories.reverse().slice(0,3);
 				$.template("githubTmpl", githubResultTemplate);
 				$.tmpl("githubTmpl", repos).appendTo(target);
 			}
