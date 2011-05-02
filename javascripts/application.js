@@ -296,8 +296,8 @@ var kravitz = {
 				}
 				$('#industry_chart li').each(function(){
 					base = 20;
-					pct = $(this).attr('data-cnt') / kravitz.li.industry_count * 100 + 30;
-					$(this).children('span').css({width:pct + "%"});
+					pct = $(this).attr('data-cnt') / kravitz.li.industry_count * 100 + 35;
+					$(this).children('span').animate({width:pct + "%"}, "fast");
 				});
 			}
 		},
