@@ -349,6 +349,8 @@ var kravitz = {
 					kravitz.li.top_city = location;
 				}	
 			}
+			console.info(kravitz.li.top_city);
+			console.info(last);
 			if (last) {
 				kravitz.li.render_map();
 			}
@@ -357,7 +359,7 @@ var kravitz = {
 			markers = [];
 			var top = $("li[data-woeid = " + kravitz.li.top_city + "]");
 			
-			console.info(top.attr('data-lat'));
+			
 			
 			for (var k in kravitz.li.locations) {
 				var target = $("li[data-woeid = " + k + "]");
