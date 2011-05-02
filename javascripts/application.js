@@ -594,18 +594,16 @@ var kravitz = {
 							.error(function(data) {kravitz.wordpress.details_error()});
 		},
 		details_callback : function(data) {
-			console.info(data);
-			
-			if(typeof(data) == null || !data){	
+			if(typeof(data) == null || !data.responseData.feed.entries){	
 				kravitz.wordpress.details_error();
 			}
 			else {
 				$('div.details_container').append("<div id='wordpress_content' class='box'></div>");
 				$('#wordpress_content').append("<h6>Has written a post like:</h6>");
 				var target = $('#wordpress_content');
-				// var repos = data.repositories.reverse().slice(0,3);
-				$.template("githubTmpl", githubResultTemplate);
-				$.tmpl("githubTmpl", repos).appendTo(target);
+				var posts = data.responseData.feed.entries[0];
+				$.template("wordpressTmpl", wordpressResultTemplate);
+				$.tmpl("wordpressTmpl", posts).appendTo(target);
 			}
 		},
 		details_error : function() {
