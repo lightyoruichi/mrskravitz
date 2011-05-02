@@ -337,6 +337,7 @@ var kravitz = {
 				
 				var model = kravitz.li.locations;
 				var loc = eval("model._" + location);
+				console.info(loc)
 				if (loc) {
 					loc ++;
 				} else {
@@ -350,6 +351,7 @@ var kravitz = {
 				}	
 			}
 			console.info(kravitz.li.top_city_cnt);
+			console.info(kravitz.li.locations);
 
 			if (last) {
 				kravitz.li.render_map();
@@ -358,9 +360,7 @@ var kravitz = {
 		render_map : function() {
 			markers = [];
 			var top = $("li[data-woeid = " + kravitz.li.top_city + "]");
-			
-			
-			
+		
 			for (var k in kravitz.li.locations) {
 				var target = $("li[data-woeid = " + k + "]");
 				mark = {}
@@ -376,7 +376,7 @@ var kravitz = {
 				latitude: top.attr('data-lat'),
 				longitude: top.attr('data-lng')
 			}
-			
+			console.info(options);
 			$("#locations_chart").gMap(options);
 		},
 		logout : function() {
