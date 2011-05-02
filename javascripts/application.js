@@ -337,7 +337,7 @@ var kravitz = {
 				var model = kravitz.li.locations;
 				var loc = eval("model._" + location);
 				if (loc) {
-					console.info("inside");
+					// console.info("inside");
 					loc ++;
 				} else {
 					eval("model._" + location + "= 1");
@@ -375,7 +375,7 @@ var kravitz = {
 				latitude: top.attr('data-lat'),
 				longitude: top.attr('data-lng')
 			}
-			console.info(options);
+			// console.info(options);
 			$("#locations_chart").gMap(options);
 		},
 		logout : function() {
