@@ -289,13 +289,14 @@ var kravitz = {
 					ind_cnt ++;
 					// ind_li.addClass("tag_" + ind_cnt);
 					ind_li.attr("data-cnt", ind_cnt);
-					ind_li.children('span').html(ind_name + " (" + ind_cnt + ")");
+					ind_li.children('em').html(ind_name + " (" + ind_cnt + ")");
 				} else {
 					$('#industry_chart').append("<li id='"+ ind_id + "' data-cnt='1'><span></span><em>" + ind_name + " (1)</em></li>");
 					$('#tid_' + pid).attr("data-industry", ind_id);	
 				}
 				$('#industry_chart li').each(function(){
-					pct = $(this).attr('data-cnt') / kravitz.li.industry_count * 100;
+					base = 20;
+					pct = $(this).attr('data-cnt') / kravitz.li.industry_count * 100 + 20;
 					$(this).children('span').css({width:pct + "%"});
 				});
 			}
