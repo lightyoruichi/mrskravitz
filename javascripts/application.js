@@ -275,7 +275,7 @@ var kravitz = {
 		render_industry : function(person, pid) {	
 			if (person.industry) {
 				var note = $('#industry_note');
-				if (note.html().length == 0) {note.html(kravitz.default_text.friend_industry);}
+				if (note.html().length == 0) {note.html(kravitz.default_text.friend_industry).show();}
 				
 				var ind_name = person.industry;
 				var ind_id = kravitz.li.id_encoder(person.industry.toLowerCase().split(" ").join("-"));
@@ -296,7 +296,7 @@ var kravitz = {
 		render_job : function(person, pid) {
 			if (person.positions.values) {
 				var note = $('#job_note');
-				if (note.html().length == 0) {note.html(kravitz.default_text.friend_jobs);}
+				if (note.html().length == 0) {note.html(kravitz.default_text.friend_jobs).show();}
 				
 				var job_name = person.positions.values[0].title;
 				var job_id = kravitz.li.id_encoder(job_name.toLowerCase().split(" ").join("-"));
@@ -317,7 +317,7 @@ var kravitz = {
 		render_location : function(location) {
 			if (location.length > 2) {
 				var note = $('#locations_note');
-				if (note.html().length == 0) {note.html(kravitz.default_text.friend_locations);}
+				if (note.html().length == 0) {note.html(kravitz.default_text.friend_locations).show();}
 				var lid = location.replace(",", "").split(" ").join("-");
 				var li = $('#location_' + lid);
 				if (li.length) {
@@ -408,7 +408,7 @@ var kravitz = {
 			target = $('ul.social_icons');
 			target.html("");
 			
-			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note, #linkedin_message').html('');
+			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note, #linkedin_message').html('').hide();
 			$('#topics, #lastfm_content, #flickr_content, #delicious_content, #linkedin_content, #plancast_content, #github_content, #wordpress_content').remove();		
 			// $('#share iframe, #share blockquote').remove();
 			

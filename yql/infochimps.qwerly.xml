@@ -48,7 +48,7 @@
 					
 					var items = <services></services>;
 					var names = [];
-					var safe_names = ["foursquare", "github", "facebook", "plancast", "flickr", "lastfm", "delicious", "linkedin", "tumblr", "yelp", "wordpress"]
+					var safe_names = ["foursquare", "github", "facebook", "plancast", "flickr", "lastfm", "delicious", "linkedin", "yelp", "wordpress"]
 
 
 					// get the names.
