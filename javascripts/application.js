@@ -213,11 +213,6 @@ var kravitz = {
 				});
 				$('#industry_chart, #job_chart, #locations_chart').show();
 				// $('#locations_note').html(kravitz.default_text.friend_locations);
-				var target = $('industry_chart');
-				target.children('em').css({color: "#" + kravitz.twitter.text_color});
-				target.children('span').css({backgroundColor: "#" + kravitz.twitter.background});
-				
-			
 		},
 		query : function(li) {
 			var name = li.attr("data-name").split(" ");
@@ -296,7 +291,10 @@ var kravitz = {
 					ind_li.children('em').html(ind_name + " (" + ind_cnt + ")");
 				} else {
 					$('#industry_chart').append("<li id='"+ ind_id + "' data-cnt='1'><span></span><em>" + ind_name + " (1)</em></li>");
-					$('#tid_' + pid).attr("data-industry", ind_id);	
+					target = $('#tid_' + pid);
+					target.attr("data-industry", ind_id);	
+					target.children('em').css({color: "#" + kravitz.twitter.text_color});
+					target.children('span').css({backgroundColor: "#" + kravitz.twitter.background});
 				}
 				$('#industry_chart li').each(function(){
 					base = 20;
