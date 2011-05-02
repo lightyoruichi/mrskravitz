@@ -140,7 +140,7 @@ ul.plancast li {float:left;width:100%;margin: 5px 0;color:#aaa;}
 #industry_chart, #job_chart, #locations_chart {display:none;float:left;width:94%;}
 #li_login {border:1px solid blue;background:lightBlue;padding:10px;float:left;margin-top:15px;}
 #li_login p {color:#444;font-size:13px;margin:14px 0;}
-#industry_chart li, #job_chart li, #locations_chart li {float:left;width:auto;margin:5px;background:#777;padding:5px 10px;}
+#job_chart li, #locations_chart li {float:left;width:auto;margin:5px;background:#777;padding:5px 10px;}
 li.tag_1 {background:#555 !important;}
 li.tag_2 {background:#5f5f5f !important;}
 li.tag_3 {background:#666 !important;}
@@ -149,6 +149,13 @@ li.tag_5 {background:#777 !important;}
 li.tag_6 {background:#7f7f7f !important;}
 li.tag_7 {background:#888 !important;}
 li.tag_8 {background:#8f8f8f !important;}
+
+#industry_chart li {float:left;width:100%;margin:10px 0;height:35px;background:transparent;padding:5px 10%;display:inline;}
+#industry_chart li span {font-size:12px;background:#09f;width:56%;display:block;-moz-border-radius:2px;
+  -webkit-border-radius:2px;
+  border-radius:2px;
+  background:-webkit-gradient(linear, left top,left bottom, from(#09f), to(#077fd0));
+  -webkit-gradient(linear, left top,left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.25)));}
 
 #linkedin_message {background:pink;border:5px solid #F02475;padding:10px;margin-top:15px;width:89%;color:#000;float:left;display:none;}
 #linkedin_message a {color:#000;}
