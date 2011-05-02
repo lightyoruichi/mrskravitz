@@ -584,6 +584,8 @@ var kravitz = {
 	wordpress : {
 		details : function(sn) {
 			url = "http://" + sn + ".wordpress.com/?feed=rss";
+			delicious = "http://feeds.delicious.com/v2/rss/" + sn + "?count=3"
+			url = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&q=" + url;
 			$.ajax({ cache: false, 
 							 url: url,
 							 dataType: "jsonp",
