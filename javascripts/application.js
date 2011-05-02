@@ -102,9 +102,7 @@ var kravitz = {
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			
 				$.each(peeps.peep, function(i, peep){
-					console.info(peeps.peep.length + " vs " + i);
 					last = (peeps.peep.length == (i - 1)) ? true : false;
-					 
 					kravitz.li.render_location(peep.woeid, last);
 				});
 			}
@@ -359,6 +357,7 @@ var kravitz = {
 			markers = [];
 			var top = $("li[data-woeid = " + kravitz.li.top_city + "]");
 			
+			console.info(top.attr('data-lat'));
 			
 			for (var k in kravitz.li.locations) {
 				var target = $("li[data-woeid = " + k + "]");
