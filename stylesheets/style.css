@@ -150,14 +150,14 @@ li.tag_6 {background:#7f7f7f !important;}
 li.tag_7 {background:#888 !important;}
 li.tag_8 {background:#8f8f8f !important;}
 
-#industry_chart li {float:left;width:100%;margin:10px 0;height:23px;background:transparent;padding:0;display:inline;position:relative;}
+#industry_chart li {float:left;width:100%;margin:2px 0;height:27px;background:transparent;padding:0;display:inline;position:relative;}
 #industry_chart li span {background:#09f;width:50%;display:block;-moz-border-radius:2px;height:100%;
   -webkit-border-radius:2px;
   border-radius:2px;
   background:-webkit-gradient(linear, left top,left bottom, from(#09f), to(#077fd0));
   -webkit-gradient(linear, left top,left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.25)));
 }
-#industry_chart li em {position:absolute;left:5px;top:5px;font-size:12px;}
+#industry_chart li em {position:absolute;left:5px;top:10px;font-size:12px;}
 
 #linkedin_message {background:pink;border:5px solid #F02475;padding:10px;margin-top:15px;width:89%;color:#000;float:left;display:none;}
 #linkedin_message a {color:#000;}
