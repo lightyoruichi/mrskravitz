@@ -103,7 +103,6 @@ var kravitz = {
 			
 				$.each(peeps.peep, function(i, peep){
 					last = (peeps.peep.length == (i - 1)) ? true : false;
-					console.info(peeps.peep.length + " vs " + (i - 1))
 					kravitz.li.render_location(peep.woeid, last);
 				});
 			}
