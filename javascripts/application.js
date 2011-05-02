@@ -409,7 +409,7 @@ var kravitz = {
 			target.html("");
 			
 			$('#industry_note, #job_note, #job_chart, #industry_chart, #locations_chart, #locations_note, #linkedin_message').html('');
-			$('#topics, #lastfm_content, #flickr_content, #delicious_content, #linkedin_content, #plancast_content, #github_content').remove();		
+			$('#topics, #lastfm_content, #flickr_content, #delicious_content, #linkedin_content, #plancast_content, #github_content, #wordpress_content').remove();		
 			// $('#share iframe, #share blockquote').remove();
 			
 			$('body').css({'background-image': 'none', 'background-color': '#000'});
@@ -599,7 +599,7 @@ var kravitz = {
 			}
 			else {
 				$('div.details_container').append("<div id='wordpress_content' class='box'></div>");
-				$('#wordpress_content').append("<h6>Has written a post like:</h6>");
+				$('#wordpress_content').append("<h6>Has written a blog post like:</h6>");
 				var target = $('#wordpress_content');
 				var posts = data.responseData.feed.entries[0];
 				$.template("wordpressTmpl", wordpressResultTemplate);
