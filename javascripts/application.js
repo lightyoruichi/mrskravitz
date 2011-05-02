@@ -293,8 +293,7 @@ var kravitz = {
 					$('#industry_chart').append("<li id='"+ ind_id + "' data-cnt='1'><span></span><em>" + ind_name + " (1)</em></li>");
 					target = $('#tid_' + pid);
 					target.attr("data-industry", ind_id);	
-					li = $('#' + ind_id)
-					console.info(li.children('em').html());
+					li = $('#' + ind_id);
 					li.children('em').css({color: "#" + kravitz.twitter.text_color});
 					li.children('span').css({backgroundColor: "#" + kravitz.twitter.background});
 				}
