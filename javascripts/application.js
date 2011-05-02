@@ -103,6 +103,7 @@ var kravitz = {
 			
 				$.each(peeps.peep, function(i, peep){
 					last = (peeps.peep.length == (i - 1)) ? true : false;
+					console.info(peeps.peep.length + " vs " + (i - 1))
 					kravitz.li.render_location(peep.woeid, last);
 				});
 			}
@@ -349,8 +350,8 @@ var kravitz = {
 					kravitz.li.top_city = location;
 				}	
 			}
-			console.info(kravitz.li.top_city);
-			console.info(last);
+			console.info(kravitz.li.top_city_cnt);
+
 			if (last) {
 				kravitz.li.render_map();
 			}
