@@ -349,20 +349,18 @@ var kravitz = {
 					kravitz.li.top_city = location;
 				}	
 			}
-			console.info(kravitz.li.top_city_cnt);
-			console.info(kravitz.li.locations);
-			console.info(last);
+			// console.info(kravitz.li.top_city_cnt);
+			// console.info(kravitz.li.locations);
+			// console.info(last);
 			if (last) {
 				kravitz.li.render_map();
 			}
 		},
 		render_map : function() {
-			console.info("here")
 			markers = [];
 			var top = $("li[data-woeid = " + kravitz.li.top_city + "]");
 		
 			for (var k in kravitz.li.locations) {
-				console.info(k)
 				var target = $("li[data-woeid = " + k + "]");
 				mark = {}
 				mark.latitude  = target.attr('data-lat');
