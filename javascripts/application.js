@@ -334,14 +334,14 @@ var kravitz = {
 				var note = $('#locations_note');
 				if (note.html().length == 0) {note.html(kravitz.default_text.friend_locations).show();}
 				// var lid = location.replace(",", "").split(" ").join("-");
-				
+			// console.info(location)
 				var model = kravitz.li.locations;
-				var loc = eval("model." + location);
+				var loc = eval("model._" + location);
 				if (loc) {
 					loc ++;
 				} else {
-					eval("model." + location + "= 1");
-					loc = eval("model." + location);
+					eval("model._" + location + "= 1");
+					loc = eval("model._" + location);
 				};
 					
 				if (loc > kravitz.li.top_city_cnt) {
