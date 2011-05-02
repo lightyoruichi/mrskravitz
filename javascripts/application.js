@@ -370,7 +370,7 @@ var kravitz = {
 			
 			options = {
 				controls: false,
-				zoom: 1,
+				zoom: 2,
 				markers: markers,
 				latitude: top.attr('data-lat'),
 				longitude: top.attr('data-lng')
