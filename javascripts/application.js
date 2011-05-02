@@ -374,8 +374,7 @@ var kravitz = {
 				markers: markers,
 				latitude: top.attr('data-lat'),
 				longitude: top.attr('data-lng'),
-				scrollwheel: false,
-				maptype: "G_SATELLITE_MAP"
+				scrollwheel: false
 			}
 			// console.info(options);
 			$("#locations_chart").gMap(options);
