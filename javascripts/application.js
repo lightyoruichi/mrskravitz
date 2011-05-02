@@ -289,9 +289,9 @@ var kravitz = {
 					ind_cnt ++;
 					// ind_li.addClass("tag_" + ind_cnt);
 					ind_li.attr("data-cnt", ind_cnt);
-					ind_li.html(ind_name + " (" + ind_cnt + ")");
+					ind_li.children('span').html(ind_name + " (" + ind_cnt + ")");
 				} else {
-					$('#industry_chart').append("<li id='"+ ind_id + "' data-cnt='1'><span>" + ind_name + "</span></li>");
+					$('#industry_chart').append("<li id='"+ ind_id + "' data-cnt='1'><span></span><em>" + ind_name + " (1)</em></li>");
 					$('#tid_' + pid).attr("data-industry", ind_id);	
 				}
 				$('#industry_chart li').each(function(){
