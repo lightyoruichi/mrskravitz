@@ -71,8 +71,7 @@
 					};
 					
 					function place_query(location) {
-						y.log(location)
-						var q = "select * from geo.placefinder where text='" + location + "'";
+						var q = "select * from geo.placefinder where text='" + location + "' LIMIT 1";
 						var req = y.query(q);
 						
 						return req.results.Result;
@@ -100,10 +99,11 @@
 							item.@["location"] = tw.location;
 							
 							pl = place_query(tw.location);
-							y.log(pl);
 							item.@["postal"] = pl.uzip;
 							item.@["countrycode"] = pl.countrycode;
 							item.@["location"] = pl.city + ", " + pl.statecode;
+							item.@["lat"] = pl.latitude;
+							item.@["lng"] = pl.longitude;
 							items.node += item;
 					}
 		
