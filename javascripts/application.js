@@ -102,7 +102,10 @@ var kravitz = {
 			  $.tmpl("slTmpl", peeps.peep).appendTo($('ul.friends'));
 			
 				$.each(peeps.peep, function(i, peep){
-					kravitz.li.render_location(peep.location);
+					console.info(peeps.peep.length + " vs " + i);
+					last = (peeps.peep.length == (i - 1)) ? true : false;
+					 
+					kravitz.li.render_location(peep.woeid, last);
 				});
 			}
 		},
@@ -325,23 +328,55 @@ var kravitz = {
 				}
 			}
 		},
-		render_location : function(location) {
+		top_city_cnt : 0,
+		top_city: "",
+		locations: {},
+		render_location : function(location, last) {
 			if (location.length > 2) {
 				var note = $('#locations_note');
 				if (note.html().length == 0) {note.html(kravitz.default_text.friend_locations).show();}
-				var lid = location.replace(",", "").split(" ").join("-");
-				var li = $('#location_' + lid);
-				if (li.length) {
-					var cnt = parseInt(li.attr("data-cnt"));
-					li.removeClass("tag_" + cnt);
-					cnt ++;
-					li.addClass("tag_" + cnt);
-					li.attr("data-cnt", cnt);
-					li.html(location + " (" + cnt + ")");
+				// var lid = location.replace(",", "").split(" ").join("-");
+				
+				var model = kravitz.li.locations;
+				var loc = eval("model._" + location);
+				if (loc) {
+					loc ++;
 				} else {
-					$('#locations_chart').append("<li class='tag_1' id='location_"+ lid + "' data-cnt='1'>" + location + " (1)</li>");
-				}
+					eval("model._" + location + "= 1");
+					loc = eval("model._" + location);
+				};
+					
+				if (loc > kravitz.li.top_city_cnt) {
+					kravitz.li.top_city_cnt = loc;
+					kravitz.li.top_city = location;
+				}	
 			}
+			if (last) {
+				kravitz.li.render_map();
+			}
+		},
+		render_map : function() {
+			markers = [];
+			var top = $("li[data-woeid = " + kravitz.li.top_city + "]");
+			
+			
+			for (var k in kravitz.li.locations) {
+				var target = $("li[data-woeid = " + k + "]");
+				mark = {}
+				mark.latitude  = target.attr('data-lat');
+				mark.longitude = target.attr('data-lng');
+				markers.push(mark);
+			};
+			
+			options = {
+				controls: false,
+				zoom: 13,
+				markers: markers,
+				latitude: top.attr('data-lat'),
+				longitude: top.attr('data-lng')
+			}
+			
+			$("#locations_chart").gMap(options);
 		},
 		logout : function() {
 			IN.User.logout();

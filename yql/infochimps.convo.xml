@@ -104,6 +104,7 @@
 							item.@["location"] = pl.city + ", " + pl.statecode;
 							item.@["lat"] = pl.latitude;
 							item.@["lng"] = pl.longitude;
+							item.@["woeid"] = pl.woeid;
 							items.node += item;
 					}
 		
