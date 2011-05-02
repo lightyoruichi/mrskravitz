@@ -392,14 +392,14 @@ var kravitz = {
 			$('h2.result').addClass("twitter-error").html("Fail whale. Mrs. Kravitz had trouble getting that result from Twitter.<em>If the screen name is a good one, then it's likely a Fail Whale situation.</em>");
 		},
 		adjust_background : function(data) {
-			console.info(data);
 			if (data.profile_use_background_image == true ) {
 				var repeat = (data.profile_background_tile == true) ? "repeat" : "no-repeat" 				
 				$('body').css({'background-image': 'url("' + data.profile_background_image_url + '"', 'background-color': '#' + data.profile_background_color, 'background-repeat': repeat});
 			}
 			var target = $('#industry_chart li')
-			target.children('em').css({color: "#000"});
-			target.children('span').css({background: "#FFF"});
+			console.info(data.profile_text_color);
+			target.children('em').css({color: "#" + data.profile_text_color});
+			target.children('span').css({backgroundColor: "#" + data.profile_sidebar_fill_color});
 		}
 	},
 	details : {
