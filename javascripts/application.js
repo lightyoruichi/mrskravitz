@@ -397,6 +397,9 @@ var kravitz = {
 				var repeat = (data.profile_background_tile == true) ? "repeat" : "no-repeat" 				
 				$('body').css({'background-image': 'url("' + data.profile_background_image_url + '"', 'background-color': '#' + data.profile_background_color, 'background-repeat': repeat});
 			}
+			var target = $('#industry_chart li')
+			target.children('em').css({color: "#000"});
+			target.children('span').css({background: "#FFF"});
 		}
 	},
 	details : {
