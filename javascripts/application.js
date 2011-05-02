@@ -438,6 +438,9 @@ var kravitz = {
 						case "delicious":
 							kravitz.delicious.details(name);
 							break;
+						case "wordpress":
+							kravitz.wordpress.details(name);
+							break;
 					};
 				}
 			});
