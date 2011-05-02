@@ -138,7 +138,7 @@ ul.plancast {}
 ul.plancast li {float:left;width:100%;margin: 5px 0;color:#aaa;}
 
 #industry_chart, #job_chart, #locations_chart {display:none;float:left;width:94%;}
-#li_login {border:1px solid blue;background:lightBlue;padding:10px;}
+#li_login {border:1px solid blue;background:lightBlue;padding:10px;float:left;margin-top:15px;}
 #li_login p {color:#444;font-size:13px;margin:14px 0;}
 #industry_chart li, #job_chart li, #locations_chart li {float:left;width:auto;margin:5px;background:#777;padding:5px 10px;}
 li.tag_1 {background:#555 !important;}
