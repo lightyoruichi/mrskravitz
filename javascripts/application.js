@@ -375,9 +375,14 @@ var kravitz = {
 				params = params.concat("&" + k + "=" + options[k]);
 			}
 			
+			var size = "tiny";
+			
 			for (var k in kravitz.li.locations) {
 				var target = $("li[data-woeid = " + k + "]");
-				params = params.concat("&markers=icon:http://kravitz.me/images/markersmall.png|shadow:false|" + target.attr('data-lat') + "," + target.attr('data-lng') );
+				if (kravitz.li.locations[k] > 2) { size = "small" }
+				if (top === target) { size = "mid"; }
+				
+				params = params.concat("&markers=color:gray|size:"+ size +"|" + target.attr('data-lat') + "," + target.attr('data-lng') );
 			};
 			
 			// console.info(options);
