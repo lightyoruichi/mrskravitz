@@ -197,7 +197,7 @@ var kravitz = {
 				$('#linkedin_content').append("<h6>Has had jobs like:</h6><ul class='person_jobs'></ul>");
 				var target = $('ul.person_jobs');
 				
-				var jobs = person.positions.values;
+				var jobs = person.positions.values.slice(0,3);
 				$.template("liTmpl", liResultTemplate);
 			  $.tmpl("liTmpl", jobs).appendTo(target);
 			}
