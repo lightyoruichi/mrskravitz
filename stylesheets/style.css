@@ -102,7 +102,7 @@ h4 {font-size:16px;font-weight:bold;margin:0 0 5px 0;color:#333;}
 h5 {width:auto;float:left;margin:18px 10px 4px 10px;}
 h5 span.number {font-size:25px;font-weight:bold;color:#999;}
 h5 em {font-size:12px;}
-h6 {width:100%;font-size:12px;float:left;margin:10px 0 5px 0;}
+h6 {width:100%;font-size:14px;font-weight: 600;float:left;margin:10px 0 5px 0;letter-spacing:-0.02em;text-shadow: 1px 1px 1px #777;}
 
 #background {position:relative;margin-bottom:18px;}
 #background div.photo {float:left;width:75px;height:75px;padding:2px;border:1px solid #aaa;}
