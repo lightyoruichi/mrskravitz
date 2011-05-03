@@ -11,7 +11,7 @@ $(document).ready(function(){
 		// $('#main ul.results').html("");
 		sn.replace("@", "");
 		kravitz.details.show(sn);
-		kravitz.hash.add("search/" + sn);
+		kravitz.hash.add(sn);
 		kravitz.utility.leftSearch();
 		return false;
 	});
