@@ -378,10 +378,11 @@ var kravitz = {
 			for (var k in kravitz.li.locations) {
 				var target = $("li[data-woeid = " + k + "]");
 				var size = "small";
-				if (top.attr("id") == target.attr("id")) { size = "normal"}
+				if (kravitz.li.locations[k] > 1) {size = "mid";}
+				if (top.attr("id") == target.attr("id")) { size = "normal";}
 				//custom icon:
 				// params = params.concat("&markers=icon:http://kravitz.me/images/marker" + size + ".png|shadow:false|" + target.attr('data-lat') + "," + target.attr('data-lng') );
-				params = params.concat("&markers=size:" + size + "|color:0x" + kravitz.twitter.text_color +"|" + target.attr('data-lat') + "," + target.attr('data-lng') );
+				params = params.concat("&markers=size:" + size + "|color:0x" + kravitz.twitter.link_color +"|" + target.attr('data-lat') + "," + target.attr('data-lng') );
 			};
 			
 			// console.info(options);
@@ -442,14 +443,15 @@ var kravitz = {
 		},
 		background: "",
 		text_color: "",
+		link_color: "",
 		adjust_background : function(data) {
 			if (data.profile_use_background_image == true ) {
 				var repeat = (data.profile_background_tile == true) ? "repeat" : "no-repeat" 				
 				$('body').css({'background-image': 'url("' + data.profile_background_image_url + '"', 'background-color': '#' + data.profile_background_color, 'background-repeat': repeat});
 			}
-			console.info(data);
 			kravitz.twitter.background = data.profile_sidebar_fill_color;
 			kravitz.twitter.text_color = data.profile_text_color;
+			kravitz.twitter.link_color = data.profile_link_color;
 		}
 	},
 	details : {
