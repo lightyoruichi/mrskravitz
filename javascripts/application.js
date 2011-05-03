@@ -379,7 +379,7 @@ var kravitz = {
 			
 			for (var k in kravitz.li.locations) {
 				var target = $("li[data-woeid = " + k + "]");
-				// if (top == target) { }
+				if (top == target) { size + "big"}
 				params = params.concat("&markers=icon:http://kravitz.me/images/marker" + size + ".png|shadow:false|" + target.attr('data-lat') + "," + target.attr('data-lng') );
 			};
 			
