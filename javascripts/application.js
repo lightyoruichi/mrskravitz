@@ -361,10 +361,9 @@ var kravitz = {
 			
 			
 			markers = [];
-			var top = $("li[data-woeid = " + kravitz.li.top_city + "]");
-	console.info(kravitz.li.top_city);
+			var top = $("li[data-woeid = _" + kravitz.li.top_city + "]");
 			for (var k in kravitz.li.locations) {
-				var target = $("li[data-woeid = " + k + "]");
+				var target = $("li[data-woeid = _" + k + "]");
 				mark = {}
 				mark.latitude  = target.attr('data-lat');
 				mark.longitude = target.attr('data-lng');
