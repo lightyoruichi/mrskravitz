@@ -377,7 +377,7 @@ var kravitz = {
 			
 			for (var k in kravitz.li.locations) {
 				var target = $("li[data-woeid = " + k + "]");
-				params = params.concat("&markers=size:tiny|" + target.attr('data-lat') + "," + target.attr('data-lng') + "|icon:http://kravitz.me/images/marker-" + "big" + ".png" );
+				params = params.concat("&markers=size:tiny|" + target.attr('data-lat') + "," + target.attr('data-lng') + "|icon:http://kravitz.me/images/marker" + "big" + ".png" );
 			};
 			
 			// console.info(options);
