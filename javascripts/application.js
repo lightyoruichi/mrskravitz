@@ -382,7 +382,7 @@ var kravitz = {
 				if (top == target) {
 					size = "big";
 				}
-				params = params.concat("&markers=icon:http://kravitz.me/images/marker" + size + ".png|shadow:false|" + target.attr('data-lat') + "," + target.attr('data-lng') );
+				params = params.concat("&markers=icon:http://kravitz.me/images/markersmall.png|shadow:false|" + target.attr('data-lat') + "," + target.attr('data-lng') );
 			};
 			
 			// console.info(options);
