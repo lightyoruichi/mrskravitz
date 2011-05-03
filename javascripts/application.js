@@ -379,9 +379,8 @@ var kravitz = {
 			
 			for (var k in kravitz.li.locations) {
 				var target = $("li[data-woeid = " + k + "]");
-				console.info(target.attr("id"))
-				console.info(top.attr("id"))
-				if (top == target) { size + "big"}
+				console.info(top.attr("id") + "vs " + target.attr("id"))
+				if (top.attr("id") == target.attr("id")) { size = "big"}
 				params = params.concat("&markers=icon:http://kravitz.me/images/marker" + size + ".png|shadow:false|" + target.attr('data-lat') + "," + target.attr('data-lng') );
 			};
 			
