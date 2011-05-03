@@ -377,7 +377,7 @@ var kravitz = {
 			
 			var options = {
 				zoom: 3,
-				size: "418x250",
+				size: "418x200",
 				center: center,
 			}
 			
@@ -388,7 +388,7 @@ var kravitz = {
 			// console.info(options);
 			url = "http://maps.google.com/maps/api/staticmap?" + params;
 			
-			$("#locations_chart").html("<img src='"+ url + "' alt='the beubellahs' width='418' height='250' />");
+			$("#locations_chart").html("<img src='"+ url + "' alt='the beubellahs' width='418' height='200' />");
 		},
 		logout : function() {
 			IN.User.logout();
