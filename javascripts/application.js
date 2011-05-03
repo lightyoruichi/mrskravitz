@@ -23,7 +23,6 @@ $(document).ready(function(){
 	
 	var anchorName = document.location.hash.substring(1);
 	if (anchorName.length > 0) {
-		console.info(anchorName);
 		kravitz.hash.router(anchorName);
 	}
 	
@@ -809,15 +808,15 @@ var kravitz = {
 		},
 		router : function(anchor) {
 			cleaned = location.hash.replace("#!", "");
-			ary = cleaned.split("/");
-			switch (ary[0]) {
-				case "search":
-					sn = unescape(ary[1]).replace("@", "");
+			// ary = cleaned.split("/");
+			// switch (ary[0]) {
+				// case "search":
+					sn = unescape(cleaned).replace("@", "");
 					$('#search_box').val(sn);
 					kravitz.utility.leftSearch();
 					kravitz.details.show(sn);
-					break;
-			};
+					// break;
+			// };
 		}
 	}
 }
