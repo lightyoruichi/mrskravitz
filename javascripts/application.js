@@ -447,6 +447,7 @@ var kravitz = {
 				var repeat = (data.profile_background_tile == true) ? "repeat" : "no-repeat" 				
 				$('body').css({'background-image': 'url("' + data.profile_background_image_url + '"', 'background-color': '#' + data.profile_background_color, 'background-repeat': repeat});
 			}
+			console.info(data);
 			kravitz.twitter.background = data.profile_sidebar_fill_color;
 			kravitz.twitter.text_color = data.profile_text_color;
 		}
