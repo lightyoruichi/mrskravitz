@@ -357,6 +357,9 @@ var kravitz = {
 			}
 		},
 		render_map : function() {
+			params = "zoom=3";
+			
+			
 			markers = [];
 			var top = $("li[data-woeid = " + kravitz.li.top_city + "]");
 		
@@ -369,14 +372,18 @@ var kravitz = {
 			};
 			
 			options = {
-				controls: false,
-				zoom: 3,
-				markers: markers,
-				latitude: top.attr('data-lat'),
-				longitude: top.attr('data-lng')
+				size: "418x275",
+				center: top.attr('data-lat') + "," + top.attr('data-lng'),
 			}
+			
+			for (var k in options) {
+				params = params.concat("&" + k + "=" + + options[k]);
+			}
+
 			// console.info(options);
-			$("#locations_chart").gMap(options);
+			url = "http://maps.google.com/maps/api/staticmap?" + params;
+			
+			$("#locations_chart").html("<img src='"+ url + "' alt='the beubellahs' width='418' height='275' />");
 		},
 		logout : function() {
 			IN.User.logout();
