@@ -45,20 +45,20 @@ $(document).ready(function(){
 	  }
 	});
 	
-	$('ul.right_menu a').livequery(function(){
-		$(this).click(function(){
-			var target = $(this).siblings('div.dropdown');
-			var b = $(this).children('b');
-			if (target.is(':visible')) {
-				target.hide();
-				b.css({backgroundPosition:"0.2em 0.3em"})
-			} else {
-				target.show();
-				b.css({backgroundPosition:"-0.5em 0.3em"})
-			}
-		return false;
-		});
-	});
+	// $('ul.right_menu a').livequery(function(){
+	// 		$(this).click(function(){
+	// 			var target = $(this).siblings('div.dropdown');
+	// 			var b = $(this).children('b');
+	// 			if (target.is(':visible')) {
+	// 				target.hide();
+	// 				b.css({backgroundPosition:"0.2em 0.3em"})
+	// 			} else {
+	// 				target.show();
+	// 				b.css({backgroundPosition:"-0.5em 0.3em"})
+	// 			}
+	// 		return false;
+	// 		});
+	// 	});
 		
 });
 
