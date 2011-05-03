@@ -295,7 +295,7 @@ var kravitz = {
 					target = $('#tid_' + pid);
 					target.attr("data-industry", ind_id);	
 					li = $('#' + ind_id);
-					li.children('em').css({color: "#" + kravitz.twitter.text_color});
+					li.children('em').css({color: "#" + kravitz.twitter.link_color});
 					li.children('span').css({backgroundColor: "#" + kravitz.twitter.background});
 				}
 				$('#industry_chart li').each(function(){
