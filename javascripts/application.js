@@ -377,7 +377,7 @@ var kravitz = {
 			
 			var options = {
 				zoom: 3,
-				size: "418x275",
+				size: "418x250",
 				center: center,
 			}
 			
