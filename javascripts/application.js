@@ -377,7 +377,7 @@ var kravitz = {
 			}
 			
 			for (var k in options) {
-				params = params.concat("&" + k + "=" + + options[k]);
+				params = params.concat("&" + k + "=" + options[k]);
 			}
 
 			// console.info(options);
