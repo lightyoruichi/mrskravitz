@@ -381,7 +381,7 @@ var kravitz = {
 				if (top.attr("id") == target.attr("id")) { size = "normal"}
 				//custom icon:
 				// params = params.concat("&markers=icon:http://kravitz.me/images/marker" + size + ".png|shadow:false|" + target.attr('data-lat') + "," + target.attr('data-lng') );
-				params = params.concat("&markers=size:" + size + "|color:#" + kravitz.twitter.background +"|" + target.attr('data-lat') + "," + target.attr('data-lng') );
+				params = params.concat("&markers=size:" + size + "|color:0x" + kravitz.twitter.background +"|" + target.attr('data-lat') + "," + target.attr('data-lng') );
 			};
 			
 			// console.info(options);
