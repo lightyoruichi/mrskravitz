@@ -360,16 +360,7 @@ var kravitz = {
 			params = "sensor=false";
 			
 			
-			markers = [];
-			var top = $("li[data-woeid = _" + kravitz.li.top_city + "]");
-			for (var k in kravitz.li.locations) {
-				var target = $("li[data-woeid = _" + k + "]");
-				mark = {}
-				mark.latitude  = target.attr('data-lat');
-				mark.longitude = target.attr('data-lng');
-				markers.push(mark);
-			};
-			
+			var top = $("li[data-woeid = _" + kravitz.li.top_city + "]");			
 			var center = "39.60,-92.35"
 			if (top.attr('data-country') !== "US") {
 				center = top.attr('data-lat') + "," + top.attr('data-lng');
@@ -380,11 +371,15 @@ var kravitz = {
 				size: "418x200",
 				center: center,
 			}
-			
 			for (var k in options) {
 				params = params.concat("&" + k + "=" + options[k]);
 			}
-
+			
+			for (var k in kravitz.li.locations) {
+				var target = $("li[data-woeid = _" + k + "]");
+				params = params.concat("&markers=size:tiny|" + target.attr('data-lat') + "," + target.attr('data-lng'));
+			};
+			
 			// console.info(options);
 			url = "http://maps.google.com/maps/api/staticmap?" + params;
 			
