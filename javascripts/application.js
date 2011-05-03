@@ -388,7 +388,7 @@ var kravitz = {
 			// console.info(options);
 			url = "http://maps.google.com/maps/api/staticmap?" + params;
 			
-			$("#locations_chart").html("<img src='"+ url + "' alt='the beubellahs' width='418' height='275' />");
+			$("#locations_chart").html("<img src='"+ url + "' alt='the beubellahs' width='418' height='250' />");
 		},
 		logout : function() {
 			IN.User.logout();
