@@ -157,7 +157,7 @@ li.tag_8 {background:#8f8f8f !important;}
   background:-webkit-gradient(linear, left top,left bottom, from(#09f), to(#077fd0));
   -webkit-gradient(linear, left top,left bottom, from(rgba(0,0,0,0)), to(rgba(0,0,0,0.25)));
 }
-#industry_chart li em {position:absolute;left:5px;top:10px;font-size:11px;text-shadow:1px 1px 1px #999;}
+#industry_chart li em {position:absolute;left:5px;top:10px;font-size:11px;text-shadow:1px 1px 1px #fff;}
 
 #linkedin_message {background:pink;border:5px solid #F02475;padding:10px;margin-top:15px;width:89%;color:#000;float:left;display:none;}
 #linkedin_message a {color:#000;}
