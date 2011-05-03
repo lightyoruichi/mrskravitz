@@ -376,7 +376,7 @@ var kravitz = {
 			}
 			
 			for (var k in kravitz.li.locations) {
-				var target = $("li[data-woeid = _" + k + "]");
+				var target = $("li[data-woeid = " + k + "]");
 				params = params.concat("&markers=size:tiny|" + target.attr('data-lat') + "," + target.attr('data-lng'));
 			};
 			
