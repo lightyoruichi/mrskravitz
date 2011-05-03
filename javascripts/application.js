@@ -370,7 +370,7 @@ var kravitz = {
 				markers.push(mark);
 			};
 			
-			var center = "39.60,-94.35"
+			var center = "39.60,-92.35"
 			if (top.attr('data-country') !== "US") {
 				center = top.attr('data-lat') + "," + top.attr('data-lng');
 			}
