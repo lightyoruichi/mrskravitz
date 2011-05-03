@@ -378,9 +378,10 @@ var kravitz = {
 			for (var k in kravitz.li.locations) {
 				var target = $("li[data-woeid = " + k + "]");
 				var size = "small";
-				if (top.attr("id") == target.attr("id")) { size = "big"}
-				
-				params = params.concat("&markers=icon:http://kravitz.me/images/marker" + size + ".png|shadow:false|" + target.attr('data-lat') + "," + target.attr('data-lng') );
+				if (top.attr("id") == target.attr("id")) { size = "normal"}
+				//custom icon:
+				// params = params.concat("&markers=icon:http://kravitz.me/images/marker" + size + ".png|shadow:false|" + target.attr('data-lat') + "," + target.attr('data-lng') );
+				params = params.concat("&markers=size:" + size + "|color:#" + kravitz.twitter.background +"|" + target.attr('data-lat') + "," + target.attr('data-lng') );
 			};
 			
 			// console.info(options);
