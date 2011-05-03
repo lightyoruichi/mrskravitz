@@ -371,7 +371,7 @@ var kravitz = {
 				markers.push(mark);
 			};
 			
-			options = {
+			var options = {
 				size: "418x275",
 				center: top.attr('data-lat') + "," + top.attr('data-lng'),
 			}
