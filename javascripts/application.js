@@ -357,7 +357,7 @@ var kravitz = {
 			}
 		},
 		render_map : function() {
-			params = "zoom=3";
+			params = "sensor=false";
 			
 			
 			markers = [];
@@ -371,6 +371,7 @@ var kravitz = {
 			};
 			
 			var options = {
+				zoom: 3,
 				size: "418x275",
 				center: top.attr('data-lat') + "," + top.attr('data-lng'),
 			}
