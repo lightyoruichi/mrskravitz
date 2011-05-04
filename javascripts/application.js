@@ -299,10 +299,9 @@ var kravitz = {
 					li.children('span').css({backgroundColor: "#" + kravitz.twitter.background});
 				}
 				$('#industry_chart li').each(function(){
-					var cnt = $(this).attr('data-cnt');
-					console.info(cnt);
-					var base = 30 + Math.pow(cnt, 3);
-					pct = cnt / kravitz.li.industry_count * 100 + base;
+					// base = 30 + Math.pow(kravitz.li.industry_count, 2);
+					//console.info(base)
+					pct = $(this).attr('data-cnt') / kravitz.li.industry_count * 100 + 35;
 					$(this).children('span').animate({width:pct + "%"}, "fast");
 				});
 			}
