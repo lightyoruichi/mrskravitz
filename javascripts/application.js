@@ -300,7 +300,7 @@ var kravitz = {
 				}
 				$('#industry_chart li').each(function(){
 					var cnt = $(this).attr('data-cnt');
-					var base = 30 + Math.pow(cnt, 2);
+					var base = 30 + Math.pow(cnt, 3);
 					console.info(base)
 					pct = cnt / kravitz.li.industry_count * 100 + base;
 					$(this).children('span').animate({width:pct + "%"}, "fast");
