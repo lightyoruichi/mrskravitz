@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var repeat = 10;
+	var repeat = 100;
 	
 	$(document).everyTime(6000, function(i) {
 			var d = new Date();
