@@ -37,12 +37,12 @@
 		    cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
 		    cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
 				
-				var london = new L.LatLng(51.505, -0.09); // geographical point (longitude and latitude)
+				// var london = new L.LatLng(51.505, -0.09); // geographical point (longitude and latitude)
 				map.addLayer(cloudmade);
 				
-				map.locateAndSetView();
-				
 				map.on('locationfound', onLocationFound);
+				map.on('locationerror', onLocationError);
+				map.locateAndSetView();
 
 				function onLocationFound(e) {
 				    var marker = new L.Marker(e.latlng);
@@ -51,8 +51,6 @@
 				    marker.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point").openPopup();
 				}
 				
-				map.on('locationerror', onLocationError);
-
 				function onLocationError(e) {
 				    alert(e.message);
 				    map.fitWorld();
