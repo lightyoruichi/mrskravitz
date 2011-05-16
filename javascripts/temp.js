@@ -11,7 +11,7 @@ $(document).ready(function(){
 		return true;
 	}
 	
-	$('#form_container form').submit(function(){
+	$('#text_these').submit(function(){
 		// get lat/lng
 		// get subjects phone number
 		// turn that into a hsh that can be decoded and split back into the params.
