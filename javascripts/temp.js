@@ -26,16 +26,17 @@ var lolla = {
 		params.lng = loc.lng;
 		params.from = from;
 		var str = "lat=39.3"
-		url = "http://lolla-sinatra.cloudfoundry.com/locate?" + str + "&callback=?";
-		$.getJSON(url, function(data){
-			console.info("what")
-		})
-		// $.ajax({ cache: false, 
-		// 					 type: 'GET',
-		// 					 url: url,
-		// 					 data: params
-		// 	      }).success(function(data) {lolla.mailer_callback(data)})
-		// 					.error(function(data) {lolla.mailer_error()});
+		url = "http://lolla-sinatra.cloudfoundry.com/locate?" // + str + "&callback=?";
+		// $.getJSON(url, function(data){
+		// 			console.info("what")
+		// 		})
+		$.ajax({ type: 'GET',
+						 url: url,
+						 crossDomain: true,
+						 dataType: 'jsonp',
+						 data: params
+					 }).success(function(data) {lolla.mailer_callback(data)})
+									.error(function(data) {lolla.mailer_error()});
 	},
 	mailer_callback : function(data) {
 		console.info(data)
