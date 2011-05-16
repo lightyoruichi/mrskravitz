@@ -25,7 +25,10 @@ var lolla = {
 		params.lat = loc.lat;
 		params.lng = loc.lng;
 		params.from = from;
-		params.num1 = $('#num1').val();
+		
+		var num1 = $('#num1').val();
+		
+		if (valid_number(num1)) {console.info("valid!"); params.num1 = num1;}
 		
 		url = "http://lolla-sinatra.cloudfoundry.com/locate";
 		$.ajax({ type: 'GET',
@@ -47,5 +50,9 @@ var lolla = {
 	},
 	mailer_error : function() {
 		$('#submit_btn').val("Error. Try again.");	
+	},
+	valid_number : function(num) {
+		var valid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+		return valid.test(num)
 	}
 }
