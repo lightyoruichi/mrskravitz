@@ -16,7 +16,8 @@ $(document).ready(function(){
 		
 		// for each phone number submitted...
 		// post to lolla-node server where it will send a sms with link to map with the hash to the phone numbers
-		
+		var loc = pin.getLatLng();
+		console.info(loc)
 		return false;
 	});
 	
