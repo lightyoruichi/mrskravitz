@@ -40,6 +40,7 @@ var lolla = {
 			lolla.mailer_error();
 		}
 		else {
+			console.info(data);
 			$('#submit_btn').val("Map sent!");
 		}
 	},
