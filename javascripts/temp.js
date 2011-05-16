@@ -28,7 +28,7 @@ var lolla = {
 		
 		var num1 = $('#num1').val();
 		
-		if (valid_number(num1)) {console.info("valid!"); params.num1 = num1;}
+		if (lolla.valid_number(num1)) {console.info("valid!"); params.num1 = num1;}
 		
 		url = "http://lolla-sinatra.cloudfoundry.com/locate";
 		$.ajax({ type: 'GET',
