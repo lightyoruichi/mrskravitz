@@ -56,7 +56,7 @@
 						// alert(e.latlng.lat)
 						// var latlng = map.getLatLng()
 						// alert(latlng.lng)
-				    pin.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point").openPopup();
+				    pin.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point. Drag me to more accurate spot.").openPopup();
 				}
 				
 				function onLocationError(e) {
