@@ -28,7 +28,7 @@ var lolla = {
 
 		url = "http://lolla-sinatra.cloudfoundry.com/locate";
 		$.ajax({ cache: false, 
-						 type: 'POST',
+						 type: 'GET',
 						 url: url,
 						 data: params
 		      }).success(function(data) {lolla.mailer_callback(data)})
