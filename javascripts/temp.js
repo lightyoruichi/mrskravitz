@@ -25,9 +25,11 @@ var lolla = {
 		params.lat = loc.lat;
 		params.lng = loc.lng;
 		params.from = from;
-
-		url = "http://lolla-sinatra.cloudfoundry.com/locate";
-		$.getJSON(url, params, lolla.mailer_callback())
+		var str = params.serialize();
+		url = "http://lolla-sinatra.cloudfoundry.com/locate?" + str + "&callback=?";
+		$.getJSON(url, function(){
+			console.info("what")
+		})
 		// $.ajax({ cache: false, 
 		// 					 type: 'GET',
 		// 					 url: url,
