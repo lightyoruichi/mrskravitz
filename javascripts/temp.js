@@ -1,10 +1,14 @@
 $(document).ready(function(){
-	// var repeat = 100;
 	
-	// $(document).everyTime(6000, function(i) {
-	// 			var d = new Date();
-	// 			$('#holder').append("<li>" + d.getTime() + "</li>");
-	// 	}, repeat);
+	var sender_phone = "";
+	
+	var anchorName = document.location.hash.substring(1);
+	if (anchorName.length > 0) {
+		cleaned = location.hash.replace("#!", "");
+		sender_phone = base64.decode(cleaned);
+		console.info(sender_phone);
+		return true;
+	}
 	
 	$('#form_container form').submit(function(){
 		// get lat/lng
