@@ -51,6 +51,7 @@
 
 				function onLocationFound(e) {
 				    var marker = new L.Marker(e.latlng);
+						marker.draggable(true);
 				    map.addLayer(marker);
 						// alert(e.latlng.lat)
 						// var latlng = map.getLatLng()

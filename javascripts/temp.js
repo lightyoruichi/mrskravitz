@@ -6,7 +6,6 @@ $(document).ready(function(){
 	if (anchorName.length > 0) {
 		cleaned = location.hash.replace("#!", "");
 		sender_phone = base64.decode(cleaned);
-		console.info(sender_phone);
 		return true;
 	}
 	
