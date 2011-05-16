@@ -50,8 +50,7 @@
 				map.locateAndSetView();
 
 				function onLocationFound(e) {
-				    var marker = new L.Marker(e.latlng);
-						marker.draggable(true);
+				    var marker = new L.Marker(e.latlng, {draggable: true});
 				    map.addLayer(marker);
 						// alert(e.latlng.lat)
 						// var latlng = map.getLatLng()
