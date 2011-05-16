@@ -37,6 +37,7 @@
 	  //<![CDATA[
 	
 		var map = new L.Map('map');
+		var pin = "";
 		
 		var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/7051e1334e11401f8a86ab9a8014778d/997/256/{z}/{x}/{y}.png',
 		    cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
@@ -50,12 +51,12 @@
 				map.locateAndSetView();
 
 				function onLocationFound(e) {
-				    var marker = new L.Marker(e.latlng, {draggable: true});
-				    map.addLayer(marker);
+				    pin = new L.Marker(e.latlng, {draggable: true});
+				    map.addLayer(pin);
 						// alert(e.latlng.lat)
 						// var latlng = map.getLatLng()
 						// alert(latlng.lng)
-				    marker.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point").openPopup();
+				    pin.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point").openPopup();
 				}
 				
 				function onLocationError(e) {
