@@ -25,7 +25,7 @@ var lolla = {
 		params.lat = loc.lat;
 		params.lng = loc.lng;
 		params.from = from;
-		var str = params.serialize();
+		var str = "lat=39.3"
 		url = "http://lolla-sinatra.cloudfoundry.com/locate?" + str + "&callback=?";
 		$.getJSON(url, function(){
 			console.info("what")
