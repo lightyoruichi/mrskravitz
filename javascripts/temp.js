@@ -27,12 +27,13 @@ var lolla = {
 		params.from = from;
 
 		url = "http://lolla-sinatra.cloudfoundry.com/locate";
-		$.ajax({ cache: false, 
-						 type: 'GET',
-						 url: url,
-						 data: params
-		      }).success(function(data) {lolla.mailer_callback(data)})
-						.error(function(data) {lolla.mailer_error()});
+		$.getJSON(url, params, mailer_callback())
+		// $.ajax({ cache: false, 
+		// 					 type: 'GET',
+		// 					 url: url,
+		// 					 data: params
+		// 	      }).success(function(data) {lolla.mailer_callback(data)})
+		// 					.error(function(data) {lolla.mailer_error()});
 	},
 	mailer_callback : function(data) {
 		console.info(data)
