@@ -25,7 +25,7 @@ var lolla = {
 		params.lat = loc.lat;
 		params.lng = loc.lng;
 		params.from = from;
-		params.num1 = $('#add1').val();
+		params.num1 = $('#num1').val();
 		
 		url = "http://lolla-sinatra.cloudfoundry.com/locate";
 		$.ajax({ type: 'GET',
