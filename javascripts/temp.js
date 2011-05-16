@@ -7,7 +7,7 @@ $(document).ready(function(){
 		cleaned = location.hash.replace("#!", "");
 		console.info(cleaned);
 		sender_phone = base64.decode(cleaned);
-		// console.info(sender_phone)
+		console.info(sender_phone)
 		// return true;
 	}
 	
