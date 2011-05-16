@@ -25,11 +25,8 @@ var lolla = {
 		params.lat = loc.lat;
 		params.lng = loc.lng;
 		params.from = from;
-		var str = "lat=39.3"
-		url = "http://lolla-sinatra.cloudfoundry.com/locate" // + str + "&callback=?";
-		// $.getJSON(url, function(data){
-		// 			console.info("what")
-		// 		})
+		
+		url = "http://lolla-sinatra.cloudfoundry.com/locate";
 		$.ajax({ type: 'GET',
 						 url: url,
 						 crossDomain: true,
@@ -39,12 +36,11 @@ var lolla = {
 									.error(function(data) {lolla.mailer_error()});
 	},
 	mailer_callback : function(data) {
-		console.info(data)
-		if(typeof(data) == null || !data){	
-			
+		if(typeof(data) == null || !data || data.result == "errors"){	
+			lolla.mailer_error();
 		}
 		else {
-			
+			$('#submit_btn').val("Map sent!");
 		}
 	},
 	mailer_error : function() {
