@@ -53,7 +53,8 @@
 				function onLocationFound(e) {
 				    var marker = new L.Marker(e.latlng);
 				    map.addLayer(marker);
-						alert(e.latlng)
+						alert(e.lat)
+						
 				    marker.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point").openPopup();
 				}
 				
