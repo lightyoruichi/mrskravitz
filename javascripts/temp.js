@@ -3,6 +3,7 @@ $(document).ready(function(){
 	var sender_phone = "";
 	
 	var anchorName = document.location.hash.substring(1);
+	console.info(anchorName);
 	if (anchorName.length > 0) {
 		cleaned = location.hash.replace("#!", "");
 		console.info(cleaned);
