@@ -6,14 +6,15 @@ $(document).ready(function(){
 	if (anchorName.length > 0) {
 		cleaned = location.hash.replace("#!", "");
 		// console.info(cleaned);
-		sender_phone = base64.decode(cleaned);
+		// sender_phone = base64.decode(cleaned);
+		lolla.texter.from = base64.decode(cleaned);
 		// console.info(sender_phone)
 		// return true;
 	}
 	
 	$('#form_container form').submit(function(){
 		$('#submit_btn').val("Sending...");
-		lolla.texter.send(sender_phone);
+		lolla.texter.send();
 		return false;
 	});
 });
@@ -36,7 +37,8 @@ var lolla = {
 		}
 	},
 	texter : {
-		send : function(from) {
+		from: "",
+		send : function() {
 			var loc = pin.getLatLng();
 			params = {}
 			params.lat = loc.lat;
