@@ -87,15 +87,16 @@ var lolla = {
 				lolla.texter.send_error();
 			}
 			else {
-				console.info(data.response);
+				// console.info(data.response);
 				$('#submit_btn').val("Map sent!");
 			}
 		},
 		send_error : function(data) {
-			console.error(data);
+			// console.error(data);
 			$('#submit_btn').val("Error. Try again.");	
 		},
 		valid_number : function(num) {
+			//todo: strip the precending 1 if present
 			var valid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 			return valid.test(num)
 		}
