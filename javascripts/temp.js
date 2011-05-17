@@ -75,7 +75,7 @@ var lolla = {
 			$.ajax({ type: 'POST',
 							 url: url,
 							 crossDomain: true,
-							 dataType: "jsonp",
+							 dataType: "script",
 							 data: params
 						 }).success(function(data) {lolla.texter.send_callback(data)})
 										.error(function(data) {lolla.texter.send_error(data)});
@@ -91,7 +91,7 @@ var lolla = {
 			}
 		},
 		send_error : function(data) {
-			console.info(data);
+			console.errors(data);
 			$('#submit_btn').val("Error. Try again.");	
 		},
 		valid_number : function(num) {
