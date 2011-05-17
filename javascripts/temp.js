@@ -59,7 +59,7 @@ var lolla = {
 			// 			params.from = from;
 			// 		
 			var num1 = $('#num1').val();
-			
+			console.info(num1);
 			if (num1.length > 0 && lolla.texter.valid_number(num1)) {
 					params.To = num1;
 			} else {
@@ -97,7 +97,6 @@ var lolla = {
 		},
 		valid_number : function(num) {
 			var valid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
-			console.info(num);
 			return valid.test(num)
 		}
 	}
