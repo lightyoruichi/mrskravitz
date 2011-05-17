@@ -67,14 +67,16 @@ var lolla = {
 					// add an error to the screen.
 			}
 			
-			params.Body = $('#message').val();
+			params.message = $('#message').val();
 			
 			//validation here that at least one params.num1 ... num5 exists
 		
-			url = "https://AC6f5d1ad75296c525a8fb9231b1da5e2d:f209ae5ed8af273406986d6d20bd17d0@api.twilio.com/2010-04-01/Accounts/AC6f5d1ad75296c525a8fb9231b1da5e2d/SMS/Messages"
-			$.ajax({ type: 'POST',
+			// url = "https://AC6f5d1ad75296c525a8fb9231b1da5e2d:f209ae5ed8af273406986d6d20bd17d0@api.twilio.com/2010-04-01/Accounts/AC6f5d1ad75296c525a8fb9231b1da5e2d/SMS/Messages"
+			url = "lolla-node.cloudfoundry.com/send.json";
+			$.ajax({ type: 'GET',
 							 url: url,
-							 crossDomain: true
+							 data: params,
+							 dataType: 'jsonp'
 						 }).success(function(data) {lolla.texter.send_callback(data)})
 										.error(function(data) {lolla.texter.send_error(data)});
 			
