@@ -78,7 +78,7 @@ var lolla = {
 							 dataType: "jsonp",
 							 data: params
 						 }).success(function(data) {lolla.texter.send_callback(data)})
-										.error(function(data) {lolla.texter.send_error()});
+										.error(function(data) {lolla.texter.send_error(data)});
 		},
 		send_callback : function(data) {
 			console.info("do I get here?")
@@ -90,7 +90,8 @@ var lolla = {
 				$('#submit_btn').val("Map sent!");
 			}
 		},
-		send_error : function() {
+		send_error : function(data) {
+			console.info(data);
 			$('#submit_btn').val("Error. Try again.");	
 		},
 		valid_number : function(num) {
