@@ -39,6 +39,7 @@ var lolla = {
 		shorten: function(longUrl) {
 			params = {}
 			params.apiKey = "R_98b9678f33178a73c3439cad27afc1fb";
+			params.login = "steveodom";
 			params.longUrl = longUrl;
 			
 			$.getJSON("http://api.bitly.com/v3/shorten", params, function(data){
