@@ -27,6 +27,7 @@ var lolla = {
 			var params = lolla.texter.from + "_" + loc.lat + "_" + loc.lng;
 			var hsh = base64.encode(params); 
 			var map_url = "http://kravitz.me/map#!" + hsh; 
+			bitly.shorten(map_url);
 			
 		},
 		spinner : function() {
