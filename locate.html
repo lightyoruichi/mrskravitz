@@ -55,13 +55,17 @@
 				    pin = new L.Marker(e.latlng, {draggable: true});
 				    map.addLayer(pin);
 				    pin.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point. Drag me to more accurate spot if needed.").openPopup();
-				alert("what")
 				    lolla.message.builder();
+						pin.on('click', onMarkerClick);
 				}
 				
 				function onLocationError(e) {
 				    alert(e.message);
 				    map.fitWorld();
+				}
+				
+				function onMarkerClick() {
+					alert("what");
 				}
 		//]]>
 	</script>
