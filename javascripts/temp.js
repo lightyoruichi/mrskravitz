@@ -71,7 +71,7 @@ var lolla = {
 			
 			//validation here that at least one params.num1 ... num5 exists
 		
-			url = "https://AC6f5d1ad75296c525a8fb9231b1da5e2d:f209ae5ed8af273406986d6d20bd17d0@api.twilio.com/2010-04-01/Accounts/AC6f5d1ad75296c525a8fb9231b1da5e2d/SMS/Messages.json"
+			url = "https://AC6f5d1ad75296c525a8fb9231b1da5e2d:f209ae5ed8af273406986d6d20bd17d0@api.twilio.com/2010-04-01/Accounts/AC6f5d1ad75296c525a8fb9231b1da5e2d/SMS/Messages.json?callbacks=?"
 			$.ajax({ type: 'POST',
 							 url: url,
 							 crossDomain: true,
