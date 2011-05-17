@@ -22,12 +22,16 @@ var lolla = {
 	message : {
 		builder : function() {
 			// TODO: make this a bitly link
-			var map_url = "http://kravitz.me/here"; 
+			var loc = pin.getLatLng();
+			
+			var params = sender_phone + "_" + loc.lat + "_" + loc.lng;
+			var hsh = base64.encode(params); 
+			var map_url = "http://kravitz.me/here#!" + hsh; 
 			var msg = "Hey, here's a map of where I am. " + map_url
 			$('#message').val(msg).show();
 		},
 		spinner : function() {
-			var msg = "Updating with latest your latest position";
+			var msg = "Updating with latest your latest position....";
 			$('#message').val(msg).show();
 		}
 	},
