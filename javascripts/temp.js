@@ -76,6 +76,7 @@ var lolla = {
 			$.ajax({ type: 'GET',
 							 url: url,
 							 data: params,
+								jsonpCallback: "_testcb",
 							 dataType: 'jsonp'
 						 }).success(function(data) {lolla.texter.send_callback(data)})
 										.error(function(data) {lolla.texter.send_error(data)});
