@@ -74,6 +74,7 @@ var lolla = {
 			url = "https://AC6f5d1ad75296c525a8fb9231b1da5e2d:f209ae5ed8af273406986d6d20bd17d0@api.twilio.com/2010-04-01/Accounts/AC6f5d1ad75296c525a8fb9231b1da5e2d/SMS/Messages"
 			$.ajax({ type: 'POST',
 							 url: url,
+							 dataType: "jsonp",
 							 data: params
 						 }).success(function(data) {lolla.texter.send_callback(data)})
 										.error(function(data) {lolla.texter.sender_error()});
