@@ -25,6 +25,10 @@ var lolla = {
 			var map_url = "http://kravitz.me/here"; 
 			var msg = "Hey, here's a map of where I am. " + map_url
 			$('#message').val(msg).show();
+		},
+		spinner : function() {
+			var msg = "Updating with latest your latest position";
+			$('#message').val(msg).show();
 		}
 	},
 	texter : {
