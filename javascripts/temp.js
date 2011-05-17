@@ -80,6 +80,7 @@ var lolla = {
 										.error(function(data) {lolla.texter.sender_error()});
 		},
 		send_callback : function(data) {
+			console.info("do I get here?")
 			if(typeof(data) == null || !data || data.result == "errors"){	
 				lolla.texter.send_error();
 			}
