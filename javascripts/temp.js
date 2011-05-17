@@ -24,16 +24,27 @@ var lolla = {
 		builder : function() {
 			// TODO: make this a bitly link
 			var loc = pin.getLatLng();
-			
 			var params = lolla.texter.from + "_" + loc.lat + "_" + loc.lng;
 			var hsh = base64.encode(params); 
-			var map_url = "http://kravitz.me/here#!" + hsh; 
-			var msg = "Hey, here's a map of where I am. " + map_url
-			$('#message').val(msg).show();
+			var map_url = "http://kravitz.me/map#!" + hsh; 
+			
 		},
 		spinner : function() {
 			var msg = "Updating with latest your latest position....";
 			$('#message').val(msg).show();
+		}
+	},
+	bitly : {
+		shorten: function(longUrl) {
+			params = {}
+			params.apiKey = "R_98b9678f33178a73c3439cad27afc1fb";
+			params.longUrl = longUrl;
+			
+			$.getJSON("http://api.bitly.com/v3/shorten", params, function(data){
+			        console.info(data)
+							var msg = "Hey, here's a map of where I am. " + data.url;
+							$('#message').val(msg).show();
+			    });
 		}
 	},
 	texter : {
