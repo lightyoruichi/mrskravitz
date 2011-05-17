@@ -76,7 +76,7 @@ var lolla = {
 			$.ajax({ type: 'GET',
 							 url: url,
 							 data: params,
-								jsonpCallback: "_testcb",
+							 jsonpCallback: "_testcb",
 							 dataType: 'jsonp'
 						 }).success(function(data) {lolla.texter.send_callback(data)})
 										.error(function(data) {lolla.texter.send_error(data)});
@@ -88,7 +88,7 @@ var lolla = {
 				lolla.texter.send_error();
 			}
 			else {
-				console.info(data);
+				console.info(data.response);
 				$('#submit_btn').val("Map sent!");
 			}
 		},
