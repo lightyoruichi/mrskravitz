@@ -56,7 +56,7 @@
 				    map.addLayer(pin);
 				    pin.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point. Drag me to more accurate spot if needed.").openPopup();
 				    lolla.message.builder();
-						pin.on('click', onMarkerClick);
+						pin.on('drag', onMarkerClick);
 				}
 				
 				function onLocationError(e) {
