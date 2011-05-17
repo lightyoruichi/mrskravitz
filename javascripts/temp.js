@@ -44,7 +44,7 @@ var lolla = {
 			
 			$.getJSON("http://api.bitly.com/v3/shorten", params, function(data){
 			        console.info(data)
-							var msg = "Hey, here's a map of where I am. " + data.url;
+							var msg = "Hey, here's a map of where I am. " + data.data.url;
 							$('#message').val(msg).show();
 			    });
 		}
