@@ -53,7 +53,6 @@ var lolla = {
 		send : function() {
 			// var loc = pin.getLatLng();
 			params = {}
-			params.From = +14155992671;
 			
 			// 			params.lat = loc.lat;
 			// 			params.lng = loc.lng;
@@ -98,6 +97,7 @@ var lolla = {
 		},
 		valid_number : function(num) {
 			var valid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+			console.info(num);
 			return valid.test(num)
 		}
 	}
