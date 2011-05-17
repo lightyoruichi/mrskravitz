@@ -25,7 +25,7 @@ var lolla = {
 			// TODO: make this a bitly link
 			var loc = pin.getLatLng();
 			
-			var params = sender_phone + "_" + loc.lat + "_" + loc.lng;
+			var params = lolla.texter.from + "_" + loc.lat + "_" + loc.lng;
 			var hsh = base64.encode(params); 
 			var map_url = "http://kravitz.me/here#!" + hsh; 
 			var msg = "Hey, here's a map of where I am. " + map_url
