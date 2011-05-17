@@ -78,7 +78,7 @@ var lolla = {
 							 dataType: "jsonp",
 							 data: params
 						 }).success(function(data) {lolla.texter.send_callback(data)})
-										.error(function(data) {lolla.texter.sender_error()});
+										.error(function(data) {lolla.texter.send_error()});
 		},
 		send_callback : function(data) {
 			console.info("do I get here?")
