@@ -72,7 +72,7 @@ var lolla = {
 			//validation here that at least one params.num1 ... num5 exists
 		
 			// url = "https://AC6f5d1ad75296c525a8fb9231b1da5e2d:f209ae5ed8af273406986d6d20bd17d0@api.twilio.com/2010-04-01/Accounts/AC6f5d1ad75296c525a8fb9231b1da5e2d/SMS/Messages"
-			url = "lolla.cloudfoundry.com/send.json";
+			url = "http://lolla.cloudfoundry.com/send.json";
 			$.ajax({ type: 'GET',
 							 url: url,
 							 data: params,
@@ -92,7 +92,7 @@ var lolla = {
 			}
 		},
 		send_error : function(data) {
-			console.errors(data);
+			console.error(data);
 			$('#submit_btn').val("Error. Try again.");	
 		},
 		valid_number : function(num) {
