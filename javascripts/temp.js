@@ -13,50 +13,62 @@ $(document).ready(function(){
 	
 	$('#form_container form').submit(function(){
 		$('#submit_btn').val("Sending...");
-		lolla.mailer(sender_phone);
+		lolla.texter.send(sender_phone);
 		return false;
 	});
 });
 
 var lolla = {
-	mailer : function(from) {
-		var loc = pin.getLatLng();
-		params = {}
-		params.lat = loc.lat;
-		params.lng = loc.lng;
-		params.from = from;
-		
-		var num1 = $('#num1').val();
-		
-		if (num1.length > 0 && lolla.valid_number(num1)) {
-			params.num1 = num1;
-		} else {
-			// add an error.
-		}
-		
-		url = "http://lolla-sinatra.cloudfoundry.com/locate";
-		$.ajax({ type: 'GET',
-						 url: url,
-						 crossDomain: true,
-						 dataType: 'jsonp',
-						 data: params
-					 }).success(function(data) {lolla.mailer_callback(data)})
-									.error(function(data) {lolla.mailer_error()});
-	},
-	mailer_callback : function(data) {
-		if(typeof(data) == null || !data || data.result == "errors"){	
-			lolla.mailer_error();
-		}
-		else {
-			console.info(data);
-			$('#submit_btn').val("Map sent!");
+	message : {
+		builder : function() {
+			// TODO: make this a bitly link
+			var map_url = "http://kravitz.me/here"; 
+			var msg = "Hey, here's a map of where I am. " + map_url
+			$('#message').val(msg).show();
 		}
 	},
-	mailer_error : function() {
-		$('#submit_btn').val("Error. Try again.");	
-	},
-	valid_number : function(num) {
-		var valid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
-		return valid.test(num)
+	texter : {
+		send : function(from) {
+			var loc = pin.getLatLng();
+			params = {}
+			params.lat = loc.lat;
+			params.lng = loc.lng;
+			params.from = from;
+		
+			var num1 = $('#num1').val();
+		
+			if (num1.length > 0 && lolla.texter.valid_number(num1)) {
+				params.num1 = num1;
+			} else {
+				// add an error to the screen.
+			}
+		
+			//validation here that at least one params.num1 ... num5 exists
+			// TODO: this should actually post to post directly to Twilio to send the text.
+			url = "http://lolla-sinatra.cloudfoundry.com/locate";
+			$.ajax({ type: 'GET',
+							 url: url,
+							 crossDomain: true,
+							 dataType: 'jsonp',
+							 data: params
+						 }).success(function(data) {lolla.texter.send_callback(data)})
+										.error(function(data) {lolla.texter.sender_error()});
+		},
+		send_callback : function(data) {
+			if(typeof(data) == null || !data || data.result == "errors"){	
+				lolla.texter.send_error();
+			}
+			else {
+				console.info(data);
+				$('#submit_btn').val("Map sent!");
+			}
+		},
+		send_error : function() {
+			$('#submit_btn').val("Error. Try again.");	
+		},
+		valid_number : function(num) {
+			var valid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+			return valid.test(num)
+		}
 	}
 }

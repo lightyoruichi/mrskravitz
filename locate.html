@@ -28,8 +28,10 @@
 		<form id="temp">
 			<h1 class="headline" style="color:#303030;">Input a phone number to text your location.</h1>
 			<input type="text" value="" id="num1" class="searcher" style="float:left"/>
+			<textarea id="message" rows="2" cols="20"></textarea>
 			<input type="submit" value="Send" id="submit_btn" class="btn" style="margin:2px 0 0 5px !important;" />
 		</form>
+		
 	</div>
 	
 	<script type='text/javascript'> 
@@ -52,10 +54,8 @@
 				function onLocationFound(e) {
 				    pin = new L.Marker(e.latlng, {draggable: true});
 				    map.addLayer(pin);
-						// alert(e.latlng.lat)
-						// var latlng = map.getLatLng()
-						// alert(latlng.lng)
-				    pin.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point. Drag me to more accurate spot.").openPopup();
+				    pin.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point. Drag me to more accurate spot if needed.").openPopup();
+				    lolla.message.builder();
 				}
 				
 				function onLocationError(e) {
