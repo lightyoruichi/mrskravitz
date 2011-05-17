@@ -43,7 +43,6 @@ var lolla = {
 			params.longUrl = longUrl;
 			
 			$.getJSON("http://api.bitly.com/v3/shorten", params, function(data){
-			        console.info(data)
 							var msg = "Hey, here's a map of where I am. " + data.data.url;
 							$('#message').val(msg).show();
 			    });
@@ -52,27 +51,29 @@ var lolla = {
 	texter : {
 		from: "",
 		send : function() {
-			var loc = pin.getLatLng();
+			// var loc = pin.getLatLng();
 			params = {}
-			params.lat = loc.lat;
-			params.lng = loc.lng;
-			params.from = from;
-		
+			params.From = +14155992671;
+			
+			// 			params.lat = loc.lat;
+			// 			params.lng = loc.lng;
+			// 			params.from = from;
+			// 		
 			var num1 = $('#num1').val();
-		
+			
 			if (num1.length > 0 && lolla.texter.valid_number(num1)) {
-				params.num1 = num1;
+					params.To = num1;
 			} else {
-				// add an error to the screen.
+					// add an error to the screen.
 			}
-		
+			
+			params.Body = $('#message').val();
+			
 			//validation here that at least one params.num1 ... num5 exists
-			// TODO: this should actually post to post directly to Twilio to send the text.
-			url = "http://lolla-sinatra.cloudfoundry.com/locate";
-			$.ajax({ type: 'GET',
+		
+			url = "https://AC6f5d1ad75296c525a8fb9231b1da5e2d:f209ae5ed8af273406986d6d20bd17d0@api.twilio.com/2010-04-01/Accounts/AC6f5d1ad75296c525a8fb9231b1da5e2d/SMS/Messages"
+			$.ajax({ type: 'POST',
 							 url: url,
-							 crossDomain: true,
-							 dataType: 'jsonp',
 							 data: params
 						 }).success(function(data) {lolla.texter.send_callback(data)})
 										.error(function(data) {lolla.texter.sender_error()});
