@@ -120,7 +120,9 @@ var lolla = {
 		},
 		message : function() {
 			var loc = pin.getLatLng();
-			lolla.socket.geoWS.postMessage("lat:" + loc.lat + " lng:" + loc.lng);
+			geoWS = lolla.socket.geoWS;
+			console.info(geoWS)
+			geoWS.postMessage("lat:" + loc.lat + " lng:" + loc.lng);
 		}
 	}
 }
