@@ -28,6 +28,7 @@ var lolla = {
 			var hsh = base64.encode(params); 
 			var map_url = "http://kravitz.me/map#!" + hsh; 
 			lolla.bitly.shorten(map_url);
+			lolla.socket.message();
 			
 		},
 		spinner : function() {
@@ -99,6 +100,27 @@ var lolla = {
 			//todo: strip the precending 1 if present
 			var valid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 			return valid.test(num)
+		}
+	},
+	socket : {
+		geoWS : "",
+		connect : function() {
+			geoWS = new WebSocket("ws://sockettome.cloudfoundry.com");
+			geoWS.onopen = function(evt) {
+			   console.info("opened:" + evt)
+			};
+			
+			geoWS.onmessage = function(evt) {
+				console.info("update: " + evt.data);
+			};
+			
+			geoWS.onclose = function(evt) {
+			   console.info("closed: " + evt);
+			};
+		},
+		message : function() {
+			var loc = pin.getLatLng();
+			geoWS.postMessage("lat:" + loc.lat + " lng:" + loc.lng);
 		}
 	}
 }
