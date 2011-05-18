@@ -55,8 +55,8 @@
 				    pin = new L.Marker(e.latlng, {draggable: true});
 				    map.addLayer(pin);
 				    pin.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point. Drag me to more accurate spot if needed.").openPopup();
-				    lolla.message.builder();
 						lolla.socket.connect();
+				    lolla.message.builder();
 						pin.on('dragstart', lolla.message.spinner)
 						pin.on('dragend', lolla.message.builder);
 				}
