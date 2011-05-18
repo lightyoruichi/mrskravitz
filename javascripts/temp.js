@@ -104,7 +104,6 @@ var lolla = {
 	},
 	socket : {
 		connect : function() {
-			
 			geoWS.onopen = function(evt) {
 			   console.info("opened:" + evt)
 			};
@@ -120,6 +119,9 @@ var lolla = {
 		message : function() {
 						console.info("message")
 			var loc = pin.getLatLng();
+			geoWS.onmessage = function(evt) {
+				console.info("update: " + evt.data);
+			};
 			geoWS.postMessage("lat:" + loc.lat + " lng:" + loc.lng);
 		}
 	}
