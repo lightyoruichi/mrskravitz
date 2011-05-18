@@ -39,6 +39,7 @@
 	
 		var map = new L.Map('map');
 		var pin = "";
+		var geoWS = new WebSocket("ws://sockettome.cloudfoundry.com");
 		
 		var cloudmadeUrl = 'http://{s}.tile.cloudmade.com/7051e1334e11401f8a86ab9a8014778d/997/256/{z}/{x}/{y}.png',
 		    cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',

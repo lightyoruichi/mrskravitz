@@ -103,11 +103,8 @@ var lolla = {
 		}
 	},
 	socket : {
-		geoWS : "",
 		connect : function() {
-			geoWS = new WebSocket("ws://sockettome.cloudfoundry.com");
-			console.info("connect")
-			console.info(geoWS);
+			
 			geoWS.onopen = function(evt) {
 			   console.info("opened:" + evt)
 			};
@@ -123,8 +120,6 @@ var lolla = {
 		message : function() {
 						console.info("message")
 			var loc = pin.getLatLng();
-			geoWS = lolla.socket.geoWS;
-						console.info(geoWS);
 			geoWS.postMessage("lat:" + loc.lat + " lng:" + loc.lng);
 		}
 	}
