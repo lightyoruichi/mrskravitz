@@ -118,10 +118,8 @@ var lolla = {
 		},
 		message : function() {
 						console.info("message")
-			var loc = pin.getLatLng();
-			console.info(geoWS);
-			
-			geoWS.postMessage("lat:" + loc.lat + " lng:" + loc.lng);
+			var loc = pin.getLatLng();			
+			geoWS.message("lat:" + loc.lat + " lng:" + loc.lng);
 		}
 	}
 }
