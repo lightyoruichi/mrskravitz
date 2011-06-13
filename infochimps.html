@@ -39,14 +39,14 @@
 		    cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
 		    cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
 				
-				var london = new L.LatLng(51.505, -0.09); // geographical point (longitude and latitude)
-				map.setView(london, 13).addLayer(cloudmade);
+				var centered = new L.LatLng(-97.7427778, 30.2669444); // geographical point (longitude and latitude)
+				map.setView(centered, 5).addLayer(cloudmade);
 				
-				var markerLocation = new L.LatLng(51.5, -0.09);
+				var markerLocation = new L.LatLng(-97.824532, 30.294544);
 				var marker = new L.Marker(markerLocation);
 				map.addLayer(marker);
 				
-				marker.bindPopup("test");
+				marker.bindPopup("THE HOSPITAL AT WESTLAKE MEDICAL CENTER");
 				
 		//]]>
 	</script>
