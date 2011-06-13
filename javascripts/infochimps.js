@@ -5,4 +5,4 @@ $(document).ready(function(){
 	
 	marker.bindPopup("THE HOSPITAL AT WESTLAKE MEDICAL CENTER");
 
-}
+});
