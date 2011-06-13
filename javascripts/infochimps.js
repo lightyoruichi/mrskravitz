@@ -7,7 +7,7 @@ $(document).ready(function(){
 	
 	var anchorName = document.location.hash.substring(1);
 	if (anchorName.length > 0) {
-		cleaned = anchorName.hash.replace("!", "");
+		cleaned = anchorName.replace("!", "");
 		console.info(cleaned);
 	}
 	
