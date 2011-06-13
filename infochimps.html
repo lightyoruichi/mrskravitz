@@ -21,7 +21,7 @@
 	
 </head>
 <body>
-	<div id="header" class=""></div>
+	<div id="header" class="">Infochimps</div>
 
 	<div id="map" style="height: 100%;"></div>
 	<div id="form_container">
@@ -41,27 +41,11 @@
 				
 				var london = new L.LatLng(51.505, -0.09); // geographical point (longitude and latitude)
 				map.setView(london, 13).addLayer(cloudmade);
-				
-				// map.addLayer(cloudmade);
-				
-				// map.on('locationfound', onLocationFound);
-				// map.on('locationerror', onLocationError);
-				// map.locateAndSetView();
+				var markerLocation = new L.LatLng(51.5, -0.09);
 
-				function onLocationFound(e) {
-				    pin = new L.Marker(e.latlng, {draggable: true});
-				    map.addLayer(pin);
-				    // pin.bindPopup("You are within " + (e.accuracy / 2) + " meters from this point. Drag me to more accurate spot if needed.").openPopup();
-						// lolla.socket.connect();
-				    // lolla.message.builder();
-						// pin.on('dragstart', lolla.message.spinner)
-						// pin.on('dragend', lolla.message.builder);
-				}
+				var marker = new L.Marker(markerLocation);
+				map.addLayer(marker);
 				
-				function onLocationError(e) {
-				    alert(e.message);
-				    map.fitWorld();
-				}
 		//]]>
 	</script>
 </body>
