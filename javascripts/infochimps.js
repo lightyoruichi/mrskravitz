@@ -7,7 +7,8 @@ $(document).ready(function(){
 	
 	var anchorName = document.location.hash.substring(1);
 	if (anchorName.length > 0) {
-		console.info(anchorName);
+		cleaned = anchorName.hash.replace("!", "");
+		console.info(cleaned);
 	}
 	
 	var base_url = "http://api.infochimps.com/geo/location/infochimps/";
