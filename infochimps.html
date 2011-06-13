@@ -39,10 +39,10 @@
 		    cloudmadeAttrib = 'Map data &copy; 2011 OpenStreetMap contributors, Imagery &copy; 2011 CloudMade',
 		    cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
 				
-				var centered = new L.LatLng(-97.7427778, 30.2669444); // geographical point (longitude and latitude)
+				var centered = new L.LatLng(30.2669444, -97.7427778); // geographical point (longitude and latitude)
 				map.setView(centered, 5).addLayer(cloudmade);
 				
-				var markerLocation = new L.LatLng(-97.824532, 30.294544);
+				var markerLocation = new L.LatLng(30.294544, -97.824532);
 				var marker = new L.Marker(markerLocation);
 				map.addLayer(marker);
 				
