@@ -120,9 +120,7 @@ var lolla = {
 						console.info("message")
 			var loc = pin.getLatLng();
 			console.info(geoWS);
-			if(geoWS){			
-				geoWS.send("what");
-			}
+			geoWS.send("what");
 		}
 	}
 }
