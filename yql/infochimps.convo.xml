@@ -12,7 +12,8 @@
 					</urls>
           <inputs>
 						<key id="apikey" type="xs:string" paramType="query" required="true"/>
-						<key id="sn" type="xs:string" paramType="query" required="true"/>
+						<key id="sn" type="xs:string" paramType="query" required="false"/>
+						<key id="tid" type="xs:string" paramType="query" required="false"/>
 						<key id="v" type="xs:string" paramType="query" required="false"/>
           </inputs>
 					<execute><![CDATA[
@@ -23,6 +24,7 @@
 											 .accept('application/json')
 											 .query("apikey", apikey)
 											 .query("screen_name", sn)
+											 .query("user_id", tid)
 											 .get().response;
 					 return req
 					}
@@ -40,7 +42,7 @@
 					var model = {
 						twitter : {}
 					}
-					
+					// this looks everyone up with one call.
 					function twitter_lookup(list) {
 						var q = "select * from infochimps.twitter where user_id='" + list + "'";
 						var req = y.query(q);

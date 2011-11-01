@@ -17,13 +17,18 @@
 	<script src="javascripts/templates/header.js"></script>
 	<script src="leaflet/leaflet.js"></script>
 	<script src="javascripts/base64.js"></script>
-  <script src="javascripts/infochimps.js" type="text/javascript"></script>	
+	<script src="javascripts/infochimps.js" type="text/javascript"></script>
+ 	<script>
+		function testicles() {
+			alert("what")
+		}
+	</script>
 	
 </head>
 <body>
 	<div id="header" class=""><h1><a href="http://infochimps.com">Infochimps</a></h1></div>
 
-	<div id="map" style="height: 100%;"></div>
+	<div id="map" style="height: 400px; width: 700px;"></div>
 	<div id="form_container">
 		
 	</div>
@@ -40,7 +45,7 @@
 		    cloudmade = new L.TileLayer(cloudmadeUrl, {maxZoom: 18, attribution: cloudmadeAttrib});
 				
 				var centered = new L.LatLng(30.2669444, -97.7427778); // geographical point (longitude and latitude)
-				map.setView(centered, 5).addLayer(cloudmade);
+				map.setView(centered, 11).addLayer(cloudmade);
 				
 				
 				
